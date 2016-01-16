@@ -20,11 +20,11 @@ public class ClientFrame extends JFrame {
     public ClientFrame(TableBtnPanel tableBtnPanel, ClientTablePanel clientTablePanel) {
         this.clientTablePanel = clientTablePanel;
         this.tableBtnPanel = tableBtnPanel;
-        setUpFrame();
+        setFrameUp();
         initComponents();
     }
 
-    private void setUpFrame() {
+    private void setFrameUp() {
         setTitle(ConstMessages.FramesTitles.CLIENT_FRAME);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);

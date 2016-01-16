@@ -18,11 +18,11 @@ public class MainMenuFrame extends JFrame {
     private JButton addressesBtn;
 
     public MainMenuFrame() {
-        setUpFrame();
+        setFrameUp();
         initComponents();
     }
 
-    private void setUpFrame() {
+    private void setFrameUp() {
         setTitle(ConstMessages.FramesTitles.REGISTRATION_FRAME);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);

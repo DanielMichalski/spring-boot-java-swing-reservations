@@ -17,11 +17,11 @@ public class ClientTablePanel extends JPanel {
     @Autowired
     ClientTablePanel(ClientTableModel clientTableModel) {
         this.clientTableModel = clientTableModel;
-        setUpPanel();
+        setPanelUp();
         initComponents();
     }
 
-    private void setUpPanel() {
+    private void setPanelUp() {
         setLayout(new BorderLayout());
     }
 

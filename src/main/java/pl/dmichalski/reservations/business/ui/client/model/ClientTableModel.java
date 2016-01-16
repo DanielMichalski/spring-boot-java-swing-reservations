@@ -11,8 +11,14 @@ import java.util.List;
 @Component
 public class ClientTableModel extends AbstractTableModel {
 
-    private String[] columnNames = new String[]{ConstMessages.ColumnsLabels.NAME, ConstMessages.ColumnsLabels.SURNAME};
     private List<Client> clients = Lists.newArrayList();
+
+    private String[] columnNames = new String[]{
+            ConstMessages.ColumnsLabels.NAME,
+            ConstMessages.ColumnsLabels.SURNAME,
+            ConstMessages.ColumnsLabels.PESEL,
+            ConstMessages.ColumnsLabels.PHONE_NUMBER,
+            ConstMessages.ColumnsLabels.EMAIL};
 
     @Override
     public String getColumnName(int column) {
@@ -48,6 +54,12 @@ public class ClientTableModel extends AbstractTableModel {
                 return client.getName();
             case 1:
                 return client.getSurname();
+            case 2:
+                return client.getPesel();
+            case 3:
+                return client.getPhoneNumber();
+            case 4:
+                return client.getEmail();
             default:
                 return "";
         }
