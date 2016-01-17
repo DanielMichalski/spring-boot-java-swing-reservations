@@ -1,6 +1,7 @@
 package pl.dmichalski.reservations.business.ui.main_menu.view;
 
 import org.springframework.stereotype.Component;
+import pl.dmichalski.reservations.business.util.Borders;
 import pl.dmichalski.reservations.business.util.ConstMessages;
 import pl.dmichalski.reservations.business.util.LookAndFeelUtils;
 
@@ -10,22 +11,23 @@ import java.awt.*;
 @Component
 public class MainMenuFrame extends JFrame {
 
-    private static final int DEFAULT_WIDTH = 750;
-    private static final int DEFAULT_HEIGHT = 340;
-
-    private JButton clientBtn;
-    private JButton reservationBtn;
     private JButton addressesBtn;
+    private JButton clientBtn;
+    private JButton reservationStatusBtn;
+    private JButton paymentMethodBtn;
+    private JButton paymentBtn;
+    private JButton reservationBtn;
 
     public MainMenuFrame() {
         setFrameUp();
         initComponents();
+        pack();
     }
 
     private void setFrameUp() {
-        setTitle(ConstMessages.FramesTitles.REGISTRATION_FRAME);
+        getRootPane().setBorder(Borders.createEmptyBorder());
+        setTitle(ConstMessages.Labels.MAIN_MENU);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
         setLocationRelativeTo(null);
         setResizable(false);
         LookAndFeelUtils.setWindowsLookAndFeel();
@@ -33,24 +35,42 @@ public class MainMenuFrame extends JFrame {
     }
 
     private void initComponents() {
-        clientBtn = new JButton(ConstMessages.Labels.CLIENTS);
-        reservationBtn = new JButton(ConstMessages.Labels.RESERVATIONS);
         addressesBtn = new JButton(ConstMessages.Labels.ADDRESSES);
+        clientBtn = new JButton(ConstMessages.Labels.CLIENTS);
+        reservationStatusBtn = new JButton(ConstMessages.Labels.RESERVATION_STATUSES);
+        paymentMethodBtn = new JButton(ConstMessages.Labels.PAYMENT_METHODS);
+        paymentBtn = new JButton(ConstMessages.Labels.PAYMENTS);
+        reservationBtn = new JButton(ConstMessages.Labels.RESERVATIONS);
 
-        add(clientBtn);
-        add(reservationBtn);
         add(addressesBtn);
+        add(clientBtn);
+        add(reservationStatusBtn);
+        add(paymentMethodBtn);
+        add(paymentBtn);
+        add(reservationBtn);
+    }
+
+    public JButton getAddressesBtn() {
+        return addressesBtn;
     }
 
     public JButton getClientBtn() {
         return clientBtn;
     }
 
+    public JButton getReservationStatusBtn() {
+        return reservationStatusBtn;
+    }
+
     public JButton getReservationBtn() {
         return reservationBtn;
     }
 
-    public JButton getAddressesBtn() {
-        return addressesBtn;
+    public JButton getPaymentBtn() {
+        return paymentBtn;
+    }
+
+    public JButton getPaymentMethodBtn() {
+        return paymentMethodBtn;
     }
 }

@@ -19,7 +19,7 @@ public class FormBtnPanel extends JPanel {
         saveBtn = new JButton(ConstMessages.Labels.ADD_BTN);
         add(saveBtn);
 
-        cancelBtn = new JButton(ConstMessages.Labels.REMOVE_BTN);
+        cancelBtn = new JButton(ConstMessages.Labels.CANCEL_BTN);
         add(cancelBtn);
     }
 

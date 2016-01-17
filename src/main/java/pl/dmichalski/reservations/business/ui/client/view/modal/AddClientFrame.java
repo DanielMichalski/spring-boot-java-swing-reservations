@@ -24,7 +24,7 @@ public class AddClientFrame extends JDialog {
 
     private void setFrameUp() {
         setTitle(ConstMessages.DialogTitles.CLIENT_MODAL);
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
         setModal(true);

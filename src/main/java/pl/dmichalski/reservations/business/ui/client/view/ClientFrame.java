@@ -25,8 +25,8 @@ public class ClientFrame extends JFrame {
     }
 
     private void setFrameUp() {
-        setTitle(ConstMessages.FramesTitles.CLIENT_FRAME);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setTitle(ConstMessages.Labels.CLIENTS);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
         setLocationRelativeTo(null);
         setResizable(false);

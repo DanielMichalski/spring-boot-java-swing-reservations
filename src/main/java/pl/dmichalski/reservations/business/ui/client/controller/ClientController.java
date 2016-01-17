@@ -2,21 +2,27 @@ package pl.dmichalski.reservations.business.ui.client.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import pl.dmichalski.reservations.business.entity.Address;
 import pl.dmichalski.reservations.business.entity.Client;
+import pl.dmichalski.reservations.business.service.AddressService;
 import pl.dmichalski.reservations.business.service.ClientService;
+import pl.dmichalski.reservations.business.ui.client.model.AddressComboBoxModel;
 import pl.dmichalski.reservations.business.ui.client.view.modal.AddClientFrame;
 import pl.dmichalski.reservations.business.ui.client.view.modal.FormBtnPanel;
 import pl.dmichalski.reservations.business.ui.client.view.modal.FormPanel;
-import pl.dmichalski.reservations.business.ui.shared.AbstractFrameController;
+import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
 import pl.dmichalski.reservations.business.ui.client.model.ClientTableModel;
 import pl.dmichalski.reservations.business.ui.client.view.TableBtnPanel;
 import pl.dmichalski.reservations.business.ui.client.view.ClientFrame;
 import pl.dmichalski.reservations.business.util.ConstMessages;
 import pl.dmichalski.reservations.business.util.Notifications;
 import pl.dmichalski.reservations.business.validation.ClientValidator;
+import pl.dmichalski.reservations.business.validation.ValidationError;
 
+import javax.annotation.PostConstruct;
 import javax.swing.*;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ClientController extends AbstractFrameController {
@@ -26,27 +32,27 @@ public class ClientController extends AbstractFrameController {
     private ClientTableModel clientTableModel;
     private ClientService clientService;
     private ClientValidator clientValidator;
+    private AddressService addressService;
+    private AddressComboBoxModel addressComboBoxModel;
 
     @Autowired
     public ClientController(ClientFrame clientFrame,
                             AddClientFrame addClientFrame,
                             ClientTableModel clientTableModel,
                             ClientService clientService,
-                            ClientValidator clientValidator) {
+                            ClientValidator clientValidator,
+                            AddressService addressService,
+                            AddressComboBoxModel addressComboBoxModel) {
         this.clientFrame = clientFrame;
         this.addClientFrame = addClientFrame;
         this.clientTableModel = clientTableModel;
         this.clientService = clientService;
         this.clientValidator = clientValidator;
+        this.addressService = addressService;
+        this.addressComboBoxModel = addressComboBoxModel;
     }
 
-    @Override
-    public void prepareAndOpenFrame() {
-        prepareListeners();
-        loadClients();
-        showClientsFrame();
-    }
-
+    @PostConstruct
     private void prepareListeners() {
         TableBtnPanel tableBtnPanel = clientFrame.getTableBtnPanel();
         FormBtnPanel formBtnPanel = addClientFrame.getFormBtnPanel();
@@ -57,9 +63,23 @@ public class ClientController extends AbstractFrameController {
         registerAction(formBtnPanel.getCancelBtn(), (e) -> closeModalWindow());
     }
 
+    @Override
+    public void prepareAndOpenFrame() {
+        loadClients();
+        loadAddresses();
+        showClientsFrame();
+    }
+
     private void loadClients() {
         List<Client> users = clientService.findAll();
-        clientTableModel.addClients(users);
+        clientTableModel.clear();
+        clientTableModel.addEntities(users);
+    }
+
+    private void loadAddresses() {
+        List<Address> addresses = addressService.findAll();
+        addressComboBoxModel.clear();
+        addressComboBoxModel.addElements(addresses);
     }
 
     private void showClientsFrame() {
@@ -73,12 +93,14 @@ public class ClientController extends AbstractFrameController {
     private void saveClient() {
         FormPanel formPanel = addClientFrame.getFormPanel();
         Client client = formPanel.getClientFromForm();
-        if (clientValidator.isValid(client)) {
-            clientService.save(client);
-            clientTableModel.addClient(client);
-            closeModalWindow();
+        Optional<ValidationError> errors = clientValidator.validate(client);
+        if (errors.isPresent()) {
+            ValidationError validationError = errors.get();
+            Notifications.showFormValidationAlert(validationError.getMessage());
         } else {
-            Notifications.showFormValidationAlert();
+            clientService.save(client);
+            clientTableModel.addEntity(client);
+            closeModalWindow();
         }
     }
 
@@ -88,17 +110,21 @@ public class ClientController extends AbstractFrameController {
     }
 
     private void removeClient() {
-        JTable clientTable = clientFrame.getTablePanel().getClientTable();
-        int selectedRow = clientTable.getSelectedRow();
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null,
-                    ConstMessages.Messages.NON_ROW_SELECTED,
-                    ConstMessages.Messages.ALERT_TILE,
-                    JOptionPane.ERROR_MESSAGE);
-        } else {
-            Client client = clientTableModel.getClientByRow(selectedRow);
-            clientService.remove(client);
-            clientTableModel.removeRow(selectedRow);
+        try {
+            JTable clientTable = clientFrame.getTablePanel().getClientTable();
+            int selectedRow = clientTable.getSelectedRow();
+            if (selectedRow < 0) {
+                JOptionPane.showMessageDialog(null,
+                        ConstMessages.Messages.NON_ROW_SELECTED,
+                        ConstMessages.Messages.ALERT_TILE,
+                        JOptionPane.ERROR_MESSAGE);
+            } else {
+                Client client = clientTableModel.getEntityByRow(selectedRow);
+                clientService.remove(client);
+                clientTableModel.removeRow(selectedRow);
+            }
+        } catch (Exception e) {
+            Notifications.showDeleteRowErrorMessage();
         }
     }
 

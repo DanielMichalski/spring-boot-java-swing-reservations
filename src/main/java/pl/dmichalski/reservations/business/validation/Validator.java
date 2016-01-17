@@ -1,7 +1,9 @@
 package pl.dmichalski.reservations.business.validation;
 
+import java.util.Optional;
+
 interface Validator <K> {
 
-    boolean isValid(K k);
+    Optional<ValidationError> validate(K k);
 
 }

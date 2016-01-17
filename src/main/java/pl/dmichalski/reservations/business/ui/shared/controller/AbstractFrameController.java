@@ -1,4 +1,4 @@
-package pl.dmichalski.reservations.business.ui.shared;
+package pl.dmichalski.reservations.business.ui.shared.controller;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;

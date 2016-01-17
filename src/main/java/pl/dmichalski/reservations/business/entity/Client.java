@@ -10,10 +10,11 @@ public class Client {
     @Id
     @GeneratedValue
     @Column(name = "idklient")
-    private long clientId;
+    private long id;
 
-    @Column(name = "idadres")
-    private long idaddress;
+    @ManyToOne
+    @JoinColumn(name = "idadres")
+    private Address address;
 
     @Column(name = "imie")
     private String name;
@@ -30,20 +31,20 @@ public class Client {
     @Column(name = "email")
     private String email;
 
-    public Serializable getClientId() {
-        return clientId;
+    public Serializable getId() {
+        return id;
     }
 
-    public void setClientId(long clientId) {
-        this.clientId = clientId;
+    public void setId(long clientId) {
+        this.id = clientId;
     }
 
-    public Serializable getIdaddress() {
-        return idaddress;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setIdaddress(long idaddress) {
-        this.idaddress = idaddress;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public String getName() {
@@ -86,4 +87,8 @@ public class Client {
         this.email = email;
     }
 
+    @Override
+    public String toString() {
+        return name + " " + surname;
+    }
 }

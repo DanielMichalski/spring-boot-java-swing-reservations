@@ -1,7 +1,10 @@
 package pl.dmichalski.reservations.business.ui.client.view.modal;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import pl.dmichalski.reservations.business.entity.Address;
 import pl.dmichalski.reservations.business.entity.Client;
+import pl.dmichalski.reservations.business.ui.client.model.AddressComboBoxModel;
 import pl.dmichalski.reservations.business.util.Borders;
 import pl.dmichalski.reservations.business.util.ConstMessages;
 
@@ -11,7 +14,7 @@ import java.awt.*;
 @Component
 public class FormPanel extends JPanel {
 
-    private static final int LAYOUT_ROWS = 5;
+    private static final int LAYOUT_ROWS = 6;
     private static final int LAYOUT_COLS = 2;
     private static final int HORIZONTAL_GAP = 0;
     private static final int VERTICAL_GAP = 20;
@@ -22,8 +25,12 @@ public class FormPanel extends JPanel {
     private JTextField peselTF;
     private JTextField phoneNumberTF;
     private JTextField emailTF;
+    private JComboBox<Address> addressCB;
+    private AddressComboBoxModel addressComboBoxModel;
 
-    public FormPanel() {
+    @Autowired
+    public FormPanel(AddressComboBoxModel addressComboBoxModel) {
+        this.addressComboBoxModel = addressComboBoxModel;
         setPanelUp();
         initComponents();
     }
@@ -39,12 +46,14 @@ public class FormPanel extends JPanel {
         JLabel peselLbl = new JLabel(ConstMessages.Labels.PESEL);
         JLabel phoneNumberLbl = new JLabel(ConstMessages.Labels.PHONE_NUMBER);
         JLabel emailLbl = new JLabel(ConstMessages.Labels.EMAIL);
+        JLabel addressLbl = new JLabel(ConstMessages.Labels.ADDRESS);
 
         nameTF = new JTextField(TEXT_FIELD_COLUMNS);
         surnameTF = new JTextField(TEXT_FIELD_COLUMNS);
         peselTF = new JTextField(TEXT_FIELD_COLUMNS);
         phoneNumberTF = new JTextField(TEXT_FIELD_COLUMNS);
         emailTF = new JTextField(TEXT_FIELD_COLUMNS);
+        addressCB = new JComboBox<>(addressComboBoxModel);
 
         add(nameLbl);
         add(nameTF);
@@ -56,6 +65,8 @@ public class FormPanel extends JPanel {
         add(phoneNumberTF);
         add(emailLbl);
         add(emailTF);
+        add(addressLbl);
+        add(addressCB);
     }
 
     public Client getClientFromForm() {
@@ -65,6 +76,7 @@ public class FormPanel extends JPanel {
         client.setPesel(peselTF.getText());
         client.setPhoneNumber(phoneNumberTF.getText());
         client.setEmail(emailTF.getText());
+        client.setAddress(addressComboBoxModel.getSelectedItem());
         return client;
     }
 
@@ -74,6 +86,7 @@ public class FormPanel extends JPanel {
         peselTF.setText("");
         phoneNumberTF.setText("");
         emailTF.setText("");
+        addressCB.setSelectedIndex(0);
     }
 
 }
