@@ -1,7 +1,6 @@
 package pl.dmichalski.reservations.business.entity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "pokoj")
@@ -17,7 +16,10 @@ public class Room {
     private RoomStatus roomStatus;
 
     @Column(name = "liczbaosob")
-    private Serializable numberOfPeople;
+    private long numberOfPeople;
+
+    @Column(name = "opis")
+    private String description;
 
     public long getId() {
         return id;
@@ -35,11 +37,24 @@ public class Room {
         this.roomStatus = roomStatus;
     }
 
-    public Serializable getNumberOfPeople() {
+    public long getNumberOfPeople() {
         return numberOfPeople;
     }
 
-    public void setNumberOfPeople(Serializable numberOfPeople) {
+    public void setNumberOfPeople(long numberOfPeople) {
         this.numberOfPeople = numberOfPeople;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return description;
     }
 }

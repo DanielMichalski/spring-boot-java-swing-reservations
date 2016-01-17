@@ -17,6 +17,11 @@ public class MainMenuFrame extends JFrame {
     private JButton paymentMethodBtn;
     private JButton paymentBtn;
     private JButton reservationBtn;
+    private JButton roomStatusBtn;
+    private JButton roomTypeBtn;
+    private JButton roomBtn;
+    private JButton rateBtn;
+    private JButton roomXReservationBtn;
 
     public MainMenuFrame() {
         setFrameUp();
@@ -31,7 +36,7 @@ public class MainMenuFrame extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         LookAndFeelUtils.setWindowsLookAndFeel();
-        setLayout(new FlowLayout(FlowLayout.CENTER));
+        setLayout(new GridLayout(6, 2, 20, 20));
     }
 
     private void initComponents() {
@@ -41,6 +46,11 @@ public class MainMenuFrame extends JFrame {
         paymentMethodBtn = new JButton(ConstMessages.Labels.PAYMENT_METHODS);
         paymentBtn = new JButton(ConstMessages.Labels.PAYMENTS);
         reservationBtn = new JButton(ConstMessages.Labels.RESERVATIONS);
+        roomStatusBtn = new JButton(ConstMessages.Labels.ROOM_STATUSES);
+        roomTypeBtn = new JButton(ConstMessages.Labels.ROOM_TYPES);
+        roomBtn = new JButton(ConstMessages.Labels.ROOMS);
+        rateBtn = new JButton(ConstMessages.Labels.RATES);
+        roomXReservationBtn = new JButton(ConstMessages.Labels.ROOM_X_RESERVATIONS);
 
         add(addressesBtn);
         add(clientBtn);
@@ -48,6 +58,11 @@ public class MainMenuFrame extends JFrame {
         add(paymentMethodBtn);
         add(paymentBtn);
         add(reservationBtn);
+        add(roomStatusBtn);
+        add(roomTypeBtn);
+        add(roomBtn);
+        add(rateBtn);
+        add(roomXReservationBtn);
     }
 
     public JButton getAddressesBtn() {
@@ -72,5 +87,25 @@ public class MainMenuFrame extends JFrame {
 
     public JButton getPaymentMethodBtn() {
         return paymentMethodBtn;
+    }
+
+    public JButton getRoomStatusBtn() {
+        return roomStatusBtn;
+    }
+
+    public JButton getRoomTypeBtn() {
+        return roomTypeBtn;
+    }
+
+    public JButton getRoomBtn() {
+        return roomBtn;
+    }
+
+    public JButton getRateBtn() {
+        return rateBtn;
+    }
+
+    public JButton getRoomXReservationBtn() {
+        return roomXReservationBtn;
     }
 }

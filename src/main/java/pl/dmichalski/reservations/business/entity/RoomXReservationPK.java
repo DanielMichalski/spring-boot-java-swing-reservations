@@ -1,54 +1,42 @@
 package pl.dmichalski.reservations.business.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
+@Embeddable
 public class RoomXReservationPK implements Serializable {
 
-   /* @Column(name = "idrezerwacja")
-    @Id
-    private Serializable idrezerwacja;
+    @ManyToOne
+    @JoinColumn(name = "idpokoj")
+    private Room room;
 
-    @Column(name = "idpokoj")
-    @Id
-    private Serializable idpokoj;
+    @ManyToOne
+    @JoinColumn(name = "idrezerwacja")
+    private Reservation reservation;
 
-
-    public Serializable getIdrezerwacja() {
-        return idrezerwacja;
+    public RoomXReservationPK() {
     }
 
-    public void setIdrezerwacja(Serializable idrezerwacja) {
-        this.idrezerwacja = idrezerwacja;
+    public RoomXReservationPK(Room room, Reservation reservation) {
+        this.room = room;
+        this.reservation = reservation;
     }
 
-
-    public Serializable getIdpokoj() {
-        return idpokoj;
+    public Room getRoom() {
+        return room;
     }
 
-    public void setIdpokoj(Serializable idpokoj) {
-        this.idpokoj = idpokoj;
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        RoomXReservationPK that = (RoomXReservationPK) o;
-
-        if (idrezerwacja != null ? !idrezerwacja.equals(that.idrezerwacja) : that.idrezerwacja != null) return false;
-        if (idpokoj != null ? !idpokoj.equals(that.idpokoj) : that.idpokoj != null) return false;
-
-        return true;
+    public Reservation getReservation() {
+        return reservation;
     }
 
-    @Override
-    public int hashCode() {
-        int result = idrezerwacja != null ? idrezerwacja.hashCode() : 0;
-        result = 31 * result + (idpokoj != null ? idpokoj.hashCode() : 0);
-        return result;
-    }*/
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
+    }
 }

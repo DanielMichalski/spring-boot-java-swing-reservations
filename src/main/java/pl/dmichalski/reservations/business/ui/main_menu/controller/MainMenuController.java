@@ -6,8 +6,13 @@ import pl.dmichalski.reservations.business.ui.address.controller.AddressControll
 import pl.dmichalski.reservations.business.ui.main_menu.view.MainMenuFrame;
 import pl.dmichalski.reservations.business.ui.payment.controller.PaymentController;
 import pl.dmichalski.reservations.business.ui.payment_method.controller.PaymentMethodController;
+import pl.dmichalski.reservations.business.ui.rate.controller.RateController;
 import pl.dmichalski.reservations.business.ui.reservation.controller.ReservationController;
 import pl.dmichalski.reservations.business.ui.reservation_status.controller.ReservationStatusController;
+import pl.dmichalski.reservations.business.ui.room.controller.RoomController;
+import pl.dmichalski.reservations.business.ui.room_status.controller.RoomStatusController;
+import pl.dmichalski.reservations.business.ui.room_type.controller.RoomTypeController;
+import pl.dmichalski.reservations.business.ui.room_x_reservation.controller.RoomXReservationController;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
 import pl.dmichalski.reservations.business.ui.client.controller.ClientController;
 
@@ -21,6 +26,11 @@ public class MainMenuController extends AbstractFrameController {
     private PaymentMethodController paymentMethodController;
     private PaymentController paymentController;
     private ReservationController reservationController;
+    private RoomStatusController roomStatusController;
+    private RoomTypeController roomTypeController;
+    private RoomController roomController;
+    private RateController rateController;
+    private RoomXReservationController roomXReservationController;
 
     @Autowired
     public MainMenuController(MainMenuFrame mainMenuFrame,
@@ -29,7 +39,12 @@ public class MainMenuController extends AbstractFrameController {
                               ReservationStatusController reservationStatusController,
                               PaymentMethodController paymentMethodController,
                               PaymentController paymentController,
-                              ReservationController reservationController) {
+                              ReservationController reservationController,
+                              RoomStatusController roomStatusController,
+                              RoomTypeController roomTypeController,
+                              RoomController roomController,
+                              RateController rateController,
+                              RoomXReservationController roomXReservationController) {
         this.mainMenuFrame = mainMenuFrame;
         this.addressController = addressController;
         this.clientController = clientController;
@@ -37,6 +52,11 @@ public class MainMenuController extends AbstractFrameController {
         this.paymentMethodController = paymentMethodController;
         this.paymentController = paymentController;
         this.reservationController = reservationController;
+        this.roomStatusController = roomStatusController;
+        this.roomTypeController = roomTypeController;
+        this.roomController = roomController;
+        this.rateController = rateController;
+        this.roomXReservationController = roomXReservationController;
     }
 
     public void prepareAndOpenFrame() {
@@ -46,6 +66,11 @@ public class MainMenuController extends AbstractFrameController {
         registerAction(mainMenuFrame.getPaymentMethodBtn(), (e) -> openPaymentMethodWindow());
         registerAction(mainMenuFrame.getPaymentBtn(), (e) -> openPaymentWindow());
         registerAction(mainMenuFrame.getReservationBtn(), (e) -> openReservationWindow());
+        registerAction(mainMenuFrame.getRoomStatusBtn(), (e) -> openRoomStatusWindow());
+        registerAction(mainMenuFrame.getRoomTypeBtn(), (e) -> openRoomTypeWindow());
+        registerAction(mainMenuFrame.getRoomBtn(), (e) -> openRoomWindow());
+        registerAction(mainMenuFrame.getRateBtn(), (e) -> openRateWindow());
+        registerAction(mainMenuFrame.getRoomXReservationBtn(), (e) -> openRoomXReservationBtnWindow());
         mainMenuFrame.setVisible(true);
     }
 
@@ -71,6 +96,26 @@ public class MainMenuController extends AbstractFrameController {
 
     private void openReservationWindow() {
         reservationController.prepareAndOpenFrame();
+    }
+
+    private void openRoomStatusWindow() {
+        roomStatusController.prepareAndOpenFrame();
+    }
+
+    private void openRoomTypeWindow() {
+        roomTypeController.prepareAndOpenFrame();
+    }
+
+    private void openRoomWindow() {
+        roomController.prepareAndOpenFrame();
+    }
+
+    private void openRateWindow() {
+        rateController.prepareAndOpenFrame();
+    }
+
+    private void openRoomXReservationBtnWindow() {
+        roomXReservationController.prepareAndOpenFrame();
     }
 
 }

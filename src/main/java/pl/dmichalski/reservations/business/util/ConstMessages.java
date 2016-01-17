@@ -8,6 +8,11 @@ public interface ConstMessages {
         String PAYMENT_METHOD_MODAL = "Dodawanie metody płatności";
         String PAYMENT_MODAL = "Dodawanie płatności";
         String RESERVATION_MODAL = "Dodawanie rezerwacji";
+        String ROOM_STATUS_MODAL = "Dodawanie statusu pokoju";
+        String ROOM_TYPE_MODAL = "Dodawanie typu pokoju";
+        String ROOM_MODAL = "Dodawanie pokoju";
+        String RATE_MODAL = "Dodawanie stawek";
+        String ROOM_X_RESERVATION_MODAL = "Dodawanie rezerwacji pokoju";
     }
 
     interface Messages {
@@ -50,6 +55,22 @@ public interface ConstMessages {
         String TO_DATE = "Do";
         String RESERVATION_DATE = "Data rezerwacji";
         String AMOUNT = "Suma";
+        String ROOM_STATUS = "Status pokoju";
+        String ROOM_STATUSES = "Statusy pokoi";
+        String ROOM_STATUS_DESCRIPTION = "Opis statusu pokoju";
+        String ROOM_TYPE = "Typ pokoju";
+        String ROOM_MULTIPLIER = "Mnożnik";
+        String ROOM_TYPES = "Typy pokoi";
+        String ROOM_TYPE_DESCRIPTION = "Opis typu pokoju";
+        String ROOM_NUMBER_OF_PEOPLE = "Ilość osób";
+        String ROOM_DESCRIPTION = "Opis";
+        String ROOMS = "Pokoje";
+        String ROOM = "Pokoj";
+        String BASIC_RATE = "Stawka podstawowa";
+        String RATES = "Stawki";
+        String ROOM_X_RESERVATIONS = "Rezerwacje pokoi";
+        String RESERVATION = "Rezerwacja";
+        String PRICE = "Cena";
     }
 
     interface ValidationMessages {

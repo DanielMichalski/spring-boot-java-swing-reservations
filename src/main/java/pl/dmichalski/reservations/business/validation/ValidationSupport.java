@@ -16,4 +16,8 @@ public abstract class ValidationSupport {
         return value > 0;
     }
 
+    boolean isValueGreaterThanZero(double value) {
+        return value > 0;
+    }
+
 }

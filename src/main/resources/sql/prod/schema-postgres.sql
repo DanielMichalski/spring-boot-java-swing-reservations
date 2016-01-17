@@ -27,13 +27,12 @@ DROP TABLE IF EXISTS Stawka CASCADE;
 /*==============================================================*/
 CREATE TABLE Adres
 (
-  IDAdres       SERIAL NOT NULL,
+  IDAdres       SERIAL NOT NULL PRIMARY KEY,
   Ulica         TEXT   NOT NULL,
   Nr_domu       TEXT   NOT NULL,
   Nr_Mieszkania TEXT   NOT NULL,
   Miasto        TEXT   NOT NULL,
-  Kod_pocztowy  TEXT   NOT NULL,
-  PRIMARY KEY (IDAdres)
+  Kod_pocztowy  TEXT   NOT NULL
 );
 
 /*==============================================================*/
@@ -41,26 +40,13 @@ CREATE TABLE Adres
 /*==============================================================*/
 CREATE TABLE Klient
 (
-  IDKlient SERIAL NOT NULL,
-  IDAdres  INT    NOT NULL,
+  IDKlient SERIAL NOT NULL PRIMARY KEY,
+  IDAdres  INT    NOT NULL REFERENCES Adres (IDAdres),
   Imie     TEXT   NOT NULL,
   Nazwisko TEXT   NOT NULL,
-  PESEL    TEXT   NOT NULL CHECK (length(PESEL) IN (11)),
+  PESEL    TEXT   NOT NULL,
   Telefon  TEXT   NOT NULL,
-  Email    TEXT   NOT NULL,
-  PRIMARY KEY (IDKlient)
-);
-
-/*==============================================================*/
-/* Table: Platnosc                                              */
-/*==============================================================*/
-CREATE TABLE Platnosc
-(
-  IDPlatnosc       SERIAL NOT NULL,
-  IDPlatnoscMetoda INT    NOT NULL,
-  Wartosc          INT    NOT NULL,
-  DataPlatnosci    DATE   NOT NULL,
-  PRIMARY KEY (IDPlatnosc)
+  Email    TEXT   NOT NULL
 );
 
 /*==============================================================*/
@@ -68,31 +54,19 @@ CREATE TABLE Platnosc
 /*==============================================================*/
 CREATE TABLE PlatnoscMetoda
 (
-  IDPlatnoscMetoda SERIAL NOT NULL,
-  Nazwa            TEXT   NOT NULL,
-  PRIMARY KEY (IDPlatnoscMetoda)
+  IDPlatnoscMetoda SERIAL NOT NULL PRIMARY KEY,
+  Nazwa            TEXT   NOT NULL
 );
 
 /*==============================================================*/
-/* Table: Pokoj                                                 */
+/* Table: Platnosc                                              */
 /*==============================================================*/
-CREATE TABLE Pokoj
+CREATE TABLE Platnosc
 (
-  IDPokoj       SERIAL NOT NULL,
-  IDPokojStatus INT    NOT NULL,
-  LiczbaOsob    INT    NOT NULL,
-  PRIMARY KEY (IDPokoj)
-);
-
-/*==============================================================*/
-/* Table: Pokoj_x_Rezerwacja                                    */
-/*==============================================================*/
-CREATE TABLE Pokoj_x_Rezerwacja
-(
-  IDRezerwacja INT NOT NULL,
-  IDPokoj      INT NOT NULL,
-  CenaPokoj    INT NOT NULL,
-  PRIMARY KEY (IDRezerwacja, IDPokoj)
+  IDPlatnosc       SERIAL NOT NULL PRIMARY KEY,
+  IDPlatnoscMetoda INT    NOT NULL REFERENCES PlatnoscMetoda (IDPlatnoscMetoda),
+  Wartosc          INT    NOT NULL,
+  DataPlatnosci    DATE   NOT NULL
 );
 
 /*==============================================================*/
@@ -100,9 +74,20 @@ CREATE TABLE Pokoj_x_Rezerwacja
 /*==============================================================*/
 CREATE TABLE PokojStatus
 (
-  IDPokojStatus SERIAL NOT NULL,
-  Opis          TEXT   NOT NULL,
-  PRIMARY KEY (IDPokojStatus)
+  IDPokojStatus SERIAL NOT NULL PRIMARY KEY,
+  StatusPokoju  TEXT   NOT NULL,
+  OpisStatusu   TEXT   NOT NULL
+);
+
+/*==============================================================*/
+/* Table: Pokoj                                                 */
+/*==============================================================*/
+CREATE TABLE Pokoj
+(
+  IDPokoj       SERIAL NOT NULL PRIMARY KEY,
+  IDPokojStatus INT NOT NULL REFERENCES PokojStatus(IDPokojStatus),
+  LiczbaOsob    INT    NOT NULL,
+  Opis          TEXT   NOT NULL
 );
 
 /*==============================================================*/
@@ -110,26 +95,9 @@ CREATE TABLE PokojStatus
 /*==============================================================*/
 CREATE TABLE PokojTyp
 (
-  IDPokojTyp SERIAL NOT NULL,
+  IDPokojTyp SERIAL NOT NULL PRIMARY KEY,
   Opis       TEXT   NOT NULL,
-  Mnoznik    FLOAT  NOT NULL,
-  PRIMARY KEY (IDPokojTyp)
-);
-
-/*==============================================================*/
-/* Table: Rezerwacja                                            */
-/*==============================================================*/
-CREATE TABLE Rezerwacja
-(
-  IDRezerwacja       SERIAL NOT NULL,
-  IDStatusRezerwacja INT    NOT NULL,
-  IDPlatnosc         INT    NOT NULL,
-  IDKlient           INT    NOT NULL,
-  DataPrzyjazd       DATE   NOT NULL,
-  DataWyjazd         DATE   NOT NULL,
-  DataRezerwacja     DATE   NOT NULL,
-  Suma               INT    NOT NULL,
-  PRIMARY KEY (IDRezerwacja)
+  Mnoznik    INT  NOT NULL
 );
 
 /*==============================================================*/
@@ -137,9 +105,8 @@ CREATE TABLE Rezerwacja
 /*==============================================================*/
 CREATE TABLE Status_Rezerwacji
 (
-  IDStatusRezerwacja SERIAL NOT NULL,
-  Status_Rezerwacji  TEXT   NOT NULL,
-  PRIMARY KEY (IDStatusRezerwacja)
+  IDStatusRezerwacja SERIAL NOT NULL PRIMARY KEY,
+  Status_Rezerwacji  TEXT   NOT NULL
 );
 
 /*==============================================================*/
@@ -147,39 +114,35 @@ CREATE TABLE Status_Rezerwacji
 /*==============================================================*/
 CREATE TABLE Stawka
 (
-  IDStawka         SERIAL NOT NULL,
-  IDPokoj          INT    NOT NULL,
-  IDPokojTyp       INT    NOT NULL,
-  StawkaPodstawowa INT    NOT NULL,
-  PRIMARY KEY (IDStawka)
+  IDStawka         SERIAL NOT NULL PRIMARY KEY,
+  IDPokoj          INT    NOT NULL REFERENCES Pokoj (IDPokoj),
+  IDPokojTyp       INT    NOT NULL REFERENCES PokojTyp (IDPokojTyp),
+  StawkaPodstawowa INT    NOT NULL
 );
 
-ALTER TABLE Klient ADD CONSTRAINT FK_Relationship_1 FOREIGN KEY (IDAdres)
-REFERENCES Adres (IDAdres) ON DELETE RESTRICT ON UPDATE RESTRICT;
+/*==============================================================*/
+/* Table: Rezerwacja                                            */
+/*==============================================================*/
+CREATE TABLE Rezerwacja
+(
+  IDRezerwacja       SERIAL NOT NULL PRIMARY KEY,
+  IDStatusRezerwacja INT    NOT NULL REFERENCES Status_Rezerwacji (IDStatusRezerwacja),
+  IDPlatnosc         INT    NOT NULL REFERENCES Platnosc (IDPlatnosc),
+  IDKlient           INT    NOT NULL REFERENCES Klient (IDKlient),
+  DataPrzyjazd       DATE   NOT NULL,
+  DataWyjazd         DATE   NOT NULL,
+  DataRezerwacja     DATE   NOT NULL,
+  Suma               INT    NOT NULL
+);
 
-ALTER TABLE Platnosc ADD CONSTRAINT FK_Relationship_2 FOREIGN KEY (IDPlatnoscMetoda)
-REFERENCES PlatnoscMetoda (IDPlatnoscMetoda) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-ALTER TABLE Pokoj ADD CONSTRAINT FK_Relationship_3 FOREIGN KEY (IDPokojStatus)
-REFERENCES PokojStatus (IDPokojStatus) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
-ALTER TABLE Rezerwacja ADD CONSTRAINT FK_Relationship_4 FOREIGN KEY (IDKlient)
-REFERENCES Klient (IDKlient) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
-ALTER TABLE Rezerwacja ADD CONSTRAINT FK_Relationship_5 FOREIGN KEY (IDStatusRezerwacja)
-REFERENCES Status_Rezerwacji (IDStatusRezerwacja) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
-ALTER TABLE Rezerwacja ADD CONSTRAINT FK_Relationship_6 FOREIGN KEY (IDPlatnosc)
-REFERENCES Platnosc (IDPlatnosc) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
-ALTER TABLE Stawka ADD CONSTRAINT FK_Relationship_7 FOREIGN KEY (IDPokojTyp)
-REFERENCES PokojTyp (IDPokojTyp) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
-ALTER TABLE Stawka ADD CONSTRAINT FK_Relationship_8 FOREIGN KEY (IDPokoj)
-REFERENCES Pokoj (IDPokoj) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
-ALTER TABLE Pokoj_x_Rezerwacja ADD CONSTRAINT FK_Relationship_9 FOREIGN KEY (IDRezerwacja)
-REFERENCES Rezerwacja (IDRezerwacja) ON DELETE RESTRICT ON UPDATE RESTRICT;
-
-ALTER TABLE Pokoj_x_Rezerwacja ADD CONSTRAINT FK_Relationship_10 FOREIGN KEY (IDPokoj)
-REFERENCES Pokoj (IDPokoj) ON DELETE RESTRICT ON UPDATE RESTRICT;
+/*==============================================================*/
+/* Table: Pokoj_x_Rezerwacja                                    */
+/*==============================================================*/
+CREATE TABLE Pokoj_x_Rezerwacja
+(
+  IDRezerwacja INT NOT NULL REFERENCES Rezerwacja (IDRezerwacja),
+  IDPokoj      INT NOT NULL REFERENCES Pokoj (IDPokoj),
+  CenaPokoj    INT NOT NULL,
+  PRIMARY KEY (IDRezerwacja, IDPokoj)
+);

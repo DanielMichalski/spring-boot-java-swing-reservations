@@ -21,7 +21,7 @@ public class Rate {
     private RoomType roomType;
 
     @Column(name = "stawkapodstawowa")
-    private Serializable basicRate;
+    private long basicRate;
 
     public long getIdstawka() {
         return idstawka;
@@ -47,11 +47,11 @@ public class Rate {
         this.roomType = roomType;
     }
 
-    public Serializable getBasicRate() {
+    public long getBasicRate() {
         return basicRate;
     }
 
-    public void setBasicRate(Serializable basicRate) {
+    public void setBasicRate(long basicRate) {
         this.basicRate = basicRate;
     }
 

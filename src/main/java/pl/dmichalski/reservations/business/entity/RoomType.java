@@ -15,7 +15,7 @@ public class RoomType {
     private String description;
 
     @Column(name = "mnoznik")
-    private double multiplayer;
+    private long multiplier;
 
     public long getId() {
         return id;
@@ -33,11 +33,16 @@ public class RoomType {
         this.description = description;
     }
 
-    public double getMultiplayer() {
-        return multiplayer;
+    public long getMultiplier() {
+        return multiplier;
     }
 
-    public void setMultiplayer(double multiplayer) {
-        this.multiplayer = multiplayer;
+    public void setMultiplier(long multiplier) {
+        this.multiplier = multiplier;
+    }
+
+    @Override
+    public String toString() {
+        return description;
     }
 }

@@ -99,4 +99,9 @@ public class Reservation {
     public void setAmount(long amount) {
         this.amount = amount;
     }
+
+    @Override
+    public String toString() {
+        return client.toString();
+    }
 }
