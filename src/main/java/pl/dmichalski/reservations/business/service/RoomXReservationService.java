@@ -2,9 +2,7 @@ package pl.dmichalski.reservations.business.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.dmichalski.reservations.business.entity.Room;
 import pl.dmichalski.reservations.business.entity.RoomXReservation;
-import pl.dmichalski.reservations.business.repository.RoomRepository;
 import pl.dmichalski.reservations.business.repository.RoomXReservationRepository;
 
 import java.util.List;

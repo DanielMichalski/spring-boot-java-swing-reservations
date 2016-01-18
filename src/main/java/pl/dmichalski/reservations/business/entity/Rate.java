@@ -1,7 +1,6 @@
 package pl.dmichalski.reservations.business.entity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "stawka")

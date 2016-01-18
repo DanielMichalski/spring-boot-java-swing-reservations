@@ -1,7 +1,6 @@
 package pl.dmichalski.reservations.business.entity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "Klient")
@@ -31,7 +30,7 @@ public class Client {
     @Column(name = "email")
     private String email;
 
-    public Serializable getId() {
+    public long getId() {
         return id;
     }
 

@@ -16,6 +16,11 @@ public class Application {
         ConfigurableApplicationContext context = new SpringApplicationBuilder(Application.class).headless(false).run(args);
         MainMenuController mainMenuController = context.getBean(MainMenuController.class);
         mainMenuController.prepareAndOpenFrame();
+
+
+//        PaymentMethodService service = context.getBean(PaymentMethodService.class);
+//        List<PaymentMethodCount> paymentMethodCount = service.getPaymentMethodCount();
+//        System.out.println(paymentMethodCount);
     }
 
 }

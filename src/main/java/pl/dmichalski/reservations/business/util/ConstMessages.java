@@ -71,6 +71,12 @@ public interface ConstMessages {
         String ROOM_X_RESERVATIONS = "Rezerwacje pokoi";
         String RESERVATION = "Rezerwacja";
         String PRICE = "Cena";
+        String FORMS = "Formularze";
+        String REPORTS = "Raporty";
+        String PAYMENT_COUNT = "Ilość płatności";
+        String NUMBER_OF_COUNT = "Ilość wystąpień";
+        String NUMBER_OF_RESERVATIONS = "Ilość rezerwacji";
+        String CLIENT_RESERVATIONS = "Rezerwacje klienta";
     }
 
     interface ValidationMessages {

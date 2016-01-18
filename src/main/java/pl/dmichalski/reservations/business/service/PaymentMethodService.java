@@ -4,9 +4,12 @@ package pl.dmichalski.reservations.business.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.dmichalski.reservations.business.entity.PaymentMethod;
+import pl.dmichalski.reservations.business.entity.domain.PaymentMethodCount;
 import pl.dmichalski.reservations.business.repository.PaymentMethodRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class PaymentMethodService {
@@ -28,5 +31,10 @@ public class PaymentMethodService {
 
     public void save(PaymentMethod paymentMethod) {
         paymentMethodRepository.save(paymentMethod);
+    }
+
+    public List<PaymentMethodCount> getPaymentMethodCount() {
+        Object[][] paymentMethodCount = paymentMethodRepository.getPaymentMethodCount();
+        return Stream.of(paymentMethodCount).map(pmc -> new PaymentMethodCount((String) pmc[0], (long) pmc[1])).collect(Collectors.toList());
     }
 }

@@ -11,17 +11,8 @@ import java.awt.*;
 @Component
 public class MainMenuFrame extends JFrame {
 
-    private JButton addressesBtn;
-    private JButton clientBtn;
-    private JButton reservationStatusBtn;
-    private JButton paymentMethodBtn;
-    private JButton paymentBtn;
-    private JButton reservationBtn;
-    private JButton roomStatusBtn;
-    private JButton roomTypeBtn;
-    private JButton roomBtn;
-    private JButton rateBtn;
-    private JButton roomXReservationBtn;
+    private JButton formsBtn;
+    private JButton reportsBtn;
 
     public MainMenuFrame() {
         setFrameUp();
@@ -36,76 +27,22 @@ public class MainMenuFrame extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         LookAndFeelUtils.setWindowsLookAndFeel();
-        setLayout(new GridLayout(6, 2, 20, 20));
+        setLayout(new GridLayout(1, 2, 20, 20));
     }
 
     private void initComponents() {
-        addressesBtn = new JButton(ConstMessages.Labels.ADDRESSES);
-        clientBtn = new JButton(ConstMessages.Labels.CLIENTS);
-        reservationStatusBtn = new JButton(ConstMessages.Labels.RESERVATION_STATUSES);
-        paymentMethodBtn = new JButton(ConstMessages.Labels.PAYMENT_METHODS);
-        paymentBtn = new JButton(ConstMessages.Labels.PAYMENTS);
-        reservationBtn = new JButton(ConstMessages.Labels.RESERVATIONS);
-        roomStatusBtn = new JButton(ConstMessages.Labels.ROOM_STATUSES);
-        roomTypeBtn = new JButton(ConstMessages.Labels.ROOM_TYPES);
-        roomBtn = new JButton(ConstMessages.Labels.ROOMS);
-        rateBtn = new JButton(ConstMessages.Labels.RATES);
-        roomXReservationBtn = new JButton(ConstMessages.Labels.ROOM_X_RESERVATIONS);
+        formsBtn = new JButton(ConstMessages.Labels.FORMS);
+        reportsBtn = new JButton(ConstMessages.Labels.REPORTS);
 
-        add(addressesBtn);
-        add(clientBtn);
-        add(reservationStatusBtn);
-        add(paymentMethodBtn);
-        add(paymentBtn);
-        add(reservationBtn);
-        add(roomStatusBtn);
-        add(roomTypeBtn);
-        add(roomBtn);
-        add(rateBtn);
-        add(roomXReservationBtn);
+        add(formsBtn);
+        add(reportsBtn);
     }
 
-    public JButton getAddressesBtn() {
-        return addressesBtn;
+    public JButton getFormsBtn() {
+        return formsBtn;
     }
 
-    public JButton getClientBtn() {
-        return clientBtn;
-    }
-
-    public JButton getReservationStatusBtn() {
-        return reservationStatusBtn;
-    }
-
-    public JButton getReservationBtn() {
-        return reservationBtn;
-    }
-
-    public JButton getPaymentBtn() {
-        return paymentBtn;
-    }
-
-    public JButton getPaymentMethodBtn() {
-        return paymentMethodBtn;
-    }
-
-    public JButton getRoomStatusBtn() {
-        return roomStatusBtn;
-    }
-
-    public JButton getRoomTypeBtn() {
-        return roomTypeBtn;
-    }
-
-    public JButton getRoomBtn() {
-        return roomBtn;
-    }
-
-    public JButton getRateBtn() {
-        return rateBtn;
-    }
-
-    public JButton getRoomXReservationBtn() {
-        return roomXReservationBtn;
+    public JButton getReportsBtn() {
+        return reportsBtn;
     }
 }
