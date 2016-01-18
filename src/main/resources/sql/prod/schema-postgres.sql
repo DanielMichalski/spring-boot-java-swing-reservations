@@ -22,9 +22,14 @@ DROP TABLE IF EXISTS Status_Rezerwacji CASCADE;
 
 DROP TABLE IF EXISTS Stawka CASCADE;
 
+DROP TABLE IF EXISTS klientHistoria CASCADE;
+
+DROP TABLE IF EXISTS adresHistoria CASCADE;
+
 /*==============================================================*/
 /* Table: Adres                                                 */
 /*==============================================================*/
+
 CREATE TABLE Adres
 (
   IDAdres       SERIAL NOT NULL PRIMARY KEY,
@@ -32,12 +37,13 @@ CREATE TABLE Adres
   Nr_domu       TEXT   NOT NULL,
   Nr_Mieszkania TEXT   NOT NULL,
   Miasto        TEXT   NOT NULL,
-  Kod_pocztowy  TEXT   NOT NULL CHECK (length(Kod_pocztowy) IN(5,6))
+  Kod_pocztowy  TEXT   NOT NULL CHECK (length(Kod_pocztowy) IN (5, 6))
 );
 
 /*==============================================================*/
 /* Table: Klient                                                */
 /*==============================================================*/
+
 CREATE TABLE Klient
 (
   IDKlient SERIAL NOT NULL PRIMARY KEY,
@@ -52,6 +58,7 @@ CREATE TABLE Klient
 /*==============================================================*/
 /* Table: PlatnoscMetoda                                        */
 /*==============================================================*/
+
 CREATE TABLE PlatnoscMetoda
 (
   IDPlatnoscMetoda SERIAL NOT NULL PRIMARY KEY,
@@ -61,6 +68,7 @@ CREATE TABLE PlatnoscMetoda
 /*==============================================================*/
 /* Table: Platnosc                                              */
 /*==============================================================*/
+
 CREATE TABLE Platnosc
 (
   IDPlatnosc       SERIAL NOT NULL PRIMARY KEY,
@@ -72,6 +80,7 @@ CREATE TABLE Platnosc
 /*==============================================================*/
 /* Table: PokojStatus                                           */
 /*==============================================================*/
+
 CREATE TABLE PokojStatus
 (
   IDPokojStatus SERIAL NOT NULL PRIMARY KEY,
@@ -82,10 +91,11 @@ CREATE TABLE PokojStatus
 /*==============================================================*/
 /* Table: Pokoj                                                 */
 /*==============================================================*/
+
 CREATE TABLE Pokoj
 (
   IDPokoj       SERIAL NOT NULL PRIMARY KEY,
-  IDPokojStatus INT NOT NULL REFERENCES PokojStatus(IDPokojStatus),
+  IDPokojStatus INT    NOT NULL REFERENCES PokojStatus (IDPokojStatus),
   LiczbaOsob    INT    NOT NULL,
   Opis          TEXT   NOT NULL
 );
@@ -93,16 +103,18 @@ CREATE TABLE Pokoj
 /*==============================================================*/
 /* Table: PokojTyp                                              */
 /*==============================================================*/
+
 CREATE TABLE PokojTyp
 (
   IDPokojTyp SERIAL NOT NULL PRIMARY KEY,
   Opis       TEXT   NOT NULL,
-  Mnoznik    INT  NOT NULL
+  Mnoznik    INT    NOT NULL
 );
 
 /*==============================================================*/
 /* Table: Status_Rezerwacji                                     */
 /*==============================================================*/
+
 CREATE TABLE Status_Rezerwacji
 (
   IDStatusRezerwacja SERIAL NOT NULL PRIMARY KEY,
@@ -112,6 +124,7 @@ CREATE TABLE Status_Rezerwacji
 /*==============================================================*/
 /* Table: Stawka                                                */
 /*==============================================================*/
+
 CREATE TABLE Stawka
 (
   IDStawka         SERIAL NOT NULL PRIMARY KEY,
@@ -123,6 +136,7 @@ CREATE TABLE Stawka
 /*==============================================================*/
 /* Table: Rezerwacja                                            */
 /*==============================================================*/
+
 CREATE TABLE Rezerwacja
 (
   IDRezerwacja       SERIAL NOT NULL PRIMARY KEY,
@@ -139,10 +153,38 @@ CREATE TABLE Rezerwacja
 /*==============================================================*/
 /* Table: Pokoj_x_Rezerwacja                                    */
 /*==============================================================*/
+
 CREATE TABLE Pokoj_x_Rezerwacja
 (
   IDRezerwacja INT NOT NULL REFERENCES Rezerwacja (IDRezerwacja),
   IDPokoj      INT NOT NULL REFERENCES Pokoj (IDPokoj),
   CenaPokoj    INT NOT NULL,
   PRIMARY KEY (IDRezerwacja, IDPokoj)
+);
+
+
+/*==============================================================*/
+/* Table: klientHistoria                                        */
+/*==============================================================*/
+
+CREATE TABLE klientHistoria (
+  id          SERIAL PRIMARY KEY,
+  idKlient    INT  NOT NULL,
+  imie        TEXT NOT NULL,
+  nazwiko     TEXT NOT NULL,
+  data_zmiany DATE NOT NULL
+);
+
+/*==============================================================*/
+/* Table: adresHistoria                                        */
+/*==============================================================*/
+
+CREATE TABLE adresHistoria (
+  id            SERIAL PRIMARY KEY,
+  idAdres       INT  NOT NULL,
+  Ulica         TEXT NOT NULL,
+  Nr_domu       TEXT NOT NULL,
+  Nr_Mieszkania TEXT NOT NULL,
+  Miasto        TEXT NOT NULL,
+  Kod_pocztowy  TEXT NOT NULL
 );

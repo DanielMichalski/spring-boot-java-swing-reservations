@@ -1,111 +1,57 @@
-/*==============================================================*/
-/* TRIGGER: STAWKA                                              */
-/*==============================================================*/
+DROP FUNCTION IF EXISTS zaloguj_zmiane_imienia_lub_nazwiska();
+DROP FUNCTION IF EXISTS zaloguj_zmiane_adresu();
 
-DELIMITER $$
-CREATE TRIGGER `liczMnoznik` BEFORE INSERT ON `stawka`
- FOR EACH ROW BEGIN
-set @mnoznikPokojTyp  = (
-    SELECT pokojtyp.Mnoznik
-    From pokojtyp
-    WHERE pokojtyp.IDPokojTyp = NEW.IDPokojTyp
-    );
-set @mnoznikSezon  = (
-    SELECT sezon.Mnoznik
-    From sezon
-    WHERE sezon.IDSezon = NEW.IDSezon
-    ) ;
-SET NEW.Mnoznik = 1;
-SET NEW.Mnoznik = NEW.Mnoznik*@mnoznikPokojTyp*@mnoznikSezon;
-END $$
-DELIMITER $$;
+DROP TRIGGER IF EXISTS zmiana_imienia_lub_nazwiska ON klient;
+DROP TRIGGER IF EXISTS zmiana_adresu ON adres;
+
 
 /*==============================================================*/
-/* TRIGGER: POKOJ                                       */
+/* function: zaloguj_zmiane_imienia_lub_nazwiska()              */
 /*==============================================================*/
 
-DELIMITER $$
-CREATE TRIGGER `liczCenaPokoj` BEFORE INSERT ON `pokoj`
- FOR EACH ROW BEGIN
-set @mnoznik  = (
-    SELECT stawka.Mnoznik
-    From stawka
-    WHERE stawka.IDStawka=NEW.IDStawka
-    );
-
-SET NEW.CenaPokoj = NEW.CenaPokojPodstawa*@mnoznik;
-END $$
-DELIMITER $$;
-
-/*==============================================================*/
-/* FUNCKJA: liczSumaCalkowita                             */
-/*==============================================================*/
-
-DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `liczSumaCalkowita`(IN `newID` INT)
-    NO SQL
+CREATE OR REPLACE FUNCTION zaloguj_zmiane_imienia_lub_nazwiska()
+  RETURNS TRIGGER AS
+$BODY$
 BEGIN
-SET @suma = (SELECT SUM(encja.Suma) as Suma
-		FROM (
-
-		SELECT pokojpozycja.IDRezerwacja,SUM(pokoj.CenaPokoj) as Suma
-					FROM `pokojpozycja`
-					LEFT JOIN pokoj on pokoj.IDPokoj = pokojpozycja.IDPokoj
-					GROUP BY  pokojpozycja.IDRezerwacja
-					HAVING  pokojpozycja.IDRezerwacja = newID
-		UNION
-
-		SELECT uslugapozycja.IDRezerwacja , SUM(usluga.CenaUsluga) as Suma
-					FROM `uslugapozycja`
-					LEFT JOIN usluga on usluga.IDUsluga = uslugapozycja.IDUsluga
-					GROUP BY (uslugapozycja.IDRezerwacja)
-					HAVING uslugapozycja.IDRezerwacja = newID
-				  )AS encja
-				  GROUP by (encja.IDRezerwacja)
-             );
-
-             UPDATE `rezerwacja`
-SET `Suma`=IFNULL(
-    @suma,0)
-WHERE newID = rezerwacja.IDRezerwacja;
-
-END $$
-DELIMITER $$;
-
-/*==============================================================*/
-/* TRIGGER: POKOJPOZYCJA                                       */
-/*==============================================================*/
-
-
-CREATE TRIGGER `liczSumaPokojInsert`
-after  INSERT  ON `pokojpozycja`
- FOR EACH ROW CALL `liczSumaCalkowita`(NEW.IDRezerwacja);
-
-CREATE TRIGGER `liczSumaPokojUpdate`
-after  UPDATE  ON `pokojpozycja`
- FOR EACH ROW CALL `liczSumaCalkowita`(NEW.IDRezerwacja);
-
- CREATE TRIGGER `liczSumaPokojDelete`
-after  DELETE  ON `pokojpozycja`
- FOR EACH ROW CALL `liczSumaCalkowita`(OLD.IDRezerwacja);
+  INSERT INTO klienthistoria (idKlient, imie, nazwiko, data_zmiany)
+  VALUES (OLD.idKlient, OLD.imie, OLD.nazwisko, now());
+  RETURN NEW;
+END;
+$BODY$ LANGUAGE plpgsql;
 
 
 /*==============================================================*/
-/* TRIGGER: USLUGAPOZYCJA                                       */
+/* viewfunction: zaloguj_zmiane_adresu()                        */
 /*==============================================================*/
 
-
-CREATE TRIGGER `liczSumaUslugaInsert`
-after  INSERT ON `uslugapozycja`
- FOR EACH ROW CALL `liczSumaCalkowita`(NEW.IDRezerwacja);
-
-CREATE TRIGGER `liczSumaUslugaUpdate`
-after UPDATE ON `uslugapozycja`
- FOR EACH ROW CALL `liczSumaCalkowita`(NEW.IDRezerwacja);
-
- CREATE TRIGGER `liczSumaUslugaDelete`
-after DELETE ON `uslugapozycja`
- FOR EACH ROW CALL `liczSumaCalkowita`(OLD.IDRezerwacja);
+CREATE OR REPLACE FUNCTION zaloguj_zmiane_adresu()
+  RETURNS TRIGGER AS
+$BODY$
+BEGIN
+  INSERT INTO adreshistoria (idadres, ulica, nr_domu, nr_mieszkania, miasto, kod_pocztowy)
+  VALUES (OLD.idadres, OLD.ulica, OLD.nr_domu, OLD.nr_mieszkania, OLD.miasto, now());
+  RETURN NEW;
+END;
+$BODY$ LANGUAGE plpgsql;
 
 
+/*==============================================================*/
+/* trigger: zmiana_imienia_lub_nazwiska                         */
+/*==============================================================*/
 
+CREATE TRIGGER zmiana_imienia_lub_nazwiska
+BEFORE UPDATE
+ON klient
+FOR EACH ROW
+EXECUTE PROCEDURE zaloguj_zmiane_imienia_lub_nazwiska();
+
+
+/*==============================================================*/
+/* trigger: zmiana_adresu                                       */
+/*==============================================================*/
+
+CREATE TRIGGER zmiana_adresu
+BEFORE UPDATE
+ON adres
+FOR EACH ROW
+EXECUTE PROCEDURE zaloguj_zmiane_adresu();
