@@ -32,7 +32,7 @@ CREATE TABLE Adres
   Nr_domu       TEXT   NOT NULL,
   Nr_Mieszkania TEXT   NOT NULL,
   Miasto        TEXT   NOT NULL,
-  Kod_pocztowy  TEXT   NOT NULL
+  Kod_pocztowy  TEXT   NOT NULL CHECK (length(Kod_pocztowy) IN(5,6))
 );
 
 /*==============================================================*/

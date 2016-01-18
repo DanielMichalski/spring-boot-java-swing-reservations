@@ -3,4 +3,4 @@ spring:
     url: jdbc:postgresql://localhost:5432/reservations
     username: postgres
     password: postgres
-    driver-class-status: org.postgresql.Driver
+    driver-class-name: org.postgresql.Driver
