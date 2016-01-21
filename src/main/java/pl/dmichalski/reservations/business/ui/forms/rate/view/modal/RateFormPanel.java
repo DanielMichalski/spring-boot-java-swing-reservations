@@ -8,7 +8,7 @@ import pl.dmichalski.reservations.business.entity.RoomType;
 import pl.dmichalski.reservations.business.ui.forms.rate.model.RoomComboBoxModel;
 import pl.dmichalski.reservations.business.ui.forms.rate.model.RoomTypeComboBoxModel;
 import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 import javax.swing.*;
 import java.awt.*;
@@ -43,9 +43,9 @@ public class RateFormPanel extends JPanel {
     }
 
     private void initComponents() {
-        JLabel roomLbl = new JLabel(ConstMessages.Labels.ROOM);
-        JLabel roomTypeLbl = new JLabel(ConstMessages.Labels.ROOM_TYPE);
-        JLabel rateLbl = new JLabel(ConstMessages.Labels.BASIC_RATE);
+        JLabel roomLbl = new JLabel(ConstMessagesEN.Labels.ROOM);
+        JLabel roomTypeLbl = new JLabel(ConstMessagesEN.Labels.ROOM_TYPE);
+        JLabel rateLbl = new JLabel(ConstMessagesEN.Labels.BASIC_RATE);
 
         roomCB = new JComboBox<>(roomComboBoxModel);
         roomTypeCB = new JComboBox<>(roomTypeComboBoxModel);

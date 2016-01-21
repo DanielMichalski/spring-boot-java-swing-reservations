@@ -2,7 +2,7 @@ package pl.dmichalski.reservations.business.ui.forms.payment.view;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,7 +25,7 @@ public class PaymentTableFrame extends JFrame {
     }
 
     private void setFrameUp() {
-        setTitle(ConstMessages.Labels.PAYMENTS);
+        setTitle(ConstMessagesEN.Labels.PAYMENTS);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
         setLocationRelativeTo(null);

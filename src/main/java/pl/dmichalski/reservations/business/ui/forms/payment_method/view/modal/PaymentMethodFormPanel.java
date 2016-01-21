@@ -3,7 +3,7 @@ package pl.dmichalski.reservations.business.ui.forms.payment_method.view.modal;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.entity.PaymentMethod;
 import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,7 +30,7 @@ public class PaymentMethodFormPanel extends JPanel {
     }
 
     private void initComponents() {
-        JLabel paymentMethodLbl = new JLabel(ConstMessages.Labels.PAYMENT_METHOD);
+        JLabel paymentMethodLbl = new JLabel(ConstMessagesEN.Labels.PAYMENT_METHOD);
         paymentMethodTF = new JTextField(TEXT_FIELD_COLUMNS);
         add(paymentMethodLbl);
         add(paymentMethodTF);

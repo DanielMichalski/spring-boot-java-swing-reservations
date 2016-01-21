@@ -3,15 +3,15 @@ package pl.dmichalski.reservations.business.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "platnoscmetoda")
+@Table(name = "payment_method")
 public class PaymentMethod {
 
     @Id
     @GeneratedValue
-    @Column(name = "idplatnoscmetoda")
+    @Column(name = "id_payment_method")
     private long id;
 
-    @Column(name = "nazwa")
+    @Column(name = "name")
     private String name;
 
     public long getId() {

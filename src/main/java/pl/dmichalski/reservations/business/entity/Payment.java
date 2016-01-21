@@ -4,22 +4,22 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Platnosc")
+@Table(name = "payment")
 public class Payment {
 
     @Id
     @GeneratedValue
-    @Column(name = "idplatnosc")
+    @Column(name = "id_payment")
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "idplatnoscmetoda")
+    @JoinColumn(name = "id_payment_method")
     private PaymentMethod paymentMethod;
 
-    @Column(name = "wartosc")
+    @Column(name = "value")
     private long value;
 
-    @Column(name = "dataplatnosci")
+    @Column(name = "date_of_payment")
     private Date dateOfPayments;
 
     public long getId() {

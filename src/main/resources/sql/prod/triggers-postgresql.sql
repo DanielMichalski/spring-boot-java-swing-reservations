@@ -1,57 +1,57 @@
-DROP FUNCTION IF EXISTS zaloguj_zmiane_imienia_lub_nazwiska();
-DROP FUNCTION IF EXISTS zaloguj_zmiane_adresu();
+DROP FUNCTION IF EXISTS log_client_data_changed();
+DROP FUNCTION IF EXISTS log_address_changed();
 
-DROP TRIGGER IF EXISTS zmiana_imienia_lub_nazwiska ON klient;
-DROP TRIGGER IF EXISTS zmiana_adresu ON adres;
+DROP TRIGGER IF EXISTS changing_client_data ON client;
+DROP TRIGGER IF EXISTS changing_address ON address;
 
 
 /*==============================================================*/
-/* function: zaloguj_zmiane_imienia_lub_nazwiska()              */
+/* function: log_client_data_changed()                          */
 /*==============================================================*/
 
-CREATE OR REPLACE FUNCTION zaloguj_zmiane_imienia_lub_nazwiska()
+CREATE OR REPLACE FUNCTION log_client_data_changed()
   RETURNS TRIGGER AS
 $BODY$
 BEGIN
-  INSERT INTO klienthistoria (idKlient, imie, nazwiko, data_zmiany)
-  VALUES (OLD.idKlient, OLD.imie, OLD.nazwisko, now());
+  INSERT INTO klient_history (client_id, name, surname, change_date)
+  VALUES (OLD.client_id, OLD.name, OLD.surname, now());
   RETURN NEW;
 END;
 $BODY$ LANGUAGE plpgsql;
 
 
 /*==============================================================*/
-/* viewfunction: zaloguj_zmiane_adresu()                        */
+/* viewfunction: log_address_changed()                          */
 /*==============================================================*/
 
-CREATE OR REPLACE FUNCTION zaloguj_zmiane_adresu()
+CREATE OR REPLACE FUNCTION log_address_changed()
   RETURNS TRIGGER AS
 $BODY$
 BEGIN
-  INSERT INTO adreshistoria (idadres, ulica, nr_domu, nr_mieszkania, miasto, kod_pocztowy)
-  VALUES (OLD.idadres, OLD.ulica, OLD.nr_domu, OLD.nr_mieszkania, OLD.miasto, now());
+  INSERT INTO address_history (id_address, street, house_number, flat_number, city, postal_code, change_date)
+  VALUES (OLD.id_address, OLD.street, OLD.house_number, OLD.flat_number, OLD.city, postal_code, now());
   RETURN NEW;
 END;
 $BODY$ LANGUAGE plpgsql;
 
 
 /*==============================================================*/
-/* trigger: zmiana_imienia_lub_nazwiska                         */
+/* trigger: changing_client_data                                */
 /*==============================================================*/
 
-CREATE TRIGGER zmiana_imienia_lub_nazwiska
+CREATE TRIGGER changing_client_data
 BEFORE UPDATE
-ON klient
+ON client
 FOR EACH ROW
-EXECUTE PROCEDURE zaloguj_zmiane_imienia_lub_nazwiska();
+EXECUTE PROCEDURE log_client_data_changed();
 
 
 /*==============================================================*/
-/* trigger: zmiana_adresu                                       */
+/* trigger: changing_address                                    */
 /*==============================================================*/
 
-CREATE TRIGGER zmiana_adresu
+CREATE TRIGGER changing_address
 BEFORE UPDATE
-ON adres
+ON address
 FOR EACH ROW
-EXECUTE PROCEDURE zaloguj_zmiane_adresu();
+EXECUTE PROCEDURE log_address_changed();

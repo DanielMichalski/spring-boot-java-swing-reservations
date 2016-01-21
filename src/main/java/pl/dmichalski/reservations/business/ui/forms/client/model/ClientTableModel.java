@@ -3,7 +3,7 @@ package pl.dmichalski.reservations.business.ui.forms.client.model;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.entity.Client;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 @Component
 public class ClientTableModel extends DefaultTableModel<Client> {
@@ -11,12 +11,12 @@ public class ClientTableModel extends DefaultTableModel<Client> {
     @Override
     public String[] getColumnLabels() {
         return new String[]{
-                ConstMessages.Labels.NAME,
-                ConstMessages.Labels.SURNAME,
-                ConstMessages.Labels.PESEL,
-                ConstMessages.Labels.PHONE_NUMBER,
-                ConstMessages.Labels.EMAIL,
-                ConstMessages.Labels.ADDRESS};
+                ConstMessagesEN.Labels.NAME,
+                ConstMessagesEN.Labels.SURNAME,
+                ConstMessagesEN.Labels.PESEL,
+                ConstMessagesEN.Labels.PHONE_NUMBER,
+                ConstMessagesEN.Labels.EMAIL,
+                ConstMessagesEN.Labels.ADDRESS};
     }
 
     @Override

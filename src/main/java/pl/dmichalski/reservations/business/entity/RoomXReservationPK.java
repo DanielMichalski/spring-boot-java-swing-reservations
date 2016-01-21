@@ -9,11 +9,11 @@ import java.io.Serializable;
 public class RoomXReservationPK implements Serializable {
 
     @ManyToOne
-    @JoinColumn(name = "idpokoj")
+    @JoinColumn(name = "id_room")
     private Room room;
 
     @ManyToOne
-    @JoinColumn(name = "idrezerwacja")
+    @JoinColumn(name = "id_reservation")
     private Reservation reservation;
 
     public RoomXReservationPK() {

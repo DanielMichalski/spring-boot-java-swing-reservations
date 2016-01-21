@@ -3,7 +3,7 @@ package pl.dmichalski.reservations.business.ui.forms.room_type.model;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.entity.RoomType;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 @Component
 public class RoomTypeTableModel extends DefaultTableModel<RoomType> {
@@ -24,7 +24,7 @@ public class RoomTypeTableModel extends DefaultTableModel<RoomType> {
     @Override
     public String[] getColumnLabels() {
         return new String[]{
-                ConstMessages.Labels.ROOM_TYPE,
-                ConstMessages.Labels.ROOM_MULTIPLIER};
+                ConstMessagesEN.Labels.ROOM_TYPE,
+                ConstMessagesEN.Labels.ROOM_MULTIPLIER};
     }
 }

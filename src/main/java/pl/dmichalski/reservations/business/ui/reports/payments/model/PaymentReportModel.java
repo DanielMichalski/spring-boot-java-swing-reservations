@@ -3,7 +3,7 @@ package pl.dmichalski.reservations.business.ui.reports.payments.model;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.entity.domain.PaymentMethodCount;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 @Component
 public class PaymentReportModel extends DefaultTableModel<PaymentMethodCount> {
@@ -11,8 +11,8 @@ public class PaymentReportModel extends DefaultTableModel<PaymentMethodCount> {
     @Override
     public String[] getColumnLabels() {
         return new String[]{
-                ConstMessages.Labels.PAYMENT_METHOD,
-                ConstMessages.Labels.PAYMENT_COUNT
+                ConstMessagesEN.Labels.PAYMENT_METHOD,
+                ConstMessagesEN.Labels.PAYMENT_COUNT
         };
     }
 

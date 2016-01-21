@@ -3,18 +3,18 @@ package pl.dmichalski.reservations.business.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "pokojtyp")
+@Table(name = "room_type")
 public class RoomType {
 
     @Id
     @GeneratedValue
-    @Column(name = "idpokojtyp")
+    @Column(name = "id_room_type")
     private long id;
 
-    @Column(name = "opis")
+    @Column(name = "description")
     private String description;
 
-    @Column(name = "mnoznik")
+    @Column(name = "multiplier")
     private long multiplier;
 
     public long getId() {

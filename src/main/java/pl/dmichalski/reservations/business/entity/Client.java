@@ -3,31 +3,31 @@ package pl.dmichalski.reservations.business.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Klient")
+@Table(name = "client")
 public class Client {
 
     @Id
     @GeneratedValue
-    @Column(name = "idklient")
+    @Column(name = "id_client")
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "idadres")
+    @JoinColumn(name = "id_address")
     private Address address;
 
-    @Column(name = "imie")
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "nazwisko")
+    @Column(name = "surname")
     private String surname;
 
     @Column(name = "pesel")
     private String pesel;
 
-    @Column(name = "telefon")
+    @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "email")
+    @Column(name = "mail")
     private String email;
 
     public long getId() {

@@ -3,7 +3,7 @@ package pl.dmichalski.reservations.business.ui.reports.client_reservations.model
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.entity.domain.ClientReservationCount;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 @Component
 public class ClientReservationsReportModel extends DefaultTableModel<ClientReservationCount> {
@@ -11,9 +11,9 @@ public class ClientReservationsReportModel extends DefaultTableModel<ClientReser
     @Override
     public String[] getColumnLabels() {
         return new String[]{
-                ConstMessages.Labels.NAME,
-                ConstMessages.Labels.EMAIL,
-                ConstMessages.Labels.NUMBER_OF_RESERVATIONS
+                ConstMessagesEN.Labels.NAME,
+                ConstMessagesEN.Labels.EMAIL,
+                ConstMessagesEN.Labels.NUMBER_OF_RESERVATIONS
         };
     }
 

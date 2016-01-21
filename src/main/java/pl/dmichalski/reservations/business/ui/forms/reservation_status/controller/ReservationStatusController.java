@@ -11,7 +11,7 @@ import pl.dmichalski.reservations.business.ui.forms.reservation_status.view.moda
 import pl.dmichalski.reservations.business.ui.forms.reservation_status.view.modal.ReservationStatusFormBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.reservation_status.view.modal.ReservationStatusFormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 import pl.dmichalski.reservations.business.util.Notifications;
 import pl.dmichalski.reservations.business.validation.ReservationStatusValidator;
 import pl.dmichalski.reservations.business.validation.ValidationError;
@@ -99,8 +99,8 @@ public class ReservationStatusController extends AbstractFrameController {
             int selectedRow = table.getSelectedRow();
             if (selectedRow < 0) {
                 JOptionPane.showMessageDialog(null,
-                        ConstMessages.Messages.NON_ROW_SELECTED,
-                        ConstMessages.Messages.ALERT_TILE,
+                        ConstMessagesEN.Messages.NON_ROW_SELECTED,
+                        ConstMessagesEN.Messages.ALERT_TILE,
                         JOptionPane.ERROR_MESSAGE);
             } else {
                 ReservationStatus entity = tableModel.getEntityByRow(selectedRow);

@@ -3,7 +3,7 @@ package pl.dmichalski.reservations.business.ui.forms.address.view.modal;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.entity.Address;
 import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,11 +34,11 @@ public class AddressFormPanel extends JPanel {
     }
 
     private void initComponents() {
-        JLabel streetLbl = new JLabel(ConstMessages.Labels.STREET);
-        JLabel houseNumberLbl = new JLabel(ConstMessages.Labels.HOUSE_NUMBER);
-        JLabel flatNumberLbl = new JLabel(ConstMessages.Labels.FLAT_NUMBER);
-        JLabel cityLbl = new JLabel(ConstMessages.Labels.CITY);
-        JLabel postalCodeLbl = new JLabel(ConstMessages.Labels.POSTAL_CODE);
+        JLabel streetLbl = new JLabel(ConstMessagesEN.Labels.STREET);
+        JLabel houseNumberLbl = new JLabel(ConstMessagesEN.Labels.HOUSE_NUMBER);
+        JLabel flatNumberLbl = new JLabel(ConstMessagesEN.Labels.FLAT_NUMBER);
+        JLabel cityLbl = new JLabel(ConstMessagesEN.Labels.CITY);
+        JLabel postalCodeLbl = new JLabel(ConstMessagesEN.Labels.POSTAL_CODE);
 
         streetTF = new JTextField(TEXT_FIELD_COLUMNS);
         houseNumberTF = new JTextField(TEXT_FIELD_COLUMNS);

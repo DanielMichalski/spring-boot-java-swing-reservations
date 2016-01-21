@@ -3,7 +3,7 @@ package pl.dmichalski.reservations.business.ui.forms.reservation_status.model;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.entity.ReservationStatus;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 @Component
 public class ReservationStatusTableModel extends DefaultTableModel<ReservationStatus> {
@@ -22,6 +22,6 @@ public class ReservationStatusTableModel extends DefaultTableModel<ReservationSt
     @Override
     public String[] getColumnLabels() {
         return new String[]{
-                ConstMessages.Labels.RESERVATION_STATUS};
+                ConstMessagesEN.Labels.RESERVATION_STATUS};
     }
 }

@@ -3,7 +3,7 @@ package pl.dmichalski.reservations.business.ui.forms.rate.model;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.entity.Rate;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 @Component
 public class RateTableModel extends DefaultTableModel<Rate> {
@@ -26,8 +26,8 @@ public class RateTableModel extends DefaultTableModel<Rate> {
     @Override
     public String[] getColumnLabels() {
         return new String[]{
-                ConstMessages.Labels.ROOM,
-                ConstMessages.Labels.ROOM_TYPE,
-                ConstMessages.Labels.BASIC_RATE};
+                ConstMessagesEN.Labels.ROOM,
+                ConstMessagesEN.Labels.ROOM_TYPE,
+                ConstMessagesEN.Labels.BASIC_RATE};
     }
 }

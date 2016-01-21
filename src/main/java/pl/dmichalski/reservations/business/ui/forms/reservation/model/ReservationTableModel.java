@@ -3,7 +3,7 @@ package pl.dmichalski.reservations.business.ui.forms.reservation.model;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.entity.Reservation;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 import pl.dmichalski.reservations.business.util.DateFormatter;
 
 @Component
@@ -35,12 +35,12 @@ public class ReservationTableModel extends DefaultTableModel<Reservation> {
     @Override
     public String[] getColumnLabels() {
         return new String[]{
-                ConstMessages.Labels.RESERVATION_STATUS,
-                ConstMessages.Labels.PAYMENT,
-                ConstMessages.Labels.CLIENT,
-                ConstMessages.Labels.FROM_DATE,
-                ConstMessages.Labels.TO_DATE,
-                ConstMessages.Labels.RESERVATION_DATE,
-                ConstMessages.Labels.AMOUNT};
+                ConstMessagesEN.Labels.RESERVATION_STATUS,
+                ConstMessagesEN.Labels.PAYMENT,
+                ConstMessagesEN.Labels.CLIENT,
+                ConstMessagesEN.Labels.FROM_DATE,
+                ConstMessagesEN.Labels.TO_DATE,
+                ConstMessagesEN.Labels.RESERVATION_DATE,
+                ConstMessagesEN.Labels.AMOUNT};
     }
 }

@@ -3,7 +3,7 @@ package pl.dmichalski.reservations.business.ui.forms.room_type.view.modal;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.entity.RoomType;
 import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,8 +31,8 @@ public class RoomTypeFormPanel extends JPanel {
     }
 
     private void initComponents() {
-        JLabel roomDescriptionLbl = new JLabel(ConstMessages.Labels.ROOM_TYPE_DESCRIPTION);
-        JLabel roomMultiplierLbl = new JLabel(ConstMessages.Labels.ROOM_MULTIPLIER);
+        JLabel roomDescriptionLbl = new JLabel(ConstMessagesEN.Labels.ROOM_TYPE_DESCRIPTION);
+        JLabel roomMultiplierLbl = new JLabel(ConstMessagesEN.Labels.ROOM_MULTIPLIER);
 
         descriptionTF = new JTextField(TEXT_FIELD_COLUMNS);
         multiplierJS = new JSpinner(new SpinnerNumberModel(1, 1, 10, 1));

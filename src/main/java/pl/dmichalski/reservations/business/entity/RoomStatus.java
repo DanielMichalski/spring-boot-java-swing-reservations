@@ -3,18 +3,18 @@ package pl.dmichalski.reservations.business.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "pokojstatus")
+@Table(name = "room_status")
 public class RoomStatus {
 
     @Id
     @GeneratedValue
-    @Column(name = "idpokojstatus")
+    @Column(name = "id_room_status")
     private long id;
 
-    @Column(name = "statuspokoju")
+    @Column(name = "room_status")
     private String roomStatus;
 
-    @Column(name = "opisstatusu")
+    @Column(name = "status_description")
     private String description;
 
     public long getId() {

@@ -1,7 +1,7 @@
 package pl.dmichalski.reservations.business.ui.forms.reservation_status.view.modal;
 
 import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 import javax.swing.*;
 
@@ -16,10 +16,10 @@ public class ReservationStatusFormBtnPanel extends JPanel {
     }
 
     private void initComponents() {
-        saveBtn = new JButton(ConstMessages.Labels.ADD_BTN);
+        saveBtn = new JButton(ConstMessagesEN.Labels.ADD_BTN);
         add(saveBtn);
 
-        cancelBtn = new JButton(ConstMessages.Labels.CANCEL_BTN);
+        cancelBtn = new JButton(ConstMessagesEN.Labels.CANCEL_BTN);
         add(cancelBtn);
     }
 

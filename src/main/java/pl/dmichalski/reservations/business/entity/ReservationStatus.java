@@ -3,15 +3,15 @@ package pl.dmichalski.reservations.business.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "status_rezerwacji")
+@Table(name = "reservation_status")
 public class ReservationStatus {
 
     @Id
     @GeneratedValue
-    @Column(name = "idstatusrezerwacja")
+    @Column(name = "id_reservation_status")
     private long id;
 
-    @Column(name = "status_rezerwacji")
+    @Column(name = "reservation_status")
     private String reservationStatus;
 
     public long getId() {

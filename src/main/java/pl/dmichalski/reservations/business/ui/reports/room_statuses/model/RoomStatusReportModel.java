@@ -1,10 +1,9 @@
 package pl.dmichalski.reservations.business.ui.reports.room_statuses.model;
 
 import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.entity.domain.PaymentMethodCount;
 import pl.dmichalski.reservations.business.entity.domain.RoomStatusesCount;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 @Component
 public class RoomStatusReportModel extends DefaultTableModel<RoomStatusesCount> {
@@ -12,8 +11,8 @@ public class RoomStatusReportModel extends DefaultTableModel<RoomStatusesCount> 
     @Override
     public String[] getColumnLabels() {
         return new String[]{
-                ConstMessages.Labels.ROOM_STATUS,
-                ConstMessages.Labels.NUMBER_OF_COUNT
+                ConstMessagesEN.Labels.ROOM_STATUS,
+                ConstMessagesEN.Labels.NUMBER_OF_COUNT
         };
     }
 

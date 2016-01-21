@@ -3,7 +3,7 @@ package pl.dmichalski.reservations.business.ui.forms.room_status.view.modal;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.entity.RoomStatus;
 import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,8 +31,8 @@ public class RoomStatusFormPanel extends JPanel {
     }
 
     private void initComponents() {
-        JLabel roomStatusLbl = new JLabel(ConstMessages.Labels.ROOM_STATUS);
-        JLabel roomStatusDescriptionLbl = new JLabel(ConstMessages.Labels.ROOM_STATUS_DESCRIPTION);
+        JLabel roomStatusLbl = new JLabel(ConstMessagesEN.Labels.ROOM_STATUS);
+        JLabel roomStatusDescriptionLbl = new JLabel(ConstMessagesEN.Labels.ROOM_STATUS_DESCRIPTION);
 
         roomStatusTF = new JTextField(TEXT_FIELD_COLUMNS);
         roomStatusDescriptionTF = new JTextField(TEXT_FIELD_COLUMNS);

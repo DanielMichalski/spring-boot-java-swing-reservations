@@ -2,7 +2,7 @@ package pl.dmichalski.reservations.business.ui.forms.client.view;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,7 +25,7 @@ public class ClientFrame extends JFrame {
     }
 
     private void setFrameUp() {
-        setTitle(ConstMessages.Labels.CLIENTS);
+        setTitle(ConstMessagesEN.Labels.CLIENTS);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
         setLocationRelativeTo(null);

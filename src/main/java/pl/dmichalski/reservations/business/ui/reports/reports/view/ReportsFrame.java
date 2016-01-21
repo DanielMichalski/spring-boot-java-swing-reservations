@@ -2,7 +2,7 @@ package pl.dmichalski.reservations.business.ui.reports.reports.view;
 
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 import pl.dmichalski.reservations.business.util.LookAndFeelUtils;
 
 import javax.swing.*;
@@ -23,7 +23,7 @@ public class ReportsFrame extends JFrame {
 
     private void setFrameUp() {
         getRootPane().setBorder(Borders.createEmptyBorder());
-        setTitle(ConstMessages.Labels.REPORTS);
+        setTitle(ConstMessagesEN.Labels.REPORTS);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -32,9 +32,9 @@ public class ReportsFrame extends JFrame {
     }
 
     private void initComponents() {
-        paymentMethodReportBtn = new JButton(ConstMessages.Labels.PAYMENT_METHODS);
-        roomStatusesReportBtn = new JButton(ConstMessages.Labels.ROOM_STATUSES);
-        clientReservationsReportBtn = new JButton(ConstMessages.Labels.CLIENT_RESERVATIONS);
+        paymentMethodReportBtn = new JButton(ConstMessagesEN.Labels.PAYMENT_METHODS);
+        roomStatusesReportBtn = new JButton(ConstMessagesEN.Labels.ROOM_STATUSES);
+        clientReservationsReportBtn = new JButton(ConstMessagesEN.Labels.CLIENT_RESERVATIONS);
 
         add(paymentMethodReportBtn);
         add(roomStatusesReportBtn);

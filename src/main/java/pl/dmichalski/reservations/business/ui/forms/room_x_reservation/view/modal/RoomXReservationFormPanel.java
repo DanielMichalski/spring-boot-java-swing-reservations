@@ -9,7 +9,7 @@ import pl.dmichalski.reservations.business.entity.RoomXReservationPK;
 import pl.dmichalski.reservations.business.ui.forms.rate.model.RoomComboBoxModel;
 import pl.dmichalski.reservations.business.ui.forms.room_x_reservation.model.ReservationsComboBoxModel;
 import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 import javax.swing.*;
 import java.awt.*;
@@ -44,9 +44,9 @@ public class RoomXReservationFormPanel extends JPanel {
     }
 
     private void initComponents() {
-        JLabel reservationLbl = new JLabel(ConstMessages.Labels.RESERVATION);
-        JLabel roomLbl = new JLabel(ConstMessages.Labels.ROOM);
-        JLabel priceLbl = new JLabel(ConstMessages.Labels.PRICE);
+        JLabel reservationLbl = new JLabel(ConstMessagesEN.Labels.RESERVATION);
+        JLabel roomLbl = new JLabel(ConstMessagesEN.Labels.ROOM);
+        JLabel priceLbl = new JLabel(ConstMessagesEN.Labels.PRICE);
 
         reservationCB = new JComboBox<>(reservationsComboBoxModel);
         roomCB = new JComboBox<>(roomComboBoxModel);

@@ -14,7 +14,7 @@ import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameCon
 import pl.dmichalski.reservations.business.ui.forms.client.model.ClientTableModel;
 import pl.dmichalski.reservations.business.ui.forms.client.view.TableBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.client.view.ClientFrame;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 import pl.dmichalski.reservations.business.util.Notifications;
 import pl.dmichalski.reservations.business.validation.ClientValidator;
 import pl.dmichalski.reservations.business.validation.ValidationError;
@@ -115,8 +115,8 @@ public class ClientController extends AbstractFrameController {
             int selectedRow = clientTable.getSelectedRow();
             if (selectedRow < 0) {
                 JOptionPane.showMessageDialog(null,
-                        ConstMessages.Messages.NON_ROW_SELECTED,
-                        ConstMessages.Messages.ALERT_TILE,
+                        ConstMessagesEN.Messages.NON_ROW_SELECTED,
+                        ConstMessagesEN.Messages.ALERT_TILE,
                         JOptionPane.ERROR_MESSAGE);
             } else {
                 Client client = clientTableModel.getEntityByRow(selectedRow);

@@ -1,7 +1,7 @@
 package pl.dmichalski.reservations.business.ui.forms.room.view;
 
 import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 import javax.swing.*;
 
@@ -16,10 +16,10 @@ public class RoomTableBtnPanel extends JPanel {
     }
 
     private void initComponents() {
-        addBtn = new JButton(ConstMessages.Labels.ADD_BTN);
+        addBtn = new JButton(ConstMessagesEN.Labels.ADD_BTN);
         add(addBtn);
 
-        removeBtn = new JButton(ConstMessages.Labels.REMOVE_BTN);
+        removeBtn = new JButton(ConstMessagesEN.Labels.REMOVE_BTN);
         add(removeBtn);
     }
 

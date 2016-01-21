@@ -14,7 +14,7 @@ import pl.dmichalski.reservations.business.ui.forms.room.view.modal.AddRoomFrame
 import pl.dmichalski.reservations.business.ui.forms.room.view.modal.RoomFormBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.room.view.modal.RoomFormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 import pl.dmichalski.reservations.business.util.Notifications;
 import pl.dmichalski.reservations.business.validation.RoomValidator;
 import pl.dmichalski.reservations.business.validation.ValidationError;
@@ -115,8 +115,8 @@ public class RoomController extends AbstractFrameController {
             int selectedRow = table.getSelectedRow();
             if (selectedRow < 0) {
                 JOptionPane.showMessageDialog(null,
-                        ConstMessages.Messages.NON_ROW_SELECTED,
-                        ConstMessages.Messages.ALERT_TILE,
+                        ConstMessagesEN.Messages.NON_ROW_SELECTED,
+                        ConstMessagesEN.Messages.ALERT_TILE,
                         JOptionPane.ERROR_MESSAGE);
             } else {
                 Room entity = tableModel.getEntityByRow(selectedRow);

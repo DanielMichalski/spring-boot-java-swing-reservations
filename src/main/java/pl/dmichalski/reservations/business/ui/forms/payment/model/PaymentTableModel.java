@@ -3,7 +3,7 @@ package pl.dmichalski.reservations.business.ui.forms.payment.model;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.entity.Payment;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 import pl.dmichalski.reservations.business.util.DateFormatter;
 
 @Component
@@ -27,8 +27,8 @@ public class PaymentTableModel extends DefaultTableModel<Payment> {
     @Override
     public String[] getColumnLabels() {
         return new String[]{
-                ConstMessages.Labels.PAYMENT_METHOD,
-                ConstMessages.Labels.VALUE,
-                ConstMessages.Labels.DATE_OF_PAYMENT};
+                ConstMessagesEN.Labels.PAYMENT_METHOD,
+                ConstMessagesEN.Labels.VALUE,
+                ConstMessagesEN.Labels.DATE_OF_PAYMENT};
     }
 }

@@ -3,13 +3,13 @@ package pl.dmichalski.reservations.business.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "pokoj_x_rezerwacja")
+@Table(name = "room_x_reservation")
 public class RoomXReservation {
 
     @EmbeddedId
     private RoomXReservationPK roomXReservationPK;
 
-    @Column(name = "cenapokoj")
+    @Column(name = "room_price")
     private long roomPrice;
 
     public RoomXReservation() {

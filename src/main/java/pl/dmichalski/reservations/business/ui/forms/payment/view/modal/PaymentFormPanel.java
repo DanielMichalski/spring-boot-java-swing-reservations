@@ -7,7 +7,7 @@ import pl.dmichalski.reservations.business.entity.Payment;
 import pl.dmichalski.reservations.business.entity.PaymentMethod;
 import pl.dmichalski.reservations.business.ui.forms.payment.model.PaymentMethodComboBoxModel;
 import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,9 +40,9 @@ public class PaymentFormPanel extends JPanel {
     }
 
     private void initComponents() {
-        JLabel paymentMethodLbl = new JLabel(ConstMessages.Labels.PAYMENT_METHOD);
-        JLabel valueLbl = new JLabel(ConstMessages.Labels.VALUE);
-        JLabel dateOfPaymentLbl = new JLabel(ConstMessages.Labels.DATE_OF_PAYMENT);
+        JLabel paymentMethodLbl = new JLabel(ConstMessagesEN.Labels.PAYMENT_METHOD);
+        JLabel valueLbl = new JLabel(ConstMessagesEN.Labels.VALUE);
+        JLabel dateOfPaymentLbl = new JLabel(ConstMessagesEN.Labels.DATE_OF_PAYMENT);
 
         paymentMethodCB = new JComboBox<>(paymentMethodComboBoxModel);
         valueTF = new JTextField(TEXT_FIELD_COLUMNS);

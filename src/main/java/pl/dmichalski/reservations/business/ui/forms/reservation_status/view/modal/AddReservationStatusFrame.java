@@ -2,7 +2,7 @@ package pl.dmichalski.reservations.business.ui.forms.reservation_status.view.mod
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,7 +23,7 @@ public class AddReservationStatusFrame extends JDialog {
     }
 
     private void setFrameUp() {
-        setTitle(ConstMessages.DialogTitles.ADDRESS_MODAL);
+        setTitle(ConstMessagesEN.DialogTitles.ADDRESS_MODAL);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);

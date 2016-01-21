@@ -11,7 +11,7 @@ import pl.dmichalski.reservations.business.ui.forms.address.view.modal.AddAddres
 import pl.dmichalski.reservations.business.ui.forms.address.view.modal.AddressFormBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.address.view.modal.AddressFormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 import pl.dmichalski.reservations.business.util.Notifications;
 import pl.dmichalski.reservations.business.validation.AddressValidator;
 import pl.dmichalski.reservations.business.validation.ValidationError;
@@ -99,8 +99,8 @@ public class AddressController extends AbstractFrameController {
             int selectedRow = clientTable.getSelectedRow();
             if (selectedRow < 0) {
                 JOptionPane.showMessageDialog(null,
-                        ConstMessages.Messages.NON_ROW_SELECTED,
-                        ConstMessages.Messages.ALERT_TILE,
+                        ConstMessagesEN.Messages.NON_ROW_SELECTED,
+                        ConstMessagesEN.Messages.ALERT_TILE,
                         JOptionPane.ERROR_MESSAGE);
             } else {
                 Address entity = tableModel.getEntityByRow(selectedRow);

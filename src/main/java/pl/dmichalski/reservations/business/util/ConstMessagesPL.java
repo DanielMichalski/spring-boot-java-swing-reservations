@@ -1,6 +1,6 @@
 package pl.dmichalski.reservations.business.util;
 
-public interface ConstMessages {
+public interface ConstMessagesPL {
 
     interface DialogTitles {
         String CLIENT_MODAL = "Dodawanie klienta";

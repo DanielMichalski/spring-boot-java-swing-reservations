@@ -3,22 +3,22 @@ package pl.dmichalski.reservations.business.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "pokoj")
+@Table(name = "room")
 public class Room {
 
     @Id
     @GeneratedValue
-    @Column(name = "idpokoj")
+    @Column(name = "id_room")
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "idpokojstatus")
+    @JoinColumn(name = "id_room_status")
     private RoomStatus roomStatus;
 
-    @Column(name = "liczbaosob")
+    @Column(name = "number_of_people")
     private long numberOfPeople;
 
-    @Column(name = "opis")
+    @Column(name = "description")
     private String description;
 
     public long getId() {

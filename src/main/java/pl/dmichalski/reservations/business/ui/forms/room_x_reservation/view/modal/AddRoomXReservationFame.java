@@ -2,7 +2,7 @@ package pl.dmichalski.reservations.business.ui.forms.room_x_reservation.view.mod
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,7 +23,7 @@ public class AddRoomXReservationFame extends JDialog {
     }
 
     private void setFrameUp() {
-        setTitle(ConstMessages.DialogTitles.ROOM_X_RESERVATION_MODAL);
+        setTitle(ConstMessagesEN.DialogTitles.ROOM_X_RESERVATION_MODAL);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);

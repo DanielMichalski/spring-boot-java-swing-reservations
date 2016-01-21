@@ -2,7 +2,7 @@ package pl.dmichalski.reservations.business.ui.main_menu.view;
 
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 import pl.dmichalski.reservations.business.util.LookAndFeelUtils;
 
 import javax.swing.*;
@@ -22,7 +22,7 @@ public class MainMenuFrame extends JFrame {
 
     private void setFrameUp() {
         getRootPane().setBorder(Borders.createEmptyBorder());
-        setTitle(ConstMessages.Labels.MAIN_MENU);
+        setTitle(ConstMessagesEN.Labels.MAIN_MENU);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -31,8 +31,8 @@ public class MainMenuFrame extends JFrame {
     }
 
     private void initComponents() {
-        formsBtn = new JButton(ConstMessages.Labels.FORMS);
-        reportsBtn = new JButton(ConstMessages.Labels.REPORTS);
+        formsBtn = new JButton(ConstMessagesEN.Labels.FORMS);
+        reportsBtn = new JButton(ConstMessagesEN.Labels.REPORTS);
 
         add(formsBtn);
         add(reportsBtn);

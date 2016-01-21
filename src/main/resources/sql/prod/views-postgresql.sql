@@ -1,48 +1,48 @@
 
-DROP VIEW IF EXISTS v_podstawoweInformacjeKlient;
-DROP VIEW IF EXISTS v_liczbaDostepnychPokoiTyp;
-DROP VIEW IF EXISTS v_emailKlientLiczbaRezerwacji;
+DROP VIEW IF EXISTS v_client_basic_information;
+DROP VIEW IF EXISTS v_number_of_empty_rooms;
+DROP VIEW IF EXISTS v_client_reservations;
 
 
 /*==============================================================*/
-/* View: v_podstawoweInformacjeKlient                           */
+/* View: v_client_basic_information                             */
 /*==============================================================*/
 
-CREATE VIEW v_podstawoweInformacjeKlient AS
+CREATE VIEW v_client_basic_information AS
   SELECT
-    k.Imie,
-    k.Nazwisko,
-    adres.miasto
-  FROM klient k
-    LEFT JOIN adres ON k.IDAdres = adres.IDAdres
-  ORDER BY k.Nazwisko ASC;
+    c.name,
+    c.surname,
+    a.city
+  FROM client c
+    LEFT JOIN address a ON c.id_address = a.id_address
+  ORDER BY c.name ASC;
 
 
 /*==============================================================*/
-/* view: v_liczbaDostepnychPokoiTyp                             */
+/* view: v_number_of_empty_rooms                                */
 /*==============================================================*/
 
-CREATE VIEW v_liczbaDostepnychPokoiTyp AS
+CREATE VIEW v_number_of_empty_rooms AS
   SELECT
-    ps.opisstatusu,
-    COUNT(pt.opis)
-  FROM pokoj p
-    LEFT JOIN stawka s ON s.idpokoj = p.idpokoj
-    LEFT JOIN pokojtyp pt ON p.IDPokoj = s.IDPokojTyp
-    LEFT JOIN pokojstatus ps ON p.IDPokojStatus = ps.IDPokojStatus
-  WHERE ps.IDPokojStatus = 2
-  GROUP BY (ps.opisstatusu);
+    rs.status_description,
+    COUNT(r_type.description)
+  FROM room r
+    LEFT JOIN rate rt ON rt.id_room = r.id_room
+    LEFT JOIN room_type r_type ON r.id_room = rt.id_room_type
+    LEFT JOIN room_status rs ON r.id_room_status = rs.id_room_status
+  WHERE rs.id_room_status = 2
+  GROUP BY (rs.status_description);
 
 
 /*==============================================================*/
-/* view: v_emailKlientLiczbaRezerwacji                          */
+/* view: v_client_reservations                                  */
 /*==============================================================*/
 
-CREATE VIEW v_emailKlientLiczbaRezerwacji as
+CREATE VIEW v_client_reservations as
   SELECT
-    k.email,
-    COUNT(r.IDRezerwacja) "ilosc rezerwacji"
-  FROM klient k
-    LEFT JOIN rezerwacja r ON k.idklient = r.IDKlient
-  GROUP BY (k.email)
-  ORDER BY ("ilosc rezerwacji") DESC;
+    c.mail,
+    COUNT(r.id_reservation) "Number of reservartions"
+  FROM client c
+    LEFT JOIN reservation r ON c.id_client = r.id_client
+  GROUP BY (c.mail)
+  ORDER BY ("Number of reservartions") DESC;

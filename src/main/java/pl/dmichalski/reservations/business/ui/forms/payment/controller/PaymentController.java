@@ -14,7 +14,7 @@ import pl.dmichalski.reservations.business.ui.forms.payment.view.modal.AddPaymen
 import pl.dmichalski.reservations.business.ui.forms.payment.view.modal.PaymentFormBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.payment.view.modal.PaymentFormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 import pl.dmichalski.reservations.business.util.Notifications;
 import pl.dmichalski.reservations.business.validation.PaymentValidator;
 import pl.dmichalski.reservations.business.validation.ValidationError;
@@ -115,8 +115,8 @@ public class PaymentController extends AbstractFrameController {
             int selectedRow = table.getSelectedRow();
             if (selectedRow < 0) {
                 JOptionPane.showMessageDialog(null,
-                        ConstMessages.Messages.NON_ROW_SELECTED,
-                        ConstMessages.Messages.ALERT_TILE,
+                        ConstMessagesEN.Messages.NON_ROW_SELECTED,
+                        ConstMessagesEN.Messages.ALERT_TILE,
                         JOptionPane.ERROR_MESSAGE);
             } else {
                 Payment entity = tableModel.getEntityByRow(selectedRow);

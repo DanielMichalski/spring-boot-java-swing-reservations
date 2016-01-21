@@ -6,7 +6,7 @@ import pl.dmichalski.reservations.business.entity.Room;
 import pl.dmichalski.reservations.business.entity.RoomStatus;
 import pl.dmichalski.reservations.business.ui.forms.room.model.RoomStatusComboBoxModel;
 import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,9 +39,9 @@ public class RoomFormPanel extends JPanel {
     }
 
     private void initComponents() {
-        JLabel roomStatusLbl = new JLabel(ConstMessages.Labels.ROOM_STATUS);
-        JLabel numberOfPeopleLbl = new JLabel(ConstMessages.Labels.ROOM_NUMBER_OF_PEOPLE);
-        JLabel descriptionLbl = new JLabel(ConstMessages.Labels.ROOM_DESCRIPTION);
+        JLabel roomStatusLbl = new JLabel(ConstMessagesEN.Labels.ROOM_STATUS);
+        JLabel numberOfPeopleLbl = new JLabel(ConstMessagesEN.Labels.ROOM_NUMBER_OF_PEOPLE);
+        JLabel descriptionLbl = new JLabel(ConstMessagesEN.Labels.ROOM_DESCRIPTION);
 
         roomStatusCB = new JComboBox<>(roomComboBoxModel);
         numberOfPeopleJS = new JSpinner(new SpinnerNumberModel(1, 1, 5, 1));

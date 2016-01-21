@@ -3,27 +3,27 @@ package pl.dmichalski.reservations.business.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Adres")
+@Table(name = "address")
 public class Address {
 
     @Id
     @GeneratedValue
-    @Column(name = "idadres")
+    @Column(name = "id_address")
     private long idAddress;
 
-    @Column(name = "ulica")
+    @Column(name = "street")
     private String street;
 
-    @Column(name = "nr_domu")
+    @Column(name = "house_number")
     private String houseNumber;
 
-    @Column(name = "nr_mieszkania")
+    @Column(name = "flat_number")
     private String flatNumber;
 
-    @Column(name = "miasto")
+    @Column(name = "city")
     private String city;
 
-    @Column(name = "kodPocztowy")
+    @Column(name = "postal_code")
     private String postCode;
 
     public String getPostCode() {

@@ -6,7 +6,7 @@ import pl.dmichalski.reservations.business.entity.Address;
 import pl.dmichalski.reservations.business.entity.Client;
 import pl.dmichalski.reservations.business.ui.forms.client.model.AddressComboBoxModel;
 import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 import javax.swing.*;
 import java.awt.*;
@@ -41,12 +41,12 @@ public class FormPanel extends JPanel {
     }
 
     private void initComponents() {
-        JLabel nameLbl = new JLabel(ConstMessages.Labels.NAME);
-        JLabel surnameLbl = new JLabel(ConstMessages.Labels.SURNAME);
-        JLabel peselLbl = new JLabel(ConstMessages.Labels.PESEL);
-        JLabel phoneNumberLbl = new JLabel(ConstMessages.Labels.PHONE_NUMBER);
-        JLabel emailLbl = new JLabel(ConstMessages.Labels.EMAIL);
-        JLabel addressLbl = new JLabel(ConstMessages.Labels.ADDRESS);
+        JLabel nameLbl = new JLabel(ConstMessagesEN.Labels.NAME);
+        JLabel surnameLbl = new JLabel(ConstMessagesEN.Labels.SURNAME);
+        JLabel peselLbl = new JLabel(ConstMessagesEN.Labels.PESEL);
+        JLabel phoneNumberLbl = new JLabel(ConstMessagesEN.Labels.PHONE_NUMBER);
+        JLabel emailLbl = new JLabel(ConstMessagesEN.Labels.EMAIL);
+        JLabel addressLbl = new JLabel(ConstMessagesEN.Labels.ADDRESS);
 
         nameTF = new JTextField(TEXT_FIELD_COLUMNS);
         surnameTF = new JTextField(TEXT_FIELD_COLUMNS);

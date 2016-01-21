@@ -3,7 +3,7 @@ package pl.dmichalski.reservations.business.ui.forms.address.model;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.entity.Address;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 @Component
 public class AddressTableModel extends DefaultTableModel<Address> {
@@ -11,11 +11,11 @@ public class AddressTableModel extends DefaultTableModel<Address> {
     @Override
     public String[] getColumnLabels() {
         return new String[]{
-                ConstMessages.Labels.STREET,
-                ConstMessages.Labels.HOUSE_NUMBER,
-                ConstMessages.Labels.FLAT_NUMBER,
-                ConstMessages.Labels.CITY,
-                ConstMessages.Labels.POSTAL_CODE};
+                ConstMessagesEN.Labels.STREET,
+                ConstMessagesEN.Labels.HOUSE_NUMBER,
+                ConstMessagesEN.Labels.FLAT_NUMBER,
+                ConstMessagesEN.Labels.CITY,
+                ConstMessagesEN.Labels.POSTAL_CODE};
     }
 
     @Override

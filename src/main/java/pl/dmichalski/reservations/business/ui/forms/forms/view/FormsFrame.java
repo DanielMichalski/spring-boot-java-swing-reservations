@@ -2,7 +2,7 @@ package pl.dmichalski.reservations.business.ui.forms.forms.view;
 
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 import pl.dmichalski.reservations.business.util.LookAndFeelUtils;
 
 import javax.swing.*;
@@ -31,7 +31,7 @@ public class FormsFrame extends JFrame {
 
     private void setFrameUp() {
         getRootPane().setBorder(Borders.createEmptyBorder());
-        setTitle(ConstMessages.Labels.FORMS);
+        setTitle(ConstMessagesEN.Labels.FORMS);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -40,17 +40,17 @@ public class FormsFrame extends JFrame {
     }
 
     private void initComponents() {
-        addressesBtn = new JButton(ConstMessages.Labels.ADDRESSES);
-        clientBtn = new JButton(ConstMessages.Labels.CLIENTS);
-        reservationStatusBtn = new JButton(ConstMessages.Labels.RESERVATION_STATUSES);
-        paymentMethodBtn = new JButton(ConstMessages.Labels.PAYMENT_METHODS);
-        paymentBtn = new JButton(ConstMessages.Labels.PAYMENTS);
-        reservationBtn = new JButton(ConstMessages.Labels.RESERVATIONS);
-        roomStatusBtn = new JButton(ConstMessages.Labels.ROOM_STATUSES);
-        roomTypeBtn = new JButton(ConstMessages.Labels.ROOM_TYPES);
-        roomBtn = new JButton(ConstMessages.Labels.ROOMS);
-        rateBtn = new JButton(ConstMessages.Labels.RATES);
-        roomXReservationBtn = new JButton(ConstMessages.Labels.ROOM_X_RESERVATIONS);
+        addressesBtn = new JButton(ConstMessagesEN.Labels.ADDRESSES);
+        clientBtn = new JButton(ConstMessagesEN.Labels.CLIENTS);
+        reservationStatusBtn = new JButton(ConstMessagesEN.Labels.RESERVATION_STATUSES);
+        paymentMethodBtn = new JButton(ConstMessagesEN.Labels.PAYMENT_METHODS);
+        paymentBtn = new JButton(ConstMessagesEN.Labels.PAYMENTS);
+        reservationBtn = new JButton(ConstMessagesEN.Labels.RESERVATIONS);
+        roomStatusBtn = new JButton(ConstMessagesEN.Labels.ROOM_STATUSES);
+        roomTypeBtn = new JButton(ConstMessagesEN.Labels.ROOM_TYPES);
+        roomBtn = new JButton(ConstMessagesEN.Labels.ROOMS);
+        rateBtn = new JButton(ConstMessagesEN.Labels.RATES);
+        roomXReservationBtn = new JButton(ConstMessagesEN.Labels.ROOM_X_RESERVATIONS);
 
         add(addressesBtn);
         add(clientBtn);

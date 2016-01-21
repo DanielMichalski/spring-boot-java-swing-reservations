@@ -12,7 +12,7 @@ import pl.dmichalski.reservations.business.ui.forms.reservation.model.ClientComb
 import pl.dmichalski.reservations.business.ui.forms.reservation.model.PaymentComboBoxModel;
 import pl.dmichalski.reservations.business.ui.forms.reservation.model.ReservationStatusComboBoxModel;
 import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessages;
+import pl.dmichalski.reservations.business.util.ConstMessagesEN;
 
 import javax.swing.*;
 import java.awt.*;
@@ -54,12 +54,12 @@ public class ReservationFormPanel extends JPanel {
     }
 
     private void initComponents() {
-        JLabel reservationStatusLbl = new JLabel(ConstMessages.Labels.RESERVATION_STATUS);
-        JLabel paymentLbl = new JLabel(ConstMessages.Labels.PAYMENT);
-        JLabel clientLbl = new JLabel(ConstMessages.Labels.CLIENT);
-        JLabel dateFromLbl = new JLabel(ConstMessages.Labels.FROM_DATE);
-        JLabel dateToLbl = new JLabel(ConstMessages.Labels.TO_DATE);
-        JLabel amountLbl = new JLabel(ConstMessages.Labels.AMOUNT);
+        JLabel reservationStatusLbl = new JLabel(ConstMessagesEN.Labels.RESERVATION_STATUS);
+        JLabel paymentLbl = new JLabel(ConstMessagesEN.Labels.PAYMENT);
+        JLabel clientLbl = new JLabel(ConstMessagesEN.Labels.CLIENT);
+        JLabel dateFromLbl = new JLabel(ConstMessagesEN.Labels.FROM_DATE);
+        JLabel dateToLbl = new JLabel(ConstMessagesEN.Labels.TO_DATE);
+        JLabel amountLbl = new JLabel(ConstMessagesEN.Labels.AMOUNT);
 
         JComboBox<ReservationStatus> reservationStatusCB = new JComboBox<>(reservationStatusComboBoxModel);
         JComboBox<Payment> paymentCB = new JComboBox<>(paymentComboBoxModel);

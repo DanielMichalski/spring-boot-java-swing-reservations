@@ -1,373 +1,359 @@
 /*==============================================================*/
 
-DROP TABLE IF EXISTS Adres CASCADE;
+DROP TABLE IF EXISTS address CASCADE;
 
-DROP TABLE IF EXISTS Klient CASCADE;
+DROP TABLE IF EXISTS client CASCADE;
 
-DROP TABLE IF EXISTS Platnosc CASCADE;
+DROP TABLE IF EXISTS payment CASCADE;
 
-DROP TABLE IF EXISTS PlatnoscMetoda CASCADE;
+DROP TABLE IF EXISTS payment_method CASCADE;
 
-DROP TABLE IF EXISTS Pokoj CASCADE;
+DROP TABLE IF EXISTS room CASCADE;
 
-DROP TABLE IF EXISTS Pokoj_x_Rezerwacja CASCADE;
+DROP TABLE IF EXISTS room_x_reservation CASCADE;
 
-DROP TABLE IF EXISTS PokojStatus CASCADE;
+DROP TABLE IF EXISTS room_status CASCADE;
 
-DROP TABLE IF EXISTS PokojTyp CASCADE;
+DROP TABLE IF EXISTS room_type CASCADE;
 
-DROP TABLE IF EXISTS Rezerwacja CASCADE;
+DROP TABLE IF EXISTS reservation CASCADE;
 
-DROP TABLE IF EXISTS Status_Rezerwacji CASCADE;
+DROP TABLE IF EXISTS reservation_status CASCADE;
 
-DROP TABLE IF EXISTS Stawka CASCADE;
+DROP TABLE IF EXISTS rate CASCADE;
 
-DROP TABLE IF EXISTS klientHistoria CASCADE;
+DROP TABLE IF EXISTS client_history CASCADE;
 
-DROP TABLE IF EXISTS adresHistoria CASCADE;
+DROP TABLE IF EXISTS address_history CASCADE;
 
 /*==============================================================*/
-/* Table: Adres                                                 */
+/* Table: address                                               */
 /*==============================================================*/
-
-CREATE TABLE Adres
+CREATE TABLE address
 (
-  IDAdres       SERIAL NOT NULL PRIMARY KEY,
-  Ulica         TEXT   NOT NULL,
-  Nr_domu       TEXT   NOT NULL,
-  Nr_Mieszkania TEXT   NOT NULL,
-  Miasto        TEXT   NOT NULL,
-  Kod_pocztowy  TEXT   NOT NULL CHECK (length(Kod_pocztowy) IN (5, 6))
+  id_address   SERIAL NOT NULL PRIMARY KEY,
+  street       TEXT   NOT NULL,
+  house_number TEXT   NOT NULL,
+  flat_number  TEXT   NOT NULL,
+  city         TEXT   NOT NULL,
+  postal_code  TEXT   NOT NULL
 );
 
 /*==============================================================*/
-/* Table: Klient                                                */
+/* Table: client                                                */
 /*==============================================================*/
-
-CREATE TABLE Klient
+CREATE TABLE client
 (
-  IDKlient SERIAL NOT NULL PRIMARY KEY,
-  IDAdres  INT    NOT NULL REFERENCES Adres (IDAdres),
-  Imie     TEXT   NOT NULL,
-  Nazwisko TEXT   NOT NULL,
-  PESEL    TEXT   NOT NULL,
-  Telefon  TEXT   NOT NULL,
-  Email    TEXT   NOT NULL
+  id_client    SERIAL NOT NULL PRIMARY KEY,
+  id_address   INT    NOT NULL REFERENCES address (id_address),
+  name         TEXT   NOT NULL,
+  surname      TEXT   NOT NULL,
+  PESEL        TEXT   NOT NULL,
+  phone_number TEXT   NOT NULL,
+  mail         TEXT   NOT NULL
 );
 
 /*==============================================================*/
-/* Table: PlatnoscMetoda                                        */
+/* Table: payment_method                                        */
 /*==============================================================*/
-
-CREATE TABLE PlatnoscMetoda
+CREATE TABLE payment_method
 (
-  IDPlatnoscMetoda SERIAL NOT NULL PRIMARY KEY,
-  Nazwa            TEXT   NOT NULL
+  id_payment_method SERIAL NOT NULL PRIMARY KEY,
+  name              TEXT   NOT NULL
 );
 
 /*==============================================================*/
-/* Table: Platnosc                                              */
+/* Table: payment                                               */
 /*==============================================================*/
-
-CREATE TABLE Platnosc
+CREATE TABLE payment
 (
-  IDPlatnosc       SERIAL NOT NULL PRIMARY KEY,
-  IDPlatnoscMetoda INT    NOT NULL REFERENCES PlatnoscMetoda (IDPlatnoscMetoda),
-  Wartosc          INT    NOT NULL,
-  DataPlatnosci    DATE   NOT NULL
+  id_payment        SERIAL NOT NULL PRIMARY KEY,
+  id_payment_method INT    NOT NULL REFERENCES payment_method (id_payment_method),
+  value             INT    NOT NULL,
+  date_of_payment   DATE   NOT NULL
 );
 
 /*==============================================================*/
-/* Table: PokojStatus                                           */
+/* Table: room_status                                           */
 /*==============================================================*/
-
-CREATE TABLE PokojStatus
+CREATE TABLE room_status
 (
-  IDPokojStatus SERIAL NOT NULL PRIMARY KEY,
-  StatusPokoju  TEXT   NOT NULL,
-  OpisStatusu   TEXT   NOT NULL
+  id_room_status     SERIAL NOT NULL PRIMARY KEY,
+  room_status        TEXT   NOT NULL,
+  status_description TEXT   NOT NULL
 );
 
 /*==============================================================*/
-/* Table: Pokoj                                                 */
+/* Table: room                                                  */
 /*==============================================================*/
-
-CREATE TABLE Pokoj
+CREATE TABLE room
 (
-  IDPokoj       SERIAL NOT NULL PRIMARY KEY,
-  IDPokojStatus INT    NOT NULL REFERENCES PokojStatus (IDPokojStatus),
-  LiczbaOsob    INT    NOT NULL,
-  Opis          TEXT   NOT NULL
+  id_room          SERIAL NOT NULL PRIMARY KEY,
+  id_room_status   INT    NOT NULL REFERENCES room_status (id_room_status),
+  number_of_people INT    NOT NULL,
+  description      TEXT   NOT NULL
 );
 
 /*==============================================================*/
-/* Table: PokojTyp                                              */
+/* Table: room_type                                             */
 /*==============================================================*/
-
-CREATE TABLE PokojTyp
+CREATE TABLE room_type
 (
-  IDPokojTyp SERIAL NOT NULL PRIMARY KEY,
-  Opis       TEXT   NOT NULL,
-  Mnoznik    INT    NOT NULL
+  id_room_type SERIAL NOT NULL PRIMARY KEY,
+  description  TEXT   NOT NULL,
+  multiplier   INT    NOT NULL
 );
 
 /*==============================================================*/
-/* Table: Status_Rezerwacji                                     */
+/* Table: reservation_status                                    */
 /*==============================================================*/
-
-CREATE TABLE Status_Rezerwacji
+CREATE TABLE reservation_status
 (
-  IDStatusRezerwacja SERIAL NOT NULL PRIMARY KEY,
-  Status_Rezerwacji  TEXT   NOT NULL
+  id_reservation_status SERIAL NOT NULL PRIMARY KEY,
+  reservation_status    TEXT   NOT NULL
 );
 
 /*==============================================================*/
-/* Table: Stawka                                                */
+/* Table: rate                                                  */
 /*==============================================================*/
-
-CREATE TABLE Stawka
+CREATE TABLE rate
 (
-  IDStawka         SERIAL NOT NULL PRIMARY KEY,
-  IDPokoj          INT    NOT NULL REFERENCES Pokoj (IDPokoj),
-  IDPokojTyp       INT    NOT NULL REFERENCES PokojTyp (IDPokojTyp),
-  StawkaPodstawowa INT    NOT NULL
+  id_rate      SERIAL NOT NULL PRIMARY KEY,
+  id_room      INT    NOT NULL REFERENCES room (id_room),
+  id_room_type INT    NOT NULL REFERENCES room_type (id_room_type),
+  default_rate INT    NOT NULL
 );
 
 /*==============================================================*/
-/* Table: Rezerwacja                                            */
+/* Table: reservation                                           */
 /*==============================================================*/
-
-CREATE TABLE Rezerwacja
+CREATE TABLE reservation
 (
-  IDRezerwacja       SERIAL NOT NULL PRIMARY KEY,
-  IDStatusRezerwacja INT    NOT NULL REFERENCES Status_Rezerwacji (IDStatusRezerwacja),
-  IDPlatnosc         INT    NOT NULL REFERENCES Platnosc (IDPlatnosc),
-  IDKlient           INT    NOT NULL REFERENCES Klient (IDKlient),
-  DataPrzyjazd       DATE   NOT NULL,
-  DataWyjazd         DATE   NOT NULL,
-  DataRezerwacja     DATE   NOT NULL,
-  Suma               INT    NOT NULL
+  id_reservation        SERIAL NOT NULL PRIMARY KEY,
+  id_resrevation_status INT    NOT NULL REFERENCES reservation_status (id_reservation_status),
+  id_payment            INT    NOT NULL REFERENCES payment (id_payment),
+  id_client             INT    NOT NULL REFERENCES client (id_client),
+  from_date             DATE   NOT NULL,
+  to_date               DATE   NOT NULL,
+  reservation_date      DATE   NOT NULL,
+  amount                INT    NOT NULL
 );
 
-
 /*==============================================================*/
-/* Table: Pokoj_x_Rezerwacja                                    */
+/* Table: room_x_reservation                                    */
 /*==============================================================*/
-
-CREATE TABLE Pokoj_x_Rezerwacja
+CREATE TABLE room_x_reservation
 (
-  IDRezerwacja INT NOT NULL REFERENCES Rezerwacja (IDRezerwacja),
-  IDPokoj      INT NOT NULL REFERENCES Pokoj (IDPokoj),
-  CenaPokoj    INT NOT NULL,
-  PRIMARY KEY (IDRezerwacja, IDPokoj)
-);
-
-
-/*==============================================================*/
-/* Table: klientHistoria                                        */
-/*==============================================================*/
-
-CREATE TABLE klientHistoria (
-  id          SERIAL PRIMARY KEY,
-  idKlient    INT  NOT NULL,
-  imie        TEXT NOT NULL,
-  nazwiko     TEXT NOT NULL,
-  data_zmiany DATE NOT NULL
+  id_reservation SERIAL NOT NULL REFERENCES reservation (id_reservation),
+  id_room        INT    NOT NULL REFERENCES room (id_room),
+  room_price     INT    NOT NULL,
+  PRIMARY KEY (id_reservation, id_room)
 );
 
 /*==============================================================*/
-/* Table: adresHistoria                                        */
+/* Table: client_history                                        */
 /*==============================================================*/
+CREATE TABLE client_history (
+  id          SERIAL NOT NULL PRIMARY KEY,
+  client_id   INT    NOT NULL REFERENCES client (id_client),
+  name        TEXT   NOT NULL,
+  surname     TEXT   NOT NULL,
+  change_date DATE   NOT NULL
+);
 
-CREATE TABLE adresHistoria (
-  id            SERIAL PRIMARY KEY,
-  idAdres       INT  NOT NULL,
-  Ulica         TEXT NOT NULL,
-  Nr_domu       TEXT NOT NULL,
-  Nr_Mieszkania TEXT NOT NULL,
-  Miasto        TEXT NOT NULL,
-  Kod_pocztowy  TEXT NOT NULL
+/*==============================================================*/
+/* Table: address_history                                       */
+/*==============================================================*/
+CREATE TABLE address_history (
+  id           SERIAL NOT NULL PRIMARY KEY,
+  id_address   INT    NOT NULL REFERENCES address (id_address),
+  street       TEXT   NOT NULL,
+  house_number TEXT   NOT NULL,
+  flat_number  TEXT   NOT NULL,
+  city         TEXT   NOT NULL,
+  postal_code  TEXT   NOT NULL,
+  change_date DATE   NOT NULL
 );
 
 
-INSERT INTO Adres VALUES (1, 'Długa', 5, 34, 'Poznań', '44-300');
-INSERT INTO Adres VALUES (2, 'Daleka', 54, 66, 'Gdynia', '49-321');
-INSERT INTO Adres VALUES (3, 'Siwa', 31, 43, 'Wrocłas', '34-323');
+INSERT INTO address VALUES (1, 'Long', 5, 34, 'New York', '44-300');
+INSERT INTO address VALUES (2, 'Long streen', 54, 66, 'Paris', '49-321');
+INSERT INTO address VALUES (3, '18 Street', 31, 43, 'Sydney', '34-323');
 
-INSERT INTO Klient VALUES (1, 1, 'Jan', 'Nowak', '9010100293', '500493003', 'janek21313@wp.pl');
-INSERT INTO Klient VALUES (2, 2, 'Juliusz', 'Cezar', '8810120293', '504939203', 'kulek123121@wp.pl');
-INSERT INTO Klient VALUES (3, 3, 'Marta', 'Kownacka', '9105030293', '511493003', 'marta3421@gmail.pl');
-INSERT INTO Klient VALUES (4, 1, 'Jan', 'Nowosielski', '9205030293', '521493003', 'jannowosielski2344@onet.pl');
-INSERT INTO Klient VALUES (5, 2, 'Marta', 'Korycka', '9205030293', '503493003', 'martakorycka2349@wp.pl');
+INSERT INTO client VALUES (1, 1, 'John', 'New', '9010100293', '500493003', 'janek21313@oc.eu');
+INSERT INTO client VALUES (2, 2, 'Mark', 'Spencer', '8810120293', '504939203', 'kulek123121@oc.eu');
+INSERT INTO client VALUES (3, 3, 'Jules', 'Black', '9105030293', '511493003', 'marta3421@oc.eu');
+INSERT INTO client VALUES (4, 1, 'Maria', 'White', '9205030293', '521493003', 'jannowosielski2344@oc.eu');
+INSERT INTO client VALUES (5, 2, 'Paris', 'Mary', '9205030293', '503493003', 'martakorycka2349@oc.eu');
 
-INSERT INTO Status_rezerwacji VALUES (1, 'Nowa');
-INSERT INTO Status_rezerwacji VALUES (2, 'Zakończona');
-INSERT INTO Status_rezerwacji VALUES (3, 'Anulowana');
+INSERT INTO reservation_status VALUES (1, 'New');
+INSERT INTO reservation_status VALUES (2, 'Finished');
+INSERT INTO reservation_status VALUES (3, 'Canceled');
 
-INSERT INTO PlatnoscMetoda VALUES (1, 'Karta debetowa');
-INSERT INTO PlatnoscMetoda VALUES (2, 'Karta kredytowa');
-INSERT INTO PlatnoscMetoda VALUES (3, 'Gotówka');
+INSERT INTO payment_method VALUES (1, 'Debit card');
+INSERT INTO payment_method VALUES (2, 'Credit card');
+INSERT INTO payment_method VALUES (3, 'Cash');
 
-INSERT INTO Platnosc VALUES (1, 1, 100, NOW());
-INSERT INTO Platnosc VALUES (2, 2, 220, NOW());
-INSERT INTO Platnosc VALUES (3, 3, 260, NOW());
-INSERT INTO Platnosc VALUES (4, 3, 150, NOW());
-INSERT INTO Platnosc VALUES (5, 2, 240, NOW());
-INSERT INTO Platnosc VALUES (6, 2, 130, NOW());
-INSERT INTO Platnosc VALUES (7, 3, 355, NOW());
-INSERT INTO Platnosc VALUES (8, 2, 435, NOW());
-INSERT INTO Platnosc VALUES (9, 2, 755, NOW());
-INSERT INTO Platnosc VALUES (10, 1, 125, NOW());
+INSERT INTO payment VALUES (1, 1, 100, NOW());
+INSERT INTO payment VALUES (2, 2, 220, NOW());
+INSERT INTO payment VALUES (3, 3, 260, NOW());
+INSERT INTO payment VALUES (4, 3, 150, NOW());
+INSERT INTO payment VALUES (5, 2, 240, NOW());
+INSERT INTO payment VALUES (6, 2, 130, NOW());
+INSERT INTO payment VALUES (7, 3, 355, NOW());
+INSERT INTO payment VALUES (8, 2, 435, NOW());
+INSERT INTO payment VALUES (9, 2, 755, NOW());
+INSERT INTO payment VALUES (10, 1, 125, NOW());
 
-INSERT INTO Rezerwacja VALUES (1, 1, 1, 3, NOW(), NOW(), NOW(), 120);
-INSERT INTO Rezerwacja VALUES (2, 3, 2, 3, NOW(), NOW(), NOW(), 340);
-INSERT INTO Rezerwacja VALUES (3, 1, 3, 3, NOW(), NOW(), NOW(), 110);
-INSERT INTO Rezerwacja VALUES (4, 2, 4, 3, NOW(), NOW(), NOW(), 420);
-INSERT INTO Rezerwacja VALUES (5, 3, 5, 3, NOW(), NOW(), NOW(), 490);
-INSERT INTO Rezerwacja VALUES (6, 3, 6, 1, NOW(), NOW(), NOW(), 150);
-INSERT INTO Rezerwacja VALUES (7, 3, 1, 1, NOW(), NOW(), NOW(), 90);
-INSERT INTO Rezerwacja VALUES (8, 3, 3, 2, NOW(), NOW(), NOW(), 130);
-INSERT INTO Rezerwacja VALUES (9, 1, 4, 2, NOW(), NOW(), NOW(), 175);
-INSERT INTO Rezerwacja VALUES (10, 2, 1, 3, NOW(), NOW(), NOW(), 200);
-INSERT INTO Rezerwacja VALUES (11, 3, 2, 4, NOW(), NOW(), NOW(), 140);
-INSERT INTO Rezerwacja VALUES (12, 3, 3, 4, NOW(), NOW(), NOW(), 200);
-INSERT INTO Rezerwacja VALUES (13, 2, 1, 4, NOW(), NOW(), NOW(), 220);
-INSERT INTO Rezerwacja VALUES (14, 1, 5, 1, NOW(), NOW(), NOW(), 160);
-INSERT INTO Rezerwacja VALUES (15, 1, 4, 5, NOW(), NOW(), NOW(), 120);
+INSERT INTO reservation VALUES (1, 1, 1, 3, NOW(), NOW(), NOW(), 120);
+INSERT INTO reservation VALUES (2, 3, 2, 3, NOW(), NOW(), NOW(), 340);
+INSERT INTO reservation VALUES (3, 1, 3, 3, NOW(), NOW(), NOW(), 110);
+INSERT INTO reservation VALUES (4, 2, 4, 3, NOW(), NOW(), NOW(), 420);
+INSERT INTO reservation VALUES (5, 3, 5, 3, NOW(), NOW(), NOW(), 490);
+INSERT INTO reservation VALUES (6, 3, 6, 1, NOW(), NOW(), NOW(), 150);
+INSERT INTO reservation VALUES (7, 3, 1, 1, NOW(), NOW(), NOW(), 90);
+INSERT INTO reservation VALUES (8, 3, 3, 2, NOW(), NOW(), NOW(), 130);
+INSERT INTO reservation VALUES (9, 1, 4, 2, NOW(), NOW(), NOW(), 175);
+INSERT INTO reservation VALUES (10, 2,1, 3, NOW(), NOW(), NOW(), 200);
+INSERT INTO reservation VALUES (11, 3, 2, 4, NOW(), NOW(), NOW(), 140);
+INSERT INTO reservation VALUES (12, 3, 3, 4, NOW(), NOW(), NOW(), 200);
+INSERT INTO reservation VALUES (13, 2, 1, 4, NOW(), NOW(), NOW(), 220);
+INSERT INTO reservation VALUES (14, 1, 5, 1, NOW(), NOW(), NOW(), 160);
+INSERT INTO reservation VALUES (15, 1, 4, 5, NOW(), NOW(), NOW(), 120);
 
-INSERT INTO PokojStatus VALUES (1, 'Zajęty', 'Pokój zajęty');
-INSERT INTO PokojStatus VALUES (2, 'Wolny', 'Pokój wolny');
-INSERT INTO PokojStatus VALUES (3, 'Zarezerwowany', 'Pokój zarezerwowany');
+INSERT INTO room_status VALUES (1, 'Not empty', 'Room not empty');
+INSERT INTO room_status VALUES (2, 'Empty', 'Room empty');
+INSERT INTO room_status VALUES (3, 'Reserved', 'Room reserved');
 
-INSERT INTO Pokoj VALUES (1, 1, 3, 'Pokój trzyosobowy');
-INSERT INTO Pokoj VALUES (2, 2, 4, 'Pokój czterosobowy');
-INSERT INTO Pokoj VALUES (3, 2, 4, 'Pokój czterosobowy');
-INSERT INTO Pokoj VALUES (4, 1, 5, 'Pokój pięcioosobowy');
-INSERT INTO Pokoj VALUES (5, 1, 2, 'Pokój dwuosobowy');
-INSERT INTO Pokoj VALUES (6, 2, 2, 'Pokój dwuosobowy');
-INSERT INTO Pokoj VALUES (7, 1, 3, 'Pokój trzyosobowy');
-INSERT INTO Pokoj VALUES (8, 3, 4, 'Pokój czterosobowy');
-INSERT INTO Pokoj VALUES (9, 2, 5, 'Pokój pięcioosobowy');
-INSERT INTO Pokoj VALUES (10, 1, 5, 'Pokój pięciioosobowy');
+INSERT INTO room VALUES (1, 1, 3, 'A triple room');
+INSERT INTO room VALUES (2, 2, 4, 'Four-person room');
+INSERT INTO room VALUES (3, 2, 4, 'Four-person room');
+INSERT INTO room VALUES (4, 1, 5, 'Five-person room');
+INSERT INTO room VALUES (5, 1, 2, 'Double room');
+INSERT INTO room VALUES (6, 2, 2, 'Double room');
+INSERT INTO room VALUES (7, 1, 3, 'A triple room');
+INSERT INTO room VALUES (8, 3, 4, 'Four-person room');
+INSERT INTO room VALUES (9, 2, 5, 'Five-person room');
+INSERT INTO room VALUES (10, 1, 5, 'Five-person room');
 
-INSERT INTO PokojTyp VALUES (1, 'Zwykły', 1);
-INSERT INTO PokojTyp VALUES (2, 'Premium', 2);
-INSERT INTO PokojTyp VALUES (3, 'Nadzwyczajny', 3);
+INSERT INTO room_type VALUES (1, 'Basic', 1);
+INSERT INTO room_type VALUES (2, 'Premium', 2);
+INSERT INTO room_type VALUES (3, 'Luxury', 3);
 
-INSERT INTO Stawka VALUES (1, 1, 2, 200);
-INSERT INTO Stawka VALUES (2, 2, 2, 200);
-INSERT INTO Stawka VALUES (3, 3, 3, 200);
+INSERT INTO rate VALUES (1, 1, 2, 200);
+INSERT INTO rate VALUES (2, 2, 2, 200);
+INSERT INTO rate VALUES (3, 3, 3, 200);
 
-INSERT INTO Pokoj_x_Rezerwacja VALUES (1, 1, 420);
-INSERT INTO Pokoj_x_Rezerwacja VALUES (1, 2, 120);
-INSERT INTO Pokoj_x_Rezerwacja VALUES (2, 2, 135);
-INSERT INTO Pokoj_x_Rezerwacja VALUES (2, 1, 200);
-INSERT INTO Pokoj_x_Rezerwacja VALUES (3, 2, 150);
+INSERT INTO room_x_reservation VALUES (1, 1, 420);
+INSERT INTO room_x_reservation VALUES (1, 2, 120);
+INSERT INTO room_x_reservation VALUES (2, 2, 135);
+INSERT INTO room_x_reservation VALUES (2, 1, 200);
+INSERT INTO room_x_reservation VALUES (3, 2, 150);
 
 
-DROP VIEW IF EXISTS v_podstawoweInformacjeKlient;
-DROP VIEW IF EXISTS v_liczbaDostepnychPokoiTyp;
-DROP VIEW IF EXISTS v_emailKlientLiczbaRezerwacji;
+DROP VIEW IF EXISTS v_client_basic_information;
+DROP VIEW IF EXISTS v_number_of_empty_rooms;
+DROP VIEW IF EXISTS v_client_reservations;
 
 
 /*==============================================================*/
-/* View: v_podstawoweInformacjeKlient                           */
+/* View: v_client_basic_information                             */
 /*==============================================================*/
 
-CREATE VIEW v_podstawoweInformacjeKlient AS
+CREATE VIEW v_client_basic_information AS
   SELECT
-    k.Imie,
-    k.Nazwisko,
-    adres.miasto
-  FROM klient k
-    LEFT JOIN adres ON k.IDAdres = adres.IDAdres
-  ORDER BY k.Nazwisko ASC;
+    c.name,
+    c.surname,
+    a.city
+  FROM client c
+    LEFT JOIN address a ON c.id_address = a.id_address
+  ORDER BY c.name ASC;
 
 
 /*==============================================================*/
-/* view: v_liczbaDostepnychPokoiTyp                             */
+/* view: v_number_of_empty_rooms                                */
 /*==============================================================*/
 
-CREATE VIEW v_liczbaDostepnychPokoiTyp AS
+CREATE VIEW v_number_of_empty_rooms AS
   SELECT
-    ps.opisstatusu,
-    COUNT(pt.opis)
-  FROM pokoj p
-    LEFT JOIN stawka s ON s.idpokoj = p.idpokoj
-    LEFT JOIN pokojtyp pt ON p.IDPokoj = s.IDPokojTyp
-    LEFT JOIN pokojstatus ps ON p.IDPokojStatus = ps.IDPokojStatus
-  WHERE ps.IDPokojStatus = 2
-  GROUP BY (ps.opisstatusu);
+    rs.status_description,
+    COUNT(r_type.description)
+  FROM room r
+    LEFT JOIN rate rt ON rt.id_room = r.id_room
+    LEFT JOIN room_type r_type ON r.id_room = rt.id_room_type
+    LEFT JOIN room_status rs ON r.id_room_status = rs.id_room_status
+  WHERE rs.id_room_status = 2
+  GROUP BY (rs.status_description);
 
 
 /*==============================================================*/
-/* view: v_emailKlientLiczbaRezerwacji                          */
+/* view: v_client_reservations                                  */
 /*==============================================================*/
 
-CREATE VIEW v_emailKlientLiczbaRezerwacji AS
+CREATE VIEW v_client_reservations as
   SELECT
-    k.email,
-    COUNT(r.IDRezerwacja) "ilosc rezerwacji"
-  FROM klient k
-    LEFT JOIN rezerwacja r ON k.idklient = r.IDKlient
-  GROUP BY (k.email)
-  ORDER BY ("ilosc rezerwacji") DESC;
+    c.mail,
+    COUNT(r.id_reservation) "Number of reservartions"
+  FROM client c
+    LEFT JOIN reservation r ON c.id_client = r.id_client
+  GROUP BY (c.mail)
+  ORDER BY ("Number of reservartions") DESC;
 
 
-DROP FUNCTION IF EXISTS zaloguj_zmiane_imienia_lub_nazwiska();
-DROP FUNCTION IF EXISTS zaloguj_zmiane_adresu();
+DROP FUNCTION IF EXISTS log_client_data_changed();
+DROP FUNCTION IF EXISTS log_address_changed();
 
-DROP TRIGGER IF EXISTS zmiana_imienia_lub_nazwiska ON klient;
-DROP TRIGGER IF EXISTS zmiana_adresu ON adres;
+DROP TRIGGER IF EXISTS changing_client_data ON client;
+DROP TRIGGER IF EXISTS changing_address ON address;
 
 
 /*==============================================================*/
-/* function: zaloguj_zmiane_imienia_lub_nazwiska()              */
+/* function: log_client_data_changed()                          */
 /*==============================================================*/
 
 CREATE OR REPLACE FUNCTION zaloguj_zmiane_imienia_lub_nazwiska()
   RETURNS TRIGGER AS
 $BODY$
 BEGIN
-  INSERT INTO klienthistoria (idKlient, imie, nazwiko, data_zmiany)
-  VALUES (OLD.idKlient, OLD.imie, OLD.nazwisko, now());
+  INSERT INTO klient_history (client_id, name, surname, change_date)
+  VALUES (OLD.client_id, OLD.name, OLD.surname, now());
   RETURN NEW;
 END;
 $BODY$ LANGUAGE plpgsql;
 
 
 /*==============================================================*/
-/* viewfunction: zaloguj_zmiane_adresu()                        */
+/* viewfunction: log_address_changed()                          */
 /*==============================================================*/
 
 CREATE OR REPLACE FUNCTION zaloguj_zmiane_adresu()
   RETURNS TRIGGER AS
 $BODY$
 BEGIN
-  INSERT INTO adreshistoria (idadres, ulica, nr_domu, nr_mieszkania, miasto, kod_pocztowy)
-  VALUES (OLD.idadres, OLD.ulica, OLD.nr_domu, OLD.nr_mieszkania, OLD.miasto, now());
+  INSERT INTO address_history (id_address, street, house_number, flat_number, city, postal_code, change_date)
+  VALUES (OLD.id_address, OLD.street, OLD.house_number, OLD.flat_number, OLD.city, postal_code, now());
   RETURN NEW;
 END;
 $BODY$ LANGUAGE plpgsql;
 
 
 /*==============================================================*/
-/* trigger: zmiana_imienia_lub_nazwiska                         */
+/* trigger: changing_client_data                                */
 /*==============================================================*/
 
-CREATE TRIGGER zmiana_imienia_lub_nazwiska
+CREATE TRIGGER changing_client_data
 BEFORE UPDATE
-ON klient
+ON client
 FOR EACH ROW
-EXECUTE PROCEDURE zaloguj_zmiane_imienia_lub_nazwiska();
+EXECUTE PROCEDURE log_client_data_changed();
 
 
 /*==============================================================*/
-/* trigger: zmiana_adresu                                       */
+/* trigger: changing_address                                    */
 /*==============================================================*/
 
-CREATE TRIGGER zmiana_adresu
+CREATE TRIGGER changing_address
 BEFORE UPDATE
-ON adres
+ON address
 FOR EACH ROW
-EXECUTE PROCEDURE zaloguj_zmiane_adresu();
+EXECUTE PROCEDURE log_address_changed();

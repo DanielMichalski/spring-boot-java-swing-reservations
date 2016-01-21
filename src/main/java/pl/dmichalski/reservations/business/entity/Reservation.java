@@ -4,36 +4,36 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "rezerwacja")
+@Table(name = "reservation")
 public class Reservation {
 
     @Id
     @GeneratedValue
-    @Column(name = "idrezerwacja")
+    @Column(name = "id_reservation")
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "idstatusrezerwacja")
+    @JoinColumn(name = "id_resrevation_status")
     private ReservationStatus reservationStatus;
 
     @ManyToOne
-    @JoinColumn(name = "idplatnosc")
+    @JoinColumn(name = "id_payment")
     private Payment payment;
 
     @ManyToOne
-    @JoinColumn(name = "idklient")
+    @JoinColumn(name = "id_client")
     private Client client;
 
-    @Column(name = "dataprzyjazd")
+    @Column(name = "from_date")
     private Date dateFrom;
 
-    @Column(name = "datawyjazd")
+    @Column(name = "to_date")
     private Date dateTo;
 
-    @Column(name = "datarezerwacja")
+    @Column(name = "reservation_date")
     private Date reservationDate;
 
-    @Column(name = "suma")
+    @Column(name = "amount")
     private long amount;
 
     public long getId() {
