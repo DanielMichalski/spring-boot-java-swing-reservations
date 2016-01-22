@@ -13,8 +13,8 @@ CREATE OR REPLACE FUNCTION log_client_data_changed()
   RETURNS TRIGGER AS
 $BODY$
 BEGIN
-  INSERT INTO klient_history (client_id, name, surname, change_date)
-  VALUES (OLD.client_id, OLD.name, OLD.surname, now());
+  INSERT INTO client_history (client_id, name, surname, change_date)
+  VALUES (OLD.id_client, OLD.name, OLD.surname, now());
   RETURN NEW;
 END;
 $BODY$ LANGUAGE plpgsql;
