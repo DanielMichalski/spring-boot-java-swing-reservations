@@ -2,7 +2,6 @@ INSERT INTO address VALUES (nextval('address_id_address_seq'), 'Long', '5', '34'
 INSERT INTO address VALUES (nextval('address_id_address_seq'), 'Long streen', '54', '66', 'Paris', '49-321');
 INSERT INTO address VALUES (nextval('address_id_address_seq'), '18 Street', '31', '43', 'Sydney', '34-323');
 
-
 INSERT INTO client VALUES (nextval('client_id_client_seq'), 1, 'John', 'New', '9010100293', '500493003', 'janek21313@oc.eu');
 INSERT INTO client VALUES (nextval('client_id_client_seq'), 2, 'Mark', 'Spencer', '8810120293', '504939203', 'kulek123121@oc.eu');
 INSERT INTO client VALUES (nextval('client_id_client_seq'), 3, 'Jules', 'Black', '9105030293', '511493003', 'marta3421@oc.eu');
