@@ -3,29 +3,11 @@ Spring Boot Swing Reservations
 
 This project is Spring Boot + JPA/Hibernate Swing application.
 
-It contains some useful configuration items:
-
-- Spring Boot
-- Spring Data Repositories
-- JPA + Hibernate
-- Internationalization
-- Spring profiles
-- Swing application
-
-
-How to run application
+Videos
 ---------------------------------------------
-```bash
-## Build application from base directory
-mvn clean install
-
-## Run Spring boot application with embedded H2 database
-mvn spring-boot:run
-
-## Or if You want to run application with PostgreSQL
-mvn spring-boot:run -Dspring.profiles.active=prod
-```
-
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=YOUTUBE_VIDEO_ID_HERE
+" target="_blank"><img src="http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 Screens
 ---------------------------------------------
