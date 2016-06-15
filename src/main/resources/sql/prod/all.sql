@@ -39,6 +39,8 @@ CREATE TABLE address
   postal_code  TEXT   NOT NULL
 );
 
+CREATE INDEX address_city_index ON address(city);
+
 /*==============================================================*/
 /* Table: client                                                */
 /*==============================================================*/
@@ -52,6 +54,10 @@ CREATE TABLE client
   phone_number TEXT   NOT NULL,
   mail         TEXT   NOT NULL
 );
+
+CREATE INDEX client_id_address_index ON client(id_address);
+CREATE INDEX client_PESEL_index ON client(PESEL);
+CREATE INDEX client_phone_number_index ON client(phone_number);
 
 /*==============================================================*/
 /* Table: payment_method                                        */
@@ -73,6 +79,8 @@ CREATE TABLE payment
   date_of_payment   DATE   NOT NULL
 );
 
+CREATE INDEX payment_id_payment_method_index ON payment(id_payment_method);
+
 /*==============================================================*/
 /* Table: room_status                                           */
 /*==============================================================*/
@@ -82,6 +90,8 @@ CREATE TABLE room_status
   room_status        TEXT   NOT NULL,
   status_description TEXT   NOT NULL
 );
+
+CREATE INDEX room_status_room_status_index ON room_status(room_status);
 
 /*==============================================================*/
 /* Table: room                                                  */
@@ -93,6 +103,8 @@ CREATE TABLE room
   number_of_people INT    NOT NULL,
   description      TEXT   NOT NULL
 );
+
+CREATE INDEX room_id_room_status_index ON room(id_room_status);
 
 /*==============================================================*/
 /* Table: room_type                                             */
@@ -113,6 +125,8 @@ CREATE TABLE reservation_status
   reservation_status    TEXT   NOT NULL
 );
 
+CREATE INDEX reservation_status_reservation_status_index ON reservation_status(reservation_status);
+
 /*==============================================================*/
 /* Table: rate                                                  */
 /*==============================================================*/
@@ -123,6 +137,9 @@ CREATE TABLE rate
   id_room_type INT    NOT NULL REFERENCES room_type (id_room_type),
   default_rate INT    NOT NULL
 );
+
+CREATE INDEX rate_id_room_index ON rate(id_room);
+CREATE INDEX rate_id_room_type_index ON rate(id_room_type);
 
 /*==============================================================*/
 /* Table: reservation                                           */
@@ -139,6 +156,12 @@ CREATE TABLE reservation
   amount                INT    NOT NULL
 );
 
+CREATE INDEX reservation_id_resrevation_status_index ON reservation(id_resrevation_status);
+CREATE INDEX reservation_id_payment_index ON reservation(id_payment);
+CREATE INDEX reservation_id_client_index ON reservation(id_client);
+CREATE INDEX reservation_from_date_index ON reservation(from_date);
+CREATE INDEX reservation_to_date_index ON reservation(to_date);
+
 /*==============================================================*/
 /* Table: room_x_reservation                                    */
 /*==============================================================*/
@@ -150,6 +173,8 @@ CREATE TABLE room_x_reservation
   PRIMARY KEY (id_reservation, id_room)
 );
 
+CREATE INDEX room_x_reservation_id_room_index ON room_x_reservation(id_room);
+
 /*==============================================================*/
 /* Table: client_history                                        */
 /*==============================================================*/
@@ -160,6 +185,10 @@ CREATE TABLE client_history (
   surname     TEXT   NOT NULL,
   change_date DATE   NOT NULL
 );
+
+CREATE INDEX client_history_client_id_index ON client_history(client_id);
+CREATE INDEX client_history_name_index ON client_history(name);
+CREATE INDEX client_history_surname_index ON client_history(surname);
 
 /*==============================================================*/
 /* Table: address_history                                       */
@@ -175,6 +204,8 @@ CREATE TABLE address_history (
   change_date DATE   NOT NULL
 );
 
+CREATE INDEX address_history_id_address_index ON address_history(id_address);
+CREATE INDEX address_history_city_index ON address_history(city);
 
 INSERT INTO address VALUES (nextval('address_id_address_seq'), 'Long', '5', '34', 'New York', '44-300');
 INSERT INTO address VALUES (nextval('address_id_address_seq'), 'Long streen', '54', '66', 'Paris', '49-321');
