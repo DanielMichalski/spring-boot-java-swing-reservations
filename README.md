@@ -26,12 +26,6 @@ mvn spring-boot:run
 mvn spring-boot:run -Dspring.profiles.active=prod
 ```
 
-Video
----------------------------------------------
-
-[![See on YouTube](http://img.youtube.com/vi/fcWp7h860qQ/0.jpg)](https://www.youtube.com/watch?v=fcWp7h860qQ)
-
-
 Screens
 ---------------------------------------------
 
