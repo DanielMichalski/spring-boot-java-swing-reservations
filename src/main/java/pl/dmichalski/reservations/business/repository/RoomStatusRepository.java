@@ -12,4 +12,3 @@ public interface RoomStatusRepository extends JpaRepository<RoomStatus, Long> {
     Object[][] getRoomStatusesCount();
 
 }
-
