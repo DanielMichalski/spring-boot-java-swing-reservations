@@ -5,8 +5,11 @@ import javax.swing.border.Border;
 
 public class Borders {
 
+    private static final int HEIGHT = 20;
+    private static final int WIDTH = 40;
+
     public static Border createEmptyBorder() {
-        return BorderFactory.createEmptyBorder(20, 40, 20, 40);
+        return BorderFactory.createEmptyBorder(HEIGHT, WIDTH, HEIGHT, WIDTH);
     }
 
 }
