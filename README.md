@@ -3,7 +3,7 @@ Spring Boot Swing Reservations
 
 This project is Spring Boot + JPA/Hibernate Swing application.
 
-It contains some useful configuration items:
+It contains some useful configuration things:
 
 - Spring Boot
 - Spring Data Repositories
