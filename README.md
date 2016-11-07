@@ -26,6 +26,11 @@ mvn spring-boot:run
 mvn spring-boot:run -Dspring.profiles.active=prod
 ```
 
+Video
+-----
+
+[![Spring Boot Swing Reservations](http://img.youtube.com/vi/Z8iBbVGTSx8/0.jpg)](http://www.youtube.com/watch?v=Z8iBbVGTSx8 "Spring Boot Swing Reservations")
+
 Screens
 ---------------------------------------------
 
