@@ -1,11 +1,12 @@
 package pl.dmichalski.reservations.business.ui.reports.room_statuses.view;
 
+import java.awt.BorderLayout;
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
-
-import javax.swing.*;
-import java.awt.*;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
 public class RoomStatusReportTableFrame extends JFrame {

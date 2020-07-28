@@ -1,9 +1,15 @@
 package pl.dmichalski.reservations.business.ui.forms.room_type.controller;
 
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.PostConstruct;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import pl.dmichalski.reservations.business.entity.RoomType;
-import pl.dmichalski.reservations.business.service.RoomTypeService;
+import pl.dmichalski.reservations.business.domain.entity.room.RoomTypeEntity;
+import pl.dmichalski.reservations.business.service.room.RoomTypeService;
 import pl.dmichalski.reservations.business.ui.forms.room_type.model.RoomTypeTableModel;
 import pl.dmichalski.reservations.business.ui.forms.room_type.view.RoomTypeTableBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.room_type.view.RoomTypeTableFrame;
@@ -11,15 +17,10 @@ import pl.dmichalski.reservations.business.ui.forms.room_type.view.modal.AddRoom
 import pl.dmichalski.reservations.business.ui.forms.room_type.view.modal.RoomTypeFormBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.room_type.view.modal.RoomTypeFormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.Notifications;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
+import pl.dmichalski.reservations.business.util.notifications.Notifications;
 import pl.dmichalski.reservations.business.validation.RoomTypeValidator;
 import pl.dmichalski.reservations.business.validation.ValidationError;
-
-import javax.annotation.PostConstruct;
-import javax.swing.*;
-import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class RoomTypeController extends AbstractFrameController {
@@ -61,7 +62,7 @@ public class RoomTypeController extends AbstractFrameController {
     }
 
     private void loadEntities() {
-        List<RoomType> entities = roomTypeService.findAll();
+        List<RoomTypeEntity> entities = roomTypeService.findAll();
         tableModel.clear();
         tableModel.addEntities(entities);
     }
@@ -76,7 +77,7 @@ public class RoomTypeController extends AbstractFrameController {
 
     private void saveEntity() {
         RoomTypeFormPanel formPanel = addFrame.getFormPanel();
-        RoomType entity = formPanel.getEntityFromForm();
+        RoomTypeEntity entity = formPanel.getEntityFromForm();
         Optional<ValidationError> errors = validator.validate(entity);
         if (errors.isPresent()) {
             ValidationError validationError = errors.get();
@@ -103,7 +104,7 @@ public class RoomTypeController extends AbstractFrameController {
                         ConstMessagesEN.Messages.ALERT_TILE,
                         JOptionPane.ERROR_MESSAGE);
             } else {
-                RoomType entity = tableModel.getEntityByRow(selectedRow);
+                RoomTypeEntity entity = tableModel.getEntityByRow(selectedRow);
                 roomTypeService.remove(entity);
                 tableModel.removeRow(selectedRow);
             }

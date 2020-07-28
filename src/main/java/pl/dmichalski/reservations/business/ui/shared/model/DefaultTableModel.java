@@ -1,9 +1,9 @@
 package pl.dmichalski.reservations.business.ui.shared.model;
 
-import com.google.common.collect.Lists;
-
-import javax.swing.table.AbstractTableModel;
 import java.util.List;
+import javax.swing.table.AbstractTableModel;
+
+import com.google.common.collect.Lists;
 
 public abstract class DefaultTableModel<T> extends AbstractTableModel {
 

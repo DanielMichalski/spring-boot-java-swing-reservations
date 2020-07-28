@@ -1,20 +1,20 @@
 package pl.dmichalski.reservations.business.validation;
 
-import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.entity.Client;
-
 import java.util.Optional;
 
-import static pl.dmichalski.reservations.business.util.ConstMessagesEN.ValidationMessages.PESEL_LENGTH_INCORRECT;
-import static pl.dmichalski.reservations.business.util.ConstMessagesEN.ValidationMessages.REQUIRED_DATA_NOT_FILLED_OR_BAD_DATA;
+import org.springframework.stereotype.Component;
+import pl.dmichalski.reservations.business.domain.entity.client.ClientEntity;
+
+import static pl.dmichalski.reservations.business.util.constant.ConstMessagesEN.ValidationMessages.PESEL_LENGTH_INCORRECT;
+import static pl.dmichalski.reservations.business.util.constant.ConstMessagesEN.ValidationMessages.REQUIRED_DATA_NOT_FILLED_OR_BAD_DATA;
 
 @Component
-public class ClientValidator extends ValidationSupport implements Validator<Client> {
+public class ClientValidator extends ValidationSupport implements Validator<ClientEntity> {
 
     private static final int PESEL_LENGTH = 11;
 
     @Override
-    public Optional<ValidationError> validate(Client client) {
+    public Optional<ValidationError> validate(ClientEntity client) {
         if (isNullOrEmptyString(client.getName()) ||
                 isNullOrEmptyString(client.getSurname()) ||
                 isNullOrEmptyString(client.getPesel()) ||

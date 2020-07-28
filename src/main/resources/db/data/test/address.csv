@@ -1,0 +1,2 @@
+id;street;house_number;flat_number;city;postal_code
+nextval('address_id_seq');Long;5;34;New York;44-300

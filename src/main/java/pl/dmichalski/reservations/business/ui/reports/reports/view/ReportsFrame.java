@@ -1,12 +1,14 @@
 package pl.dmichalski.reservations.business.ui.reports.reports.view;
 
-import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.LookAndFeelUtils;
+import java.awt.GridLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
-import javax.swing.*;
-import java.awt.*;
+import org.springframework.stereotype.Component;
+import pl.dmichalski.reservations.business.util.border.Borders;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
+import pl.dmichalski.reservations.business.util.ui.LookAndFeelUtils;
 
 @Component
 public class ReportsFrame extends JFrame {

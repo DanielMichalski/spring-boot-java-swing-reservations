@@ -1,25 +1,28 @@
 package pl.dmichalski.reservations.business.ui.forms.address.view;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
+import java.awt.BorderLayout;
+import javax.annotation.PostConstruct;
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
-import javax.swing.*;
-import java.awt.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import org.springframework.stereotype.Component;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
+@AllArgsConstructor
+@Getter
 public class AddressTableFrame extends JFrame {
 
     private static final int DEFAULT_WIDTH = 500;
     private static final int DEFAULT_HEIGHT = 300;
 
-    private AddressTablePanel tablePanel;
-    private AddressTableBtnPanel tableBtnPanel;
+    private final AddressTablePanel tablePanel;
+    private final AddressTableBtnPanel tableBtnPanel;
 
-    @Autowired
-    public AddressTableFrame(AddressTableBtnPanel tableBtnPanel, AddressTablePanel tablePanel) {
-        this.tablePanel = tablePanel;
-        this.tableBtnPanel = tableBtnPanel;
+    @PostConstruct
+    private void prepareFrame() {
         setFrameUp();
         initComponents();
     }
@@ -37,11 +40,4 @@ public class AddressTableFrame extends JFrame {
         add(tableBtnPanel, BorderLayout.SOUTH);
     }
 
-    public AddressTableBtnPanel getTableBtnPanel() {
-        return tableBtnPanel;
-    }
-
-    public AddressTablePanel getTablePanel() {
-        return tablePanel;
-    }
 }

@@ -1,17 +1,17 @@
 package pl.dmichalski.reservations.business.ui.forms.reservation.model;
 
 import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.entity.Reservation;
+import pl.dmichalski.reservations.business.domain.entity.reservation.ReservationEntity;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.DateFormatter;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
+import pl.dmichalski.reservations.business.util.date.DateFormatter;
 
 @Component
-public class ReservationTableModel extends DefaultTableModel<Reservation> {
+public class ReservationTableModel extends DefaultTableModel<ReservationEntity> {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Reservation reservation = entities.get(rowIndex);
+        ReservationEntity reservation = entities.get(rowIndex);
         switch (columnIndex) {
             case 0:
                 return reservation.getReservationStatus();
@@ -20,9 +20,9 @@ public class ReservationTableModel extends DefaultTableModel<Reservation> {
             case 2:
                 return reservation.getClient();
             case 3:
-                return DateFormatter.formatDate(reservation.getDateFrom());
+                return DateFormatter.formatDate(reservation.getFromDate());
             case 4:
-                return DateFormatter.formatDate(reservation.getDateTo());
+                return DateFormatter.formatDate(reservation.getToDate());
             case 5:
                 return DateFormatter.formatDate(reservation.getReservationDate());
             case 6:

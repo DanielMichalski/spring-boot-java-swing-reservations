@@ -1,0 +1,84 @@
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+	<changeSet id="address_table" author="Daniel Michalski">
+		<comment>Create address table</comment>
+
+		<createTable tableName="address">
+			<column name="id" type="SERIAL" autoIncrement="true">
+				<constraints nullable="false" primaryKey="true" unique="true"/>
+			</column>
+			<column name="street" type="VARCHAR(100)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="house_number" type="VARCHAR(10)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="flat_number" type="VARCHAR(10)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="city" type="VARCHAR(50)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="postal_code" type="VARCHAR(10)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+
+		<createIndex tableName="address" indexName="address_city_idx">
+			<column name="city"/>
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="client_table" author="Daniel Michalski">
+		<comment>Create client table</comment>
+
+		<createTable tableName="client">
+			<column name="id" type="SERIAL" autoIncrement="true">
+				<constraints nullable="false" primaryKey="true" unique="true"/>
+			</column>
+			<column name="address_id" type="BIGINT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="name" type="VARCHAR(50)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="surname" type="VARCHAR(50)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="pesel" type="VARCHAR(20)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="phone_number" type="VARCHAR(20)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="email" type="VARCHAR(30)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+
+		<createIndex tableName="client" indexName="client_address_idx">
+			<column name="address_id"/>
+		</createIndex>
+		<createIndex tableName="client" indexName="client_pesel_idx">
+			<column name="pesel"/>
+		</createIndex>
+		<createIndex tableName="client" indexName="client_phone_number_idx">
+			<column name="phone_number"/>
+		</createIndex>
+
+		<addForeignKeyConstraint baseTableName="client"
+								 baseColumnNames="address_id"
+								 referencedTableName="address"
+								 referencedColumnNames="id"
+								 constraintName="client_address_fk"
+								 deferrable="false"
+								 initiallyDeferred="false"
+								 onDelete="NO ACTION"
+								 onUpdate="NO ACTION"/>
+	</changeSet>
+
+</databaseChangeLog>

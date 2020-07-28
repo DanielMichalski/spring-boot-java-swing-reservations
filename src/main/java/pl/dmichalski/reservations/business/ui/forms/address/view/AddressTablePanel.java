@@ -1,22 +1,32 @@
 package pl.dmichalski.reservations.business.ui.forms.address.view;
 
+import java.awt.BorderLayout;
+import javax.annotation.PostConstruct;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.ui.forms.address.model.AddressTableModel;
 
-import javax.swing.*;
-import java.awt.*;
-
 @Component
+@Getter
 public class AddressTablePanel extends JPanel {
 
-    private AddressTableModel tableModel;
+    private final AddressTableModel tableModel;
 
     private JTable table;
 
     @Autowired
     AddressTablePanel(AddressTableModel tableModel) {
         this.tableModel = tableModel;
+    }
+
+    @PostConstruct
+    private void preparePanel() {
         setPanelUp();
         initComponents();
     }
@@ -31,10 +41,6 @@ public class AddressTablePanel extends JPanel {
 
         JScrollPane paneWithTable = new JScrollPane(table);
         add(paneWithTable, BorderLayout.CENTER);
-    }
-
-    public JTable getTable() {
-        return table;
     }
 
 }

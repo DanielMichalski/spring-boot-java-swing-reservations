@@ -1,12 +1,14 @@
 package pl.dmichalski.reservations.business.ui.forms.payment_method.view.modal;
 
-import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.entity.PaymentMethod;
-import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
+import java.awt.GridLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-import javax.swing.*;
-import java.awt.*;
+import org.springframework.stereotype.Component;
+import pl.dmichalski.reservations.business.domain.entity.payment.PaymentMethodEntity;
+import pl.dmichalski.reservations.business.util.border.Borders;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
 public class PaymentMethodFormPanel extends JPanel {
@@ -36,10 +38,10 @@ public class PaymentMethodFormPanel extends JPanel {
         add(paymentMethodTF);
     }
 
-    public PaymentMethod getEntityFromForm() {
-        PaymentMethod paymentMethod = new PaymentMethod();
-        paymentMethod.setName(paymentMethodTF.getText());
-        return paymentMethod;
+    public PaymentMethodEntity getEntityFromForm() {
+        return new PaymentMethodEntity(
+                paymentMethodTF.getText()
+        );
     }
 
     public void clearForm() {

@@ -1,11 +1,14 @@
 package pl.dmichalski.reservations.business.ui.forms.payment.view;
 
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.ui.forms.payment.model.PaymentTableModel;
-
-import javax.swing.*;
-import java.awt.*;
 
 @Component
 public class PaymentTablePanel extends JPanel {

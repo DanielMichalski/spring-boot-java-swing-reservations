@@ -1,17 +1,17 @@
 package pl.dmichalski.reservations.business.ui.forms.payment.model;
 
 import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.entity.Payment;
+import pl.dmichalski.reservations.business.domain.entity.payment.PaymentEntity;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.DateFormatter;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
+import pl.dmichalski.reservations.business.util.date.DateFormatter;
 
 @Component
-public class PaymentTableModel extends DefaultTableModel<Payment> {
+public class PaymentTableModel extends DefaultTableModel<PaymentEntity> {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Payment payment = entities.get(rowIndex);
+        PaymentEntity payment = entities.get(rowIndex);
         switch (columnIndex) {
             case 0:
                 return payment.getPaymentMethod();

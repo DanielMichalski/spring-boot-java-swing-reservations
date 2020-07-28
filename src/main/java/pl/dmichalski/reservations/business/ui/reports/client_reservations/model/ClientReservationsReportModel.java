@@ -1,12 +1,12 @@
 package pl.dmichalski.reservations.business.ui.reports.client_reservations.model;
 
 import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.entity.domain.ClientReservationCount;
+import pl.dmichalski.reservations.business.dto.client.ClientReservationCountDto;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
-public class ClientReservationsReportModel extends DefaultTableModel<ClientReservationCount> {
+public class ClientReservationsReportModel extends DefaultTableModel<ClientReservationCountDto> {
 
     @Override
     public String[] getColumnLabels() {
@@ -19,15 +19,15 @@ public class ClientReservationsReportModel extends DefaultTableModel<ClientReser
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        ClientReservationCount clientReservationCount = entities.get(rowIndex);
+        ClientReservationCountDto clientReservationCountDto = entities.get(rowIndex);
 
         switch (columnIndex) {
             case 0:
-                return clientReservationCount.getName();
+                return clientReservationCountDto.getName();
             case 1:
-                return clientReservationCount.getEmail();
+                return clientReservationCountDto.getEmail();
             case 2:
-                return clientReservationCount.getCount();
+                return clientReservationCountDto.getCount();
             default:
                 return "";
         }

@@ -1,12 +1,15 @@
 package pl.dmichalski.reservations.business.ui.forms.address.view.modal;
 
-import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.entity.Address;
-import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
+import java.awt.GridLayout;
+import javax.annotation.PostConstruct;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-import javax.swing.*;
-import java.awt.*;
+import org.springframework.stereotype.Component;
+import pl.dmichalski.reservations.business.domain.entity.address.AddressEntity;
+import pl.dmichalski.reservations.business.util.border.Borders;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
 public class AddressFormPanel extends JPanel {
@@ -23,7 +26,8 @@ public class AddressFormPanel extends JPanel {
     private JTextField cityTF;
     private JTextField postalCodeTF;
 
-    public AddressFormPanel() {
+    @PostConstruct
+    private void preparePanel() {
         setPanelUp();
         initComponents();
     }
@@ -58,14 +62,14 @@ public class AddressFormPanel extends JPanel {
         add(postalCodeTF);
     }
 
-    public Address getEntityFromForm() {
-        Address address = new Address();
-        address.setStreet(streetTF.getText());
-        address.setHouseNumber(houseNumberTF.getText());
-        address.setFlatNumber(flatNumberTF.getText());
-        address.setCity(cityTF.getText());
-        address.setPostCode(postalCodeTF.getText());
-        return address;
+    public AddressEntity getEntityFromForm() {
+        return new AddressEntity(
+                streetTF.getText(),
+                houseNumberTF.getText(),
+                flatNumberTF.getText(),
+                cityTF.getText(),
+                postalCodeTF.getText()
+        );
     }
 
     public void clearForm() {

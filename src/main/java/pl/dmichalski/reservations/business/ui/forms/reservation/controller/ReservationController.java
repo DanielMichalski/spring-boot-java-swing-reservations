@@ -1,15 +1,21 @@
 package pl.dmichalski.reservations.business.ui.forms.reservation.controller;
 
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.PostConstruct;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import pl.dmichalski.reservations.business.entity.Client;
-import pl.dmichalski.reservations.business.entity.Payment;
-import pl.dmichalski.reservations.business.entity.Reservation;
-import pl.dmichalski.reservations.business.entity.ReservationStatus;
-import pl.dmichalski.reservations.business.service.ClientService;
-import pl.dmichalski.reservations.business.service.PaymentService;
-import pl.dmichalski.reservations.business.service.ReservationService;
-import pl.dmichalski.reservations.business.service.ReservationStatusService;
+import pl.dmichalski.reservations.business.domain.entity.client.ClientEntity;
+import pl.dmichalski.reservations.business.domain.entity.payment.PaymentEntity;
+import pl.dmichalski.reservations.business.domain.entity.reservation.ReservationEntity;
+import pl.dmichalski.reservations.business.domain.entity.reservation.ReservationStatusEntity;
+import pl.dmichalski.reservations.business.service.client.ClientService;
+import pl.dmichalski.reservations.business.service.payment.PaymentService;
+import pl.dmichalski.reservations.business.service.reservation.ReservationService;
+import pl.dmichalski.reservations.business.service.reservation.ReservationStatusService;
 import pl.dmichalski.reservations.business.ui.forms.reservation.model.ClientComboBoxModel;
 import pl.dmichalski.reservations.business.ui.forms.reservation.model.PaymentComboBoxModel;
 import pl.dmichalski.reservations.business.ui.forms.reservation.model.ReservationStatusComboBoxModel;
@@ -20,15 +26,10 @@ import pl.dmichalski.reservations.business.ui.forms.reservation.view.modal.AddRe
 import pl.dmichalski.reservations.business.ui.forms.reservation.view.modal.ReservationFormBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.reservation.view.modal.ReservationFormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.Notifications;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
+import pl.dmichalski.reservations.business.util.notifications.Notifications;
 import pl.dmichalski.reservations.business.validation.ReservationValidator;
 import pl.dmichalski.reservations.business.validation.ValidationError;
-
-import javax.annotation.PostConstruct;
-import javax.swing.*;
-import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class ReservationController extends AbstractFrameController {
@@ -91,25 +92,25 @@ public class ReservationController extends AbstractFrameController {
     }
 
     private void loadEntities() {
-        List<Reservation> entities = reservationService.findAll();
+        List<ReservationEntity> entities = reservationService.findAll();
         tableModel.clear();
         tableModel.addEntities(entities);
     }
 
     private void loadReservationStatuses() {
-        List<ReservationStatus> reservationStatuses = reservationStatusService.findAll();
+        List<ReservationStatusEntity> reservationStatuses = reservationStatusService.findAll();
         reservationStatusComboBoxModel.clear();
         reservationStatusComboBoxModel.addElements(reservationStatuses);
     }
 
     private void loadPayments() {
-        List<Payment> payments = paymentService.findAll();
+        List<PaymentEntity> payments = paymentService.findAll();
         paymentComboBoxModel.clear();
         paymentComboBoxModel.addElements(payments);
     }
 
     private void loadClients() {
-        List<Client> clients = clientService.findAll();
+        List<ClientEntity> clients = clientService.findAll();
         clientComboBoxModel.clear();
         clientComboBoxModel.addElements(clients);
     }
@@ -124,7 +125,7 @@ public class ReservationController extends AbstractFrameController {
 
     private void saveEntity() {
         ReservationFormPanel formPanel = addFrame.getFormPanel();
-        Reservation entity = formPanel.getEntityFromForm();
+        ReservationEntity entity = formPanel.getEntityFromForm();
         Optional<ValidationError> errors = validator.validate(entity);
         if (errors.isPresent()) {
             ValidationError validationError = errors.get();
@@ -151,7 +152,7 @@ public class ReservationController extends AbstractFrameController {
                         ConstMessagesEN.Messages.ALERT_TILE,
                         JOptionPane.ERROR_MESSAGE);
             } else {
-                Reservation entity = tableModel.getEntityByRow(selectedRow);
+                ReservationEntity entity = tableModel.getEntityByRow(selectedRow);
                 reservationService.remove(entity);
                 tableModel.removeRow(selectedRow);
             }

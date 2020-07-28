@@ -1,12 +1,12 @@
 package pl.dmichalski.reservations.business.ui.reports.room_statuses.model;
 
 import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.entity.domain.RoomStatusesCount;
+import pl.dmichalski.reservations.business.dto.room.RoomStatusesCountDto;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
-public class RoomStatusReportModel extends DefaultTableModel<RoomStatusesCount> {
+public class RoomStatusReportModel extends DefaultTableModel<RoomStatusesCountDto> {
 
     @Override
     public String[] getColumnLabels() {
@@ -18,7 +18,7 @@ public class RoomStatusReportModel extends DefaultTableModel<RoomStatusesCount> 
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        RoomStatusesCount roomStatusesCount = entities.get(rowIndex);
+        RoomStatusesCountDto roomStatusesCount = entities.get(rowIndex);
 
         switch (columnIndex) {
             case 0:

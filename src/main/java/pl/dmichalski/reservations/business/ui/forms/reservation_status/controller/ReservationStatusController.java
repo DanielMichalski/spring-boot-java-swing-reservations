@@ -1,9 +1,15 @@
 package pl.dmichalski.reservations.business.ui.forms.reservation_status.controller;
 
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.PostConstruct;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import pl.dmichalski.reservations.business.entity.ReservationStatus;
-import pl.dmichalski.reservations.business.service.ReservationStatusService;
+import pl.dmichalski.reservations.business.domain.entity.reservation.ReservationStatusEntity;
+import pl.dmichalski.reservations.business.service.reservation.ReservationStatusService;
 import pl.dmichalski.reservations.business.ui.forms.reservation_status.model.ReservationStatusTableModel;
 import pl.dmichalski.reservations.business.ui.forms.reservation_status.view.ReservationStatusTableBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.reservation_status.view.ReservationStatusTableFrame;
@@ -11,15 +17,10 @@ import pl.dmichalski.reservations.business.ui.forms.reservation_status.view.moda
 import pl.dmichalski.reservations.business.ui.forms.reservation_status.view.modal.ReservationStatusFormBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.reservation_status.view.modal.ReservationStatusFormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.Notifications;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
+import pl.dmichalski.reservations.business.util.notifications.Notifications;
 import pl.dmichalski.reservations.business.validation.ReservationStatusValidator;
 import pl.dmichalski.reservations.business.validation.ValidationError;
-
-import javax.annotation.PostConstruct;
-import javax.swing.*;
-import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class ReservationStatusController extends AbstractFrameController {
@@ -61,7 +62,7 @@ public class ReservationStatusController extends AbstractFrameController {
     }
 
     private void loadEntities() {
-        List<ReservationStatus> entities = reservationStatusService.findAll();
+        List<ReservationStatusEntity> entities = reservationStatusService.findAll();
         tableModel.clear();
         tableModel.addEntities(entities);
     }
@@ -76,7 +77,7 @@ public class ReservationStatusController extends AbstractFrameController {
 
     private void saveEntity() {
         ReservationStatusFormPanel formPanel = addFrame.getFormPanel();
-        ReservationStatus entity = formPanel.getEntityFromForm();
+        ReservationStatusEntity entity = formPanel.getEntityFromForm();
         Optional<ValidationError> errors = validator.validate(entity);
         if (errors.isPresent()) {
             ValidationError validationError = errors.get();
@@ -103,7 +104,7 @@ public class ReservationStatusController extends AbstractFrameController {
                         ConstMessagesEN.Messages.ALERT_TILE,
                         JOptionPane.ERROR_MESSAGE);
             } else {
-                ReservationStatus entity = tableModel.getEntityByRow(selectedRow);
+                ReservationStatusEntity entity = tableModel.getEntityByRow(selectedRow);
                 reservationStatusService.remove(entity);
                 tableModel.removeRow(selectedRow);
             }

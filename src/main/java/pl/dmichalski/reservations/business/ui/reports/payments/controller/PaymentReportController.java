@@ -1,14 +1,14 @@
 package pl.dmichalski.reservations.business.ui.reports.payments.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import pl.dmichalski.reservations.business.entity.domain.PaymentMethodCount;
-import pl.dmichalski.reservations.business.service.PaymentMethodService;
+import pl.dmichalski.reservations.business.dto.payment.PaymentMethodCountDto;
+import pl.dmichalski.reservations.business.service.payment.PaymentMethodService;
 import pl.dmichalski.reservations.business.ui.reports.payments.model.PaymentReportModel;
 import pl.dmichalski.reservations.business.ui.reports.payments.view.PaymentReportTableFrame;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
-
-import java.util.List;
 
 @Controller
 public class PaymentReportController extends AbstractFrameController {
@@ -31,13 +31,12 @@ public class PaymentReportController extends AbstractFrameController {
 
     private void loadEntities() {
         tableModel.clear();
-        List<PaymentMethodCount> paymentMethodCount = paymentMethodService.getPaymentMethodCount();
+        List<PaymentMethodCountDto> paymentMethodCount = paymentMethodService.getPaymentMethodCount();
         tableModel.addEntities(paymentMethodCount);
     }
 
     private void showTableFrame() {
         tableFrame.setVisible(true);
     }
-
 
 }

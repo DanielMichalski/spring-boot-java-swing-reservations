@@ -1,18 +1,21 @@
 package pl.dmichalski.reservations.business.ui.forms.room_x_reservation.view.modal;
 
+import java.awt.GridLayout;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.entity.Reservation;
-import pl.dmichalski.reservations.business.entity.Room;
-import pl.dmichalski.reservations.business.entity.RoomXReservation;
-import pl.dmichalski.reservations.business.entity.RoomXReservationPK;
+import pl.dmichalski.reservations.business.domain.entity.reservation.ReservationEntity;
+import pl.dmichalski.reservations.business.domain.entity.room.RoomEntity;
+import pl.dmichalski.reservations.business.domain.entity.room.RoomXReservationEntity;
+import pl.dmichalski.reservations.business.domain.entity.room.RoomXReservationPK;
 import pl.dmichalski.reservations.business.ui.forms.rate.model.RoomComboBoxModel;
 import pl.dmichalski.reservations.business.ui.forms.room_x_reservation.model.ReservationsComboBoxModel;
-import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
-
-import javax.swing.*;
-import java.awt.*;
+import pl.dmichalski.reservations.business.util.border.Borders;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
 public class RoomXReservationFormPanel extends JPanel {
@@ -23,8 +26,8 @@ public class RoomXReservationFormPanel extends JPanel {
     private static final int VERTICAL_GAP = 20;
     private static final int TEXT_FIELD_COLUMNS = 20;
 
-    private JComboBox<Reservation> reservationCB;
-    private JComboBox<Room> roomCB;
+    private JComboBox<ReservationEntity> reservationCB;
+    private JComboBox<RoomEntity> roomCB;
     private JTextField priceTF;
 
     private ReservationsComboBoxModel reservationsComboBoxModel;
@@ -50,7 +53,7 @@ public class RoomXReservationFormPanel extends JPanel {
 
         reservationCB = new JComboBox<>(reservationsComboBoxModel);
         roomCB = new JComboBox<>(roomComboBoxModel);
-        priceTF= new JTextField(TEXT_FIELD_COLUMNS);
+        priceTF = new JTextField(TEXT_FIELD_COLUMNS);
 
         add(reservationLbl);
         add(reservationCB);
@@ -60,13 +63,14 @@ public class RoomXReservationFormPanel extends JPanel {
         add(priceTF);
     }
 
-    public RoomXReservation getEntityFromForm() {
-        Room room = roomComboBoxModel.getSelectedItem();
-        Reservation reservation = reservationsComboBoxModel.getSelectedItem();
-        RoomXReservation roomXReservation = new RoomXReservation(new RoomXReservationPK(room, reservation));
+    public RoomXReservationEntity getEntityFromForm() {
+        RoomEntity room = roomComboBoxModel.getSelectedItem();
+        ReservationEntity reservation = reservationsComboBoxModel.getSelectedItem();
+        RoomXReservationEntity roomXReservation = new RoomXReservationEntity(new RoomXReservationPK(room, reservation));
         try {
             roomXReservation.setRoomPrice(Long.parseLong(priceTF.getText()));
-        } catch (NumberFormatException ignored) {}
+        } catch (NumberFormatException ignored) {
+        }
         return roomXReservation;
     }
 

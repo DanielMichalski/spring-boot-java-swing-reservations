@@ -1,22 +1,25 @@
 package pl.dmichalski.reservations.business.ui.forms.address.view.modal;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
+import java.awt.BorderLayout;
+import javax.annotation.PostConstruct;
+import javax.swing.JDialog;
+import javax.swing.WindowConstants;
 
-import javax.swing.*;
-import java.awt.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import org.springframework.stereotype.Component;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
+@AllArgsConstructor
+@Getter
 public class AddAddressFrame extends JDialog {
 
-    private AddressFormPanel formPanel;
-    private AddressFormBtnPanel formBtnPanel;
+    private final AddressFormPanel formPanel;
+    private final AddressFormBtnPanel formBtnPanel;
 
-    @Autowired
-    public AddAddressFrame(AddressFormPanel formPanel, AddressFormBtnPanel formBtnPanel) {
-        this.formPanel = formPanel;
-        this.formBtnPanel = formBtnPanel;
+    @PostConstruct
+    private void prepareFrame() {
         setFrameUp();
         initComponents();
         pack();
@@ -33,13 +36,5 @@ public class AddAddressFrame extends JDialog {
     private void initComponents() {
         add(formPanel, BorderLayout.CENTER);
         add(formBtnPanel, BorderLayout.SOUTH);
-    }
-
-    public AddressFormPanel getFormPanel() {
-        return formPanel;
-    }
-
-    public AddressFormBtnPanel getFormBtnPanel() {
-        return formBtnPanel;
     }
 }

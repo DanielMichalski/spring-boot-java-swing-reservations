@@ -1,9 +1,15 @@
 package pl.dmichalski.reservations.business.ui.forms.room_status.controller;
 
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.PostConstruct;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import pl.dmichalski.reservations.business.entity.RoomStatus;
-import pl.dmichalski.reservations.business.service.RoomStatusService;
+import pl.dmichalski.reservations.business.domain.entity.room.RoomStatusEntity;
+import pl.dmichalski.reservations.business.service.room.RoomStatusService;
 import pl.dmichalski.reservations.business.ui.forms.room_status.model.RoomStatusTableModel;
 import pl.dmichalski.reservations.business.ui.forms.room_status.view.RoomStatusTableBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.room_status.view.RoomStatusTableFrame;
@@ -11,15 +17,10 @@ import pl.dmichalski.reservations.business.ui.forms.room_status.view.modal.AddRo
 import pl.dmichalski.reservations.business.ui.forms.room_status.view.modal.RoomStatusFormBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.room_status.view.modal.RoomStatusFormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.Notifications;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
+import pl.dmichalski.reservations.business.util.notifications.Notifications;
 import pl.dmichalski.reservations.business.validation.RoomStatusValidator;
 import pl.dmichalski.reservations.business.validation.ValidationError;
-
-import javax.annotation.PostConstruct;
-import javax.swing.*;
-import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class RoomStatusController extends AbstractFrameController {
@@ -61,7 +62,7 @@ public class RoomStatusController extends AbstractFrameController {
     }
 
     private void loadEntities() {
-        List<RoomStatus> entities = roomStatusService.findAll();
+        List<RoomStatusEntity> entities = roomStatusService.findAll();
         tableModel.clear();
         tableModel.addEntities(entities);
     }
@@ -76,7 +77,7 @@ public class RoomStatusController extends AbstractFrameController {
 
     private void saveEntity() {
         RoomStatusFormPanel formPanel = addFrame.getFormPanel();
-        RoomStatus entity = formPanel.getEntityFromForm();
+        RoomStatusEntity entity = formPanel.getEntityFromForm();
         Optional<ValidationError> errors = validator.validate(entity);
         if (errors.isPresent()) {
             ValidationError validationError = errors.get();
@@ -103,7 +104,7 @@ public class RoomStatusController extends AbstractFrameController {
                         ConstMessagesEN.Messages.ALERT_TILE,
                         JOptionPane.ERROR_MESSAGE);
             } else {
-                RoomStatus entity = tableModel.getEntityByRow(selectedRow);
+                RoomStatusEntity entity = tableModel.getEntityByRow(selectedRow);
                 roomStatusService.remove(entity);
                 tableModel.removeRow(selectedRow);
             }

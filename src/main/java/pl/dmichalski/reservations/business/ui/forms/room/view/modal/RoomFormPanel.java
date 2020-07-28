@@ -1,15 +1,20 @@
 package pl.dmichalski.reservations.business.ui.forms.room.view.modal;
 
+import java.awt.GridLayout;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.entity.Room;
-import pl.dmichalski.reservations.business.entity.RoomStatus;
+import pl.dmichalski.reservations.business.domain.entity.room.RoomEntity;
+import pl.dmichalski.reservations.business.domain.entity.room.RoomStatusEntity;
 import pl.dmichalski.reservations.business.ui.forms.room.model.RoomStatusComboBoxModel;
-import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
-
-import javax.swing.*;
-import java.awt.*;
+import pl.dmichalski.reservations.business.util.border.Borders;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
 public class RoomFormPanel extends JPanel {
@@ -20,7 +25,7 @@ public class RoomFormPanel extends JPanel {
     private static final int VERTICAL_GAP = 20;
     private static final int TEXT_FIELD_COLUMNS = 20;
 
-    private JComboBox<RoomStatus> roomStatusCB;
+    private JComboBox<RoomStatusEntity> roomStatusCB;
     private JSpinner numberOfPeopleJS;
     private JTextField descriptionTf;
 
@@ -45,7 +50,7 @@ public class RoomFormPanel extends JPanel {
 
         roomStatusCB = new JComboBox<>(roomComboBoxModel);
         numberOfPeopleJS = new JSpinner(new SpinnerNumberModel(1, 1, 5, 1));
-        descriptionTf= new JTextField(TEXT_FIELD_COLUMNS);
+        descriptionTf = new JTextField(TEXT_FIELD_COLUMNS);
 
         add(roomStatusLbl);
         add(roomStatusCB);
@@ -55,12 +60,12 @@ public class RoomFormPanel extends JPanel {
         add(descriptionTf);
     }
 
-    public Room getEntityFromForm() {
-        Room room = new Room();
-        room.setRoomStatus(roomComboBoxModel.getSelectedItem());
-        room.setNumberOfPeople((Integer) numberOfPeopleJS.getValue());
-        room.setDescription(descriptionTf.getText());
-        return room;
+    public RoomEntity getEntityFromForm() {
+        return new RoomEntity(
+                roomComboBoxModel.getSelectedItem(),
+                (Integer) numberOfPeopleJS.getValue(),
+                descriptionTf.getText()
+        );
     }
 
     public void clearForm() {

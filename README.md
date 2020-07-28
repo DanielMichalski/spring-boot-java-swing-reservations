@@ -1,3 +1,5 @@
+#TODO
+
 Spring Boot Swing Reservations
 ---------------------------------------------
 
@@ -9,8 +11,9 @@ It contains some useful configuration things:
 - Spring Data Repositories
 - JPA + Hibernate
 - Internationalization
-- Spring profiles
 - Swing application
+- Liquibase
+- Docker Compose
 
 
 How to run application
@@ -19,11 +22,8 @@ How to run application
 ## Build application from base directory
 mvn clean install
 
-## Run Spring boot application with embedded H2 database
+## Run Spring boot application with PostgreSQL database
 mvn spring-boot:run
-
-## Or if You want to run application with PostgreSQL
-mvn spring-boot:run -Dspring.profiles.active=prod
 ```
 
 Video

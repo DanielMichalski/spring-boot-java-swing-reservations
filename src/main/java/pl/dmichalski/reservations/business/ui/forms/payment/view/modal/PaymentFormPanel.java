@@ -1,16 +1,19 @@
 package pl.dmichalski.reservations.business.ui.forms.payment.view.modal;
 
+import java.awt.GridLayout;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 import com.toedter.calendar.JDateChooser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.entity.Payment;
-import pl.dmichalski.reservations.business.entity.PaymentMethod;
+import pl.dmichalski.reservations.business.domain.entity.payment.PaymentEntity;
+import pl.dmichalski.reservations.business.domain.entity.payment.PaymentMethodEntity;
 import pl.dmichalski.reservations.business.ui.forms.payment.model.PaymentMethodComboBoxModel;
-import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
-
-import javax.swing.*;
-import java.awt.*;
+import pl.dmichalski.reservations.business.util.border.Borders;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
 public class PaymentFormPanel extends JPanel {
@@ -21,7 +24,7 @@ public class PaymentFormPanel extends JPanel {
     private static final int VERTICAL_GAP = 20;
     private static final int TEXT_FIELD_COLUMNS = 20;
 
-    private JComboBox<PaymentMethod> paymentMethodCB;
+    private JComboBox<PaymentMethodEntity> paymentMethodCB;
     private JTextField valueTF;
     private JDateChooser dateOfPaymentDC;
 
@@ -46,7 +49,7 @@ public class PaymentFormPanel extends JPanel {
 
         paymentMethodCB = new JComboBox<>(paymentMethodComboBoxModel);
         valueTF = new JTextField(TEXT_FIELD_COLUMNS);
-        dateOfPaymentDC= new JDateChooser();
+        dateOfPaymentDC = new JDateChooser();
 
         add(paymentMethodLbl);
         add(paymentMethodCB);
@@ -56,14 +59,18 @@ public class PaymentFormPanel extends JPanel {
         add(dateOfPaymentDC);
     }
 
-    public Payment getEntityFromForm() {
-        Payment payment = new Payment();
-        payment.setPaymentMethod(paymentMethodComboBoxModel.getSelectedItem());
+    public PaymentEntity getEntityFromForm() {
+        Long payment = null;
         try {
-            payment.setValue(Long.valueOf(valueTF.getText()));
-        } catch (NumberFormatException ignored) {}
-        payment.setDateOfPayments(dateOfPaymentDC.getDate());
-        return payment;
+            payment = Long.valueOf(valueTF.getText());
+        } catch (NumberFormatException ignored) {
+        }
+
+        return new PaymentEntity(
+                paymentMethodComboBoxModel.getSelectedItem(),
+                payment,
+                dateOfPaymentDC.getDate()
+        );
     }
 
     public void clearForm() {

@@ -1,17 +1,22 @@
 package pl.dmichalski.reservations.business.ui.forms.address.view;
 
-import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
+import javax.annotation.PostConstruct;
+import javax.swing.JButton;
+import javax.swing.JPanel;
 
-import javax.swing.*;
+import lombok.Getter;
+import org.springframework.stereotype.Component;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
+@Getter
 public class AddressTableBtnPanel extends JPanel {
 
     private JButton addBtn;
     private JButton removeBtn;
 
-    public AddressTableBtnPanel() {
+    @PostConstruct
+    private void preparePanel() {
         initComponents();
     }
 
@@ -21,14 +26,6 @@ public class AddressTableBtnPanel extends JPanel {
 
         removeBtn = new JButton(ConstMessagesEN.Labels.REMOVE_BTN);
         add(removeBtn);
-    }
-
-    public JButton getAddBtn() {
-        return addBtn;
-    }
-
-    public JButton getRemoveBtn() {
-        return removeBtn;
     }
 
 }

@@ -1,7 +1,7 @@
 package pl.dmichalski.reservations.business.ui.shared.controller;
 
-import javax.swing.*;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 
 public abstract class AbstractFrameController {
 

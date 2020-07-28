@@ -1,15 +1,18 @@
 package pl.dmichalski.reservations.business.ui.forms.client.view.modal;
 
+import java.awt.GridLayout;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.entity.Address;
-import pl.dmichalski.reservations.business.entity.Client;
+import pl.dmichalski.reservations.business.domain.entity.address.AddressEntity;
+import pl.dmichalski.reservations.business.domain.entity.client.ClientEntity;
 import pl.dmichalski.reservations.business.ui.forms.client.model.AddressComboBoxModel;
-import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
-
-import javax.swing.*;
-import java.awt.*;
+import pl.dmichalski.reservations.business.util.border.Borders;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
 public class FormPanel extends JPanel {
@@ -25,7 +28,7 @@ public class FormPanel extends JPanel {
     private JTextField peselTF;
     private JTextField phoneNumberTF;
     private JTextField emailTF;
-    private JComboBox<Address> addressCB;
+    private JComboBox<AddressEntity> addressCB;
     private AddressComboBoxModel addressComboBoxModel;
 
     @Autowired
@@ -69,15 +72,15 @@ public class FormPanel extends JPanel {
         add(addressCB);
     }
 
-    public Client getClientFromForm() {
-        Client client = new Client();
-        client.setName(nameTF.getText());
-        client.setSurname(surnameTF.getText());
-        client.setPesel(peselTF.getText());
-        client.setPhoneNumber(phoneNumberTF.getText());
-        client.setEmail(emailTF.getText());
-        client.setAddress(addressComboBoxModel.getSelectedItem());
-        return client;
+    public ClientEntity getClientFromForm() {
+        return new ClientEntity(
+                addressComboBoxModel.getSelectedItem(),
+                nameTF.getText(),
+                surnameTF.getText(),
+                peselTF.getText(),
+                phoneNumberTF.getText(),
+                emailTF.getText()
+        );
     }
 
     public void clearForm() {

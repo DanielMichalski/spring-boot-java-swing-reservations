@@ -1,11 +1,17 @@
 package pl.dmichalski.reservations.business.ui.forms.room.controller;
 
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.PostConstruct;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import pl.dmichalski.reservations.business.entity.Room;
-import pl.dmichalski.reservations.business.entity.RoomStatus;
-import pl.dmichalski.reservations.business.service.RoomService;
-import pl.dmichalski.reservations.business.service.RoomStatusService;
+import pl.dmichalski.reservations.business.domain.entity.room.RoomEntity;
+import pl.dmichalski.reservations.business.domain.entity.room.RoomStatusEntity;
+import pl.dmichalski.reservations.business.service.room.RoomService;
+import pl.dmichalski.reservations.business.service.room.RoomStatusService;
 import pl.dmichalski.reservations.business.ui.forms.room.model.RoomStatusComboBoxModel;
 import pl.dmichalski.reservations.business.ui.forms.room.model.RoomTableModel;
 import pl.dmichalski.reservations.business.ui.forms.room.view.RoomTableBtnPanel;
@@ -14,15 +20,10 @@ import pl.dmichalski.reservations.business.ui.forms.room.view.modal.AddRoomFrame
 import pl.dmichalski.reservations.business.ui.forms.room.view.modal.RoomFormBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.room.view.modal.RoomFormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.Notifications;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
+import pl.dmichalski.reservations.business.util.notifications.Notifications;
 import pl.dmichalski.reservations.business.validation.RoomValidator;
 import pl.dmichalski.reservations.business.validation.ValidationError;
-
-import javax.annotation.PostConstruct;
-import javax.swing.*;
-import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class RoomController extends AbstractFrameController {
@@ -71,13 +72,13 @@ public class RoomController extends AbstractFrameController {
     }
 
     private void loadEntities() {
-        List<Room> entities = roomService.findAll();
+        List<RoomEntity> entities = roomService.findAll();
         tableModel.clear();
         tableModel.addEntities(entities);
     }
 
     private void loadPaymentMethods() {
-        List<RoomStatus> entities = roomStatusService.findAll();
+        List<RoomStatusEntity> entities = roomStatusService.findAll();
         roomStatusComboBoxModel.clear();
         roomStatusComboBoxModel.addElements(entities);
     }
@@ -92,7 +93,7 @@ public class RoomController extends AbstractFrameController {
 
     private void saveEntity() {
         RoomFormPanel formPanel = addFrame.getFormPanel();
-        Room room = formPanel.getEntityFromForm();
+        RoomEntity room = formPanel.getEntityFromForm();
         Optional<ValidationError> errors = validator.validate(room);
         if (errors.isPresent()) {
             ValidationError validationError = errors.get();
@@ -119,7 +120,7 @@ public class RoomController extends AbstractFrameController {
                         ConstMessagesEN.Messages.ALERT_TILE,
                         JOptionPane.ERROR_MESSAGE);
             } else {
-                Room entity = tableModel.getEntityByRow(selectedRow);
+                RoomEntity entity = tableModel.getEntityByRow(selectedRow);
                 roomService.remove(entity);
                 tableModel.removeRow(selectedRow);
             }

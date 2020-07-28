@@ -1,12 +1,15 @@
 spring:
   datasource:
-    platform: h2
-    url: jdbc:h2:mem:;DB_CLOSE_ON_EXIT=FALSE
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
-    schema: /sql/dev/schema-h2.sql
-    data: /sql/dev/data-h2.sql
+    driver-class-name: 'org.postgresql.Driver'
+    jdbc-url: 'jdbc:postgresql://localhost:5432/reservations'
+    username: 'reservations_user'
+    password: 'reservations_psw'
   jpa:
-    hibernate:
-      ddl-auto: update
+    properties:
+      hibernate:
+        #TODO        hbm2ddl.auto: validate
+        format_sql: false
+        physical_naming_strategy: 'com.vladmihalcea.hibernate.type.util.CamelCaseToSnakeCaseNamingStrategy'
+  liquibase:
+    change-log: 'classpath:db/liquibase-changelog-master.xml'
+    contexts: 'test-data'

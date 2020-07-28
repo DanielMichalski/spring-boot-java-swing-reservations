@@ -1,21 +1,24 @@
 package pl.dmichalski.reservations.business.ui.forms.reservation.view.modal;
 
+import java.awt.GridLayout;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 import com.toedter.calendar.JDateChooser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.entity.Client;
-import pl.dmichalski.reservations.business.entity.Payment;
-import pl.dmichalski.reservations.business.entity.Reservation;
-import pl.dmichalski.reservations.business.entity.ReservationStatus;
+import pl.dmichalski.reservations.business.domain.entity.client.ClientEntity;
+import pl.dmichalski.reservations.business.domain.entity.payment.PaymentEntity;
+import pl.dmichalski.reservations.business.domain.entity.reservation.ReservationEntity;
+import pl.dmichalski.reservations.business.domain.entity.reservation.ReservationStatusEntity;
 import pl.dmichalski.reservations.business.time.CurrentTimeService;
 import pl.dmichalski.reservations.business.ui.forms.reservation.model.ClientComboBoxModel;
 import pl.dmichalski.reservations.business.ui.forms.reservation.model.PaymentComboBoxModel;
 import pl.dmichalski.reservations.business.ui.forms.reservation.model.ReservationStatusComboBoxModel;
-import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
-
-import javax.swing.*;
-import java.awt.*;
+import pl.dmichalski.reservations.business.util.border.Borders;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
 public class ReservationFormPanel extends JPanel {
@@ -61,9 +64,9 @@ public class ReservationFormPanel extends JPanel {
         JLabel dateToLbl = new JLabel(ConstMessagesEN.Labels.TO_DATE);
         JLabel amountLbl = new JLabel(ConstMessagesEN.Labels.AMOUNT);
 
-        JComboBox<ReservationStatus> reservationStatusCB = new JComboBox<>(reservationStatusComboBoxModel);
-        JComboBox<Payment> paymentCB = new JComboBox<>(paymentComboBoxModel);
-        JComboBox<Client> clientCB = new JComboBox<>(clientComboBoxModel);
+        JComboBox<ReservationStatusEntity> reservationStatusCB = new JComboBox<>(reservationStatusComboBoxModel);
+        JComboBox<PaymentEntity> paymentCB = new JComboBox<>(paymentComboBoxModel);
+        JComboBox<ClientEntity> clientCB = new JComboBox<>(clientComboBoxModel);
         dateFromDC = new JDateChooser();
         dateToDC = new JDateChooser();
         amountTF = new JTextField(TEXT_FIELD_COLUMNS);
@@ -82,18 +85,22 @@ public class ReservationFormPanel extends JPanel {
         add(amountTF);
     }
 
-    public Reservation getEntityFromForm() {
-        Reservation reservation = new Reservation();
-        reservation.setReservationStatus(reservationStatusComboBoxModel.getSelectedItem());
-        reservation.setPayment(paymentComboBoxModel.getSelectedItem());
-        reservation.setClient(clientComboBoxModel.getSelectedItem());
-        reservation.setDateFrom(dateFromDC.getDate());
-        reservation.setDateTo(dateToDC.getDate());
-        reservation.setReservationDate(currentTimeService.getCurrentDate());
+    public ReservationEntity getEntityFromForm() {
+        Long amount = null;
         try {
-            reservation.setAmount(Long.parseLong(amountTF.getText()));
-        } catch (NumberFormatException ignored) {}
-        return reservation;
+            amount = Long.parseLong(amountTF.getText());
+        } catch (NumberFormatException ignored) {
+        }
+
+        return new ReservationEntity(
+                reservationStatusComboBoxModel.getSelectedItem(),
+                paymentComboBoxModel.getSelectedItem(),
+                clientComboBoxModel.getSelectedItem(),
+                dateFromDC.getDate(),
+                dateToDC.getDate(),
+                currentTimeService.getCurrentDate(),
+                amount
+        );
     }
 
     public void clearForm() {

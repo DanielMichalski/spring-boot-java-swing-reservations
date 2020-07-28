@@ -1,12 +1,16 @@
 package pl.dmichalski.reservations.business.ui.forms.room_type.view.modal;
 
-import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.entity.RoomType;
-import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
+import java.awt.GridLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 
-import javax.swing.*;
-import java.awt.*;
+import org.springframework.stereotype.Component;
+import pl.dmichalski.reservations.business.domain.entity.room.RoomTypeEntity;
+import pl.dmichalski.reservations.business.util.border.Borders;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
 public class RoomTypeFormPanel extends JPanel {
@@ -43,11 +47,11 @@ public class RoomTypeFormPanel extends JPanel {
         add(multiplierJS);
     }
 
-    public RoomType getEntityFromForm() {
-        RoomType roomType = new RoomType();
-        roomType.setDescription(descriptionTF.getText());
-        roomType.setMultiplier((Integer) multiplierJS.getValue());
-        return roomType;
+    public RoomTypeEntity getEntityFromForm() {
+        return new RoomTypeEntity(
+                descriptionTF.getText(),
+                (Integer) multiplierJS.getValue()
+        );
     }
 
     public void clearForm() {

@@ -1,9 +1,10 @@
 package pl.dmichalski.reservations.business.ui.forms.room_type.view.modal;
 
-import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
+import javax.swing.JButton;
+import javax.swing.JPanel;
 
-import javax.swing.*;
+import org.springframework.stereotype.Component;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
 public class RoomTypeFormBtnPanel extends JPanel {

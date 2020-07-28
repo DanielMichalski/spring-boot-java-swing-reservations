@@ -1,17 +1,20 @@
 package pl.dmichalski.reservations.business.ui.forms.rate.view.modal;
 
+import java.awt.GridLayout;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.entity.Rate;
-import pl.dmichalski.reservations.business.entity.Room;
-import pl.dmichalski.reservations.business.entity.RoomType;
+import pl.dmichalski.reservations.business.domain.entity.rate.RateEntity;
+import pl.dmichalski.reservations.business.domain.entity.room.RoomEntity;
+import pl.dmichalski.reservations.business.domain.entity.room.RoomTypeEntity;
 import pl.dmichalski.reservations.business.ui.forms.rate.model.RoomComboBoxModel;
 import pl.dmichalski.reservations.business.ui.forms.rate.model.RoomTypeComboBoxModel;
-import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
-
-import javax.swing.*;
-import java.awt.*;
+import pl.dmichalski.reservations.business.util.border.Borders;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
 public class RateFormPanel extends JPanel {
@@ -22,8 +25,8 @@ public class RateFormPanel extends JPanel {
     private static final int VERTICAL_GAP = 20;
     private static final int TEXT_FIELD_COLUMNS = 20;
 
-    private JComboBox<Room> roomCB;
-    private JComboBox<RoomType> roomTypeCB;
+    private JComboBox<RoomEntity> roomCB;
+    private JComboBox<RoomTypeEntity> roomTypeCB;
     private JTextField rateTF;
 
     private RoomComboBoxModel roomComboBoxModel;
@@ -49,7 +52,7 @@ public class RateFormPanel extends JPanel {
 
         roomCB = new JComboBox<>(roomComboBoxModel);
         roomTypeCB = new JComboBox<>(roomTypeComboBoxModel);
-        rateTF= new JTextField(TEXT_FIELD_COLUMNS);
+        rateTF = new JTextField(TEXT_FIELD_COLUMNS);
 
         add(roomLbl);
         add(roomCB);
@@ -59,14 +62,18 @@ public class RateFormPanel extends JPanel {
         add(rateTF);
     }
 
-    public Rate getEntityFromForm() {
-        Rate rate = new Rate();
-        rate.setRoom(roomComboBoxModel.getSelectedItem());
-        rate.setRoomType(roomTypeComboBoxModel.getSelectedItem());
+    public RateEntity getEntityFromForm() {
+        Long roomRate = null;
         try {
-            rate.setBasicRate(Long.parseLong(rateTF.getText()));
-        } catch (Exception ignored) {}
-        return rate;
+            roomRate = Long.parseLong(rateTF.getText());
+        } catch (Exception ignored) {
+        }
+
+        return new RateEntity(
+                roomComboBoxModel.getSelectedItem(),
+                roomTypeComboBoxModel.getSelectedItem(),
+                roomRate
+        );
     }
 
     public void clearForm() {

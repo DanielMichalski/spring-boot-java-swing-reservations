@@ -1,9 +1,15 @@
 package pl.dmichalski.reservations.business.ui.forms.payment_method.controller;
 
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.PostConstruct;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import pl.dmichalski.reservations.business.entity.PaymentMethod;
-import pl.dmichalski.reservations.business.service.PaymentMethodService;
+import pl.dmichalski.reservations.business.domain.entity.payment.PaymentMethodEntity;
+import pl.dmichalski.reservations.business.service.payment.PaymentMethodService;
 import pl.dmichalski.reservations.business.ui.forms.payment_method.model.PaymentMethodTableModel;
 import pl.dmichalski.reservations.business.ui.forms.payment_method.view.PaymentMethodTableBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.payment_method.view.PaymentMethodTableFrame;
@@ -11,15 +17,10 @@ import pl.dmichalski.reservations.business.ui.forms.payment_method.view.modal.Ad
 import pl.dmichalski.reservations.business.ui.forms.payment_method.view.modal.PaymentMethodFormBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.payment_method.view.modal.PaymentMethodFormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.Notifications;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
+import pl.dmichalski.reservations.business.util.notifications.Notifications;
 import pl.dmichalski.reservations.business.validation.PaymentMethodValidator;
 import pl.dmichalski.reservations.business.validation.ValidationError;
-
-import javax.annotation.PostConstruct;
-import javax.swing.*;
-import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class PaymentMethodController extends AbstractFrameController {
@@ -61,7 +62,7 @@ public class PaymentMethodController extends AbstractFrameController {
     }
 
     private void loadEntities() {
-        List<PaymentMethod> entities = paymentMethodService.findAll();
+        List<PaymentMethodEntity> entities = paymentMethodService.findAll();
         tableModel.clear();
         tableModel.addEntities(entities);
     }
@@ -76,7 +77,7 @@ public class PaymentMethodController extends AbstractFrameController {
 
     private void saveEntity() {
         PaymentMethodFormPanel formPanel = addFrame.getFormPanel();
-        PaymentMethod entity = formPanel.getEntityFromForm();
+        PaymentMethodEntity entity = formPanel.getEntityFromForm();
         Optional<ValidationError> errors = validator.validate(entity);
         if (errors.isPresent()) {
             ValidationError validationError = errors.get();
@@ -103,7 +104,7 @@ public class PaymentMethodController extends AbstractFrameController {
                         ConstMessagesEN.Messages.ALERT_TILE,
                         JOptionPane.ERROR_MESSAGE);
             } else {
-                PaymentMethod entity = tableModel.getEntityByRow(selectedRow);
+                PaymentMethodEntity entity = tableModel.getEntityByRow(selectedRow);
                 paymentMethodService.remove(entity);
                 tableModel.removeRow(selectedRow);
             }

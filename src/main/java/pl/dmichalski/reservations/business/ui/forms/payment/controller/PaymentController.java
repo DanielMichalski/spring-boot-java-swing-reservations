@@ -1,11 +1,17 @@
 package pl.dmichalski.reservations.business.ui.forms.payment.controller;
 
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.PostConstruct;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import pl.dmichalski.reservations.business.entity.Payment;
-import pl.dmichalski.reservations.business.entity.PaymentMethod;
-import pl.dmichalski.reservations.business.service.PaymentMethodService;
-import pl.dmichalski.reservations.business.service.PaymentService;
+import pl.dmichalski.reservations.business.domain.entity.payment.PaymentEntity;
+import pl.dmichalski.reservations.business.domain.entity.payment.PaymentMethodEntity;
+import pl.dmichalski.reservations.business.service.payment.PaymentMethodService;
+import pl.dmichalski.reservations.business.service.payment.PaymentService;
 import pl.dmichalski.reservations.business.ui.forms.payment.model.PaymentMethodComboBoxModel;
 import pl.dmichalski.reservations.business.ui.forms.payment.model.PaymentTableModel;
 import pl.dmichalski.reservations.business.ui.forms.payment.view.PaymentTableBtnPanel;
@@ -14,15 +20,10 @@ import pl.dmichalski.reservations.business.ui.forms.payment.view.modal.AddPaymen
 import pl.dmichalski.reservations.business.ui.forms.payment.view.modal.PaymentFormBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.payment.view.modal.PaymentFormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.Notifications;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
+import pl.dmichalski.reservations.business.util.notifications.Notifications;
 import pl.dmichalski.reservations.business.validation.PaymentValidator;
 import pl.dmichalski.reservations.business.validation.ValidationError;
-
-import javax.annotation.PostConstruct;
-import javax.swing.*;
-import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class PaymentController extends AbstractFrameController {
@@ -71,13 +72,13 @@ public class PaymentController extends AbstractFrameController {
     }
 
     private void loadEntities() {
-        List<Payment> entities = paymentService.findAll();
+        List<PaymentEntity> entities = paymentService.findAll();
         tableModel.clear();
         tableModel.addEntities(entities);
     }
 
     private void loadPaymentMethods() {
-        List<PaymentMethod> paymentMethods = paymentMethodService.findAll();
+        List<PaymentMethodEntity> paymentMethods = paymentMethodService.findAll();
         paymentMethodComboBoxModel.clear();
         paymentMethodComboBoxModel.addElements(paymentMethods);
     }
@@ -92,7 +93,7 @@ public class PaymentController extends AbstractFrameController {
 
     private void saveEntity() {
         PaymentFormPanel formPanel = addFrame.getFormPanel();
-        Payment entity = formPanel.getEntityFromForm();
+        PaymentEntity entity = formPanel.getEntityFromForm();
         Optional<ValidationError> errors = validator.validate(entity);
         if (errors.isPresent()) {
             ValidationError validationError = errors.get();
@@ -119,7 +120,7 @@ public class PaymentController extends AbstractFrameController {
                         ConstMessagesEN.Messages.ALERT_TILE,
                         JOptionPane.ERROR_MESSAGE);
             } else {
-                Payment entity = tableModel.getEntityByRow(selectedRow);
+                PaymentEntity entity = tableModel.getEntityByRow(selectedRow);
                 paymentService.remove(entity);
                 tableModel.removeRow(selectedRow);
             }

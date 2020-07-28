@@ -1,28 +1,29 @@
 package pl.dmichalski.reservations.business.ui.forms.client.controller;
 
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.PostConstruct;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import pl.dmichalski.reservations.business.entity.Address;
-import pl.dmichalski.reservations.business.entity.Client;
-import pl.dmichalski.reservations.business.service.AddressService;
-import pl.dmichalski.reservations.business.service.ClientService;
+import pl.dmichalski.reservations.business.domain.entity.address.AddressEntity;
+import pl.dmichalski.reservations.business.domain.entity.client.ClientEntity;
+import pl.dmichalski.reservations.business.service.address.AddressService;
+import pl.dmichalski.reservations.business.service.client.ClientService;
 import pl.dmichalski.reservations.business.ui.forms.client.model.AddressComboBoxModel;
+import pl.dmichalski.reservations.business.ui.forms.client.model.ClientTableModel;
+import pl.dmichalski.reservations.business.ui.forms.client.view.ClientFrame;
+import pl.dmichalski.reservations.business.ui.forms.client.view.TableBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.client.view.modal.AddClientFrame;
 import pl.dmichalski.reservations.business.ui.forms.client.view.modal.FormBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.client.view.modal.FormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
-import pl.dmichalski.reservations.business.ui.forms.client.model.ClientTableModel;
-import pl.dmichalski.reservations.business.ui.forms.client.view.TableBtnPanel;
-import pl.dmichalski.reservations.business.ui.forms.client.view.ClientFrame;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.Notifications;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
+import pl.dmichalski.reservations.business.util.notifications.Notifications;
 import pl.dmichalski.reservations.business.validation.ClientValidator;
 import pl.dmichalski.reservations.business.validation.ValidationError;
-
-import javax.annotation.PostConstruct;
-import javax.swing.*;
-import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class ClientController extends AbstractFrameController {
@@ -71,13 +72,13 @@ public class ClientController extends AbstractFrameController {
     }
 
     private void loadClients() {
-        List<Client> users = clientService.findAll();
+        List<ClientEntity> users = clientService.findAll();
         clientTableModel.clear();
         clientTableModel.addEntities(users);
     }
 
     private void loadAddresses() {
-        List<Address> addresses = addressService.findAll();
+        List<AddressEntity> addresses = addressService.findAll();
         addressComboBoxModel.clear();
         addressComboBoxModel.addElements(addresses);
     }
@@ -92,7 +93,7 @@ public class ClientController extends AbstractFrameController {
 
     private void saveClient() {
         FormPanel formPanel = addClientFrame.getFormPanel();
-        Client client = formPanel.getClientFromForm();
+        ClientEntity client = formPanel.getClientFromForm();
         Optional<ValidationError> errors = clientValidator.validate(client);
         if (errors.isPresent()) {
             ValidationError validationError = errors.get();
@@ -119,7 +120,7 @@ public class ClientController extends AbstractFrameController {
                         ConstMessagesEN.Messages.ALERT_TILE,
                         JOptionPane.ERROR_MESSAGE);
             } else {
-                Client client = clientTableModel.getEntityByRow(selectedRow);
+                ClientEntity client = clientTableModel.getEntityByRow(selectedRow);
                 clientService.remove(client);
                 clientTableModel.removeRow(selectedRow);
             }

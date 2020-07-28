@@ -1,47 +1,36 @@
 package pl.dmichalski.reservations.business.ui.forms.address.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.PostConstruct;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import pl.dmichalski.reservations.business.entity.Address;
-import pl.dmichalski.reservations.business.service.AddressService;
+import pl.dmichalski.reservations.business.domain.entity.address.AddressEntity;
+import pl.dmichalski.reservations.business.service.address.AddressService;
 import pl.dmichalski.reservations.business.ui.forms.address.model.AddressTableModel;
-import pl.dmichalski.reservations.business.ui.forms.address.view.AddressTableFrame;
 import pl.dmichalski.reservations.business.ui.forms.address.view.AddressTableBtnPanel;
+import pl.dmichalski.reservations.business.ui.forms.address.view.AddressTableFrame;
 import pl.dmichalski.reservations.business.ui.forms.address.view.modal.AddAddressFrame;
 import pl.dmichalski.reservations.business.ui.forms.address.view.modal.AddressFormBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.address.view.modal.AddressFormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.Notifications;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
+import pl.dmichalski.reservations.business.util.notifications.Notifications;
 import pl.dmichalski.reservations.business.validation.AddressValidator;
 import pl.dmichalski.reservations.business.validation.ValidationError;
 
-import javax.annotation.PostConstruct;
-import javax.swing.*;
-import java.util.List;
-import java.util.Optional;
-
 @Controller
+@AllArgsConstructor
 public class AddressController extends AbstractFrameController {
 
-    private AddressTableFrame tableFrame;
-    private AddAddressFrame addFrame;
-    private AddressTableModel tableModel;
-    private AddressService addressService;
-    private AddressValidator validator;
-
-    @Autowired
-    public AddressController(AddressTableFrame tableFrame,
-                             AddAddressFrame addFrame,
-                             AddressTableModel tableModel,
-                             AddressService addressService,
-                             AddressValidator validator) {
-        this.tableFrame = tableFrame;
-        this.addFrame = addFrame;
-        this.tableModel = tableModel;
-        this.addressService = addressService;
-        this.validator = validator;
-    }
+    private final AddressTableFrame tableFrame;
+    private final AddAddressFrame addFrame;
+    private final AddressTableModel tableModel;
+    private final AddressService addressService;
+    private final AddressValidator validator;
 
     @PostConstruct
     private void prepareListeners() {
@@ -61,7 +50,7 @@ public class AddressController extends AbstractFrameController {
     }
 
     private void loadEntities() {
-        List<Address> entities = addressService.findAll();
+        List<AddressEntity> entities = addressService.findAll();
         tableModel.clear();
         tableModel.addEntities(entities);
     }
@@ -76,7 +65,7 @@ public class AddressController extends AbstractFrameController {
 
     private void saveEntity() {
         AddressFormPanel formPanel = addFrame.getFormPanel();
-        Address entity = formPanel.getEntityFromForm();
+        AddressEntity entity = formPanel.getEntityFromForm();
         Optional<ValidationError> errors = validator.validate(entity);
         if (errors.isPresent()) {
             ValidationError validationError = errors.get();
@@ -103,7 +92,7 @@ public class AddressController extends AbstractFrameController {
                         ConstMessagesEN.Messages.ALERT_TILE,
                         JOptionPane.ERROR_MESSAGE);
             } else {
-                Address entity = tableModel.getEntityByRow(selectedRow);
+                AddressEntity entity = tableModel.getEntityByRow(selectedRow);
                 addressService.remove(entity);
                 tableModel.removeRow(selectedRow);
             }

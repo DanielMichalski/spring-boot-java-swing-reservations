@@ -1,27 +1,32 @@
 package pl.dmichalski.reservations.business.ui.forms.room_x_reservation.controller;
 
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.PostConstruct;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import pl.dmichalski.reservations.business.entity.*;
-import pl.dmichalski.reservations.business.service.*;
+import pl.dmichalski.reservations.business.domain.entity.reservation.ReservationEntity;
+import pl.dmichalski.reservations.business.domain.entity.room.RoomEntity;
+import pl.dmichalski.reservations.business.domain.entity.room.RoomXReservationEntity;
+import pl.dmichalski.reservations.business.service.reservation.ReservationService;
+import pl.dmichalski.reservations.business.service.room.RoomService;
+import pl.dmichalski.reservations.business.service.room.RoomXReservationService;
 import pl.dmichalski.reservations.business.ui.forms.rate.model.RoomComboBoxModel;
-import pl.dmichalski.reservations.business.ui.forms.room_x_reservation.model.RoomXReservationTableModel;
 import pl.dmichalski.reservations.business.ui.forms.room_x_reservation.model.ReservationsComboBoxModel;
+import pl.dmichalski.reservations.business.ui.forms.room_x_reservation.model.RoomXReservationTableModel;
 import pl.dmichalski.reservations.business.ui.forms.room_x_reservation.view.RoomXReservationTableBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.room_x_reservation.view.RoomXReservationTableFrame;
 import pl.dmichalski.reservations.business.ui.forms.room_x_reservation.view.modal.AddRoomXReservationFame;
 import pl.dmichalski.reservations.business.ui.forms.room_x_reservation.view.modal.RoomXReservationFormBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.room_x_reservation.view.modal.RoomXReservationFormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.Notifications;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
+import pl.dmichalski.reservations.business.util.notifications.Notifications;
 import pl.dmichalski.reservations.business.validation.RoomXReservationValidator;
 import pl.dmichalski.reservations.business.validation.ValidationError;
-
-import javax.annotation.PostConstruct;
-import javax.swing.*;
-import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class RoomXReservationController extends AbstractFrameController {
@@ -77,19 +82,19 @@ public class RoomXReservationController extends AbstractFrameController {
     }
 
     private void loadEntities() {
-        List<RoomXReservation> entities = roomXReservationService.findAll();
+        List<RoomXReservationEntity> entities = roomXReservationService.findAll();
         tableModel.clear();
         tableModel.addEntities(entities);
     }
 
     private void loadRooms() {
-        List<Room> entities = roomService.findAll();
+        List<RoomEntity> entities = roomService.findAll();
         roomComboBoxModel.clear();
         roomComboBoxModel.addElements(entities);
     }
 
     private void loadReservations() {
-        List<Reservation> entities = reservationService.findAll();
+        List<ReservationEntity> entities = reservationService.findAll();
         reservationsComboBoxModel.clear();
         reservationsComboBoxModel.addElements(entities);
     }
@@ -104,7 +109,7 @@ public class RoomXReservationController extends AbstractFrameController {
 
     private void saveEntity() {
         RoomXReservationFormPanel formPanel = addFrame.getFormPanel();
-        RoomXReservation entity = formPanel.getEntityFromForm();
+        RoomXReservationEntity entity = formPanel.getEntityFromForm();
         Optional<ValidationError> errors = validator.validate(entity);
         if (errors.isPresent()) {
             ValidationError validationError = errors.get();
@@ -131,7 +136,7 @@ public class RoomXReservationController extends AbstractFrameController {
                         ConstMessagesEN.Messages.ALERT_TILE,
                         JOptionPane.ERROR_MESSAGE);
             } else {
-                RoomXReservation entity = tableModel.getEntityByRow(selectedRow);
+                RoomXReservationEntity entity = tableModel.getEntityByRow(selectedRow);
                 roomXReservationService.remove(entity);
                 tableModel.removeRow(selectedRow);
             }

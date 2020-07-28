@@ -1,15 +1,21 @@
 package pl.dmichalski.reservations.business.ui.forms.rate.controller;
 
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.PostConstruct;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import pl.dmichalski.reservations.business.entity.Rate;
-import pl.dmichalski.reservations.business.entity.Room;
-import pl.dmichalski.reservations.business.entity.RoomType;
-import pl.dmichalski.reservations.business.service.RateService;
-import pl.dmichalski.reservations.business.service.RoomService;
-import pl.dmichalski.reservations.business.service.RoomTypeService;
-import pl.dmichalski.reservations.business.ui.forms.rate.model.RoomComboBoxModel;
+import pl.dmichalski.reservations.business.domain.entity.rate.RateEntity;
+import pl.dmichalski.reservations.business.domain.entity.room.RoomEntity;
+import pl.dmichalski.reservations.business.domain.entity.room.RoomTypeEntity;
+import pl.dmichalski.reservations.business.service.rate.RateService;
+import pl.dmichalski.reservations.business.service.room.RoomService;
+import pl.dmichalski.reservations.business.service.room.RoomTypeService;
 import pl.dmichalski.reservations.business.ui.forms.rate.model.RateTableModel;
+import pl.dmichalski.reservations.business.ui.forms.rate.model.RoomComboBoxModel;
 import pl.dmichalski.reservations.business.ui.forms.rate.model.RoomTypeComboBoxModel;
 import pl.dmichalski.reservations.business.ui.forms.rate.view.RateTableBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.rate.view.RateTableFrame;
@@ -17,15 +23,10 @@ import pl.dmichalski.reservations.business.ui.forms.rate.view.modal.AddRateFame;
 import pl.dmichalski.reservations.business.ui.forms.rate.view.modal.RateFormBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.rate.view.modal.RateFormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.Notifications;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
+import pl.dmichalski.reservations.business.util.notifications.Notifications;
 import pl.dmichalski.reservations.business.validation.RateValidator;
 import pl.dmichalski.reservations.business.validation.ValidationError;
-
-import javax.annotation.PostConstruct;
-import javax.swing.*;
-import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class RateController extends AbstractFrameController {
@@ -81,19 +82,19 @@ public class RateController extends AbstractFrameController {
     }
 
     private void loadEntities() {
-        List<Rate> entities = rateService.findAll();
+        List<RateEntity> entities = rateService.findAll();
         tableModel.clear();
         tableModel.addEntities(entities);
     }
 
     private void loadRooms() {
-        List<Room> entities = roomService.findAll();
+        List<RoomEntity> entities = roomService.findAll();
         roomComboBoxModel.clear();
         roomComboBoxModel.addElements(entities);
     }
 
     private void loadRoomsTypes() {
-        List<RoomType> entities = roomTypeService.findAll();
+        List<RoomTypeEntity> entities = roomTypeService.findAll();
         roomTypeComboBoxModel.clear();
         roomTypeComboBoxModel.addElements(entities);
     }
@@ -108,7 +109,7 @@ public class RateController extends AbstractFrameController {
 
     private void saveEntity() {
         RateFormPanel formPanel = addFrame.getFormPanel();
-        Rate entity = formPanel.getEntityFromForm();
+        RateEntity entity = formPanel.getEntityFromForm();
         Optional<ValidationError> errors = validator.validate(entity);
         if (errors.isPresent()) {
             ValidationError validationError = errors.get();
@@ -135,7 +136,7 @@ public class RateController extends AbstractFrameController {
                         ConstMessagesEN.Messages.ALERT_TILE,
                         JOptionPane.ERROR_MESSAGE);
             } else {
-                Rate entity = tableModel.getEntityByRow(selectedRow);
+                RateEntity entity = tableModel.getEntityByRow(selectedRow);
                 rateService.remove(entity);
                 tableModel.removeRow(selectedRow);
             }

@@ -1,12 +1,14 @@
 package pl.dmichalski.reservations.business.ui.forms.room_status.view.modal;
 
-import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.entity.RoomStatus;
-import pl.dmichalski.reservations.business.util.Borders;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
+import java.awt.GridLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-import javax.swing.*;
-import java.awt.*;
+import org.springframework.stereotype.Component;
+import pl.dmichalski.reservations.business.domain.entity.room.RoomStatusEntity;
+import pl.dmichalski.reservations.business.util.border.Borders;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
 public class RoomStatusFormPanel extends JPanel {
@@ -43,11 +45,11 @@ public class RoomStatusFormPanel extends JPanel {
         add(roomStatusDescriptionTF);
     }
 
-    public RoomStatus getEntityFromForm() {
-        RoomStatus roomStatus = new RoomStatus();
-        roomStatus.setRoomStatus(roomStatusTF.getText());
-        roomStatus.setDescription(roomStatusDescriptionTF.getText());
-        return roomStatus;
+    public RoomStatusEntity getEntityFromForm() {
+        return new RoomStatusEntity(
+                roomStatusTF.getText(),
+                roomStatusDescriptionTF.getText()
+        );
     }
 
     public void clearForm() {

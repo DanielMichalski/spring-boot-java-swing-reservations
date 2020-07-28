@@ -1,22 +1,22 @@
 package pl.dmichalski.reservations.business.validation;
 
-import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.entity.Address;
-
 import java.util.Optional;
 
-import static pl.dmichalski.reservations.business.util.ConstMessagesEN.ValidationMessages.REQUIRED_DATA_NOT_FILLED_OR_BAD_DATA;
+import org.springframework.stereotype.Component;
+import pl.dmichalski.reservations.business.domain.entity.address.AddressEntity;
+
+import static pl.dmichalski.reservations.business.util.constant.ConstMessagesEN.ValidationMessages.REQUIRED_DATA_NOT_FILLED_OR_BAD_DATA;
 
 @Component
-public class AddressValidator extends ValidationSupport implements Validator<Address> {
+public class AddressValidator extends ValidationSupport implements Validator<AddressEntity> {
 
     @Override
-    public Optional<ValidationError> validate(Address address) {
+    public Optional<ValidationError> validate(AddressEntity address) {
         if (isNullOrEmptyString(address.getStreet()) ||
                 isNullOrEmptyString(address.getHouseNumber()) ||
                 isNullOrEmptyString(address.getFlatNumber()) ||
                 isNullOrEmptyString(address.getCity()) ||
-                isNullOrEmptyString(address.getPostCode())) {
+                isNullOrEmptyString(address.getPostalCode())) {
             return Optional.of(new ValidationError(REQUIRED_DATA_NOT_FILLED_OR_BAD_DATA));
         }
         return Optional.empty();

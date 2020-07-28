@@ -1,12 +1,12 @@
 package pl.dmichalski.reservations.business.ui.forms.client.model;
 
 import org.springframework.stereotype.Component;
-import pl.dmichalski.reservations.business.entity.Client;
+import pl.dmichalski.reservations.business.domain.entity.client.ClientEntity;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
-import pl.dmichalski.reservations.business.util.ConstMessagesEN;
+import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
-public class ClientTableModel extends DefaultTableModel<Client> {
+public class ClientTableModel extends DefaultTableModel<ClientEntity> {
 
     @Override
     public String[] getColumnLabels() {
@@ -21,7 +21,7 @@ public class ClientTableModel extends DefaultTableModel<Client> {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Client client = entities.get(rowIndex);
+        ClientEntity client = entities.get(rowIndex);
 
         switch (columnIndex) {
             case 0:
