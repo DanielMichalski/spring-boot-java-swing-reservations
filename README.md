@@ -49,6 +49,14 @@ cd ../..
 ./mvnw spring-boot:run
 ```
 
+Database access
+---------------
+```
+jdbc-url: jdbc:postgresql://localhost:5432/reservations
+username: reservations_user
+password: reservations_psw
+```
+
 Video
 -----
 
