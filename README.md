@@ -37,6 +37,20 @@ mvnw.cmd clean install
 mvnw.cmd spring-boot:run
 ```
 
+On MacOS/ Linux
+```bash
+## Run PostgreSQL database by docker compose
+cd docker/dependencies
+./start.sh
+
+## Build application from base directory using Maven Wrapper
+cd ../..
+./mvnw clean install
+
+## Run Spring boot application with PostgreSQL database
+./mvnw spring-boot:run
+```
+
 Video
 -----
 
