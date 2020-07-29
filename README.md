@@ -3,7 +3,7 @@
 Spring Boot Swing Reservations
 ---------------------------------------------
 
-This project is Spring Boot + JPA/Hibernate Swing application.
+This project is a Spring Boot + JPA/Hibernate Swing application.
 
 It contains some useful configuration things:
 
@@ -13,17 +13,28 @@ It contains some useful configuration things:
 - Internationalization
 - Swing application
 - Liquibase
+- Lombok
 - Docker Compose
 
+Requirements
+---------------------------------------------
+- OpenJDK 11 (https://openjdk.java.net/projects/jdk/11/)
+- Docker (https://www.docker.com/products/docker-desktop)
 
 How to run application
 ---------------------------------------------
+On Windows
 ```bash
-## Build application from base directory
-mvn clean install
+## Run PostgreSQL database by docker compose
+cd docker/dependencies
+start.sh
+
+## Build application from base directory using Maven Wrapper
+cd ../..
+mvnw.cmd clean install
 
 ## Run Spring boot application with PostgreSQL database
-mvn spring-boot:run
+mvnw.cmd spring-boot:run
 ```
 
 Video
