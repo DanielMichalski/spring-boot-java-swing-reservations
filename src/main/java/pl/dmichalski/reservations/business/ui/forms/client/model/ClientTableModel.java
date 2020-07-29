@@ -9,6 +9,13 @@ import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 @Component
 public class ClientTableModel extends DefaultTableModel<ClientEntity> {
 
+    private static final int NAME_INDEX = 0;
+    private static final int SURNAME_INDEX = 1;
+    private static final int PESEL_INDEX = 2;
+    private static final int PHONE_NUMBER_INDEX = 3;
+    private static final int EMAIL_INDEX = 4;
+    private static final int ADDRESS_INDEX = 5;
+
     @Override
     public String[] getColumnLabels() {
         return new String[]{
@@ -25,17 +32,17 @@ public class ClientTableModel extends DefaultTableModel<ClientEntity> {
         ClientEntity client = entities.get(rowIndex);
 
         switch (columnIndex) {
-            case 0:
+            case NAME_INDEX:
                 return client.getName();
-            case 1:
+            case SURNAME_INDEX:
                 return client.getSurname();
-            case 2:
+            case PESEL_INDEX:
                 return client.getPesel();
-            case 3:
+            case PHONE_NUMBER_INDEX:
                 return client.getPhoneNumber();
-            case 4:
+            case EMAIL_INDEX:
                 return client.getEmail();
-            case 5:
+            case ADDRESS_INDEX:
                 return client.getAddress();
             default:
                 return Strings.EMPTY;

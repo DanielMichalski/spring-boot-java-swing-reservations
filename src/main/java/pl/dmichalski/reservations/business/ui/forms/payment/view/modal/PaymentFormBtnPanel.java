@@ -1,18 +1,22 @@
 package pl.dmichalski.reservations.business.ui.forms.payment.view.modal;
 
+import javax.annotation.PostConstruct;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
+@Getter
 public class PaymentFormBtnPanel extends JPanel {
 
     private JButton saveBtn;
     private JButton cancelBtn;
 
-    public PaymentFormBtnPanel() {
+    @PostConstruct
+    private void preparePanel() {
         initComponents();
     }
 
@@ -22,14 +26,6 @@ public class PaymentFormBtnPanel extends JPanel {
 
         cancelBtn = new JButton(ConstMessagesEN.Labels.CANCEL_BTN);
         add(cancelBtn);
-    }
-
-    public JButton getSaveBtn() {
-        return saveBtn;
-    }
-
-    public JButton getCancelBtn() {
-        return cancelBtn;
     }
 
 }

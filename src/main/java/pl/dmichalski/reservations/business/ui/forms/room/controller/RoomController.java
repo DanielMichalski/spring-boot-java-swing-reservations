@@ -6,7 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import pl.dmichalski.reservations.business.app.service.room.RoomService;
 import pl.dmichalski.reservations.business.app.service.room.RoomStatusService;
@@ -26,32 +26,16 @@ import pl.dmichalski.reservations.business.validation.ValidationError;
 import pl.dmichalski.reservations.business.validation.room.RoomValidator;
 
 @Controller
+@AllArgsConstructor
 public class RoomController extends AbstractFrameController {
 
-    private RoomTableFrame tableFrame;
-    private AddRoomFrame addFrame;
-    private RoomTableModel tableModel;
-    private RoomService roomService;
-    private RoomStatusService roomStatusService;
-    private RoomStatusComboBoxModel roomStatusComboBoxModel;
-    private RoomValidator validator;
-
-    @Autowired
-    public RoomController(RoomTableFrame tableFrame,
-                          AddRoomFrame addFrame,
-                          RoomTableModel tableModel,
-                          RoomService roomService,
-                          RoomStatusService roomStatusService,
-                          RoomStatusComboBoxModel roomStatusComboBoxModel,
-                          RoomValidator validator) {
-        this.tableFrame = tableFrame;
-        this.addFrame = addFrame;
-        this.tableModel = tableModel;
-        this.roomService = roomService;
-        this.roomStatusService = roomStatusService;
-        this.roomStatusComboBoxModel = roomStatusComboBoxModel;
-        this.validator = validator;
-    }
+    private final RoomTableFrame tableFrame;
+    private final AddRoomFrame addFrame;
+    private final RoomTableModel tableModel;
+    private final RoomService roomService;
+    private final RoomStatusService roomStatusService;
+    private final RoomStatusComboBoxModel roomStatusComboBoxModel;
+    private final RoomValidator validator;
 
     @PostConstruct
     private void prepareListeners() {

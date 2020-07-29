@@ -9,15 +9,19 @@ import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 @Component
 public class RoomTableModel extends DefaultTableModel<RoomEntity> {
 
+    private static final int ROOM_STATUS_INDEX = 0;
+    private static final int ROOM_NUMBER_OF_PEOPLE_INDEX = 1;
+    private static final int ROOM_DESCRIPTION_INDEX = 2;
+
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         RoomEntity room = entities.get(rowIndex);
         switch (columnIndex) {
-            case 0:
+            case ROOM_STATUS_INDEX:
                 return room.getRoomStatus();
-            case 1:
+            case ROOM_NUMBER_OF_PEOPLE_INDEX:
                 return room.getNumberOfPeople();
-            case 2:
+            case ROOM_DESCRIPTION_INDEX:
                 return room.getDescription();
             default:
                 return Strings.EMPTY;

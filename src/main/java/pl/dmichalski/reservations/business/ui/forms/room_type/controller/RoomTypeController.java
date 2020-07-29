@@ -6,7 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import pl.dmichalski.reservations.business.app.service.room.RoomTypeService;
 import pl.dmichalski.reservations.business.domain.entity.room.RoomTypeEntity;
@@ -23,26 +23,14 @@ import pl.dmichalski.reservations.business.validation.ValidationError;
 import pl.dmichalski.reservations.business.validation.room.RoomTypeValidator;
 
 @Controller
+@AllArgsConstructor
 public class RoomTypeController extends AbstractFrameController {
 
-    private RoomTypeTableFrame tableFrame;
-    private AddRoomTypeFrame addFrame;
-    private RoomTypeTableModel tableModel;
-    private RoomTypeService roomTypeService;
-    private RoomTypeValidator validator;
-
-    @Autowired
-    public RoomTypeController(RoomTypeTableFrame tableFrame,
-                              AddRoomTypeFrame addFrame,
-                              RoomTypeTableModel tableModel,
-                              RoomTypeService roomTypeService,
-                              RoomTypeValidator validator) {
-        this.tableFrame = tableFrame;
-        this.addFrame = addFrame;
-        this.tableModel = tableModel;
-        this.roomTypeService = roomTypeService;
-        this.validator = validator;
-    }
+    private final RoomTypeTableFrame tableFrame;
+    private final AddRoomTypeFrame addFrame;
+    private final RoomTypeTableModel tableModel;
+    private final RoomTypeService roomTypeService;
+    private final RoomTypeValidator validator;
 
     @PostConstruct
     private void prepareListeners() {

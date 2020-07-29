@@ -1,13 +1,13 @@
 package pl.dmichalski.reservations.business.ui.forms.rate.view.modal;
 
 import java.awt.GridLayout;
+import javax.annotation.PostConstruct;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import org.apache.logging.log4j.util.Strings;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.domain.entity.rate.RateEntity;
 import pl.dmichalski.reservations.business.domain.entity.room.RoomEntity;
@@ -26,17 +26,18 @@ public class RateFormPanel extends JPanel {
     private static final int VERTICAL_GAP = 20;
     private static final int TEXT_FIELD_COLUMNS = 20;
 
-    private JComboBox<RoomEntity> roomCB;
-    private JComboBox<RoomTypeEntity> roomTypeCB;
+    private final RoomComboBoxModel roomComboBoxModel;
+    private final RoomTypeComboBoxModel roomTypeComboBoxModel;
+
     private JTextField rateTF;
 
-    private RoomComboBoxModel roomComboBoxModel;
-    private RoomTypeComboBoxModel roomTypeComboBoxModel;
-
-    @Autowired
     public RateFormPanel(RoomComboBoxModel roomComboBoxModel, RoomTypeComboBoxModel roomTypeComboBoxModel) {
         this.roomComboBoxModel = roomComboBoxModel;
         this.roomTypeComboBoxModel = roomTypeComboBoxModel;
+    }
+
+    @PostConstruct
+    private void preparePanel() {
         setPanelUp();
         initComponents();
     }
@@ -51,8 +52,8 @@ public class RateFormPanel extends JPanel {
         JLabel roomTypeLbl = new JLabel(ConstMessagesEN.Labels.ROOM_TYPE);
         JLabel rateLbl = new JLabel(ConstMessagesEN.Labels.BASIC_RATE);
 
-        roomCB = new JComboBox<>(roomComboBoxModel);
-        roomTypeCB = new JComboBox<>(roomTypeComboBoxModel);
+        JComboBox<RoomEntity> roomCB = new JComboBox<>(roomComboBoxModel);
+        JComboBox<RoomTypeEntity> roomTypeCB = new JComboBox<>(roomTypeComboBoxModel);
         rateTF = new JTextField(TEXT_FIELD_COLUMNS);
 
         add(roomLbl);

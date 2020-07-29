@@ -1,13 +1,13 @@
 package pl.dmichalski.reservations.business.ui.forms.client.view.modal;
 
 import java.awt.GridLayout;
+import javax.annotation.PostConstruct;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import org.apache.logging.log4j.util.Strings;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.domain.entity.address.AddressEntity;
 import pl.dmichalski.reservations.business.domain.entity.client.ClientEntity;
@@ -24,17 +24,21 @@ public class FormPanel extends JPanel {
     private static final int VERTICAL_GAP = 20;
     private static final int TEXT_FIELD_COLUMNS = 20;
 
+    private final AddressComboBoxModel addressComboBoxModel;
+
     private JTextField nameTF;
     private JTextField surnameTF;
     private JTextField peselTF;
     private JTextField phoneNumberTF;
     private JTextField emailTF;
     private JComboBox<AddressEntity> addressCB;
-    private AddressComboBoxModel addressComboBoxModel;
 
-    @Autowired
     public FormPanel(AddressComboBoxModel addressComboBoxModel) {
         this.addressComboBoxModel = addressComboBoxModel;
+    }
+
+    @PostConstruct
+    private void preparePanel() {
         setPanelUp();
         initComponents();
     }

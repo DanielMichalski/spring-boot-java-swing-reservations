@@ -1,26 +1,28 @@
 package pl.dmichalski.reservations.business.ui.forms.reservation_status.view;
 
 import java.awt.BorderLayout;
+import javax.annotation.PostConstruct;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
+@AllArgsConstructor
+@Getter
 public class ReservationStatusTableFrame extends JFrame {
 
     private static final int DEFAULT_WIDTH = 500;
     private static final int DEFAULT_HEIGHT = 300;
 
-    private ReservationStatusTablePanel tablePanel;
-    private ReservationStatusTableBtnPanel tableBtnPanel;
+    private final ReservationStatusTablePanel tablePanel;
+    private final ReservationStatusTableBtnPanel tableBtnPanel;
 
-    @Autowired
-    public ReservationStatusTableFrame(ReservationStatusTableBtnPanel tableBtnPanel, ReservationStatusTablePanel tablePanel) {
-        this.tablePanel = tablePanel;
-        this.tableBtnPanel = tableBtnPanel;
+    @PostConstruct
+    private void prepareFrame() {
         setFrameUp();
         initComponents();
     }
@@ -36,13 +38,5 @@ public class ReservationStatusTableFrame extends JFrame {
     private void initComponents() {
         add(tablePanel, BorderLayout.CENTER);
         add(tableBtnPanel, BorderLayout.SOUTH);
-    }
-
-    public ReservationStatusTableBtnPanel getTableBtnPanel() {
-        return tableBtnPanel;
-    }
-
-    public ReservationStatusTablePanel getTablePanel() {
-        return tablePanel;
     }
 }

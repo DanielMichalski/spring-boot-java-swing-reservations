@@ -9,13 +9,16 @@ import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 @Component
 public class RoomStatusTableModel extends DefaultTableModel<RoomStatusEntity> {
 
+    private static final int ROOM_STATUS_INDEX = 0;
+    private static final int ROOM_STATUS_DESCRIPTION_INDEX = 1;
+
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         RoomStatusEntity roomStatus = entities.get(rowIndex);
         switch (columnIndex) {
-            case 0:
+            case ROOM_STATUS_INDEX:
                 return roomStatus.getStatus();
-            case 1:
+            case ROOM_STATUS_DESCRIPTION_INDEX:
                 return roomStatus.getStatusDescription();
             default:
                 return Strings.EMPTY;

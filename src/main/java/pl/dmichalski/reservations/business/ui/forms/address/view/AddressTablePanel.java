@@ -8,7 +8,6 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
 import lombok.Getter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.ui.forms.address.model.AddressTableModel;
 
@@ -20,7 +19,6 @@ public class AddressTablePanel extends JPanel {
 
     private JTable table;
 
-    @Autowired
     AddressTablePanel(AddressTableModel tableModel) {
         this.tableModel = tableModel;
     }

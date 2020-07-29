@@ -2,7 +2,7 @@ package pl.dmichalski.reservations.business.ui.reports.client_reservations.contr
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import pl.dmichalski.reservations.business.app.service.client.ClientService;
 import pl.dmichalski.reservations.business.dto.client.ClientReservationCountDto;
@@ -11,20 +11,12 @@ import pl.dmichalski.reservations.business.ui.reports.client_reservations.view.C
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
 
 @Controller
+@AllArgsConstructor
 public class ClientReservationsReportController extends AbstractFrameController {
 
-    private ClientReservationsReportTableFrame tableFrame;
-    private ClientReservationsReportModel tableModel;
-    private ClientService clientService;
-
-    @Autowired
-    public ClientReservationsReportController(ClientReservationsReportTableFrame tableFrame,
-                                              ClientReservationsReportModel tableModel,
-                                              ClientService clientService) {
-        this.tableFrame = tableFrame;
-        this.tableModel = tableModel;
-        this.clientService = clientService;
-    }
+    private final ClientReservationsReportTableFrame tableFrame;
+    private final ClientReservationsReportModel tableModel;
+    private final ClientService clientService;
 
     public void prepareAndOpenFrame() {
         loadEntities();

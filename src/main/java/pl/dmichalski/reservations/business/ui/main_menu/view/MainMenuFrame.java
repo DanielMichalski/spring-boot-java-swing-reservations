@@ -1,22 +1,26 @@
 package pl.dmichalski.reservations.business.ui.main_menu.view;
 
 import java.awt.GridLayout;
+import javax.annotation.PostConstruct;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.util.border.Borders;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 import pl.dmichalski.reservations.business.util.ui.LookAndFeelUtils;
 
 @Component
+@Getter
 public class MainMenuFrame extends JFrame {
 
     private JButton formsBtn;
     private JButton reportsBtn;
 
-    public MainMenuFrame() {
+    @PostConstruct
+    private void prepareFrame() {
         setFrameUp();
         initComponents();
         pack();
@@ -40,11 +44,4 @@ public class MainMenuFrame extends JFrame {
         add(reportsBtn);
     }
 
-    public JButton getFormsBtn() {
-        return formsBtn;
-    }
-
-    public JButton getReportsBtn() {
-        return reportsBtn;
-    }
 }

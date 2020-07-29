@@ -6,7 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import pl.dmichalski.reservations.business.app.service.rate.RateService;
 import pl.dmichalski.reservations.business.app.service.room.RoomService;
@@ -29,38 +29,18 @@ import pl.dmichalski.reservations.business.validation.ValidationError;
 import pl.dmichalski.reservations.business.validation.rate.RateValidator;
 
 @Controller
+@AllArgsConstructor
 public class RateController extends AbstractFrameController {
 
-    private RateTableFrame tableFrame;
-    private AddRateFame addFrame;
-    private RateTableModel tableModel;
-    private RateService rateService;
-    private RoomService roomService;
-    private RoomComboBoxModel roomComboBoxModel;
-    private RoomTypeService roomTypeService;
-    private RoomTypeComboBoxModel roomTypeComboBoxModel;
-    private RateValidator validator;
-
-    @Autowired
-    public RateController(RateTableFrame tableFrame,
-                          AddRateFame addFrame,
-                          RateTableModel tableModel,
-                          RateService rateService,
-                          RoomService roomService,
-                          RoomComboBoxModel roomComboBoxModel,
-                          RoomTypeService roomTypeService,
-                          RoomTypeComboBoxModel roomTypeComboBoxModel,
-                          RateValidator validator) {
-        this.tableFrame = tableFrame;
-        this.addFrame = addFrame;
-        this.tableModel = tableModel;
-        this.rateService = rateService;
-        this.roomService = roomService;
-        this.roomComboBoxModel = roomComboBoxModel;
-        this.roomTypeService = roomTypeService;
-        this.roomTypeComboBoxModel = roomTypeComboBoxModel;
-        this.validator = validator;
-    }
+    private final RateTableFrame tableFrame;
+    private final AddRateFame addFrame;
+    private final RateTableModel tableModel;
+    private final RateService rateService;
+    private final RoomService roomService;
+    private final RoomComboBoxModel roomComboBoxModel;
+    private final RoomTypeService roomTypeService;
+    private final RoomTypeComboBoxModel roomTypeComboBoxModel;
+    private final RateValidator validator;
 
     @PostConstruct
     private void prepareListeners() {

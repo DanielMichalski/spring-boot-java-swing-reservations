@@ -2,7 +2,7 @@ package pl.dmichalski.reservations.business.ui.reports.room_statuses.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import pl.dmichalski.reservations.business.app.service.room.RoomStatusService;
 import pl.dmichalski.reservations.business.dto.room.RoomStatusesCountDto;
@@ -11,18 +11,12 @@ import pl.dmichalski.reservations.business.ui.reports.room_statuses.view.RoomSta
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
 
 @Controller
+@AllArgsConstructor
 public class RoomStatusReportController extends AbstractFrameController {
 
-    private RoomStatusReportTableFrame tableFrame;
-    private RoomStatusReportModel tableModel;
-    private RoomStatusService roomStatusService;
-
-    @Autowired
-    public RoomStatusReportController(RoomStatusReportTableFrame tableFrame, RoomStatusReportModel tableModel, RoomStatusService roomStatusService) {
-        this.tableFrame = tableFrame;
-        this.tableModel = tableModel;
-        this.roomStatusService = roomStatusService;
-    }
+    private final RoomStatusReportTableFrame tableFrame;
+    private final RoomStatusReportModel tableModel;
+    private final RoomStatusService roomStatusService;
 
     public void prepareAndOpenFrame() {
         loadEntities();

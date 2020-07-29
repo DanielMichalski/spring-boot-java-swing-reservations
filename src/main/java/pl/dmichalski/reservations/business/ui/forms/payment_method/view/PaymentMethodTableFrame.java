@@ -1,26 +1,28 @@
 package pl.dmichalski.reservations.business.ui.forms.payment_method.view;
 
 import java.awt.BorderLayout;
+import javax.annotation.PostConstruct;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
+@AllArgsConstructor
+@Getter
 public class PaymentMethodTableFrame extends JFrame {
 
     private static final int DEFAULT_WIDTH = 500;
     private static final int DEFAULT_HEIGHT = 300;
 
-    private PaymentMethodTablePanel tablePanel;
-    private PaymentMethodTableBtnPanel tableBtnPanel;
+    private final PaymentMethodTablePanel tablePanel;
+    private final PaymentMethodTableBtnPanel tableBtnPanel;
 
-    @Autowired
-    public PaymentMethodTableFrame(PaymentMethodTableBtnPanel tableBtnPanel, PaymentMethodTablePanel tablePanel) {
-        this.tablePanel = tablePanel;
-        this.tableBtnPanel = tableBtnPanel;
+    @PostConstruct
+    private void prepareFrame() {
         setFrameUp();
         initComponents();
     }
@@ -36,13 +38,5 @@ public class PaymentMethodTableFrame extends JFrame {
     private void initComponents() {
         add(tablePanel, BorderLayout.CENTER);
         add(tableBtnPanel, BorderLayout.SOUTH);
-    }
-
-    public PaymentMethodTableBtnPanel getTableBtnPanel() {
-        return tableBtnPanel;
-    }
-
-    public PaymentMethodTablePanel getTablePanel() {
-        return tablePanel;
     }
 }

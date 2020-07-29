@@ -1,23 +1,25 @@
 package pl.dmichalski.reservations.business.ui.forms.rate.view.modal;
 
 import java.awt.BorderLayout;
+import javax.annotation.PostConstruct;
 import javax.swing.JDialog;
 import javax.swing.WindowConstants;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
+@AllArgsConstructor
+@Getter
 public class AddRateFame extends JDialog {
 
-    private RateFormPanel formPanel;
-    private RateFormBtnPanel formBtnPanel;
+    private final RateFormPanel formPanel;
+    private final RateFormBtnPanel formBtnPanel;
 
-    @Autowired
-    public AddRateFame(RateFormPanel formPanel, RateFormBtnPanel formBtnPanel) {
-        this.formPanel = formPanel;
-        this.formBtnPanel = formBtnPanel;
+    @PostConstruct
+    private void prepareFrame() {
         setFrameUp();
         initComponents();
         pack();
@@ -36,11 +38,4 @@ public class AddRateFame extends JDialog {
         add(formBtnPanel, BorderLayout.SOUTH);
     }
 
-    public RateFormPanel getFormPanel() {
-        return formPanel;
-    }
-
-    public RateFormBtnPanel getFormBtnPanel() {
-        return formBtnPanel;
-    }
 }

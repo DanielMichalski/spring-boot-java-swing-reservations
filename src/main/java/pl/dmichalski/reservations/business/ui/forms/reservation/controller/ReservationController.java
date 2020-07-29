@@ -6,7 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import pl.dmichalski.reservations.business.app.service.client.ClientService;
 import pl.dmichalski.reservations.business.app.service.payment.PaymentService;
@@ -32,44 +32,20 @@ import pl.dmichalski.reservations.business.validation.ValidationError;
 import pl.dmichalski.reservations.business.validation.reservation.ReservationValidator;
 
 @Controller
+@AllArgsConstructor
 public class ReservationController extends AbstractFrameController {
 
-    private ReservationTableFrame tableFrame;
-    private AddReservationFrame addFrame;
-    private ReservationTableModel tableModel;
-    private ReservationService reservationService;
-    private ReservationValidator validator;
-    private ReservationStatusService reservationStatusService;
-    private PaymentService paymentService;
-    private ClientService clientService;
-    private ReservationStatusComboBoxModel reservationStatusComboBoxModel;
-    private PaymentComboBoxModel paymentComboBoxModel;
-    private ClientComboBoxModel clientComboBoxModel;
-
-    @Autowired
-    public ReservationController(ReservationTableFrame tableFrame,
-                                 AddReservationFrame addFrame,
-                                 ReservationTableModel tableModel,
-                                 ReservationService reservationService,
-                                 ReservationValidator validator,
-                                 ReservationStatusService reservationStatusService,
-                                 PaymentService paymentService,
-                                 ClientService clientService,
-                                 ReservationStatusComboBoxModel reservationStatusComboBoxModel,
-                                 PaymentComboBoxModel paymentComboBoxModel,
-                                 ClientComboBoxModel clientComboBoxModel) {
-        this.tableFrame = tableFrame;
-        this.addFrame = addFrame;
-        this.tableModel = tableModel;
-        this.reservationService = reservationService;
-        this.validator = validator;
-        this.reservationStatusService = reservationStatusService;
-        this.paymentService = paymentService;
-        this.clientService = clientService;
-        this.reservationStatusComboBoxModel = reservationStatusComboBoxModel;
-        this.paymentComboBoxModel = paymentComboBoxModel;
-        this.clientComboBoxModel = clientComboBoxModel;
-    }
+    private final ReservationTableFrame tableFrame;
+    private final AddReservationFrame addFrame;
+    private final ReservationTableModel tableModel;
+    private final ReservationService reservationService;
+    private final ReservationValidator validator;
+    private final ReservationStatusService reservationStatusService;
+    private final PaymentService paymentService;
+    private final ClientService clientService;
+    private final ReservationStatusComboBoxModel reservationStatusComboBoxModel;
+    private final PaymentComboBoxModel paymentComboBoxModel;
+    private final ClientComboBoxModel clientComboBoxModel;
 
     @PostConstruct
     private void prepareListeners() {

@@ -6,7 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import pl.dmichalski.reservations.business.app.service.payment.PaymentMethodService;
 import pl.dmichalski.reservations.business.domain.entity.payment.PaymentMethodEntity;
@@ -23,26 +23,14 @@ import pl.dmichalski.reservations.business.validation.ValidationError;
 import pl.dmichalski.reservations.business.validation.payment.PaymentMethodValidator;
 
 @Controller
+@AllArgsConstructor
 public class PaymentMethodController extends AbstractFrameController {
 
-    private PaymentMethodTableFrame tableFrame;
-    private AddPaymentMethodFrame addFrame;
-    private PaymentMethodTableModel tableModel;
-    private PaymentMethodService paymentMethodService;
-    private PaymentMethodValidator validator;
-
-    @Autowired
-    public PaymentMethodController(PaymentMethodTableFrame tableFrame,
-                                   AddPaymentMethodFrame addFrame,
-                                   PaymentMethodTableModel tableModel,
-                                   PaymentMethodService paymentMethodService,
-                                   PaymentMethodValidator validator) {
-        this.tableFrame = tableFrame;
-        this.addFrame = addFrame;
-        this.tableModel = tableModel;
-        this.paymentMethodService = paymentMethodService;
-        this.validator = validator;
-    }
+    private final PaymentMethodTableFrame tableFrame;
+    private final AddPaymentMethodFrame addFrame;
+    private final PaymentMethodTableModel tableModel;
+    private final PaymentMethodService paymentMethodService;
+    private final PaymentMethodValidator validator;
 
     @PostConstruct
     private void prepareListeners() {

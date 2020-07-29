@@ -6,7 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import pl.dmichalski.reservations.business.app.service.address.AddressService;
 import pl.dmichalski.reservations.business.app.service.client.ClientService;
@@ -26,32 +26,16 @@ import pl.dmichalski.reservations.business.validation.ValidationError;
 import pl.dmichalski.reservations.business.validation.client.ClientValidator;
 
 @Controller
+@AllArgsConstructor
 public class ClientController extends AbstractFrameController {
 
-    private ClientFrame clientFrame;
-    private AddClientFrame addClientFrame;
-    private ClientTableModel clientTableModel;
-    private ClientService clientService;
-    private ClientValidator clientValidator;
-    private AddressService addressService;
-    private AddressComboBoxModel addressComboBoxModel;
-
-    @Autowired
-    public ClientController(ClientFrame clientFrame,
-                            AddClientFrame addClientFrame,
-                            ClientTableModel clientTableModel,
-                            ClientService clientService,
-                            ClientValidator clientValidator,
-                            AddressService addressService,
-                            AddressComboBoxModel addressComboBoxModel) {
-        this.clientFrame = clientFrame;
-        this.addClientFrame = addClientFrame;
-        this.clientTableModel = clientTableModel;
-        this.clientService = clientService;
-        this.clientValidator = clientValidator;
-        this.addressService = addressService;
-        this.addressComboBoxModel = addressComboBoxModel;
-    }
+    private final ClientFrame clientFrame;
+    private final AddClientFrame addClientFrame;
+    private final ClientTableModel clientTableModel;
+    private final ClientService clientService;
+    private final ClientValidator clientValidator;
+    private final AddressService addressService;
+    private final AddressComboBoxModel addressComboBoxModel;
 
     @PostConstruct
     private void prepareListeners() {
@@ -112,7 +96,7 @@ public class ClientController extends AbstractFrameController {
 
     private void removeClient() {
         try {
-            JTable clientTable = clientFrame.getTablePanel().getClientTable();
+            JTable clientTable = clientFrame.getClientTablePanel().getClientTable();
             int selectedRow = clientTable.getSelectedRow();
             if (selectedRow < 0) {
                 JOptionPane.showMessageDialog(null,

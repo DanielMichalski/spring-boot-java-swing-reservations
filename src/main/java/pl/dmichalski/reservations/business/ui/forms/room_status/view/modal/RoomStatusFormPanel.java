@@ -1,6 +1,7 @@
 package pl.dmichalski.reservations.business.ui.forms.room_status.view.modal;
 
 import java.awt.GridLayout;
+import javax.annotation.PostConstruct;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -23,7 +24,8 @@ public class RoomStatusFormPanel extends JPanel {
     private JTextField roomStatusTF;
     private JTextField roomStatusDescriptionTF;
 
-    public RoomStatusFormPanel() {
+    @PostConstruct
+    private void preparePanel() {
         setPanelUp();
         initComponents();
     }

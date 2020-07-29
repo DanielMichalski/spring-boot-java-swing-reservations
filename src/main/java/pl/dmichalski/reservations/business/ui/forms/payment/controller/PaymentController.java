@@ -6,7 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import pl.dmichalski.reservations.business.app.service.payment.PaymentMethodService;
 import pl.dmichalski.reservations.business.app.service.payment.PaymentService;
@@ -26,32 +26,16 @@ import pl.dmichalski.reservations.business.validation.ValidationError;
 import pl.dmichalski.reservations.business.validation.payment.PaymentValidator;
 
 @Controller
+@AllArgsConstructor
 public class PaymentController extends AbstractFrameController {
 
-    private PaymentTableFrame tableFrame;
-    private AddPaymentFrame addFrame;
-    private PaymentTableModel tableModel;
-    private PaymentService paymentService;
-    private PaymentMethodService paymentMethodService;
-    private PaymentMethodComboBoxModel paymentMethodComboBoxModel;
-    private PaymentValidator validator;
-
-    @Autowired
-    public PaymentController(PaymentTableFrame tableFrame,
-                             AddPaymentFrame addFrame,
-                             PaymentTableModel tableModel,
-                             PaymentService paymentService,
-                             PaymentMethodService paymentMethodService,
-                             PaymentMethodComboBoxModel paymentMethodComboBoxModel,
-                             PaymentValidator validator) {
-        this.tableFrame = tableFrame;
-        this.addFrame = addFrame;
-        this.tableModel = tableModel;
-        this.paymentService = paymentService;
-        this.paymentMethodService = paymentMethodService;
-        this.paymentMethodComboBoxModel = paymentMethodComboBoxModel;
-        this.validator = validator;
-    }
+    private final PaymentTableFrame tableFrame;
+    private final AddPaymentFrame addFrame;
+    private final PaymentTableModel tableModel;
+    private final PaymentService paymentService;
+    private final PaymentMethodService paymentMethodService;
+    private final PaymentMethodComboBoxModel paymentMethodComboBoxModel;
+    private final PaymentValidator validator;
 
     @PostConstruct
     private void prepareListeners() {

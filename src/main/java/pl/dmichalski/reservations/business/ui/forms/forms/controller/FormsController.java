@@ -1,6 +1,6 @@
 package pl.dmichalski.reservations.business.ui.forms.forms.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import pl.dmichalski.reservations.business.ui.forms.address.controller.AddressController;
 import pl.dmichalski.reservations.business.ui.forms.client.controller.ClientController;
@@ -17,47 +17,21 @@ import pl.dmichalski.reservations.business.ui.forms.room_x_reservation.controlle
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
 
 @Controller
+@AllArgsConstructor
 public class FormsController extends AbstractFrameController {
 
-    private FormsFrame mainMenuFrame;
-    private AddressController addressController;
-    private ClientController clientController;
-    private ReservationStatusController reservationStatusController;
-    private PaymentMethodController paymentMethodController;
-    private PaymentController paymentController;
-    private ReservationController reservationController;
-    private RoomStatusController roomStatusController;
-    private RoomTypeController roomTypeController;
-    private RoomController roomController;
-    private RateController rateController;
-    private RoomXReservationController roomXReservationController;
-
-    @Autowired
-    public FormsController(FormsFrame mainMenuFrame,
-                           AddressController addressController,
-                           ClientController clientController,
-                           ReservationStatusController reservationStatusController,
-                           PaymentMethodController paymentMethodController,
-                           PaymentController paymentController,
-                           ReservationController reservationController,
-                           RoomStatusController roomStatusController,
-                           RoomTypeController roomTypeController,
-                           RoomController roomController,
-                           RateController rateController,
-                           RoomXReservationController roomXReservationController) {
-        this.mainMenuFrame = mainMenuFrame;
-        this.addressController = addressController;
-        this.clientController = clientController;
-        this.reservationStatusController = reservationStatusController;
-        this.paymentMethodController = paymentMethodController;
-        this.paymentController = paymentController;
-        this.reservationController = reservationController;
-        this.roomStatusController = roomStatusController;
-        this.roomTypeController = roomTypeController;
-        this.roomController = roomController;
-        this.rateController = rateController;
-        this.roomXReservationController = roomXReservationController;
-    }
+    private final FormsFrame mainMenuFrame;
+    private final AddressController addressController;
+    private final ClientController clientController;
+    private final ReservationStatusController reservationStatusController;
+    private final PaymentMethodController paymentMethodController;
+    private final PaymentController paymentController;
+    private final ReservationController reservationController;
+    private final RoomStatusController roomStatusController;
+    private final RoomTypeController roomTypeController;
+    private final RoomController roomController;
+    private final RateController rateController;
+    private final RoomXReservationController roomXReservationController;
 
     public void prepareAndOpenFrame() {
         registerAction(mainMenuFrame.getClientBtn(), (e) -> openClientsWindow());

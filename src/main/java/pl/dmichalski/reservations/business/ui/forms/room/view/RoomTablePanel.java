@@ -1,25 +1,30 @@
 package pl.dmichalski.reservations.business.ui.forms.room.view;
 
 import java.awt.BorderLayout;
+import javax.annotation.PostConstruct;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.ui.forms.room.model.RoomTableModel;
 
 @Component
+@Getter
 public class RoomTablePanel extends JPanel {
 
-    private RoomTableModel tableModel;
+    private final RoomTableModel tableModel;
 
     private JTable table;
 
-    @Autowired
     RoomTablePanel(RoomTableModel tableModel) {
         this.tableModel = tableModel;
+    }
+
+    @PostConstruct
+    private void preparePanel() {
         setPanelUp();
         initComponents();
     }
@@ -34,10 +39,6 @@ public class RoomTablePanel extends JPanel {
 
         JScrollPane paneWithTable = new JScrollPane(table);
         add(paneWithTable, BorderLayout.CENTER);
-    }
-
-    public JTable getTable() {
-        return table;
     }
 
 }

@@ -1,18 +1,22 @@
 package pl.dmichalski.reservations.business.ui.forms.room.view;
 
+import javax.annotation.PostConstruct;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
+@Getter
 public class RoomTableBtnPanel extends JPanel {
 
     private JButton addBtn;
     private JButton removeBtn;
 
-    public RoomTableBtnPanel() {
+    @PostConstruct
+    private void preparePanel() {
         initComponents();
     }
 

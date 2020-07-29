@@ -1,13 +1,13 @@
 package pl.dmichalski.reservations.business.ui.forms.room_x_reservation.view.modal;
 
 import java.awt.GridLayout;
+import javax.annotation.PostConstruct;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import org.apache.logging.log4j.util.Strings;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.domain.entity.reservation.ReservationEntity;
 import pl.dmichalski.reservations.business.domain.entity.room.RoomEntity;
@@ -27,17 +27,18 @@ public class RoomXReservationFormPanel extends JPanel {
     private static final int VERTICAL_GAP = 20;
     private static final int TEXT_FIELD_COLUMNS = 20;
 
-    private JComboBox<ReservationEntity> reservationCB;
-    private JComboBox<RoomEntity> roomCB;
+    private final ReservationsComboBoxModel reservationsComboBoxModel;
+    private final RoomComboBoxModel roomComboBoxModel;
+
     private JTextField priceTF;
 
-    private ReservationsComboBoxModel reservationsComboBoxModel;
-    private RoomComboBoxModel roomComboBoxModel;
-
-    @Autowired
     public RoomXReservationFormPanel(ReservationsComboBoxModel reservationsComboBoxModel, RoomComboBoxModel roomComboBoxModel) {
         this.reservationsComboBoxModel = reservationsComboBoxModel;
         this.roomComboBoxModel = roomComboBoxModel;
+    }
+
+    @PostConstruct
+    private void preparePanel() {
         setPanelUp();
         initComponents();
     }
@@ -52,8 +53,8 @@ public class RoomXReservationFormPanel extends JPanel {
         JLabel roomLbl = new JLabel(ConstMessagesEN.Labels.ROOM);
         JLabel priceLbl = new JLabel(ConstMessagesEN.Labels.PRICE);
 
-        reservationCB = new JComboBox<>(reservationsComboBoxModel);
-        roomCB = new JComboBox<>(roomComboBoxModel);
+        JComboBox<ReservationEntity> reservationCB = new JComboBox<>(reservationsComboBoxModel);
+        JComboBox<RoomEntity> roomCB = new JComboBox<>(roomComboBoxModel);
         priceTF = new JTextField(TEXT_FIELD_COLUMNS);
 
         add(reservationLbl);

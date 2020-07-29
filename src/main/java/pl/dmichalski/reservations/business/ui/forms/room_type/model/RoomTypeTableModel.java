@@ -9,13 +9,16 @@ import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 @Component
 public class RoomTypeTableModel extends DefaultTableModel<RoomTypeEntity> {
 
+    private static final int ROOM_TYPE_INDEX = 0;
+    private static final int ROOM_MULTIPLIER_INDEX = 1;
+
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         RoomTypeEntity roomType = entities.get(rowIndex);
         switch (columnIndex) {
-            case 0:
+            case ROOM_TYPE_INDEX:
                 return roomType.getDescription();
-            case 1:
+            case ROOM_MULTIPLIER_INDEX:
                 return roomType.getMultiplier();
             default:
                 return Strings.EMPTY;

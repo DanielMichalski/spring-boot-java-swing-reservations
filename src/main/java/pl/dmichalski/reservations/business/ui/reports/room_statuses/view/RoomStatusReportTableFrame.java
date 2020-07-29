@@ -1,24 +1,27 @@
 package pl.dmichalski.reservations.business.ui.reports.room_statuses.view;
 
 import java.awt.BorderLayout;
+import javax.annotation.PostConstruct;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
+@AllArgsConstructor
+@Getter
 public class RoomStatusReportTableFrame extends JFrame {
 
     private static final int DEFAULT_WIDTH = 500;
     private static final int DEFAULT_HEIGHT = 300;
 
-    private RoomStatusReportTablePanel tablePanel;
+    private final RoomStatusReportTablePanel tablePanel;
 
-    @Autowired
-    public RoomStatusReportTableFrame(RoomStatusReportTablePanel tablePanel) {
-        this.tablePanel = tablePanel;
+    @PostConstruct
+    private void prepareFrame() {
         setFrameUp();
         initComponents();
     }
@@ -35,7 +38,4 @@ public class RoomStatusReportTableFrame extends JFrame {
         add(tablePanel, BorderLayout.CENTER);
     }
 
-    public RoomStatusReportTablePanel getTablePanel() {
-        return tablePanel;
-    }
 }

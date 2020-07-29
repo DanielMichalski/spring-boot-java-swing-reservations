@@ -1,6 +1,6 @@
 package pl.dmichalski.reservations.business.ui.reports.reports.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import pl.dmichalski.reservations.business.ui.reports.client_reservations.controller.ClientReservationsReportController;
 import pl.dmichalski.reservations.business.ui.reports.payments.controller.PaymentReportController;
@@ -9,26 +9,16 @@ import pl.dmichalski.reservations.business.ui.reports.room_statuses.controller.R
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
 
 @Controller
+@AllArgsConstructor
 public class ReportsController extends AbstractFrameController {
 
-    private ReportsFrame mainMenuFrame;
-    private PaymentReportController paymentReportController;
-    private RoomStatusReportController roomStatusReportController;
-    private ClientReservationsReportController clientReservationsReportController;
-
-    @Autowired
-    public ReportsController(ReportsFrame mainMenuFrame,
-                             PaymentReportController paymentReportController,
-                             RoomStatusReportController roomStatusReportController,
-                             ClientReservationsReportController clientReservationsReportController) {
-        this.mainMenuFrame = mainMenuFrame;
-        this.paymentReportController = paymentReportController;
-        this.roomStatusReportController = roomStatusReportController;
-        this.clientReservationsReportController = clientReservationsReportController;
-    }
+    private final ReportsFrame mainMenuFrame;
+    private final PaymentReportController paymentReportController;
+    private final RoomStatusReportController roomStatusReportController;
+    private final ClientReservationsReportController clientReservationsReportController;
 
     public void prepareAndOpenFrame() {
-        registerAction(mainMenuFrame.paymentMethodReportBtn(), (e) -> openPaymentMethodReportWindow());
+        registerAction(mainMenuFrame.getPaymentMethodReportBtn(), (e) -> openPaymentMethodReportWindow());
         registerAction(mainMenuFrame.getRoomStatusesReportBtn(), (e) -> openRoomStatusReportWindow());
         registerAction(mainMenuFrame.getClientReservationsReportBtn(), (e) -> openClientReservationReportWindow());
         mainMenuFrame.setVisible(true);

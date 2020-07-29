@@ -9,6 +9,9 @@ import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 @Component
 public class RoomStatusReportModel extends DefaultTableModel<RoomStatusesCountDto> {
 
+    private static final int ROOM_STATUS_INDEX = 0;
+    private static final int NUMBER_OF_COUNT_INDEX = 1;
+
     @Override
     public String[] getColumnLabels() {
         return new String[]{
@@ -22,9 +25,9 @@ public class RoomStatusReportModel extends DefaultTableModel<RoomStatusesCountDt
         RoomStatusesCountDto roomStatusesCount = entities.get(rowIndex);
 
         switch (columnIndex) {
-            case 0:
+            case ROOM_STATUS_INDEX:
                 return roomStatusesCount.getStatus();
-            case 1:
+            case NUMBER_OF_COUNT_INDEX:
                 return roomStatusesCount.getCount();
             default:
                 return Strings.EMPTY;

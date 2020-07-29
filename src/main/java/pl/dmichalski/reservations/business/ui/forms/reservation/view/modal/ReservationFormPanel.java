@@ -8,7 +8,6 @@ import javax.swing.JTextField;
 
 import com.toedter.calendar.JDateChooser;
 import org.apache.logging.log4j.util.Strings;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.commons.time.CurrentTimeService;
 import pl.dmichalski.reservations.business.domain.entity.client.ClientEntity;
@@ -30,16 +29,15 @@ public class ReservationFormPanel extends JPanel {
     private static final int VERTICAL_GAP = 20;
     private static final int TEXT_FIELD_COLUMNS = 20;
 
+    private final CurrentTimeService currentTimeService;
+    private final ReservationStatusComboBoxModel reservationStatusComboBoxModel;
+    private final PaymentComboBoxModel paymentComboBoxModel;
+    private final ClientComboBoxModel clientComboBoxModel;
+
     private JDateChooser dateFromDC;
     private JDateChooser dateToDC;
     private JTextField amountTF;
 
-    private CurrentTimeService currentTimeService;
-    private ReservationStatusComboBoxModel reservationStatusComboBoxModel;
-    private PaymentComboBoxModel paymentComboBoxModel;
-    private ClientComboBoxModel clientComboBoxModel;
-
-    @Autowired
     public ReservationFormPanel(CurrentTimeService currentTimeService,
                                 ReservationStatusComboBoxModel reservationStatusComboBoxModel,
                                 PaymentComboBoxModel paymentComboBoxModel,

@@ -1,23 +1,27 @@
 package pl.dmichalski.reservations.business.ui.reports.reports.view;
 
 import java.awt.GridLayout;
+import javax.annotation.PostConstruct;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.util.border.Borders;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 import pl.dmichalski.reservations.business.util.ui.LookAndFeelUtils;
 
 @Component
+@Getter
 public class ReportsFrame extends JFrame {
 
     private JButton paymentMethodReportBtn;
     private JButton roomStatusesReportBtn;
     private JButton clientReservationsReportBtn;
 
-    public ReportsFrame() {
+    @PostConstruct
+    private void prepareFrame() {
         setFrameUp();
         initComponents();
         pack();
@@ -43,15 +47,4 @@ public class ReportsFrame extends JFrame {
         add(clientReservationsReportBtn);
     }
 
-    public JButton paymentMethodReportBtn() {
-        return paymentMethodReportBtn;
-    }
-
-    public JButton getRoomStatusesReportBtn() {
-        return roomStatusesReportBtn;
-    }
-
-    public JButton getClientReservationsReportBtn() {
-        return clientReservationsReportBtn;
-    }
 }

@@ -1,25 +1,30 @@
 package pl.dmichalski.reservations.business.ui.forms.client.view;
 
 import java.awt.BorderLayout;
+import javax.annotation.PostConstruct;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.ui.forms.client.model.ClientTableModel;
 
 @Component
+@Getter
 public class ClientTablePanel extends JPanel {
 
-    private ClientTableModel clientTableModel;
+    private final ClientTableModel clientTableModel;
 
     private JTable clientTable;
 
-    @Autowired
     ClientTablePanel(ClientTableModel clientTableModel) {
         this.clientTableModel = clientTableModel;
+    }
+
+    @PostConstruct
+    private void preparePanel() {
         setPanelUp();
         initComponents();
     }
@@ -34,10 +39,6 @@ public class ClientTablePanel extends JPanel {
 
         JScrollPane paneWithTable = new JScrollPane(clientTable);
         add(paneWithTable, BorderLayout.CENTER);
-    }
-
-    public JTable getClientTable() {
-        return clientTable;
     }
 
 }

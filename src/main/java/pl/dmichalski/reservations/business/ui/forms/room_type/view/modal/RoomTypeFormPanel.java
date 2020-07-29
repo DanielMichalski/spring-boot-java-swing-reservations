@@ -1,6 +1,7 @@
 package pl.dmichalski.reservations.business.ui.forms.room_type.view.modal;
 
 import java.awt.GridLayout;
+import javax.annotation.PostConstruct;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
@@ -25,7 +26,8 @@ public class RoomTypeFormPanel extends JPanel {
     private JTextField descriptionTF;
     private JSpinner multiplierJS;
 
-    public RoomTypeFormPanel() {
+    @PostConstruct
+    private void preparePanel() {
         setPanelUp();
         initComponents();
     }

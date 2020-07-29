@@ -1,18 +1,22 @@
 package pl.dmichalski.reservations.business.ui.forms.room_status.view;
 
+import javax.annotation.PostConstruct;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
+@Getter
 public class RoomStatusTableBtnPanel extends JPanel {
 
     private JButton addBtn;
     private JButton removeBtn;
 
-    public RoomStatusTableBtnPanel() {
+    @PostConstruct
+    private void preparePanel() {
         initComponents();
     }
 
@@ -22,14 +26,6 @@ public class RoomStatusTableBtnPanel extends JPanel {
 
         removeBtn = new JButton(ConstMessagesEN.Labels.REMOVE_BTN);
         add(removeBtn);
-    }
-
-    public JButton getAddBtn() {
-        return addBtn;
-    }
-
-    public JButton getRemoveBtn() {
-        return removeBtn;
     }
 
 }

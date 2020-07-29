@@ -1,6 +1,7 @@
 package pl.dmichalski.reservations.business.ui.forms.payment_method.view.modal;
 
 import java.awt.GridLayout;
+import javax.annotation.PostConstruct;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -22,7 +23,8 @@ public class PaymentMethodFormPanel extends JPanel {
 
     private JTextField paymentMethodTF;
 
-    public PaymentMethodFormPanel() {
+    @PostConstruct
+    private void preparePanel() {
         setPanelUp();
         initComponents();
     }
@@ -40,9 +42,7 @@ public class PaymentMethodFormPanel extends JPanel {
     }
 
     public PaymentMethodEntity getEntityFromForm() {
-        return new PaymentMethodEntity(
-                paymentMethodTF.getText()
-        );
+        return new PaymentMethodEntity(paymentMethodTF.getText());
     }
 
     public void clearForm() {

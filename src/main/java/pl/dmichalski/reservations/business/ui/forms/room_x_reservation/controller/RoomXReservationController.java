@@ -6,7 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import pl.dmichalski.reservations.business.app.service.reservation.ReservationService;
 import pl.dmichalski.reservations.business.app.service.room.RoomService;
@@ -29,38 +29,18 @@ import pl.dmichalski.reservations.business.validation.ValidationError;
 import pl.dmichalski.reservations.business.validation.room.RoomXReservationValidator;
 
 @Controller
+@AllArgsConstructor
 public class RoomXReservationController extends AbstractFrameController {
 
-    private RoomXReservationTableFrame tableFrame;
-    private AddRoomXReservationFame addFrame;
-    private RoomXReservationTableModel tableModel;
-    private RoomXReservationService roomXReservationService;
-    private ReservationService reservationService;
-    private RoomService roomService;
-    private ReservationsComboBoxModel reservationsComboBoxModel;
-    private RoomComboBoxModel roomComboBoxModel;
-    private RoomXReservationValidator validator;
-
-    @Autowired
-    public RoomXReservationController(RoomXReservationTableFrame tableFrame,
-                                      AddRoomXReservationFame addFrame,
-                                      RoomXReservationTableModel tableModel,
-                                      RoomXReservationService roomXReservationService,
-                                      ReservationService reservationService,
-                                      RoomService roomService,
-                                      ReservationsComboBoxModel reservationsComboBoxModel,
-                                      RoomComboBoxModel roomComboBoxModel,
-                                      RoomXReservationValidator validator) {
-        this.tableFrame = tableFrame;
-        this.addFrame = addFrame;
-        this.tableModel = tableModel;
-        this.roomXReservationService = roomXReservationService;
-        this.reservationService = reservationService;
-        this.roomService = roomService;
-        this.reservationsComboBoxModel = reservationsComboBoxModel;
-        this.roomComboBoxModel = roomComboBoxModel;
-        this.validator = validator;
-    }
+    private final RoomXReservationTableFrame tableFrame;
+    private final AddRoomXReservationFame addFrame;
+    private final RoomXReservationTableModel tableModel;
+    private final RoomXReservationService roomXReservationService;
+    private final ReservationService reservationService;
+    private final RoomService roomService;
+    private final ReservationsComboBoxModel reservationsComboBoxModel;
+    private final RoomComboBoxModel roomComboBoxModel;
+    private final RoomXReservationValidator validator;
 
     @PostConstruct
     private void prepareListeners() {

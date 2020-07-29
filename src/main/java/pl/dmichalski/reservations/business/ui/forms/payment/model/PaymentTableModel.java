@@ -10,15 +10,19 @@ import pl.dmichalski.reservations.business.util.date.DateFormatter;
 @Component
 public class PaymentTableModel extends DefaultTableModel<PaymentEntity> {
 
+    private static final int PAYMENT_METHOD_INDEX = 0;
+    private static final int VALUE_INDEX = 1;
+    private static final int DATE_OF_PAYMENT_INDEX = 2;
+
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         PaymentEntity payment = entities.get(rowIndex);
         switch (columnIndex) {
-            case 0:
+            case PAYMENT_METHOD_INDEX:
                 return payment.getPaymentMethod();
-            case 1:
+            case VALUE_INDEX:
                 return payment.getValue();
-            case 2:
+            case DATE_OF_PAYMENT_INDEX:
                 return DateFormatter.formatDate(payment.getDateOfPayment());
             default:
                 return Strings.EMPTY;

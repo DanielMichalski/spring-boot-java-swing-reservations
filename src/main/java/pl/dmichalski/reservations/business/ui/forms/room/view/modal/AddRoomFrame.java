@@ -1,23 +1,25 @@
 package pl.dmichalski.reservations.business.ui.forms.room.view.modal;
 
 import java.awt.BorderLayout;
+import javax.annotation.PostConstruct;
 import javax.swing.JDialog;
 import javax.swing.WindowConstants;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
+@AllArgsConstructor
+@Getter
 public class AddRoomFrame extends JDialog {
 
-    private RoomFormPanel formPanel;
-    private RoomFormBtnPanel formBtnPanel;
+    private final RoomFormPanel formPanel;
+    private final RoomFormBtnPanel formBtnPanel;
 
-    @Autowired
-    public AddRoomFrame(RoomFormPanel formPanel, RoomFormBtnPanel formBtnPanel) {
-        this.formPanel = formPanel;
-        this.formBtnPanel = formBtnPanel;
+    @PostConstruct
+    private void prepareFrame() {
         setFrameUp();
         initComponents();
         pack();
@@ -36,11 +38,4 @@ public class AddRoomFrame extends JDialog {
         add(formBtnPanel, BorderLayout.SOUTH);
     }
 
-    public RoomFormPanel getFormPanel() {
-        return formPanel;
-    }
-
-    public RoomFormBtnPanel getFormBtnPanel() {
-        return formBtnPanel;
-    }
 }

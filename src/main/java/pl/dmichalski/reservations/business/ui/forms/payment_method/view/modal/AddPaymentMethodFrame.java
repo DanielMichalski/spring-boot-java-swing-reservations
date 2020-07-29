@@ -1,23 +1,25 @@
 package pl.dmichalski.reservations.business.ui.forms.payment_method.view.modal;
 
 import java.awt.BorderLayout;
+import javax.annotation.PostConstruct;
 import javax.swing.JDialog;
 import javax.swing.WindowConstants;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 
 @Component
+@AllArgsConstructor
+@Getter
 public class AddPaymentMethodFrame extends JDialog {
 
-    private PaymentMethodFormPanel formPanel;
-    private PaymentMethodFormBtnPanel formBtnPanel;
+    private final PaymentMethodFormPanel formPanel;
+    private final PaymentMethodFormBtnPanel formBtnPanel;
 
-    @Autowired
-    public AddPaymentMethodFrame(PaymentMethodFormPanel formPanel, PaymentMethodFormBtnPanel formBtnPanel) {
-        this.formPanel = formPanel;
-        this.formBtnPanel = formBtnPanel;
+    @PostConstruct
+    private void prepareFrame() {
         setFrameUp();
         initComponents();
         pack();
@@ -36,11 +38,4 @@ public class AddPaymentMethodFrame extends JDialog {
         add(formBtnPanel, BorderLayout.SOUTH);
     }
 
-    public PaymentMethodFormPanel getFormPanel() {
-        return formPanel;
-    }
-
-    public PaymentMethodFormBtnPanel getFormBtnPanel() {
-        return formBtnPanel;
-    }
 }

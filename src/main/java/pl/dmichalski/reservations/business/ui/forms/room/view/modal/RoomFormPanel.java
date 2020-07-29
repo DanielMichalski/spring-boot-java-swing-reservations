@@ -1,6 +1,7 @@
 package pl.dmichalski.reservations.business.ui.forms.room.view.modal;
 
 import java.awt.GridLayout;
+import javax.annotation.PostConstruct;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -9,7 +10,6 @@ import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
 import org.apache.logging.log4j.util.Strings;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.domain.entity.room.RoomEntity;
 import pl.dmichalski.reservations.business.domain.entity.room.RoomStatusEntity;
@@ -26,15 +26,17 @@ public class RoomFormPanel extends JPanel {
     private static final int VERTICAL_GAP = 20;
     private static final int TEXT_FIELD_COLUMNS = 20;
 
-    private JComboBox<RoomStatusEntity> roomStatusCB;
+    private final RoomStatusComboBoxModel roomComboBoxModel;
+
     private JSpinner numberOfPeopleJS;
     private JTextField descriptionTf;
 
-    private RoomStatusComboBoxModel roomComboBoxModel;
-
-    @Autowired
     public RoomFormPanel(RoomStatusComboBoxModel roomComboBoxModel) {
         this.roomComboBoxModel = roomComboBoxModel;
+    }
+
+    @PostConstruct
+    private void preparePanel() {
         setPanelUp();
         initComponents();
     }
@@ -49,7 +51,7 @@ public class RoomFormPanel extends JPanel {
         JLabel numberOfPeopleLbl = new JLabel(ConstMessagesEN.Labels.ROOM_NUMBER_OF_PEOPLE);
         JLabel descriptionLbl = new JLabel(ConstMessagesEN.Labels.ROOM_DESCRIPTION);
 
-        roomStatusCB = new JComboBox<>(roomComboBoxModel);
+        JComboBox<RoomStatusEntity> roomStatusCB = new JComboBox<>(roomComboBoxModel);
         numberOfPeopleJS = new JSpinner(new SpinnerNumberModel(1, 1, 5, 1));
         descriptionTf = new JTextField(TEXT_FIELD_COLUMNS);
 

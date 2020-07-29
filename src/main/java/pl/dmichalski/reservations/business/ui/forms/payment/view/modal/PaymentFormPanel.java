@@ -1,6 +1,7 @@
 package pl.dmichalski.reservations.business.ui.forms.payment.view.modal;
 
 import java.awt.GridLayout;
+import javax.annotation.PostConstruct;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -8,7 +9,6 @@ import javax.swing.JTextField;
 
 import com.toedter.calendar.JDateChooser;
 import org.apache.logging.log4j.util.Strings;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.domain.entity.payment.PaymentEntity;
 import pl.dmichalski.reservations.business.domain.entity.payment.PaymentMethodEntity;
@@ -25,15 +25,17 @@ public class PaymentFormPanel extends JPanel {
     private static final int VERTICAL_GAP = 20;
     private static final int TEXT_FIELD_COLUMNS = 20;
 
-    private JComboBox<PaymentMethodEntity> paymentMethodCB;
+    private final PaymentMethodComboBoxModel paymentMethodComboBoxModel;
+
     private JTextField valueTF;
     private JDateChooser dateOfPaymentDC;
 
-    private PaymentMethodComboBoxModel paymentMethodComboBoxModel;
-
-    @Autowired
     public PaymentFormPanel(PaymentMethodComboBoxModel paymentMethodComboBoxModel) {
         this.paymentMethodComboBoxModel = paymentMethodComboBoxModel;
+    }
+
+    @PostConstruct
+    private void preparePanel() {
         setPanelUp();
         initComponents();
     }
@@ -48,7 +50,7 @@ public class PaymentFormPanel extends JPanel {
         JLabel valueLbl = new JLabel(ConstMessagesEN.Labels.VALUE);
         JLabel dateOfPaymentLbl = new JLabel(ConstMessagesEN.Labels.DATE_OF_PAYMENT);
 
-        paymentMethodCB = new JComboBox<>(paymentMethodComboBoxModel);
+        JComboBox<PaymentMethodEntity> paymentMethodCB = new JComboBox<>(paymentMethodComboBoxModel);
         valueTF = new JTextField(TEXT_FIELD_COLUMNS);
         dateOfPaymentDC = new JDateChooser();
 

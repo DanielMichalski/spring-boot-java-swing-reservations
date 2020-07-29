@@ -1,16 +1,19 @@
 package pl.dmichalski.reservations.business.ui.forms.forms.view;
 
 import java.awt.GridLayout;
+import javax.annotation.PostConstruct;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+import lombok.Getter;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.util.border.Borders;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 import pl.dmichalski.reservations.business.util.ui.LookAndFeelUtils;
 
 @Component
+@Getter
 public class FormsFrame extends JFrame {
 
     private JButton addressesBtn;
@@ -25,7 +28,8 @@ public class FormsFrame extends JFrame {
     private JButton rateBtn;
     private JButton roomXReservationBtn;
 
-    public FormsFrame() {
+    @PostConstruct
+    private void prepareFrame() {
         setFrameUp();
         initComponents();
         pack();
@@ -67,47 +71,4 @@ public class FormsFrame extends JFrame {
         add(roomXReservationBtn);
     }
 
-    public JButton getAddressesBtn() {
-        return addressesBtn;
-    }
-
-    public JButton getClientBtn() {
-        return clientBtn;
-    }
-
-    public JButton getReservationStatusBtn() {
-        return reservationStatusBtn;
-    }
-
-    public JButton getReservationBtn() {
-        return reservationBtn;
-    }
-
-    public JButton getPaymentBtn() {
-        return paymentBtn;
-    }
-
-    public JButton getPaymentMethodBtn() {
-        return paymentMethodBtn;
-    }
-
-    public JButton getRoomStatusBtn() {
-        return roomStatusBtn;
-    }
-
-    public JButton getRoomTypeBtn() {
-        return roomTypeBtn;
-    }
-
-    public JButton getRoomBtn() {
-        return roomBtn;
-    }
-
-    public JButton getRateBtn() {
-        return rateBtn;
-    }
-
-    public JButton getRoomXReservationBtn() {
-        return roomXReservationBtn;
-    }
 }

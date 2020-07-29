@@ -9,15 +9,15 @@ import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
 @Component
 public class ReservationStatusTableModel extends DefaultTableModel<ReservationStatusEntity> {
 
+    private static final int RESERVATION_STATUS_INDEX = 0;
+
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         ReservationStatusEntity reservationStatus = entities.get(rowIndex);
-        switch (columnIndex) {
-            case 0:
-                return reservationStatus.getStatus();
-            default:
-                return Strings.EMPTY;
+        if (columnIndex == RESERVATION_STATUS_INDEX) {
+            return reservationStatus.getStatus();
         }
+        return Strings.EMPTY;
     }
 
     @Override

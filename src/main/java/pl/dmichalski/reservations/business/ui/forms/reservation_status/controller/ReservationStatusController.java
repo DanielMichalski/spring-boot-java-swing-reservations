@@ -6,7 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import pl.dmichalski.reservations.business.app.service.reservation.ReservationStatusService;
 import pl.dmichalski.reservations.business.domain.entity.reservation.ReservationStatusEntity;
@@ -23,26 +23,14 @@ import pl.dmichalski.reservations.business.validation.ValidationError;
 import pl.dmichalski.reservations.business.validation.reservation.ReservationStatusValidator;
 
 @Controller
+@AllArgsConstructor
 public class ReservationStatusController extends AbstractFrameController {
 
-    private ReservationStatusTableFrame tableFrame;
-    private AddReservationStatusFrame addFrame;
-    private ReservationStatusTableModel tableModel;
-    private ReservationStatusService reservationStatusService;
-    private ReservationStatusValidator validator;
-
-    @Autowired
-    public ReservationStatusController(ReservationStatusTableFrame tableFrame,
-                                       AddReservationStatusFrame addFrame,
-                                       ReservationStatusTableModel tableModel,
-                                       ReservationStatusService reservationStatusService,
-                                       ReservationStatusValidator validator) {
-        this.tableFrame = tableFrame;
-        this.addFrame = addFrame;
-        this.tableModel = tableModel;
-        this.reservationStatusService = reservationStatusService;
-        this.validator = validator;
-    }
+    private final ReservationStatusTableFrame tableFrame;
+    private final AddReservationStatusFrame addFrame;
+    private final ReservationStatusTableModel tableModel;
+    private final ReservationStatusService reservationStatusService;
+    private final ReservationStatusValidator validator;
 
     @PostConstruct
     private void prepareListeners() {
