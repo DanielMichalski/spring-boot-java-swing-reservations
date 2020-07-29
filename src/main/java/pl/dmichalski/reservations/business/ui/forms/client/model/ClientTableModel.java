@@ -1,5 +1,6 @@
 package pl.dmichalski.reservations.business.ui.forms.client.model;
 
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.domain.entity.client.ClientEntity;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
@@ -37,7 +38,7 @@ public class ClientTableModel extends DefaultTableModel<ClientEntity> {
             case 5:
                 return client.getAddress();
             default:
-                return "";
+                return Strings.EMPTY;
         }
     }
 }

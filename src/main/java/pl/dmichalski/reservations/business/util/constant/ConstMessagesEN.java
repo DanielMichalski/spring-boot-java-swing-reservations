@@ -54,7 +54,7 @@ public interface ConstMessagesEN {
         String FROM_DATE = "From";
         String TO_DATE = "To";
         String RESERVATION_DATE = "Reservation date";
-        String AMOUNT = "Suma";
+        String AMOUNT = "Sum";
         String ROOM_STATUS = "Room status";
         String ROOM_STATUSES = "Room statuses";
         String ROOM_STATUS_DESCRIPTION = "Room status description";
@@ -72,8 +72,8 @@ public interface ConstMessagesEN {
         String RESERVATION = "Reservation";
         String PRICE = "Price";
         String FORMS = "Forms";
-        String REPORTS = "Raports";
-        String PAYMENT_COUNT = "Payment coun";
+        String REPORTS = "Reports";
+        String PAYMENT_COUNT = "Payment count";
         String NUMBER_OF_COUNT = "Number of count";
         String NUMBER_OF_RESERVATIONS = "Number of reservations";
         String CLIENT_RESERVATIONS = "Client's reservations";

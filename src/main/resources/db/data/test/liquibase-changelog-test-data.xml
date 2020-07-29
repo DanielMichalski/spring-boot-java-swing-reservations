@@ -1,0 +1,130 @@
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+	<changeSet id="address-test-data" author="Daniel Michalski" runOnChange="true" context="test-data">
+		<comment>Create address test data</comment>
+		<loadUpdateData file="csv/address.csv"
+						primaryKey="id"
+						tableName="address"
+						relativeToChangelogFile="true"
+						separator=";">
+		</loadUpdateData>
+	</changeSet>
+
+	<changeSet id="client-test-data" author="Daniel Michalski" runOnChange="true" context="test-data">
+		<comment>Create client test data</comment>
+		<loadUpdateData file="csv/client.csv"
+						primaryKey="id"
+						tableName="client"
+						relativeToChangelogFile="true"
+						separator=";">
+			<column name="address_id" type="COMPUTED"/>
+		</loadUpdateData>
+	</changeSet>
+
+	<changeSet id="reservation_status-test-data" author="Daniel Michalski" runOnChange="true" context="test-data">
+		<comment>Reservation status test data</comment>
+		<loadUpdateData file="csv/reservation_status.csv"
+						primaryKey="id"
+						tableName="reservation_status"
+						relativeToChangelogFile="true"
+						separator=";">
+		</loadUpdateData>
+	</changeSet>
+
+	<changeSet id="payment_method-test-data" author="Daniel Michalski" runOnChange="true" context="test-data">
+		<comment>Payment method test data</comment>
+		<loadUpdateData file="csv/payment_method.csv"
+						primaryKey="id"
+						tableName="payment_method"
+						relativeToChangelogFile="true"
+						separator=";">
+		</loadUpdateData>
+	</changeSet>
+
+	<changeSet id="payment-test-data" author="Daniel Michalski" runOnChange="true" context="test-data">
+		<comment>Payment test data</comment>
+		<loadUpdateData file="csv/payment.csv"
+						primaryKey="id"
+						tableName="payment"
+						relativeToChangelogFile="true"
+						separator=";">
+			<column name="payment_method_id" type="COMPUTED"/>
+			<column name="date_of_payment" type="COMPUTED"/>
+		</loadUpdateData>
+	</changeSet>
+
+	<changeSet id="reservation-test-data" author="Daniel Michalski" runOnChange="true" context="test-data">
+		<comment>Reservation test data</comment>
+		<loadUpdateData file="csv/reservation.csv"
+						primaryKey="id"
+						tableName="reservation"
+						relativeToChangelogFile="true"
+						separator=";">
+			<column name="reservation_status_id" type="COMPUTED"/>
+			<column name="payment_id" type="COMPUTED"/>
+			<column name="client_id" type="COMPUTED"/>
+			<column name="from_date" type="COMPUTED"/>
+			<column name="to_date" type="COMPUTED"/>
+			<column name="reservation_date" type="COMPUTED"/>
+		</loadUpdateData>
+	</changeSet>
+
+	<changeSet id="room_status-test-data" author="Daniel Michalski" runOnChange="true" context="test-data">
+		<comment>Room status test data</comment>
+		<loadUpdateData file="csv/room_status.csv"
+						primaryKey="id"
+						tableName="room_status"
+						relativeToChangelogFile="true"
+						separator=";">
+		</loadUpdateData>
+	</changeSet>
+
+	<changeSet id="room-test-data" author="Daniel Michalski" runOnChange="true" context="test-data">
+		<comment>Room test data</comment>
+		<loadUpdateData file="csv/room.csv"
+						primaryKey="id"
+						tableName="room"
+						relativeToChangelogFile="true"
+						separator=";">
+			<column name="room_status_id" type="COMPUTED"/>
+		</loadUpdateData>
+	</changeSet>
+
+	<changeSet id="room_type-test-data" author="Daniel Michalski" runOnChange="true" context="test-data">
+		<comment>Room type test data</comment>
+		<loadUpdateData file="csv/room_type.csv"
+						primaryKey="id"
+						tableName="room_type"
+						relativeToChangelogFile="true"
+						separator=";">
+		</loadUpdateData>
+	</changeSet>
+
+	<changeSet id="rate-test-data" author="Daniel Michalski" runOnChange="true" context="test-data">
+		<comment>Rate test data</comment>
+		<loadUpdateData file="csv/rate.csv"
+						primaryKey="id"
+						tableName="rate"
+						relativeToChangelogFile="true"
+						separator=";">
+			<column name="room_id" type="COMPUTED"/>
+			<column name="room_type_id" type="COMPUTED"/>
+		</loadUpdateData>
+	</changeSet>
+
+	<changeSet id="room_x_reservation-test-data" author="Daniel Michalski" runOnChange="true" context="test-data">
+		<comment>Room x reservation test data</comment>
+		<loadUpdateData file="csv/room_x_reservation.csv"
+						primaryKey="reservation_id,room_id"
+						tableName="room_x_reservation"
+						relativeToChangelogFile="true"
+						separator=";">
+			<column name="reservation_id" type="COMPUTED"/>
+			<column name="room_id" type="COMPUTED"/>
+		</loadUpdateData>
+	</changeSet>
+</databaseChangeLog>

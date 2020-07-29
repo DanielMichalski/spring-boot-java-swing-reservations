@@ -8,10 +8,10 @@ import javax.swing.JTable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import pl.dmichalski.reservations.business.app.service.payment.PaymentMethodService;
+import pl.dmichalski.reservations.business.app.service.payment.PaymentService;
 import pl.dmichalski.reservations.business.domain.entity.payment.PaymentEntity;
 import pl.dmichalski.reservations.business.domain.entity.payment.PaymentMethodEntity;
-import pl.dmichalski.reservations.business.service.payment.PaymentMethodService;
-import pl.dmichalski.reservations.business.service.payment.PaymentService;
 import pl.dmichalski.reservations.business.ui.forms.payment.model.PaymentMethodComboBoxModel;
 import pl.dmichalski.reservations.business.ui.forms.payment.model.PaymentTableModel;
 import pl.dmichalski.reservations.business.ui.forms.payment.view.PaymentTableBtnPanel;
@@ -21,9 +21,9 @@ import pl.dmichalski.reservations.business.ui.forms.payment.view.modal.PaymentFo
 import pl.dmichalski.reservations.business.ui.forms.payment.view.modal.PaymentFormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.notifications.Notifications;
-import pl.dmichalski.reservations.business.validation.PaymentValidator;
+import pl.dmichalski.reservations.business.util.notification.Notifications;
 import pl.dmichalski.reservations.business.validation.ValidationError;
+import pl.dmichalski.reservations.business.validation.payment.PaymentValidator;
 
 @Controller
 public class PaymentController extends AbstractFrameController {

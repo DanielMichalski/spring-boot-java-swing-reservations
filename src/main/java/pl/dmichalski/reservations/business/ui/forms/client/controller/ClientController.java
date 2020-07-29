@@ -8,10 +8,10 @@ import javax.swing.JTable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import pl.dmichalski.reservations.business.app.service.address.AddressService;
+import pl.dmichalski.reservations.business.app.service.client.ClientService;
 import pl.dmichalski.reservations.business.domain.entity.address.AddressEntity;
 import pl.dmichalski.reservations.business.domain.entity.client.ClientEntity;
-import pl.dmichalski.reservations.business.service.address.AddressService;
-import pl.dmichalski.reservations.business.service.client.ClientService;
 import pl.dmichalski.reservations.business.ui.forms.client.model.AddressComboBoxModel;
 import pl.dmichalski.reservations.business.ui.forms.client.model.ClientTableModel;
 import pl.dmichalski.reservations.business.ui.forms.client.view.ClientFrame;
@@ -21,9 +21,9 @@ import pl.dmichalski.reservations.business.ui.forms.client.view.modal.FormBtnPan
 import pl.dmichalski.reservations.business.ui.forms.client.view.modal.FormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.notifications.Notifications;
-import pl.dmichalski.reservations.business.validation.ClientValidator;
+import pl.dmichalski.reservations.business.util.notification.Notifications;
 import pl.dmichalski.reservations.business.validation.ValidationError;
+import pl.dmichalski.reservations.business.validation.client.ClientValidator;
 
 @Controller
 public class ClientController extends AbstractFrameController {

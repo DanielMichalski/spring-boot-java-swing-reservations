@@ -1,0 +1,78 @@
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+	<changeSet id="log_client_data_changed_function" author="Daniel Michalski">
+		<comment>Log client data changed function</comment>
+
+		<createProcedure>
+			CREATE OR REPLACE FUNCTION log_client_data_changed() RETURNS TRIGGER AS
+			$BODY$
+			BEGIN
+				INSERT INTO client_history (client_id, name, surname, change_date)
+				VALUES (OLD.id_client, OLD.name, OLD.surname, now());
+				RETURN NEW;
+			END;
+			$BODY$ LANGUAGE plpgsql;
+		</createProcedure>
+		<rollback>
+			<sql>
+				DROP FUNCTION log_client_data_changed();
+			</sql>
+		</rollback>
+	</changeSet>
+
+	<changeSet id="log_address_changed_function" author="Daniel Michalski">
+		<comment>Log address changed function</comment>
+
+		<createProcedure>
+			CREATE OR REPLACE FUNCTION log_address_changed() RETURNS TRIGGER AS
+			$BODY$
+				BEGIN
+				INSERT INTO address_history (id_address, street, house_number, flat_number, city, postal_code, change_date)
+				VALUES (OLD.id_address, OLD.street, OLD.house_number, OLD.flat_number, OLD.city, postal_code, now());
+				RETURN NEW;
+			END;
+			$BODY$ LANGUAGE plpgsql;
+		</createProcedure>
+		<rollback>
+			<sql>
+				DROP FUNCTION log_address_changed();
+			</sql>
+		</rollback>
+	</changeSet>
+
+	<changeSet id="changing_client_data_trigger" author="Daniel Michalski">
+		<comment>Changing client data trigger</comment>
+
+		<sql>
+			DROP TRIGGER IF EXISTS changing_client_data ON client;
+			CREATE TRIGGER changing_client_data
+			BEFORE UPDATE
+			ON client
+			FOR EACH ROW
+			EXECUTE PROCEDURE log_client_data_changed();
+		</sql>
+		<rollback>
+			DROP TRIGGER changing_client_data ON client;
+		</rollback>
+	</changeSet>
+
+	<changeSet id="changing_address_trigger" author="Daniel Michalski">
+		<comment>Changing_ ss trigger</comment>
+
+		<sql>
+			DROP TRIGGER IF EXISTS changing_address ON address;
+			CREATE TRIGGER changing_address
+			BEFORE UPDATE
+			ON address
+			FOR EACH ROW
+			EXECUTE PROCEDURE log_address_changed();
+		</sql>
+		<rollback>
+			DROP TRIGGER changing_address ON address;
+		</rollback>
+	</changeSet>
+</databaseChangeLog>

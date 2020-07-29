@@ -1,14 +1,12 @@
 package pl.dmichalski.reservations.business.validation;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
+@Getter
 public class ValidationError {
 
-    private String message;
+    private final String message;
 
-    public ValidationError(String message) {
-        this.message = message;
-    }
-
-    public String getMessage() {
-        return message;
-    }
 }

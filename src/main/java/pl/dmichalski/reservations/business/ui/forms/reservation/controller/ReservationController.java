@@ -8,14 +8,14 @@ import javax.swing.JTable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import pl.dmichalski.reservations.business.app.service.client.ClientService;
+import pl.dmichalski.reservations.business.app.service.payment.PaymentService;
+import pl.dmichalski.reservations.business.app.service.reservation.ReservationService;
+import pl.dmichalski.reservations.business.app.service.reservation.ReservationStatusService;
 import pl.dmichalski.reservations.business.domain.entity.client.ClientEntity;
 import pl.dmichalski.reservations.business.domain.entity.payment.PaymentEntity;
 import pl.dmichalski.reservations.business.domain.entity.reservation.ReservationEntity;
 import pl.dmichalski.reservations.business.domain.entity.reservation.ReservationStatusEntity;
-import pl.dmichalski.reservations.business.service.client.ClientService;
-import pl.dmichalski.reservations.business.service.payment.PaymentService;
-import pl.dmichalski.reservations.business.service.reservation.ReservationService;
-import pl.dmichalski.reservations.business.service.reservation.ReservationStatusService;
 import pl.dmichalski.reservations.business.ui.forms.reservation.model.ClientComboBoxModel;
 import pl.dmichalski.reservations.business.ui.forms.reservation.model.PaymentComboBoxModel;
 import pl.dmichalski.reservations.business.ui.forms.reservation.model.ReservationStatusComboBoxModel;
@@ -27,9 +27,9 @@ import pl.dmichalski.reservations.business.ui.forms.reservation.view.modal.Reser
 import pl.dmichalski.reservations.business.ui.forms.reservation.view.modal.ReservationFormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.notifications.Notifications;
-import pl.dmichalski.reservations.business.validation.ReservationValidator;
+import pl.dmichalski.reservations.business.util.notification.Notifications;
 import pl.dmichalski.reservations.business.validation.ValidationError;
+import pl.dmichalski.reservations.business.validation.reservation.ReservationValidator;
 
 @Controller
 public class ReservationController extends AbstractFrameController {

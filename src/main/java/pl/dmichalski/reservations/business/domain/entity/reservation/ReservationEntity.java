@@ -22,15 +22,15 @@ import pl.dmichalski.reservations.business.domain.entity.payment.PaymentEntity;
 public class ReservationEntity extends BaseEntity {
 
     @ManyToOne
-    @JoinColumn(name = "id_resrevation_status")
+    @JoinColumn(name = "reservation_status_id")
     private ReservationStatusEntity reservationStatus;
 
     @ManyToOne
-    @JoinColumn(name = "id_payment")
+    @JoinColumn(name = "payment_id")
     private PaymentEntity payment;
 
     @ManyToOne
-    @JoinColumn(name = "id_client")
+    @JoinColumn(name = "client_id")
     private ClientEntity client;
 
     private Date fromDate;
@@ -40,5 +40,10 @@ public class ReservationEntity extends BaseEntity {
     private Date reservationDate;
 
     private Long amount;
+
+    @Override
+    public String toString() {
+        return client.toString();
+    }
 
 }

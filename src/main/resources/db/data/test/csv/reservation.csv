@@ -1,0 +1,16 @@
+reservation_status_id;payment_id;client_id;from_date;to_date;reservation_date;amount
+(SELECT id FROM reservation_status WHERE status = 'New');(SELECT id FROM payment WHERE id = 1);(SELECT id FROM client WHERE pesel = '86012932465');NOW();NOW();NOW();120
+(SELECT id FROM reservation_status WHERE status = 'Finished');(SELECT id FROM payment WHERE id = 2);(SELECT id FROM client WHERE pesel = '72053148211');NOW();NOW();NOW();340
+(SELECT id FROM reservation_status WHERE status = 'New');(SELECT id FROM payment WHERE id = 1);(SELECT id FROM client WHERE pesel = '72053148211');NOW();NOW();NOW();110
+(SELECT id FROM reservation_status WHERE status = 'Finished');(SELECT id FROM payment WHERE id = 3);(SELECT id FROM client WHERE pesel = '86012932465');NOW();NOW();NOW();420
+(SELECT id FROM reservation_status WHERE status = 'New');(SELECT id FROM payment WHERE id = 4);(SELECT id FROM client WHERE pesel = '46111267536');NOW();NOW();NOW();490
+(SELECT id FROM reservation_status WHERE status = 'Canceled');(SELECT id FROM payment WHERE id = 6);(SELECT id FROM client WHERE pesel = '46111267536');NOW();NOW();NOW();150
+(SELECT id FROM reservation_status WHERE status = 'New');(SELECT id FROM payment WHERE id = 5);(SELECT id FROM client WHERE pesel = '87052056951');NOW();NOW();NOW();90
+(SELECT id FROM reservation_status WHERE status = 'Canceled');(SELECT id FROM payment WHERE id = 6);(SELECT id FROM client WHERE pesel = '72053148211');NOW();NOW();NOW();130
+(SELECT id FROM reservation_status WHERE status = 'Canceled');(SELECT id FROM payment WHERE id = 5);(SELECT id FROM client WHERE pesel = '86012932465');NOW();NOW();NOW();175
+(SELECT id FROM reservation_status WHERE status = 'Finished');(SELECT id FROM payment WHERE id = 4);(SELECT id FROM client WHERE pesel = '72053148211');NOW();NOW();NOW();200
+(SELECT id FROM reservation_status WHERE status = 'Canceled');(SELECT id FROM payment WHERE id = 1);(SELECT id FROM client WHERE pesel = '86012932465');NOW();NOW();NOW();140
+(SELECT id FROM reservation_status WHERE status = 'New');(SELECT id FROM payment WHERE id = 2);(SELECT id FROM client WHERE pesel = '87052056951');NOW();NOW();NOW();200
+(SELECT id FROM reservation_status WHERE status = 'Canceled');(SELECT id FROM payment WHERE id = 3);(SELECT id FROM client WHERE pesel = '86012932465');NOW();NOW();NOW();220
+(SELECT id FROM reservation_status WHERE status = 'Finished');(SELECT id FROM payment WHERE id = 2);(SELECT id FROM client WHERE pesel = '00211037385');NOW();NOW();NOW();160
+(SELECT id FROM reservation_status WHERE status = 'Finished');(SELECT id FROM payment WHERE id = 1);(SELECT id FROM client WHERE pesel = '86012932465');NOW();NOW();NOW();120

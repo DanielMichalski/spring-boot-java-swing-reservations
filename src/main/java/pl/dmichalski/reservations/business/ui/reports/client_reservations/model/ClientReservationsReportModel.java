@@ -1,5 +1,6 @@
 package pl.dmichalski.reservations.business.ui.reports.client_reservations.model;
 
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.dto.client.ClientReservationCountDto;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
@@ -29,7 +30,7 @@ public class ClientReservationsReportModel extends DefaultTableModel<ClientReser
             case 2:
                 return clientReservationCountDto.getCount();
             default:
-                return "";
+                return Strings.EMPTY;
         }
     }
 

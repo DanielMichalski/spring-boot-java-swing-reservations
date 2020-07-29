@@ -18,4 +18,9 @@ public class PaymentMethodEntity extends BaseEntity {
 
     private String name;
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
 }

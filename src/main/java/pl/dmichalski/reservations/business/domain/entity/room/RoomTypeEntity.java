@@ -18,6 +18,11 @@ public class RoomTypeEntity extends BaseEntity {
 
     private String description;
 
-    private long multiplier;
+    private Integer multiplier;
+
+    @Override
+    public String toString() {
+        return description;
+    }
 
 }

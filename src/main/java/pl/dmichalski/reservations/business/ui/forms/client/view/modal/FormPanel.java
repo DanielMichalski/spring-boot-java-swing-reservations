@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.domain.entity.address.AddressEntity;
@@ -84,11 +85,11 @@ public class FormPanel extends JPanel {
     }
 
     public void clearForm() {
-        nameTF.setText("");
-        surnameTF.setText("");
-        peselTF.setText("");
-        phoneNumberTF.setText("");
-        emailTF.setText("");
+        nameTF.setText(Strings.EMPTY);
+        surnameTF.setText(Strings.EMPTY);
+        peselTF.setText(Strings.EMPTY);
+        phoneNumberTF.setText(Strings.EMPTY);
+        emailTF.setText(Strings.EMPTY);
         addressCB.setSelectedIndex(0);
     }
 

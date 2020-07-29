@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.domain.entity.rate.RateEntity;
@@ -77,7 +78,7 @@ public class RateFormPanel extends JPanel {
     }
 
     public void clearForm() {
-        rateTF.setText("");
+        rateTF.setText(Strings.EMPTY);
     }
 
 }

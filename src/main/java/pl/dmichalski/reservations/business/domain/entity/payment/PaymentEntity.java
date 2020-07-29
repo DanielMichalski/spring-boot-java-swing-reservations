@@ -10,6 +10,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.apache.logging.log4j.util.Strings;
 import pl.dmichalski.reservations.business.domain.entity.BaseEntity;
 
 @Entity
@@ -20,11 +21,15 @@ import pl.dmichalski.reservations.business.domain.entity.BaseEntity;
 public class PaymentEntity extends BaseEntity {
 
     @ManyToOne
-    @JoinColumn(name = "id_payment_method")
+    @JoinColumn(name = "payment_method_id")
     private PaymentMethodEntity paymentMethod;
 
     private Long value;
 
-    private Date dateOfPayments;
+    private Date dateOfPayment;
 
+    @Override
+    public String toString() {
+        return paymentMethod + Strings.EMPTY;
+    }
 }

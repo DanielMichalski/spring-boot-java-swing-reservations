@@ -1,5 +1,6 @@
 package pl.dmichalski.reservations.business.ui.forms.room.model;
 
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.domain.entity.room.RoomEntity;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
@@ -19,7 +20,7 @@ public class RoomTableModel extends DefaultTableModel<RoomEntity> {
             case 2:
                 return room.getDescription();
             default:
-                return "";
+                return Strings.EMPTY;
         }
     }
 

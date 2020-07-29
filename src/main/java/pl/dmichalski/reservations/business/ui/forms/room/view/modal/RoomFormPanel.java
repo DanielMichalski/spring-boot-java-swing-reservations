@@ -8,6 +8,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.domain.entity.room.RoomEntity;
@@ -69,7 +70,7 @@ public class RoomFormPanel extends JPanel {
     }
 
     public void clearForm() {
-        descriptionTf.setText("");
+        descriptionTf.setText(Strings.EMPTY);
     }
 
 }

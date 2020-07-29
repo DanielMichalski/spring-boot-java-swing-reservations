@@ -32,4 +32,9 @@ public class ClientEntity extends BaseEntity {
     private String phoneNumber;
 
     private String email;
+
+    @Override
+    public String toString() {
+        return name + " " + surname;
+    }
 }

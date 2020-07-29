@@ -7,7 +7,7 @@ spring:
   jpa:
     properties:
       hibernate:
-        #TODO        hbm2ddl.auto: validate
+        hbm2ddl.auto: validate
         format_sql: false
         physical_naming_strategy: 'com.vladmihalcea.hibernate.type.util.CamelCaseToSnakeCaseNamingStrategy'
   liquibase:

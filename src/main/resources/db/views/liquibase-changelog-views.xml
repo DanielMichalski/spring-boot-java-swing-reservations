@@ -1,0 +1,44 @@
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+	<changeSet id="client_basic_information_view" author="Daniel Michalski">
+		<comment>Create basic information view</comment>
+
+		<createView viewName="v_client_basic_information">
+			SELECT c.name, c.surname, a.city
+			FROM client c
+			LEFT JOIN address a ON c.address_id = a.id
+			ORDER BY c.name
+		</createView>
+	</changeSet>
+
+	<changeSet id="number_of_empty_rooms_view" author="Daniel Michalski">
+		<comment>Create number of empty rooms view</comment>
+
+		<createView viewName="v_number_of_empty_rooms">
+			SELECT rs.status_description, COUNT(r_type.description)
+			FROM room r
+			LEFT JOIN rate rt ON rt.room_id = r.id
+			LEFT JOIN room_type r_type ON rt.room_type_id = r_type.id
+			LEFT JOIN room_status rs ON r.room_status_id = rs.id
+			WHERE rs.id = 2
+			GROUP BY (rs.status_description)
+		</createView>
+	</changeSet>
+
+	<changeSet id="client_reservations_view" author="Daniel Michalski">
+		<comment>Create client reservations view</comment>
+
+		<createView viewName="v_client_reservations">
+			SELECT c.email, COUNT(r.id) "Number of reservations"
+			FROM client c
+			LEFT JOIN reservation r ON c.id = r.client_id
+			GROUP BY c.email
+			ORDER BY "Number of reservations" DESC
+		</createView>
+	</changeSet>
+
+</databaseChangeLog>

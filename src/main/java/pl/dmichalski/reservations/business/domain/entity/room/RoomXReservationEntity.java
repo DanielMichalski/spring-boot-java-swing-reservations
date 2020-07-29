@@ -13,7 +13,7 @@ public class RoomXReservationEntity {
     @EmbeddedId
     private RoomXReservationPK roomXReservationPK;
 
-    private long roomPrice;
+    private Integer roomPrice;
 
     public RoomXReservationEntity() {
     }
@@ -42,7 +42,7 @@ public class RoomXReservationEntity {
         return roomPrice;
     }
 
-    public void setRoomPrice(long roomPrice) {
+    public void setRoomPrice(Integer roomPrice) {
         this.roomPrice = roomPrice;
     }
 }

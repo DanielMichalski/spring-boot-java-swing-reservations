@@ -8,8 +8,8 @@ import javax.swing.JTable;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import pl.dmichalski.reservations.business.app.service.address.AddressService;
 import pl.dmichalski.reservations.business.domain.entity.address.AddressEntity;
-import pl.dmichalski.reservations.business.service.address.AddressService;
 import pl.dmichalski.reservations.business.ui.forms.address.model.AddressTableModel;
 import pl.dmichalski.reservations.business.ui.forms.address.view.AddressTableBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.address.view.AddressTableFrame;
@@ -18,9 +18,9 @@ import pl.dmichalski.reservations.business.ui.forms.address.view.modal.AddressFo
 import pl.dmichalski.reservations.business.ui.forms.address.view.modal.AddressFormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.notifications.Notifications;
-import pl.dmichalski.reservations.business.validation.AddressValidator;
+import pl.dmichalski.reservations.business.util.notification.Notifications;
 import pl.dmichalski.reservations.business.validation.ValidationError;
+import pl.dmichalski.reservations.business.validation.address.AddressValidator;
 
 @Controller
 @AllArgsConstructor

@@ -1,5 +1,6 @@
 package pl.dmichalski.reservations.business.ui.forms.payment_method.model;
 
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.domain.entity.payment.PaymentMethodEntity;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
@@ -15,7 +16,7 @@ public class PaymentMethodTableModel extends DefaultTableModel<PaymentMethodEnti
             case 0:
                 return paymentMethod.getName();
             default:
-                return "";
+                return Strings.EMPTY;
         }
     }
 

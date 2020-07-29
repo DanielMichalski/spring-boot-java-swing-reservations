@@ -29,166 +29,166 @@ DROP TABLE IF EXISTS address_history CASCADE;
 /*==============================================================*/
 /* Table: address                                               */
 /*==============================================================*/
-CREATE TABLE address
-(
-  id_address   SERIAL NOT NULL PRIMARY KEY,
-  street       TEXT   NOT NULL,
-  house_number TEXT   NOT NULL,
-  flat_number  TEXT   NOT NULL,
-  city         TEXT   NOT NULL,
-  postal_code  TEXT   NOT NULL
-);
-
-CREATE INDEX address_city_index ON address(city);
+-- CREATE TABLE address
+-- (
+--   id_address   SERIAL NOT NULL PRIMARY KEY,
+--   street       TEXT   NOT NULL,
+--   house_number TEXT   NOT NULL,
+--   flat_number  TEXT   NOT NULL,
+--   city         TEXT   NOT NULL,
+--   postal_code  TEXT   NOT NULL
+-- );
+--
+-- CREATE INDEX address_city_index ON address(city);
 
 /*==============================================================*/
 /* Table: client                                                */
 /*==============================================================*/
-CREATE TABLE client
-(
-  id_client    SERIAL NOT NULL PRIMARY KEY,
-  id_address   INT    NOT NULL REFERENCES address (id_address),
-  name         TEXT   NOT NULL,
-  surname      TEXT   NOT NULL,
-  PESEL        TEXT   NOT NULL,
-  phone_number TEXT   NOT NULL,
-  mail         TEXT   NOT NULL
-);
-
-CREATE INDEX client_id_address_index ON client(id_address);
-CREATE INDEX client_PESEL_index ON client(PESEL);
+-- CREATE TABLE client
+-- (
+--   id_client    SERIAL NOT NULL PRIMARY KEY,
+--   id_address   INT    NOT NULL REFERENCES address (id_address),
+--   name         TEXT   NOT NULL,
+--   surname      TEXT   NOT NULL,
+--   PESEL        TEXT   NOT NULL,
+--   phone_number TEXT   NOT NULL,
+--   mail         TEXT   NOT NULL
+-- );
+--
+-- CREATE INDEX client_id_address_index ON client(id_address);
+-- CREATE INDEX client_PESEL_index ON client(PESEL);
 CREATE INDEX client_phone_number_index ON client(phone_number);
 
 /*==============================================================*/
 /* Table: payment_method                                        */
 /*==============================================================*/
-CREATE TABLE payment_method
-(
-  id_payment_method SERIAL NOT NULL PRIMARY KEY,
-  name              TEXT   NOT NULL
-);
+-- CREATE TABLE payment_method
+-- (
+--   id_payment_method SERIAL NOT NULL PRIMARY KEY,
+--   name              TEXT   NOT NULL
+-- );
 
 /*==============================================================*/
 /* Table: payment                                               */
 /*==============================================================*/
-CREATE TABLE payment
-(
-  id_payment        SERIAL NOT NULL PRIMARY KEY,
-  id_payment_method INT    NOT NULL REFERENCES payment_method (id_payment_method),
-  value             INT    NOT NULL,
-  date_of_payment   DATE   NOT NULL
-);
-
-CREATE INDEX payment_id_payment_method_index ON payment(id_payment_method);
+-- CREATE TABLE payment
+-- (
+--   id_payment        SERIAL NOT NULL PRIMARY KEY,
+--   id_payment_method INT    NOT NULL REFERENCES payment_method (id_payment_method),
+--   value             INT    NOT NULL,
+--   date_of_payment   DATE   NOT NULL
+-- );
+--
+-- CREATE INDEX payment_id_payment_method_index ON payment(id_payment_method);
 
 /*==============================================================*/
 /* Table: room_status                                           */
 /*==============================================================*/
-CREATE TABLE room_status
-(
-  id_room_status     SERIAL NOT NULL PRIMARY KEY,
-  room_status        TEXT   NOT NULL,
-  status_description TEXT   NOT NULL
-);
-
-CREATE INDEX room_status_room_status_index ON room_status(room_status);
+-- CREATE TABLE room_status
+-- (
+--   id_room_status     SERIAL NOT NULL PRIMARY KEY,
+--   room_status        TEXT   NOT NULL,
+--   status_description TEXT   NOT NULL
+-- );
+--
+-- CREATE INDEX room_status_room_status_index ON room_status(room_status);
 
 /*==============================================================*/
 /* Table: room                                                  */
 /*==============================================================*/
-CREATE TABLE room
-(
-  id_room          SERIAL NOT NULL PRIMARY KEY,
-  id_room_status   INT    NOT NULL REFERENCES room_status (id_room_status),
-  number_of_people INT    NOT NULL,
-  description      TEXT   NOT NULL
-);
-
-CREATE INDEX room_id_room_status_index ON room(id_room_status);
+-- CREATE TABLE room
+-- (
+--   id_room          SERIAL NOT NULL PRIMARY KEY,
+--   id_room_status   INT    NOT NULL REFERENCES room_status (id_room_status),
+--   number_of_people INT    NOT NULL,
+--   description      TEXT   NOT NULL
+-- );
+--
+-- CREATE INDEX room_id_room_status_index ON room(id_room_status);
 
 /*==============================================================*/
 /* Table: room_type                                             */
 /*==============================================================*/
-CREATE TABLE room_type
-(
-  id_room_type SERIAL NOT NULL PRIMARY KEY,
-  description  TEXT   NOT NULL,
-  multiplier   INT    NOT NULL
-);
+-- CREATE TABLE room_type
+-- (
+--   id_room_type SERIAL NOT NULL PRIMARY KEY,
+--   description  TEXT   NOT NULL,
+--   multiplier   INT    NOT NULL
+-- );
 
 /*==============================================================*/
 /* Table: reservation_status                                    */
 /*==============================================================*/
-CREATE TABLE reservation_status
-(
-  id_reservation_status SERIAL NOT NULL PRIMARY KEY,
-  reservation_status    TEXT   NOT NULL
-);
-
-CREATE INDEX reservation_status_reservation_status_index ON reservation_status(reservation_status);
+-- CREATE TABLE reservation_status
+-- (
+--   id_reservation_status SERIAL NOT NULL PRIMARY KEY,
+--   reservation_status    TEXT   NOT NULL
+-- );
+--
+-- CREATE INDEX reservation_status_reservation_status_index ON reservation_status(reservation_status);
 
 /*==============================================================*/
 /* Table: rate                                                  */
 /*==============================================================*/
-CREATE TABLE rate
-(
-  id_rate      SERIAL NOT NULL PRIMARY KEY,
-  id_room      INT    NOT NULL REFERENCES room (id_room),
-  id_room_type INT    NOT NULL REFERENCES room_type (id_room_type),
-  default_rate INT    NOT NULL
-);
-
-CREATE INDEX rate_id_room_index ON rate(id_room);
-CREATE INDEX rate_id_room_type_index ON rate(id_room_type);
+-- CREATE TABLE rate
+-- (
+--   id_rate      SERIAL NOT NULL PRIMARY KEY,
+--   id_room      INT    NOT NULL REFERENCES room (id_room),
+--   id_room_type INT    NOT NULL REFERENCES room_type (id_room_type),
+--   default_rate INT    NOT NULL
+-- );
+--
+-- CREATE INDEX rate_id_room_index ON rate(id_room);
+-- CREATE INDEX rate_id_room_type_index ON rate(id_room_type);
 
 /*==============================================================*/
 /* Table: reservation                                           */
 /*==============================================================*/
-CREATE TABLE reservation
-(
-  id_reservation        SERIAL NOT NULL PRIMARY KEY,
-  id_resrevation_status INT    NOT NULL REFERENCES reservation_status (id_reservation_status),
-  id_payment            INT    NOT NULL REFERENCES payment (id_payment),
-  id_client             INT    NOT NULL REFERENCES client (id_client),
-  from_date             DATE   NOT NULL,
-  to_date               DATE   NOT NULL,
-  reservation_date      DATE   NOT NULL,
-  amount                INT    NOT NULL
-);
-
-CREATE INDEX reservation_id_resrevation_status_index ON reservation(id_resrevation_status);
-CREATE INDEX reservation_id_payment_index ON reservation(id_payment);
-CREATE INDEX reservation_id_client_index ON reservation(id_client);
-CREATE INDEX reservation_from_date_index ON reservation(from_date);
-CREATE INDEX reservation_to_date_index ON reservation(to_date);
+-- CREATE TABLE reservation
+-- (
+--   id_reservation        SERIAL NOT NULL PRIMARY KEY,
+--   id_resrevation_status INT    NOT NULL REFERENCES reservation_status (id_reservation_status),
+--   id_payment            INT    NOT NULL REFERENCES payment (id_payment),
+--   id_client             INT    NOT NULL REFERENCES client (id_client),
+--   from_date             DATE   NOT NULL,
+--   to_date               DATE   NOT NULL,
+--   reservation_date      DATE   NOT NULL,
+--   amount                INT    NOT NULL
+-- );
+--
+-- CREATE INDEX reservation_id_resrevation_status_index ON reservation(id_resrevation_status);
+-- CREATE INDEX reservation_id_payment_index ON reservation(id_payment);
+-- CREATE INDEX reservation_id_client_index ON reservation(id_client);
+-- CREATE INDEX reservation_from_date_index ON reservation(from_date);
+-- CREATE INDEX reservation_to_date_index ON reservation(to_date);
 
 /*==============================================================*/
 /* Table: room_x_reservation                                    */
 /*==============================================================*/
-CREATE TABLE room_x_reservation
-(
-  id_reservation SERIAL NOT NULL REFERENCES reservation (id_reservation),
-  id_room        INT    NOT NULL REFERENCES room (id_room),
-  room_price     INT    NOT NULL,
-  PRIMARY KEY (id_reservation, id_room)
-);
-
-CREATE INDEX room_x_reservation_id_room_index ON room_x_reservation(id_room);
+-- CREATE TABLE room_x_reservation
+-- (
+--   id_reservation SERIAL NOT NULL REFERENCES reservation (id_reservation),
+--   id_room        INT    NOT NULL REFERENCES room (id_room),
+--   room_price     INT    NOT NULL,
+--   PRIMARY KEY (id_reservation, id_room)
+-- );
+--
+-- CREATE INDEX room_x_reservation_id_room_index ON room_x_reservation(id_room);
 
 /*==============================================================*/
 /* Table: client_history                                        */
 /*==============================================================*/
-CREATE TABLE client_history (
-  id          SERIAL NOT NULL PRIMARY KEY,
-  client_id   INT    NOT NULL REFERENCES client (id_client),
-  name        TEXT   NOT NULL,
-  surname     TEXT   NOT NULL,
-  change_date DATE   NOT NULL
-);
-
-CREATE INDEX client_history_client_id_index ON client_history(client_id);
-CREATE INDEX client_history_name_index ON client_history(name);
-CREATE INDEX client_history_surname_index ON client_history(surname);
+-- CREATE TABLE client_history (
+--   id          SERIAL NOT NULL PRIMARY KEY,
+--   client_id   INT    NOT NULL REFERENCES client (id_client),
+--   name        TEXT   NOT NULL,
+--   surname     TEXT   NOT NULL,
+--   change_date DATE   NOT NULL
+-- );
+--
+-- CREATE INDEX client_history_client_id_index ON client_history(client_id);
+-- CREATE INDEX client_history_name_index ON client_history(name);
+-- CREATE INDEX client_history_surname_index ON client_history(surname);
 
 /*==============================================================*/
 /* Table: address_history                                       */
@@ -208,7 +208,7 @@ CREATE INDEX address_history_id_address_index ON address_history(id_address);
 CREATE INDEX address_history_city_index ON address_history(city);
 
 INSERT INTO address VALUES (nextval('address_id_address_seq'), 'Long', '5', '34', 'New York', '44-300');
-INSERT INTO address VALUES (nextval('address_id_address_seq'), 'Long streen', '54', '66', 'Paris', '49-321');
+INSERT INTO address VALUES (nextval('address_id_address_seq'), 'Long street', '54', '66', 'Paris', '49-321');
 INSERT INTO address VALUES (nextval('address_id_address_seq'), '18 Street', '31', '43', 'Sydney', '34-323');
 
 INSERT INTO client VALUES (nextval('client_id_client_seq'), 1, 'John', 'New', '9010100293', '500493003', 'janek21313@oc.eu');
@@ -236,21 +236,21 @@ INSERT INTO payment VALUES (nextval('payment_id_payment_seq'), 2, 435, NOW());
 INSERT INTO payment VALUES (nextval('payment_id_payment_seq'), 2, 755, NOW());
 INSERT INTO payment VALUES (nextval('payment_id_payment_seq'), 1, 125, NOW());
 
-INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 1, 1, 3, NOW(), NOW(), NOW(), 120);
-INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 3, 2, 3, NOW(), NOW(), NOW(), 340);
-INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 1, 3, 3, NOW(), NOW(), NOW(), 110);
-INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 2, 4, 3, NOW(), NOW(), NOW(), 420);
-INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 3, 5, 3, NOW(), NOW(), NOW(), 490);
-INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 3, 6, 1, NOW(), NOW(), NOW(), 150);
-INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 3, 1, 1, NOW(), NOW(), NOW(), 90);
-INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 3, 3, 2, NOW(), NOW(), NOW(), 130);
-INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 1, 4, 2, NOW(), NOW(), NOW(), 175);
-INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 2, 1, 3, NOW(), NOW(), NOW(), 200);
-INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 3, 2, 4, NOW(), NOW(), NOW(), 140);
-INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 3, 3, 4, NOW(), NOW(), NOW(), 200);
-INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 2, 1, 4, NOW(), NOW(), NOW(), 220);
-INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 1, 5, 1, NOW(), NOW(), NOW(), 160);
-INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 1, 4, 5, NOW(), NOW(), NOW(), 120);
+INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 1, 1, 3, NOW(), NOW(), NOW(), 120);   1
+INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 3, 2, 3, NOW(), NOW(), NOW(), 340);   1
+INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 1, 3, 3, NOW(), NOW(), NOW(), 110);   1
+INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 2, 4, 3, NOW(), NOW(), NOW(), 420);   1
+INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 3, 5, 3, NOW(), NOW(), NOW(), 490);   1
+INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 3, 6, 1, NOW(), NOW(), NOW(), 150);   1
+INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 3, 1, 1, NOW(), NOW(), NOW(), 90);    1
+INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 3, 3, 2, NOW(), NOW(), NOW(), 130);   1
+INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 1, 4, 2, NOW(), NOW(), NOW(), 175);   1
+INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 2, 1, 3, NOW(), NOW(), NOW(), 200);   1
+INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 3, 2, 4, NOW(), NOW(), NOW(), 140);   1
+INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 3, 3, 4, NOW(), NOW(), NOW(), 200);   1
+INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 2, 1, 4, NOW(), NOW(), NOW(), 220);   1
+INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 1, 5, 1, NOW(), NOW(), NOW(), 160);   1
+INSERT INTO reservation VALUES (nextval('reservation_id_reservation_seq'), 1, 4, 5, NOW(), NOW(), NOW(), 120);   1
 
 INSERT INTO room_status VALUES (nextval('room_status_id_room_status_seq'), 'Not empty', 'Room not empty');
 INSERT INTO room_status VALUES (nextval('room_status_id_room_status_seq'), 'Empty', 'Room empty');

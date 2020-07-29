@@ -8,10 +8,10 @@ import javax.swing.JTable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import pl.dmichalski.reservations.business.app.service.room.RoomService;
+import pl.dmichalski.reservations.business.app.service.room.RoomStatusService;
 import pl.dmichalski.reservations.business.domain.entity.room.RoomEntity;
 import pl.dmichalski.reservations.business.domain.entity.room.RoomStatusEntity;
-import pl.dmichalski.reservations.business.service.room.RoomService;
-import pl.dmichalski.reservations.business.service.room.RoomStatusService;
 import pl.dmichalski.reservations.business.ui.forms.room.model.RoomStatusComboBoxModel;
 import pl.dmichalski.reservations.business.ui.forms.room.model.RoomTableModel;
 import pl.dmichalski.reservations.business.ui.forms.room.view.RoomTableBtnPanel;
@@ -21,9 +21,9 @@ import pl.dmichalski.reservations.business.ui.forms.room.view.modal.RoomFormBtnP
 import pl.dmichalski.reservations.business.ui.forms.room.view.modal.RoomFormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.notifications.Notifications;
-import pl.dmichalski.reservations.business.validation.RoomValidator;
+import pl.dmichalski.reservations.business.util.notification.Notifications;
 import pl.dmichalski.reservations.business.validation.ValidationError;
+import pl.dmichalski.reservations.business.validation.room.RoomValidator;
 
 @Controller
 public class RoomController extends AbstractFrameController {

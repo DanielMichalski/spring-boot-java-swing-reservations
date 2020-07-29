@@ -1,0 +1,11 @@
+room_status_id;number_of_people;description
+(SELECT id FROM room_status WHERE status = 'Not empty');3;A triple room
+(SELECT id FROM room_status WHERE status = 'Reserved');4;Four-person room
+(SELECT id FROM room_status WHERE status = 'Empty');4;Four-person room
+(SELECT id FROM room_status WHERE status = 'Reserved');5;Five-person room
+(SELECT id FROM room_status WHERE status = 'Empty');2;Double room
+(SELECT id FROM room_status WHERE status = 'Reserved');2;Double room
+(SELECT id FROM room_status WHERE status = 'Not empty');3;A triple room
+(SELECT id FROM room_status WHERE status = 'Empty');4;Four-person room
+(SELECT id FROM room_status WHERE status = 'Not empty');5;Five-person room
+(SELECT id FROM room_status WHERE status = 'Empty');5;Five-person room

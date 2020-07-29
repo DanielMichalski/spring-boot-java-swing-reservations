@@ -1,0 +1,11 @@
+payment_method_id;value;date_of_payment
+(SELECT id FROM payment_method WHERE name = 'Debit card');100;NOW()
+(SELECT id FROM payment_method WHERE name = 'Credit card');220;NOW()
+(SELECT id FROM payment_method WHERE name = 'Cash');260;NOW()
+(SELECT id FROM payment_method WHERE name = 'Cash');150;NOW()
+(SELECT id FROM payment_method WHERE name = 'Credit card');240;NOW()
+(SELECT id FROM payment_method WHERE name = 'Credit card');130;NOW()
+(SELECT id FROM payment_method WHERE name = 'Cash');355;NOW()
+(SELECT id FROM payment_method WHERE name = 'Credit card');435;NOW()
+(SELECT id FROM payment_method WHERE name = 'Credit card');755;NOW()
+(SELECT id FROM payment_method WHERE name = 'Debit card');125;NOW()

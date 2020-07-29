@@ -8,8 +8,8 @@ import javax.swing.JTable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import pl.dmichalski.reservations.business.app.service.reservation.ReservationStatusService;
 import pl.dmichalski.reservations.business.domain.entity.reservation.ReservationStatusEntity;
-import pl.dmichalski.reservations.business.service.reservation.ReservationStatusService;
 import pl.dmichalski.reservations.business.ui.forms.reservation_status.model.ReservationStatusTableModel;
 import pl.dmichalski.reservations.business.ui.forms.reservation_status.view.ReservationStatusTableBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.reservation_status.view.ReservationStatusTableFrame;
@@ -18,9 +18,9 @@ import pl.dmichalski.reservations.business.ui.forms.reservation_status.view.moda
 import pl.dmichalski.reservations.business.ui.forms.reservation_status.view.modal.ReservationStatusFormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.notifications.Notifications;
-import pl.dmichalski.reservations.business.validation.ReservationStatusValidator;
+import pl.dmichalski.reservations.business.util.notification.Notifications;
 import pl.dmichalski.reservations.business.validation.ValidationError;
+import pl.dmichalski.reservations.business.validation.reservation.ReservationStatusValidator;
 
 @Controller
 public class ReservationStatusController extends AbstractFrameController {

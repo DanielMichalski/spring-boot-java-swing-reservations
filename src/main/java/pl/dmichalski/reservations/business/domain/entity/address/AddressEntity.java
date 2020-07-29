@@ -25,4 +25,13 @@ public class AddressEntity extends BaseEntity {
     private String city;
 
     private String postalCode;
+
+    @Override
+    public String toString() {
+        return street + " " +
+                houseNumber + "/" +
+                flatNumber + " " +
+                city + " " +
+                postalCode;
+    }
 }

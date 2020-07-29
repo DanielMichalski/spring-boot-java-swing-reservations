@@ -21,11 +21,11 @@ import pl.dmichalski.reservations.business.domain.entity.room.RoomTypeEntity;
 public class RateEntity extends BaseEntity {
 
     @ManyToOne
-    @JoinColumn(name = "id_room")
+    @JoinColumn(name = "room_id")
     private RoomEntity room;
 
     @ManyToOne
-    @JoinColumn(name = "id_room_type")
+    @JoinColumn(name = "room_type_id")
     private RoomTypeEntity roomType;
 
     private Long defaultRate;

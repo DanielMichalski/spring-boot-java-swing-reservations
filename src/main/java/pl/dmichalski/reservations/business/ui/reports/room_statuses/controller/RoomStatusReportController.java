@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import pl.dmichalski.reservations.business.app.service.room.RoomStatusService;
 import pl.dmichalski.reservations.business.dto.room.RoomStatusesCountDto;
-import pl.dmichalski.reservations.business.service.room.RoomStatusService;
 import pl.dmichalski.reservations.business.ui.reports.room_statuses.model.RoomStatusReportModel;
 import pl.dmichalski.reservations.business.ui.reports.room_statuses.view.RoomStatusReportTableFrame;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;

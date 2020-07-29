@@ -8,8 +8,8 @@ import javax.swing.JTable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import pl.dmichalski.reservations.business.app.service.room.RoomTypeService;
 import pl.dmichalski.reservations.business.domain.entity.room.RoomTypeEntity;
-import pl.dmichalski.reservations.business.service.room.RoomTypeService;
 import pl.dmichalski.reservations.business.ui.forms.room_type.model.RoomTypeTableModel;
 import pl.dmichalski.reservations.business.ui.forms.room_type.view.RoomTypeTableBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.room_type.view.RoomTypeTableFrame;
@@ -18,9 +18,9 @@ import pl.dmichalski.reservations.business.ui.forms.room_type.view.modal.RoomTyp
 import pl.dmichalski.reservations.business.ui.forms.room_type.view.modal.RoomTypeFormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.notifications.Notifications;
-import pl.dmichalski.reservations.business.validation.RoomTypeValidator;
+import pl.dmichalski.reservations.business.util.notification.Notifications;
 import pl.dmichalski.reservations.business.validation.ValidationError;
+import pl.dmichalski.reservations.business.validation.room.RoomTypeValidator;
 
 @Controller
 public class RoomTypeController extends AbstractFrameController {

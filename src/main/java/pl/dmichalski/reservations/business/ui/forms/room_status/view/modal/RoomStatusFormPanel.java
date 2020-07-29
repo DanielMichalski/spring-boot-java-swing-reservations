@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.domain.entity.room.RoomStatusEntity;
 import pl.dmichalski.reservations.business.util.border.Borders;
@@ -53,8 +54,8 @@ public class RoomStatusFormPanel extends JPanel {
     }
 
     public void clearForm() {
-        roomStatusTF.setText("");
-        roomStatusDescriptionTF.setText("");
+        roomStatusTF.setText(Strings.EMPTY);
+        roomStatusDescriptionTF.setText(Strings.EMPTY);
     }
 
 }

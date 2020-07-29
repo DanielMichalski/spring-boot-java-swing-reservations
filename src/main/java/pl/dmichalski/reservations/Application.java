@@ -11,11 +11,15 @@ public class Application {
 
     public static void main(String[] args) {
         LookAndFeelUtils.setWindowsLookAndFeel();
-        ConfigurableApplicationContext context = new SpringApplicationBuilder(Application.class)
-                .headless(false)
-                .run(args);
+        ConfigurableApplicationContext context = createApplicationContext(args);
         MainMenuController mainMenuController = context.getBean(MainMenuController.class);
         mainMenuController.prepareAndOpenFrame();
+    }
+
+    private static ConfigurableApplicationContext createApplicationContext(String[] args) {
+        return new SpringApplicationBuilder(Application.class)
+                .headless(false)
+                .run(args);
     }
 
 }

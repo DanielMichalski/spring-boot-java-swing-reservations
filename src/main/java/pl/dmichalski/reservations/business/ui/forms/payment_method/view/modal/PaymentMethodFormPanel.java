@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.domain.entity.payment.PaymentMethodEntity;
 import pl.dmichalski.reservations.business.util.border.Borders;
@@ -45,7 +46,7 @@ public class PaymentMethodFormPanel extends JPanel {
     }
 
     public void clearForm() {
-        paymentMethodTF.setText("");
+        paymentMethodTF.setText(Strings.EMPTY);
     }
 
 }

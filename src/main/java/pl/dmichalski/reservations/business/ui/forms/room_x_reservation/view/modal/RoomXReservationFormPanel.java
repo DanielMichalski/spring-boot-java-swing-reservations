@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.domain.entity.reservation.ReservationEntity;
@@ -68,14 +69,14 @@ public class RoomXReservationFormPanel extends JPanel {
         ReservationEntity reservation = reservationsComboBoxModel.getSelectedItem();
         RoomXReservationEntity roomXReservation = new RoomXReservationEntity(new RoomXReservationPK(room, reservation));
         try {
-            roomXReservation.setRoomPrice(Long.parseLong(priceTF.getText()));
+            roomXReservation.setRoomPrice(Integer.parseInt(priceTF.getText()));
         } catch (NumberFormatException ignored) {
         }
         return roomXReservation;
     }
 
     public void clearForm() {
-        priceTF.setText("");
+        priceTF.setText(Strings.EMPTY);
     }
 
 }

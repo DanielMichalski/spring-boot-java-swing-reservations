@@ -20,13 +20,18 @@ import pl.dmichalski.reservations.business.domain.entity.BaseEntity;
 public class RoomEntity extends BaseEntity {
 
     @ManyToOne
-    @JoinColumn(name = "id_room_status")
+    @JoinColumn(name = "room_status_id")
     private RoomStatusEntity roomStatus;
 
     @Column(name = "number_of_people")
-    private long numberOfPeople;
+    private Integer numberOfPeople;
 
     @Column(name = "description")
     private String description;
+
+    @Override
+    public String toString() {
+        return description;
+    }
 
 }

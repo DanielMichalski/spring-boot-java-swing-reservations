@@ -8,12 +8,12 @@ import javax.swing.JTable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import pl.dmichalski.reservations.business.app.service.reservation.ReservationService;
+import pl.dmichalski.reservations.business.app.service.room.RoomService;
+import pl.dmichalski.reservations.business.app.service.room.RoomXReservationService;
 import pl.dmichalski.reservations.business.domain.entity.reservation.ReservationEntity;
 import pl.dmichalski.reservations.business.domain.entity.room.RoomEntity;
 import pl.dmichalski.reservations.business.domain.entity.room.RoomXReservationEntity;
-import pl.dmichalski.reservations.business.service.reservation.ReservationService;
-import pl.dmichalski.reservations.business.service.room.RoomService;
-import pl.dmichalski.reservations.business.service.room.RoomXReservationService;
 import pl.dmichalski.reservations.business.ui.forms.rate.model.RoomComboBoxModel;
 import pl.dmichalski.reservations.business.ui.forms.room_x_reservation.model.ReservationsComboBoxModel;
 import pl.dmichalski.reservations.business.ui.forms.room_x_reservation.model.RoomXReservationTableModel;
@@ -24,9 +24,9 @@ import pl.dmichalski.reservations.business.ui.forms.room_x_reservation.view.moda
 import pl.dmichalski.reservations.business.ui.forms.room_x_reservation.view.modal.RoomXReservationFormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.notifications.Notifications;
-import pl.dmichalski.reservations.business.validation.RoomXReservationValidator;
+import pl.dmichalski.reservations.business.util.notification.Notifications;
 import pl.dmichalski.reservations.business.validation.ValidationError;
+import pl.dmichalski.reservations.business.validation.room.RoomXReservationValidator;
 
 @Controller
 public class RoomXReservationController extends AbstractFrameController {

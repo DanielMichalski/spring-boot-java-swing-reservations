@@ -8,10 +8,10 @@ import pl.dmichalski.reservations.business.domain.entity.room.RoomStatusEntity;
 @Repository
 public interface RoomStatusRepository extends JpaRepository<RoomStatusEntity, Long> {
 
-    @Query(value = "SELECT rs.roomStatus AS name, COUNT(r.id) AS count " +
+    @Query(value = "SELECT rs.status AS name, COUNT(r.id) AS count " +
             "FROM RoomEntity r " +
             "JOIN r.roomStatus rs " +
-            "GROUP BY rs.roomStatus")
+            "GROUP BY rs.status")
     Object[][] getRoomStatusesCount();
 
 }

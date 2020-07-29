@@ -7,24 +7,22 @@ import javax.persistence.ManyToOne;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import pl.dmichalski.reservations.business.domain.entity.reservation.ReservationEntity;
 
 @Embeddable
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter
-@Setter
+@Data
 public class RoomXReservationPK implements Serializable {
 
     @ManyToOne
-    @JoinColumn(name = "id_room")
+    @JoinColumn(name = "room_id")
     private RoomEntity room;
 
     @ManyToOne
-    @JoinColumn(name = "id_reservation")
+    @JoinColumn(name = "reservation_id")
     private ReservationEntity reservation;
 
 }

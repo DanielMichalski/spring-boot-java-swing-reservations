@@ -8,12 +8,12 @@ import javax.swing.JTable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import pl.dmichalski.reservations.business.app.service.rate.RateService;
+import pl.dmichalski.reservations.business.app.service.room.RoomService;
+import pl.dmichalski.reservations.business.app.service.room.RoomTypeService;
 import pl.dmichalski.reservations.business.domain.entity.rate.RateEntity;
 import pl.dmichalski.reservations.business.domain.entity.room.RoomEntity;
 import pl.dmichalski.reservations.business.domain.entity.room.RoomTypeEntity;
-import pl.dmichalski.reservations.business.service.rate.RateService;
-import pl.dmichalski.reservations.business.service.room.RoomService;
-import pl.dmichalski.reservations.business.service.room.RoomTypeService;
 import pl.dmichalski.reservations.business.ui.forms.rate.model.RateTableModel;
 import pl.dmichalski.reservations.business.ui.forms.rate.model.RoomComboBoxModel;
 import pl.dmichalski.reservations.business.ui.forms.rate.model.RoomTypeComboBoxModel;
@@ -24,9 +24,9 @@ import pl.dmichalski.reservations.business.ui.forms.rate.view.modal.RateFormBtnP
 import pl.dmichalski.reservations.business.ui.forms.rate.view.modal.RateFormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.notifications.Notifications;
-import pl.dmichalski.reservations.business.validation.RateValidator;
+import pl.dmichalski.reservations.business.util.notification.Notifications;
 import pl.dmichalski.reservations.business.validation.ValidationError;
+import pl.dmichalski.reservations.business.validation.rate.RateValidator;
 
 @Controller
 public class RateController extends AbstractFrameController {

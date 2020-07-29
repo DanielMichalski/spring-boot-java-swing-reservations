@@ -1,0 +1,6 @@
+address_id;name;surname;pesel;phone_number;email
+(SELECT id FROM address WHERE street = 'Long');John;New;86012932465;500493003;janek21313@oc.eu
+(SELECT id FROM address WHERE street = 'Long street');Mark;Spencer;72053148211;504939203;kulek123121@oc.eu
+(SELECT id FROM address WHERE street = '18 Street');Jules;Black;46111267536;511493003;marta3421@oc.eu
+(SELECT id FROM address WHERE street = 'Long');Maria;White;87052056951;521493003;jannowosielski2344@oc.eu
+(SELECT id FROM address WHERE street = 'Long street');Paris;Mary;00211037385;503493003;martakorycka2349@oc.eu

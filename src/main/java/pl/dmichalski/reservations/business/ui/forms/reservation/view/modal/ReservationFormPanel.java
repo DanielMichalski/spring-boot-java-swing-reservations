@@ -7,13 +7,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.toedter.calendar.JDateChooser;
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import pl.dmichalski.reservations.business.commons.time.CurrentTimeService;
 import pl.dmichalski.reservations.business.domain.entity.client.ClientEntity;
 import pl.dmichalski.reservations.business.domain.entity.payment.PaymentEntity;
 import pl.dmichalski.reservations.business.domain.entity.reservation.ReservationEntity;
 import pl.dmichalski.reservations.business.domain.entity.reservation.ReservationStatusEntity;
-import pl.dmichalski.reservations.business.time.CurrentTimeService;
 import pl.dmichalski.reservations.business.ui.forms.reservation.model.ClientComboBoxModel;
 import pl.dmichalski.reservations.business.ui.forms.reservation.model.PaymentComboBoxModel;
 import pl.dmichalski.reservations.business.ui.forms.reservation.model.ReservationStatusComboBoxModel;
@@ -104,7 +105,7 @@ public class ReservationFormPanel extends JPanel {
     }
 
     public void clearForm() {
-        amountTF.setText("");
+        amountTF.setText(Strings.EMPTY);
     }
 
 }

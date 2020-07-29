@@ -1,5 +1,6 @@
 package pl.dmichalski.reservations.business.ui.forms.reservation_status.model;
 
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.domain.entity.reservation.ReservationStatusEntity;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
@@ -13,9 +14,9 @@ public class ReservationStatusTableModel extends DefaultTableModel<ReservationSt
         ReservationStatusEntity reservationStatus = entities.get(rowIndex);
         switch (columnIndex) {
             case 0:
-                return reservationStatus.getReservationStatus();
+                return reservationStatus.getStatus();
             default:
-                return "";
+                return Strings.EMPTY;
         }
     }
 

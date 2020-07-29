@@ -1,5 +1,6 @@
 package pl.dmichalski.reservations.business.ui.forms.room_type.model;
 
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.domain.entity.room.RoomTypeEntity;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
@@ -17,7 +18,7 @@ public class RoomTypeTableModel extends DefaultTableModel<RoomTypeEntity> {
             case 1:
                 return roomType.getMultiplier();
             default:
-                return "";
+                return Strings.EMPTY;
         }
     }
 

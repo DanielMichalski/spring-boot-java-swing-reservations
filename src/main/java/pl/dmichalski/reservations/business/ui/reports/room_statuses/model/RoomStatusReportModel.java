@@ -1,5 +1,6 @@
 package pl.dmichalski.reservations.business.ui.reports.room_statuses.model;
 
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.dto.room.RoomStatusesCountDto;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
@@ -26,7 +27,7 @@ public class RoomStatusReportModel extends DefaultTableModel<RoomStatusesCountDt
             case 1:
                 return roomStatusesCount.getCount();
             default:
-                return "";
+                return Strings.EMPTY;
         }
     }
 

@@ -8,8 +8,8 @@ import javax.swing.JTable;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import pl.dmichalski.reservations.business.app.service.payment.PaymentMethodService;
 import pl.dmichalski.reservations.business.domain.entity.payment.PaymentMethodEntity;
-import pl.dmichalski.reservations.business.service.payment.PaymentMethodService;
 import pl.dmichalski.reservations.business.ui.forms.payment_method.model.PaymentMethodTableModel;
 import pl.dmichalski.reservations.business.ui.forms.payment_method.view.PaymentMethodTableBtnPanel;
 import pl.dmichalski.reservations.business.ui.forms.payment_method.view.PaymentMethodTableFrame;
@@ -18,9 +18,9 @@ import pl.dmichalski.reservations.business.ui.forms.payment_method.view.modal.Pa
 import pl.dmichalski.reservations.business.ui.forms.payment_method.view.modal.PaymentMethodFormPanel;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.notifications.Notifications;
-import pl.dmichalski.reservations.business.validation.PaymentMethodValidator;
+import pl.dmichalski.reservations.business.util.notification.Notifications;
 import pl.dmichalski.reservations.business.validation.ValidationError;
+import pl.dmichalski.reservations.business.validation.payment.PaymentMethodValidator;
 
 @Controller
 public class PaymentMethodController extends AbstractFrameController {

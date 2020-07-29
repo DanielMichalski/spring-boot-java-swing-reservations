@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.toedter.calendar.JDateChooser;
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.domain.entity.payment.PaymentEntity;
@@ -74,7 +75,7 @@ public class PaymentFormPanel extends JPanel {
     }
 
     public void clearForm() {
-        valueTF.setText("");
+        valueTF.setText(Strings.EMPTY);
     }
 
 }

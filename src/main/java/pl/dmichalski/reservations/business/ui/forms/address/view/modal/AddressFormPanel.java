@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Component;
 import pl.dmichalski.reservations.business.domain.entity.address.AddressEntity;
 import pl.dmichalski.reservations.business.util.border.Borders;
@@ -73,11 +74,11 @@ public class AddressFormPanel extends JPanel {
     }
 
     public void clearForm() {
-        streetTF.setText("");
-        houseNumberTF.setText("");
-        flatNumberTF.setText("");
-        cityTF.setText("");
-        postalCodeTF.setText("");
+        streetTF.setText(Strings.EMPTY);
+        houseNumberTF.setText(Strings.EMPTY);
+        flatNumberTF.setText(Strings.EMPTY);
+        cityTF.setText(Strings.EMPTY);
+        postalCodeTF.setText(Strings.EMPTY);
     }
 
 }

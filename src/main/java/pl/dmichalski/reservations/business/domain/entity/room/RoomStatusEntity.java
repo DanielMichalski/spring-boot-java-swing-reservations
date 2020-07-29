@@ -16,8 +16,13 @@ import pl.dmichalski.reservations.business.domain.entity.BaseEntity;
 @Getter
 public class RoomStatusEntity extends BaseEntity {
 
-    private String roomStatus;
+    private String status;
 
     private String statusDescription;
+
+    @Override
+    public String toString() {
+        return status + " " + statusDescription;
+    }
 
 }

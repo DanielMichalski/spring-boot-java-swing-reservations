@@ -1,0 +1,4 @@
+room_id;room_type_id;default_rate
+(SELECT id FROM room WHERE id = '1');(SELECT id FROM room_type WHERE description = 'Premium');200
+(SELECT id FROM room WHERE id = '2');(SELECT id FROM room_type WHERE description = 'Premium');200
+(SELECT id FROM room WHERE id = '3');(SELECT id FROM room_type WHERE description = 'Luxury');200

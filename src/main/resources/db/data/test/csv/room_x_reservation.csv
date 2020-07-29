@@ -1,0 +1,6 @@
+reservation_id;room_id;room_price
+(SELECT id FROM reservation WHERE id = 1);(SELECT id FROM room WHERE id = 1);420
+(SELECT id FROM reservation WHERE id = 2);(SELECT id FROM room WHERE id = 2);120
+(SELECT id FROM reservation WHERE id = 3);(SELECT id FROM room WHERE id = 2);135
+(SELECT id FROM reservation WHERE id = 4);(SELECT id FROM room WHERE id = 1);200
+(SELECT id FROM reservation WHERE id = 5);(SELECT id FROM room WHERE id = 2);150
