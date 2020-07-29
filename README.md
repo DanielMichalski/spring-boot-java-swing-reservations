@@ -1,5 +1,3 @@
-#TODO
-
 Spring Boot Swing Reservations
 ---------------------------------------------
 
