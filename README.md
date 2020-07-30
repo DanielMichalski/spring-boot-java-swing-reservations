@@ -5,17 +5,9 @@ This project aims to present how to create a Spring Boot + JPA/Hibernate Swing a
 
 Libraries
 ---------------------------------------------
-
-| Library name |Description  | 
-|----------|:-------------|
-| Spring Boot 2 | Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run".| 
-| Spring Data Repositories |    Spring Boot makes it easy to create stand-alone, productio   |  
-| JPA (Hibernate) | dsf | 
-
 - Spring Boot 2
 - Spring Data Repositories
 - JPA (Hibernate)
-- Internationalization
 - Swing
 - Liquibase
 - Lombok
@@ -30,7 +22,7 @@ How to run application
 ---------------------------------------------
 On Windows
 ```bash
-## Run PostgreSQL database by Docker Compose
+## Run PostgreSQL database on Docker
 cd docker/dependencies
 start.sh
 
@@ -38,13 +30,13 @@ start.sh
 cd ../..
 mvnw.cmd clean install
 
-## Run Spring boot application with PostgreSQL database
+## Run Spring boot application using Maven Wrapper or simly run Application class
 mvnw.cmd spring-boot:run
 ```
 
 On MacOS/ Linux
 ```bash
-## Run PostgreSQL database by Docker Compose
+## Run PostgreSQL database on Docker
 cd docker/dependencies
 ./start.sh
 
@@ -52,7 +44,7 @@ cd docker/dependencies
 cd ../..
 ./mvnw clean install
 
-## Run Spring boot application with PostgreSQL database
+## Run Spring boot application using Maven Wrapper or simly run Application class
 ./mvnw spring-boot:run
 ```
 
