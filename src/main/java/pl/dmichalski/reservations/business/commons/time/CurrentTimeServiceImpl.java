@@ -5,7 +5,7 @@ import java.util.Date;
 import org.springframework.stereotype.Service;
 
 @Service
-class DefaultCurrentTimeService implements CurrentTimeService {
+class CurrentTimeServiceImpl implements CurrentTimeService {
 
     @Override
     public Date getCurrentDate() {
