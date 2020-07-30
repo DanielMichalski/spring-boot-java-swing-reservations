@@ -3,9 +3,9 @@ version: '3.8'
 services:
   reservations-db:
     container_name: reservations-db
-    image: postgres:${DB_VERSION}
+    image: ${DB_IMAGE}
     ports:
-      - 5432:5432
+      - ${DB_PORT_ON_HOST}:5432
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}

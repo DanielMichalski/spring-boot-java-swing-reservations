@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: 'org.postgresql.Driver'
-    jdbc-url: 'jdbc:postgresql://localhost:5432/reservations'
+    jdbc-url: 'jdbc:postgresql://localhost:5555/reservations'
     username: 'reservations_user'
     password: 'reservations_psw'
   jpa:

@@ -16,14 +16,16 @@ It contains some useful configuration things:
 
 Requirements
 ---------------------------------------------
-- OpenJDK 11 (https://openjdk.java.net/projects/jdk/11/)
-- Docker (https://www.docker.com/products/docker-desktop)
+- Installed one of the JDK:
+    * OpenJDK 11+ (https://openjdk.java.net/projects/jdk/11/)
+    * Java JDK 11+ (https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+- Up and running Docker (https://www.docker.com/products/docker-desktop)
 
 How to run application
 ---------------------------------------------
 On Windows
 ```bash
-## Run PostgreSQL database by docker compose
+## Run PostgreSQL database by Docker Compose
 cd docker/dependencies
 start.sh
 
@@ -37,7 +39,7 @@ mvnw.cmd spring-boot:run
 
 On MacOS/ Linux
 ```bash
-## Run PostgreSQL database by docker compose
+## Run PostgreSQL database by Docker Compose
 cd docker/dependencies
 ./start.sh
 
@@ -52,7 +54,7 @@ cd ../..
 Database access
 ---------------
 ```
-jdbc-url: jdbc:postgresql://localhost:5432/reservations
+jdbc-url: jdbc:postgresql://localhost:5555/reservations
 username: reservations_user
 password: reservations_psw
 ```
