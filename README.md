@@ -60,7 +60,7 @@ password: reservations_psw
 Video
 -----
 
-[![Spring Boot Swing Reservations](http://img.youtube.com/vi/Z8iBbVGTSx8/0.jpg)](http://www.youtube.com/watch?v=Z8iBbVGTSx8 "Spring Boot Swing Reservations")
+[![Spring Boot Swing Reservations](http://img.youtube.com/vi/E7ho0qdWhus/0.jpg)](https://youtu.be/E7ho0qdWhus "Spring Boot Swing Reservations")
 
 Screens
 ---------------------------------------------
