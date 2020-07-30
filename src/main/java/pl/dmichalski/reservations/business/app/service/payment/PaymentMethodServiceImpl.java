@@ -30,6 +30,8 @@ class PaymentMethodServiceImpl implements PaymentMethodService {
 
     public List<PaymentMethodCountDto> getPaymentMethodCount() {
         Object[][] paymentMethodCount = paymentMethodRepository.getPaymentMethodCount();
-        return Stream.of(paymentMethodCount).map(pmc -> new PaymentMethodCountDto((String) pmc[0], (long) pmc[1])).collect(Collectors.toList());
+        return Stream.of(paymentMethodCount)
+                .map(pmc -> new PaymentMethodCountDto((String) pmc[0], (long) pmc[1]))
+                .collect(Collectors.toList());
     }
 }

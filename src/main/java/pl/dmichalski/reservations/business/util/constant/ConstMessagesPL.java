@@ -65,7 +65,7 @@ public interface ConstMessagesPL {
         String ROOM_NUMBER_OF_PEOPLE = "Ilość osób";
         String ROOM_DESCRIPTION = "Opis";
         String ROOMS = "Pokoje";
-        String ROOM = "Pokoj";
+        String ROOM = "Pokój";
         String BASIC_RATE = "Stawka podstawowa";
         String RATES = "Stawki";
         String ROOM_X_RESERVATIONS = "Rezerwacje pokoi";

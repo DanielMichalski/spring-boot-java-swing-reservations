@@ -1,18 +1,22 @@
 package pl.dmichalski.reservations.business.ui.forms.payment.model;
 
+import lombok.AllArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Component;
+import pl.dmichalski.reservations.business.commons.date.DateFormatterService;
 import pl.dmichalski.reservations.business.domain.entity.payment.PaymentEntity;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.date.DateFormatter;
 
 @Component
+@AllArgsConstructor
 public class PaymentTableModel extends DefaultTableModel<PaymentEntity> {
 
     private static final int PAYMENT_METHOD_INDEX = 0;
     private static final int VALUE_INDEX = 1;
     private static final int DATE_OF_PAYMENT_INDEX = 2;
+
+    private final DateFormatterService dateFormatterService;
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
@@ -23,7 +27,7 @@ public class PaymentTableModel extends DefaultTableModel<PaymentEntity> {
             case VALUE_INDEX:
                 return payment.getValue();
             case DATE_OF_PAYMENT_INDEX:
-                return DateFormatter.formatDate(payment.getDateOfPayment());
+                return dateFormatterService.formatDate(payment.getDateOfPayment());
             default:
                 return Strings.EMPTY;
         }

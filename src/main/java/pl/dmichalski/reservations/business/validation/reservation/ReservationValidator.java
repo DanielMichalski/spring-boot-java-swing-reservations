@@ -23,7 +23,7 @@ public class ReservationValidator extends ValidationSupport implements Validator
                 isNullValue(reservation.getFromDate()) ||
                 isNullValue(reservation.getToDate()) ||
                 isNullValue(reservation.getReservationDate()) ||
-                !isValueGreaterThanZero(reservation.getAmount())) {
+                isValueNotGreaterThanZero(reservation.getAmount())) {
             return Optional.of(new ValidationError(REQUIRED_DATA_NOT_FILLED_OR_BAD_DATA));
         }
         if (reservation.getFromDate().after(reservation.getToDate())) {

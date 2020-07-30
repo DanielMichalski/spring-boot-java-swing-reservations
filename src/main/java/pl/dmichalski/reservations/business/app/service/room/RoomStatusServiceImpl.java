@@ -1,7 +1,6 @@
 package pl.dmichalski.reservations.business.app.service.room;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import lombok.AllArgsConstructor;
@@ -9,6 +8,8 @@ import org.springframework.stereotype.Service;
 import pl.dmichalski.reservations.business.domain.entity.room.RoomStatusEntity;
 import pl.dmichalski.reservations.business.domain.repository.room.RoomStatusRepository;
 import pl.dmichalski.reservations.business.dto.room.RoomStatusesCountDto;
+
+import static java.util.stream.Collectors.toList;
 
 @Service
 @AllArgsConstructor
@@ -30,7 +31,9 @@ class RoomStatusServiceImpl implements RoomStatusService {
 
     public List<RoomStatusesCountDto> getRoomStatusesCount() {
         Object[][] roomStatusesCount = roomStatusRepository.getRoomStatusesCount();
-        return Stream.of(roomStatusesCount).map(rsc -> new RoomStatusesCountDto((String) rsc[0], (long) rsc[1])).collect(Collectors.toList());
+        return Stream.of(roomStatusesCount)
+                .map(rsc -> new RoomStatusesCountDto((String) rsc[0], (long) rsc[1]))
+                .collect(toList());
     }
 
 }

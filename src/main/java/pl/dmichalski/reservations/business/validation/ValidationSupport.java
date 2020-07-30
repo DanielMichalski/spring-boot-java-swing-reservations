@@ -12,12 +12,8 @@ public abstract class ValidationSupport {
         return value == null;
     }
 
-    protected boolean isValueGreaterThanZero(long value) {
-        return value > 0;
-    }
-
-    protected boolean isValueGreaterThanZero(double value) {
-        return value > 0;
+    protected boolean isValueNotGreaterThanZero(long value) {
+        return value <= 0;
     }
 
 }

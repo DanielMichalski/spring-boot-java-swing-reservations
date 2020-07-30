@@ -17,7 +17,7 @@ public class RateValidator extends ValidationSupport implements Validator<RateEn
     public Optional<ValidationError> validate(RateEntity rate) {
         if (isNullValue(rate.getRoom()) ||
                 isNullValue(rate.getRoomType()) ||
-                !isValueGreaterThanZero(rate.getDefaultRate())) {
+                isValueNotGreaterThanZero(rate.getDefaultRate())) {
             return Optional.of(new ValidationError(REQUIRED_DATA_NOT_FILLED_OR_BAD_DATA));
         }
         return Optional.empty();

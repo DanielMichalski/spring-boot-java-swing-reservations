@@ -17,7 +17,7 @@ public class RoomXReservationValidator extends ValidationSupport implements Vali
     public Optional<ValidationError> validate(RoomXReservationEntity roomXReservation) {
         if (isNullValue(roomXReservation.getReservation()) ||
                 isNullValue(roomXReservation.getReservation()) ||
-                !isValueGreaterThanZero(roomXReservation.getRoomPrice())) {
+                isValueNotGreaterThanZero(roomXReservation.getRoomPrice())) {
             return Optional.of(new ValidationError(REQUIRED_DATA_NOT_FILLED_OR_BAD_DATA));
         }
         return Optional.empty();

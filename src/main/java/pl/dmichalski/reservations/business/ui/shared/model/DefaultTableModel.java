@@ -7,7 +7,7 @@ import com.google.common.collect.Lists;
 
 public abstract class DefaultTableModel<T> extends AbstractTableModel {
 
-    protected List<T> entities = Lists.newArrayList();
+    protected final List<T> entities = Lists.newArrayList();
 
     public abstract String[] getColumnLabels();
 

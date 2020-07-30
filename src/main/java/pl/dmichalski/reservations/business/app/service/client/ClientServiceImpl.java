@@ -1,7 +1,6 @@
 package pl.dmichalski.reservations.business.app.service.client;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import lombok.AllArgsConstructor;
@@ -9,6 +8,8 @@ import org.springframework.stereotype.Service;
 import pl.dmichalski.reservations.business.domain.entity.client.ClientEntity;
 import pl.dmichalski.reservations.business.domain.repository.client.ClientRepository;
 import pl.dmichalski.reservations.business.dto.client.ClientReservationCountDto;
+
+import static java.util.stream.Collectors.toList;
 
 @Service
 @AllArgsConstructor
@@ -30,6 +31,8 @@ class ClientServiceImpl implements ClientService {
 
     public List<ClientReservationCountDto> getClientReservationsCount() {
         Object[][] clientReservationsCount = clientRepository.getClientReservationsCount();
-        return Stream.of(clientReservationsCount).map(crc -> new ClientReservationCountDto((String) crc[0], (String) crc[1], (long) crc[2])).collect(Collectors.toList());
+        return Stream.of(clientReservationsCount)
+                .map(crc -> new ClientReservationCountDto((String) crc[0], (String) crc[1], (long) crc[2]))
+                .collect(toList());
     }
 }

@@ -1,13 +1,15 @@
 package pl.dmichalski.reservations.business.ui.forms.reservation.model;
 
+import lombok.AllArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Component;
+import pl.dmichalski.reservations.business.commons.date.DateFormatterService;
 import pl.dmichalski.reservations.business.domain.entity.reservation.ReservationEntity;
 import pl.dmichalski.reservations.business.ui.shared.model.DefaultTableModel;
 import pl.dmichalski.reservations.business.util.constant.ConstMessagesEN;
-import pl.dmichalski.reservations.business.util.date.DateFormatter;
 
 @Component
+@AllArgsConstructor
 public class ReservationTableModel extends DefaultTableModel<ReservationEntity> {
 
     private static final int RESERVATION_STATUS_INDEX = 0;
@@ -17,6 +19,8 @@ public class ReservationTableModel extends DefaultTableModel<ReservationEntity> 
     private static final int TO_DATE_INDEX = 4;
     private static final int RESERVATION_DATE_INDEX = 5;
     private static final int AMOUNT_INDEX = 6;
+
+    private final DateFormatterService dateFormatterService;
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
@@ -29,11 +33,11 @@ public class ReservationTableModel extends DefaultTableModel<ReservationEntity> 
             case CLIENT_INDEX:
                 return reservation.getClient();
             case FROM_DATE_INDEX:
-                return DateFormatter.formatDate(reservation.getFromDate());
+                return dateFormatterService.formatDate(reservation.getFromDate());
             case TO_DATE_INDEX:
-                return DateFormatter.formatDate(reservation.getToDate());
+                return dateFormatterService.formatDate(reservation.getToDate());
             case RESERVATION_DATE_INDEX:
-                return DateFormatter.formatDate(reservation.getReservationDate());
+                return dateFormatterService.formatDate(reservation.getReservationDate());
             case AMOUNT_INDEX:
                 return reservation.getAmount();
             default:

@@ -16,7 +16,7 @@ public class RoomTypeValidator extends ValidationSupport implements Validator<Ro
     @Override
     public Optional<ValidationError> validate(RoomTypeEntity roomType) {
         if (isNullOrEmptyString(roomType.getDescription()) ||
-                !isValueGreaterThanZero(roomType.getMultiplier())) {
+                isValueNotGreaterThanZero(roomType.getMultiplier())) {
             return Optional.of(new ValidationError(REQUIRED_DATA_NOT_FILLED_OR_BAD_DATA));
         }
         return Optional.empty();

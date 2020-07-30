@@ -17,13 +17,13 @@
 
 	<properties>
 		<spring.boot.version>2.3.2.RELEASE</spring.boot.version>
-		<hibernate-types-5.version>2.9.12</hibernate-types-5.version>
+		<hibernate.types.5.version>2.9.12</hibernate.types.5.version>
 		<postgresql.version>42.2.14</postgresql.version>
 		<liquibase.version>4.0.0</liquibase.version>
 		<lombok.version>1.18.12</lombok.version>
 		<guava.version>29.0-jre</guava.version>
 		<jcalendar.version>1.4</jcalendar.version>
-		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
 		<java.version>8</java.version>
 	</properties>
 
@@ -37,7 +37,7 @@
 		<dependency>
 			<groupId>com.vladmihalcea</groupId>
 			<artifactId>hibernate-types-5</artifactId>
-			<version>${hibernate-types-5.version}</version>
+			<version>${hibernate.types.5.version}</version>
 		</dependency>
 
 		<dependency>
@@ -81,7 +81,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler-plugin.version}</version>
+				<version>${maven.compiler.plugin.version}</version>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>

@@ -17,7 +17,7 @@ public class PaymentValidator extends ValidationSupport implements Validator<Pay
     @Override
     public Optional<ValidationError> validate(PaymentEntity payment) {
         if (isNullValue(payment.getPaymentMethod())
-                || !isValueGreaterThanZero(payment.getValue())
+                || isValueNotGreaterThanZero(payment.getValue())
                 || isNullValue(payment.getDateOfPayment())) {
             return Optional.of(new ValidationError(REQUIRED_DATA_NOT_FILLED_OR_BAD_DATA));
         }
