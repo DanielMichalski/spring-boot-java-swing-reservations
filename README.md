@@ -1,10 +1,17 @@
 Spring Boot Swing Reservations
 ---------------------------------------------
 
-This project aims to show how to create a Spring Boot + JPA/Hibernate Swing application.
+This project aims to present how to create a Spring Boot + JPA/Hibernate Swing application.
 
 Libraries
 ---------------------------------------------
+
+| Library name |Description  | 
+|----------|:-------------|
+| Spring Boot 2 | Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run".| 
+| Spring Data Repositories |    Spring Boot makes it easy to create stand-alone, productio   |  
+| JPA (Hibernate) | dsf | 
+
 - Spring Boot 2
 - Spring Data Repositories
 - JPA (Hibernate)
