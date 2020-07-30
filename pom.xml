@@ -24,7 +24,7 @@
 		<guava.version>29.0-jre</guava.version>
 		<jcalendar.version>1.4</jcalendar.version>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-		<java.version>11</java.version>
+		<java.version>8</java.version>
 	</properties>
 
 	<dependencies>
@@ -83,7 +83,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>${maven-compiler-plugin.version}</version>
 				<configuration>
-					<release>${java.version}</release>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 				</configuration>
 			</plugin>
 		</plugins>

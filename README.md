@@ -1,25 +1,23 @@
 Spring Boot Swing Reservations
 ---------------------------------------------
 
-This project is a Spring Boot + JPA/Hibernate Swing application.
+This project aims to show how to create a Spring Boot + JPA/Hibernate Swing application.
 
-It contains some useful configuration things:
-
-- Spring Boot
+Libraries
+---------------------------------------------
+- Spring Boot 2
 - Spring Data Repositories
-- JPA + Hibernate
+- JPA (Hibernate)
 - Internationalization
-- Swing application
+- Swing
 - Liquibase
 - Lombok
 - Docker Compose
 
 Requirements
 ---------------------------------------------
-- Installed one of the JDK:
-    * OpenJDK 11+ (https://openjdk.java.net/projects/jdk/11/)
-    * Java JDK 11+ (https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
-- Up and running Docker (https://www.docker.com/products/docker-desktop)
+- [Java JDK](https://www.oracle.com/pl/java/technologies/javase-downloads.html) version 8+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop) 
 
 How to run application
 ---------------------------------------------
