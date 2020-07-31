@@ -12,6 +12,7 @@ Libraries
 - Liquibase
 - Lombok
 - Docker Compose
+- Checkstyle
 
 Requirements
 ---------------------------------------------
