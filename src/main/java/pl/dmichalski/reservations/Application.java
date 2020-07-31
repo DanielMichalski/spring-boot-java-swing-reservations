@@ -1,5 +1,7 @@
 package pl.dmichalski.reservations;
 
+import javax.swing.SwingUtilities;
+
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -12,14 +14,20 @@ public class Application {
     public static void main(String[] args) {
         LookAndFeelUtils.setWindowsLookAndFeel();
         ConfigurableApplicationContext context = createApplicationContext(args);
-        MainMenuController mainMenuController = context.getBean(MainMenuController.class);
-        mainMenuController.prepareAndOpenFrame();
+        displayMainFrame(context);
     }
 
     private static ConfigurableApplicationContext createApplicationContext(String[] args) {
         return new SpringApplicationBuilder(Application.class)
                 .headless(false)
                 .run(args);
+    }
+
+    private static void displayMainFrame(ConfigurableApplicationContext context) {
+        SwingUtilities.invokeLater(() -> {
+            MainMenuController mainMenuController = context.getBean(MainMenuController.class);
+            mainMenuController.prepareAndOpenFrame();
+        });
     }
 
 }

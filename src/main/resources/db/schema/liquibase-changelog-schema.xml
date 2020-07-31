@@ -462,16 +462,6 @@
 		<createIndex tableName="client_history" indexName="client_history_surname_idx">
 			<column name="surname"/>
 		</createIndex>
-
-		<addForeignKeyConstraint baseTableName="client_history"
-								 baseColumnNames="client_id"
-								 referencedTableName="client"
-								 referencedColumnNames="id"
-								 constraintName="client_history_client_fk"
-								 deferrable="false"
-								 initiallyDeferred="false"
-								 onDelete="NO ACTION"
-								 onUpdate="NO ACTION"/>
 	</changeSet>
 
 	<changeSet id="address_history_table" author="Daniel Michalski">
@@ -515,16 +505,6 @@
 		<createIndex tableName="address_history" indexName="address_history_city_idx">
 			<column name="city"/>
 		</createIndex>
-
-		<addForeignKeyConstraint baseTableName="address_history"
-								 baseColumnNames="address_id"
-								 referencedTableName="address"
-								 referencedColumnNames="id"
-								 constraintName="address_history_address_fk"
-								 deferrable="false"
-								 initiallyDeferred="false"
-								 onDelete="NO ACTION"
-								 onUpdate="NO ACTION"/>
 	</changeSet>
 
 </databaseChangeLog>
