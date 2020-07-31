@@ -67,6 +67,7 @@ public class PaymentFormPanel extends JPanel {
         try {
             payment = Long.valueOf(valueTF.getText());
         } catch (NumberFormatException ignored) {
+            // ignored
         }
 
         return new PaymentEntity(

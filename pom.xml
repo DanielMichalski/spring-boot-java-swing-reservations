@@ -24,6 +24,7 @@
 		<guava.version>29.0-jre</guava.version>
 		<jcalendar.version>1.4</jcalendar.version>
 		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+		<checkstyle.plugin.version>3.1.0</checkstyle.plugin.version>
 		<java.version>8</java.version>
 	</properties>
 
@@ -86,6 +87,29 @@
 					<source>${java.version}</source>
 					<target>${java.version}</target>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${checkstyle.plugin.version}</version>
+				<configuration>
+					<sourceDirectories>
+						<sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
+						<sourceDirectory>${project.build.testSourceDirectory}</sourceDirectory>
+					</sourceDirectories>
+					<configLocation>checkstyle/checkstyle.xml</configLocation>
+					<failOnViolation>true</failOnViolation>
+				</configuration>
+				<executions>
+					<execution>
+						<id>verify-style</id>
+						<goals>
+							<goal>check</goal>
+						</goals>
+						<phase>process-classes</phase>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

@@ -2,10 +2,10 @@ package pl.dmichalski.reservations.business.ui.reports.reports.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import pl.dmichalski.reservations.business.ui.reports.client_reservations.controller.ClientReservationsReportController;
+import pl.dmichalski.reservations.business.ui.reports.clientreservations.controller.ClientReservationsReportController;
 import pl.dmichalski.reservations.business.ui.reports.payments.controller.PaymentReportController;
 import pl.dmichalski.reservations.business.ui.reports.reports.view.ReportsFrame;
-import pl.dmichalski.reservations.business.ui.reports.room_statuses.controller.RoomStatusReportController;
+import pl.dmichalski.reservations.business.ui.reports.roomstatuses.controller.RoomStatusReportController;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
 
 @Controller

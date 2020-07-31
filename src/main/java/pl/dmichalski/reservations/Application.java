@@ -5,7 +5,7 @@ import javax.swing.SwingUtilities;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
-import pl.dmichalski.reservations.business.ui.main_menu.controller.MainMenuController;
+import pl.dmichalski.reservations.business.ui.mainmenu.controller.MainMenuController;
 import pl.dmichalski.reservations.business.util.ui.LookAndFeelUtils;
 
 @SpringBootApplication

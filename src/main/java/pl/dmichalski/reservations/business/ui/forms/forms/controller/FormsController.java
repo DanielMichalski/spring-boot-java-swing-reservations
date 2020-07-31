@@ -6,14 +6,14 @@ import pl.dmichalski.reservations.business.ui.forms.address.controller.AddressCo
 import pl.dmichalski.reservations.business.ui.forms.client.controller.ClientController;
 import pl.dmichalski.reservations.business.ui.forms.forms.view.FormsFrame;
 import pl.dmichalski.reservations.business.ui.forms.payment.controller.PaymentController;
-import pl.dmichalski.reservations.business.ui.forms.payment_method.controller.PaymentMethodController;
+import pl.dmichalski.reservations.business.ui.forms.paymentmethod.controller.PaymentMethodController;
 import pl.dmichalski.reservations.business.ui.forms.rate.controller.RateController;
 import pl.dmichalski.reservations.business.ui.forms.reservation.controller.ReservationController;
-import pl.dmichalski.reservations.business.ui.forms.reservation_status.controller.ReservationStatusController;
+import pl.dmichalski.reservations.business.ui.forms.reservationstatus.controller.ReservationStatusController;
 import pl.dmichalski.reservations.business.ui.forms.room.controller.RoomController;
-import pl.dmichalski.reservations.business.ui.forms.room_status.controller.RoomStatusController;
-import pl.dmichalski.reservations.business.ui.forms.room_type.controller.RoomTypeController;
-import pl.dmichalski.reservations.business.ui.forms.room_x_reservation.controller.RoomXReservationController;
+import pl.dmichalski.reservations.business.ui.forms.roomstatus.controller.RoomStatusController;
+import pl.dmichalski.reservations.business.ui.forms.roomtype.controller.RoomTypeController;
+import pl.dmichalski.reservations.business.ui.forms.roomxreservation.controller.RoomXReservationController;
 import pl.dmichalski.reservations.business.ui.shared.controller.AbstractFrameController;
 
 @Controller

@@ -89,6 +89,7 @@ public class ReservationFormPanel extends JPanel {
         try {
             amount = Long.parseLong(amountTF.getText());
         } catch (NumberFormatException ignored) {
+            // ignored
         }
 
         return new ReservationEntity(

@@ -69,6 +69,7 @@ public class RateFormPanel extends JPanel {
         try {
             roomRate = Long.parseLong(rateTF.getText());
         } catch (Exception ignored) {
+            // ignored
         }
 
         return new RateEntity(
