@@ -98,7 +98,7 @@
 						<sourceDirectory>${project.build.sourceDirectory}</sourceDirectory>
 						<sourceDirectory>${project.build.testSourceDirectory}</sourceDirectory>
 					</sourceDirectories>
-					<configLocation>checkstyle/checkstyle.xml</configLocation>
+					<configLocation>.checkstyle/checkstyle.xml</configLocation>
 					<failOnViolation>true</failOnViolation>
 				</configuration>
 				<executions>
