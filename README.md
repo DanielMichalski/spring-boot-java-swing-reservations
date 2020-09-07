@@ -1,6 +1,6 @@
 Spring Boot Swing Reservations
 ---------------------------------------------
-![Build status](https://github.com/DanielMichalski/spring-boot-swing-reservations/workflows/Java%20CI%20with%20Maven/badge.svg?branch=master)
+[![Build Status](https://github.com/DanielMichalski/spring-boot-swing-reservations/workflows/Java%20CI%20with%20Maven/badge.svg?branch=master)](https://github.com/DanielMichalski/spring-boot-swing-reservations/actions?query=workflow%3A%22Java+CI+with+Maven%22)
 
 This project aims to present how to create a Spring Boot + JPA/Hibernate Swing application.
 
