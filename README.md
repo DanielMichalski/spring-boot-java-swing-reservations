@@ -10,7 +10,7 @@ The project is built using Java, Spring Boot and Swing libraries.
 * [Libraries](#Libraries)
 * [Running the application](#running-the-application)
     * [On Windows](#on-windows)
-    * [On MacOS/ Linux](#on-macos/-linux)
+    * [On MacOS/ Linux](#on-macos-linux)
 * [Database access](#database-access)
 * [Video](#video)
 * [Screens](#screens)
