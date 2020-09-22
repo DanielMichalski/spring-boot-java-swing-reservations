@@ -7,7 +7,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.dmichalski.reservations.business.domain.entity.BaseEntity;
@@ -16,7 +15,6 @@ import pl.dmichalski.reservations.business.domain.entity.payment.PaymentEntity;
 
 @Entity
 @Table(name = "reservation")
-@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class ReservationEntity extends BaseEntity {
@@ -41,9 +39,36 @@ public class ReservationEntity extends BaseEntity {
 
     private Long amount;
 
+    public ReservationEntity(ReservationStatusEntity reservationStatus,
+                             PaymentEntity payment,
+                             ClientEntity client,
+                             Date fromDate,
+                             Date toDate,
+                             Date reservationDate,
+                             Long amount) {
+        this.reservationStatus = reservationStatus;
+        this.payment = payment;
+        this.client = client;
+        this.fromDate = new Date(fromDate.getTime());
+        this.toDate = new Date(toDate.getTime());
+        this.reservationDate = new Date(reservationDate.getTime());
+        this.amount = amount;
+    }
+
     @Override
     public String toString() {
         return client.toString();
     }
 
+    public Date getFromDate() {
+        return new Date(fromDate.getTime());
+    }
+
+    public Date getToDate() {
+        return new Date(toDate.getTime());
+    }
+
+    public Date getReservationDate() {
+        return new Date(reservationDate.getTime());
+    }
 }

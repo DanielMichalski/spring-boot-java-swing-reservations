@@ -7,7 +7,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
@@ -15,7 +14,6 @@ import pl.dmichalski.reservations.business.domain.entity.BaseEntity;
 
 @Entity
 @Table(name = "payment")
-@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class PaymentEntity extends BaseEntity {
@@ -28,8 +26,20 @@ public class PaymentEntity extends BaseEntity {
 
     private Date dateOfPayment;
 
+    public PaymentEntity(PaymentMethodEntity paymentMethod,
+                         Long value,
+                         Date dateOfPayment) {
+        this.paymentMethod = paymentMethod;
+        this.value = value;
+        this.dateOfPayment = new Date(dateOfPayment.getTime());
+    }
+
     @Override
     public String toString() {
         return paymentMethod + Strings.EMPTY;
+    }
+
+    public Date getDateOfPayment() {
+        return new Date(dateOfPayment.getTime());
     }
 }

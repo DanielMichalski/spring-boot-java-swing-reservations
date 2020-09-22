@@ -25,6 +25,7 @@
 		<jcalendar.version>1.4</jcalendar.version>
 		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
 		<checkstyle.plugin.version>3.1.0</checkstyle.plugin.version>
+		<findbugs.maven.plugin.version>3.0.5</findbugs.maven.plugin.version>
 		<java.version>8</java.version>
 	</properties>
 
@@ -104,10 +105,28 @@
 				<executions>
 					<execution>
 						<id>verify-style</id>
+						<phase>compile</phase>
 						<goals>
 							<goal>check</goal>
 						</goals>
-						<phase>process-classes</phase>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>${findbugs.maven.plugin.version}</version>
+				<configuration>
+					<effort>Max</effort>
+				</configuration>
+				<executions>
+					<execution>
+						<id>analyze-compile</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>

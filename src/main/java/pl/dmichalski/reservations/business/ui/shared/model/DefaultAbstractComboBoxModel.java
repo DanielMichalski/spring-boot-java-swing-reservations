@@ -2,7 +2,7 @@ package pl.dmichalski.reservations.business.ui.shared.model;
 
 import java.util.List;
 
-public abstract class DefaultComboBoxModel<T> extends javax.swing.DefaultComboBoxModel<T> {
+public abstract class DefaultAbstractComboBoxModel<T> extends javax.swing.DefaultComboBoxModel<T> {
 
     @Override
     public T getSelectedItem() {

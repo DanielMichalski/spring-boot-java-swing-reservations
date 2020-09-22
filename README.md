@@ -15,6 +15,7 @@ Libraries
 - [Lombok](https://projectlombok.org/)
 - [Docker Compose](https://docs.docker.com/compose/)
 - [Checkstyle](https://checkstyle.sourceforge.io/)
+- [FindBugs](http://findbugs.sourceforge.net/)
 
 Requirements
 ---------------------------------------------
