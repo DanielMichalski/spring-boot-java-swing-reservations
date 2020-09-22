@@ -7,32 +7,18 @@ This project aims to present how to create a Spring Boot + JPA/Hibernate Java Sw
 
 Libraries
 ---------------------------------------------
-- [Spring Boot 2](https://spring.io/projects/spring-boot)
-- [Spring Data Repositories](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.repositories)
-- [JPA (Hibernate)](https://hibernate.org/)
-- [Swing](https://docs.oracle.com/javase/8/docs/api/javax/swing/package-summary.html)
-- [Liquibase](https://www.liquibase.org/)
-- [Lombok](https://projectlombok.org/)
-- [Docker Compose](https://docs.docker.com/compose/)
-- [Checkstyle](https://checkstyle.sourceforge.io/)
-- [FindBugs](http://findbugs.sourceforge.net/)
 
-| Library name                                            | Description                                                                                                          |
-|-------------------------------------------------------- |--------------------------------------------------------------------------------------------------------------------- |
-| [Spring Boot 2](https://spring.io/projects/spring-boot) | Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run". |
-The JPA module of Spring Data contains a custom namespace that allows defining repository beans. It also contains certain features and element attributes that are special to JPA.
-
-| Library name                                                                                                     | Description                                                                                                          |
-|------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
-| [Spring Boot 2](https://spring.io/projects/spring-boot)                                                          | Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run". |
-| [Spring Data Repositories](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.repositories) |                                                                                                                      |
-| [JPA (Hibernate)](https://hibernate.org/)                                                                        |                                                                                                                      |
-| [Swing](https://docs.oracle.com/javase/8/docs/api/javax/swing/package-summary.html)                              |                                                                                                                      |
-| [Liquibase](https://www.liquibase.org/)                                                                          |                                                                                                                      |
-| [Lombok](https://projectlombok.org/)                                                                             |                                                                                                                      |
-| [Docker Compose](https://docs.docker.com/compose/)                                                               |                                                                                                                      |
-| [Checkstyle](https://checkstyle.sourceforge.io/)                                                                 |                                                                                                                      |
-| [FindBugs](http://findbugs.sourceforge.net/)                                                                     |                                                                                                                      |                                                             |                                                  |
+| Library name                                                                                                     | Description                                                                                                                          |
+|------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
+| [Spring Boot 2](https://spring.io/projects/spring-boot)                                                          | Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run".                 |
+| [Spring Data Repositories](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.repositories) | The JPA module of Spring Data contains a custom namespace that allows defining repository beans.                                     |
+| [JPA (Hibernate)](https://hibernate.org/)                                                                        | Hibernate ORM enables developers to more easily write applications whose data outlives the application process.                      |
+| [Swing](https://docs.oracle.com/javase/8/docs/api/javax/swing/package-summary.html)                              | Provides a set of "lightweight" (all-Java language) components that, to the maximum degree possible, work the same on all platforms. |
+| [Liquibase](https://www.liquibase.org/)                                                                          | Liquibase Community is an open source project that helps millions of developers rapidly manage database schema changes.              | 
+| [Lombok](https://projectlombok.org/)                                                                             | Project Lombok is a java library that automatically plugs into your editor and build tools, spicing up your java.                    |
+| [Docker Compose](https://docs.docker.com/compose/)                                                               | Compose is a tool for defining and running multi-container Docker applications.                                                      |
+| [Checkstyle](https://checkstyle.sourceforge.io/)                                                                 | Checkstyle is a development tool to help programmers write Java code that adheres to a coding standard.                              |
+| [FindBugs](http://findbugs.sourceforge.net/)                                                                     | FindBugs is a development tool which uses static analysis to look for bugs in Java code.                                             |
 
 Requirements
 ---------------------------------------------
