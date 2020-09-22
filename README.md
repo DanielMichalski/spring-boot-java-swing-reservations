@@ -20,7 +20,19 @@ Libraries
 | Library name                                            | Description                                                                                                          |
 |-------------------------------------------------------- |--------------------------------------------------------------------------------------------------------------------- |
 | [Spring Boot 2](https://spring.io/projects/spring-boot) | Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run". |
+The JPA module of Spring Data contains a custom namespace that allows defining repository beans. It also contains certain features and element attributes that are special to JPA.
 
+| Library name                                                                                                     | Description                                                                                                          |
+|------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
+| [Spring Boot 2](https://spring.io/projects/spring-boot)                                                          | Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run". |
+| [Spring Data Repositories](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.repositories) |                                                                                                                      |
+| [JPA (Hibernate)](https://hibernate.org/)                                                                        |                                                                                                                      |
+| [Swing](https://docs.oracle.com/javase/8/docs/api/javax/swing/package-summary.html)                              |                                                                                                                      |
+| [Liquibase](https://www.liquibase.org/)                                                                          |                                                                                                                      |
+| [Lombok](https://projectlombok.org/)                                                                             |                                                                                                                      |
+| [Docker Compose](https://docs.docker.com/compose/)                                                               |                                                                                                                      |
+| [Checkstyle](https://checkstyle.sourceforge.io/)                                                                 |                                                                                                                      |
+| [FindBugs](http://findbugs.sourceforge.net/)                                                                     |                                                                                                                      |                                                             |                                                  |
 
 Requirements
 ---------------------------------------------
