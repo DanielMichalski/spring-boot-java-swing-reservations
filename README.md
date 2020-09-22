@@ -1,15 +1,18 @@
-Spring Boot Swing Reservations
----------------------------------------------
+# Spring Boot Swing Reservations
 [![Build Status](https://github.com/DanielMichalski/spring-boot-swing-reservations/workflows/Java%20CI%20with%20Maven/badge.svg?branch=master)](https://github.com/DanielMichalski/spring-boot-swing-reservations/actions?query=workflow%3A%22Java+CI+with+Maven%22)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/DanielMichalski/spring-boot-swing-reservations/blob/master/LICENSE)
 
 This project aims to present how to create and configure a Spring Boot + JPA/Hibernate Java Swing application.
 The project is built using Java, Spring Boot and Swing libraries.
 
+## Table of Contents
+* [Libraries](#Libraries)
+* [Running the application](#running-the-application)
+* [Database access](#database-access)
+* [Video](#video)
+* [Screens](#screens)
 
-Libraries
----------------------------------------------
-
+## Libraries
 | Library name                                                                                                     | Description                                                                                                                          |
 |------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | [Spring Boot 2](https://spring.io/projects/spring-boot)                                                          | Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run".                 |
@@ -22,14 +25,12 @@ Libraries
 | [Checkstyle](https://checkstyle.sourceforge.io/)                                                                 | Checkstyle is a development tool to help programmers write Java code that adheres to a coding standard.                              |
 | [FindBugs](http://findbugs.sourceforge.net/)                                                                     | FindBugs is a development tool which uses static analysis to look for bugs in Java code.                                             |
 
-Requirements
----------------------------------------------
+## Requirements
 - [Java JDK](https://www.oracle.com/pl/java/technologies/javase-downloads.html) version 8+
 - [Docker Desktop](https://www.docker.com/products/docker-desktop) 
 
-How to run an application
----------------------------------------------
-On Windows
+## Running the application
+#### On Windows
 ```bash
 ## Run PostgreSQL database on Docker
 cd .docker/dependencies
@@ -43,7 +44,7 @@ mvnw.cmd clean install
 mvnw.cmd spring-boot:run
 ```
 
-On MacOS/ Linux
+#### On MacOS/ Linux
 ```bash
 ## Run PostgreSQL database on Docker
 cd .docker/dependencies
@@ -57,20 +58,15 @@ cd ../..
 ./mvnw spring-boot:run
 ```
 
-Database access
----------------
-
+## Database access
 | JDBC URL                                      | Username         	| Password         |
 |----------------------------------------------	|------------------	|----------------- |
 | jdbc:postgresql://localhost:5555/reservations | reservations_user | reservations_psw |
 
-Video
------
-
+## Video
 [![Spring Boot Swing Reservations](http://img.youtube.com/vi/E7ho0qdWhus/0.jpg)](https://youtu.be/E7ho0qdWhus "Spring Boot Swing Reservations")
 
-Screens
----------------------------------------------
+## Screens
 
 ![alt text](https://github.com/DanielMichalski/spring-boot-swing-reservations/blob/master/src/main/resources/images/db_schema.png "Screen 1")
 
