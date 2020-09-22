@@ -1,5 +1,6 @@
 package pl.dmichalski.reservations.business.domain.entity;
 
+import java.io.Serializable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -9,7 +10,7 @@ import lombok.Getter;
 
 @MappedSuperclass
 @Getter
-public abstract class BaseEntity {
+public abstract class BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
