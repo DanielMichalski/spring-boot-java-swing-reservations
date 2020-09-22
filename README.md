@@ -15,8 +15,6 @@ The project is built using Java, Spring Boot and Swing libraries.
 * [Video](#video)
 * [Screens](#screens)
 
-## About the Project
-
 ## Prerequisites
 - [Java JDK](https://www.oracle.com/pl/java/technologies/javase-downloads.html) version 8+
 - [Docker Desktop](https://www.docker.com/products/docker-desktop) 
