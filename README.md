@@ -25,7 +25,7 @@ Requirements
 - [Java JDK](https://www.oracle.com/pl/java/technologies/javase-downloads.html) version 8+
 - [Docker Desktop](https://www.docker.com/products/docker-desktop) 
 
-How to run application
+How to run an application
 ---------------------------------------------
 On Windows
 ```bash
@@ -37,7 +37,7 @@ start.sh
 cd ../..
 mvnw.cmd clean install
 
-## Run Spring boot application using Maven Wrapper or simly run Application class
+## Run Spring boot application using Maven Wrapper or simply run Application class
 mvnw.cmd spring-boot:run
 ```
 
@@ -51,7 +51,7 @@ cd .docker/dependencies
 cd ../..
 ./mvnw clean install
 
-## Run Spring boot application using Maven Wrapper or simly run Application class
+## Run Spring boot application using Maven Wrapper or simply run Application class
 ./mvnw spring-boot:run
 ```
 
