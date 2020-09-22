@@ -6,11 +6,18 @@ This project aims to present how to create and configure a Spring Boot + JPA/Hib
 The project is built using Java, Spring Boot and Swing libraries.
 
 ## Table of Contents
+* [Prerequisites](#prerequisites)
 * [Libraries](#Libraries)
 * [Running the application](#running-the-application)
+    * [On Windows](#on-windows)
+    * [On MacOS/ Linux](#on-macos/-linux)
 * [Database access](#database-access)
 * [Video](#video)
 * [Screens](#screens)
+
+## Prerequisites
+- [Java JDK](https://www.oracle.com/pl/java/technologies/javase-downloads.html) version 8+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop) 
 
 ## Libraries
 | Library name                                                                                                     | Description                                                                                                                          |
@@ -24,10 +31,6 @@ The project is built using Java, Spring Boot and Swing libraries.
 | [Docker Compose](https://docs.docker.com/compose/)                                                               | Compose is a tool for defining and running multi-container Docker applications.                                                      |
 | [Checkstyle](https://checkstyle.sourceforge.io/)                                                                 | Checkstyle is a development tool to help programmers write Java code that adheres to a coding standard.                              |
 | [FindBugs](http://findbugs.sourceforge.net/)                                                                     | FindBugs is a development tool which uses static analysis to look for bugs in Java code.                                             |
-
-## Requirements
-- [Java JDK](https://www.oracle.com/pl/java/technologies/javase-downloads.html) version 8+
-- [Docker Desktop](https://www.docker.com/products/docker-desktop) 
 
 ## Running the application
 #### On Windows
