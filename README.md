@@ -17,6 +17,11 @@ Libraries
 - [Checkstyle](https://checkstyle.sourceforge.io/)
 - [FindBugs](http://findbugs.sourceforge.net/)
 
+| Library name                                            | Description                                                                                                          |
+|-------------------------------------------------------- |--------------------------------------------------------------------------------------------------------------------- |
+| [Spring Boot 2](https://spring.io/projects/spring-boot) | Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run". |
+
+
 Requirements
 ---------------------------------------------
 - [Java JDK](https://www.oracle.com/pl/java/technologies/javase-downloads.html) version 8+
