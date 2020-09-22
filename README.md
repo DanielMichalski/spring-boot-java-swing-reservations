@@ -53,11 +53,10 @@ cd ../..
 
 Database access
 ---------------
-```
-jdbc-url: jdbc:postgresql://localhost:5555/reservations
-username: reservations_user
-password: reservations_psw
-```
+
+| JDBC URL                                      | Username         	| Password         |
+|----------------------------------------------	|------------------	|----------------- |
+| jdbc:postgresql://localhost:5555/reservations | reservations_user | reservations_psw |
 
 Video
 -----
