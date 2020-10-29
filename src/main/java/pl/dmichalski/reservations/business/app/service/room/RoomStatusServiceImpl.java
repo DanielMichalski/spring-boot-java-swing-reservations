@@ -15,6 +15,9 @@ import static java.util.stream.Collectors.toList;
 @AllArgsConstructor
 class RoomStatusServiceImpl implements RoomStatusService {
 
+    public static final int STATUS_INDEX = 0;
+    public static final int COUNT_INDEX = 1;
+
     private final RoomStatusRepository roomStatusRepository;
 
     public List<RoomStatusEntity> findAll() {
@@ -32,8 +35,14 @@ class RoomStatusServiceImpl implements RoomStatusService {
     public List<RoomStatusesCountDto> getRoomStatusesCount() {
         Object[][] roomStatusesCount = roomStatusRepository.getRoomStatusesCount();
         return Stream.of(roomStatusesCount)
-                .map(rsc -> new RoomStatusesCountDto((String) rsc[0], (long) rsc[1]))
+                .map(this::convertToRoomStatusesCountDto)
                 .collect(toList());
+    }
+
+    private RoomStatusesCountDto convertToRoomStatusesCountDto(Object[] rsc) {
+        String status = (String) rsc[STATUS_INDEX];
+        long count = (long) rsc[COUNT_INDEX];
+        return new RoomStatusesCountDto(status, count);
     }
 
 }

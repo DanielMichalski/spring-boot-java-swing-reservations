@@ -15,6 +15,10 @@ import static java.util.stream.Collectors.toList;
 @AllArgsConstructor
 class ClientServiceImpl implements ClientService {
 
+    public static final int NAME_INDEX = 0;
+    public static final int EMAIL_INDEX = 1;
+    public static final int COUNT_INDEX = 2;
+
     private final ClientRepository clientRepository;
 
     public List<ClientEntity> findAll() {
@@ -32,7 +36,14 @@ class ClientServiceImpl implements ClientService {
     public List<ClientReservationCountDto> getClientReservationsCount() {
         Object[][] clientReservationsCount = clientRepository.getClientReservationsCount();
         return Stream.of(clientReservationsCount)
-                .map(crc -> new ClientReservationCountDto((String) crc[0], (String) crc[1], (long) crc[2]))
+                .map(this::convertToClientReservationCountDto)
                 .collect(toList());
+    }
+
+    private ClientReservationCountDto convertToClientReservationCountDto(Object[] crc) {
+        String name = (String) crc[NAME_INDEX];
+        String email = (String) crc[EMAIL_INDEX];
+        long count = (long) crc[COUNT_INDEX];
+        return new ClientReservationCountDto(name, email, count);
     }
 }

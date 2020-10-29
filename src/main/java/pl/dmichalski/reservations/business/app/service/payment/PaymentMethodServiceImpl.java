@@ -14,6 +14,9 @@ import pl.dmichalski.reservations.business.dto.payment.PaymentMethodCountDto;
 @AllArgsConstructor
 class PaymentMethodServiceImpl implements PaymentMethodService {
 
+    public static final int NAME_INDEX = 0;
+    public static final int COUNT_INDEX = 1;
+
     private final PaymentMethodRepository paymentMethodRepository;
 
     public List<PaymentMethodEntity> findAll() {
@@ -31,7 +34,13 @@ class PaymentMethodServiceImpl implements PaymentMethodService {
     public List<PaymentMethodCountDto> getPaymentMethodCount() {
         Object[][] paymentMethodCount = paymentMethodRepository.getPaymentMethodCount();
         return Stream.of(paymentMethodCount)
-                .map(pmc -> new PaymentMethodCountDto((String) pmc[0], (long) pmc[1]))
+                .map(this::convertToPaymentMethodCountDto)
                 .collect(Collectors.toList());
+    }
+
+    private PaymentMethodCountDto convertToPaymentMethodCountDto(Object[] pmc) {
+        String name = (String) pmc[NAME_INDEX];
+        long count = (long) pmc[COUNT_INDEX];
+        return new PaymentMethodCountDto(name, count);
     }
 }
