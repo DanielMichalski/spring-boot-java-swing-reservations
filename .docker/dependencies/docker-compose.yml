@@ -12,8 +12,3 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     restart:
       unless-stopped
-    networks:
-      - reservations_net
-
-networks:
-  reservations_net:

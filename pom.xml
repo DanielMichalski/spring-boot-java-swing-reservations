@@ -10,7 +10,7 @@
 		<version>2.3.2.RELEASE</version>
 	</parent>
 
-	<groupId>pl.dmichalski</groupId>
+	<groupId>com.danielmichalski</groupId>
 	<artifactId>spring-boot-java-swing-reservations</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>Spring Boot Java Swing Reservations</name>
