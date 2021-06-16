@@ -37,11 +37,9 @@ The project is built using Java, Spring Boot and Swing libraries.
 #### On Windows
 ```bash
 ## Run PostgreSQL database on Docker
-cd .docker/dependencies
-start.sh
+docker-compose up -d
 
-## Build application from base directory using Maven Wrapper
-cd ../..
+## Build application using Maven Wrapper
 mvnw.cmd clean install
 
 ## Run Spring boot application using Maven Wrapper or simply run Application class
@@ -51,11 +49,9 @@ mvnw.cmd spring-boot:run
 #### On MacOS/ Linux
 ```bash
 ## Run PostgreSQL database on Docker
-cd .docker/dependencies
-./start.sh
+docker-compose up -d
 
-## Build application from base directory using Maven Wrapper
-cd ../..
+## Build application using Maven Wrapper
 ./mvnw clean install
 
 ## Run Spring boot application using Maven Wrapper or simply run Application class
