@@ -12,7 +12,7 @@ The project is built using Java, Spring Boot and Swing libraries.
 * [Running the application](#running-the-application)
     * [On Windows](#on-windows)
     * [On MacOS/ Linux](#on-macos-linux)
-* [Database access](#database-access)
+* [Database user](#database-user)
 * [Video](#video)
 * [Screens](#screens)
 
@@ -58,7 +58,7 @@ docker-compose up -d
 ./mvnw spring-boot:run
 ```
 
-## Database access
+## Database user
 | JDBC URL                                      | Username         	| Password         |
 |----------------------------------------------	|------------------	|----------------- |
 | jdbc:postgresql://localhost:5555/reservations | reservations_user | reservations_psw |
