@@ -1,510 +1,511 @@
 <databaseChangeLog
-		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-	<changeSet id="address_table" author="Daniel Michalski">
-		<comment>Create address table</comment>
+    <changeSet id="address_table" author="Daniel Michalski">
+        <comment>Create address table</comment>
 
-		<createTable tableName="address">
-			<column name="id" type="BIGINT">
-				<constraints nullable="false" primaryKey="true" primaryKeyName="address_pkey"/>
-			</column>
-			<column name="street" type="VARCHAR(100)">
-				<constraints nullable="false"/>
-			</column>
-			<column name="house_number" type="VARCHAR(10)">
-				<constraints nullable="false"/>
-			</column>
-			<column name="flat_number" type="VARCHAR(10)">
-				<constraints nullable="false"/>
-			</column>
-			<column name="city" type="VARCHAR(50)">
-				<constraints nullable="false"/>
-			</column>
-			<column name="postal_code" type="VARCHAR(10)">
-				<constraints nullable="false"/>
-			</column>
-		</createTable>
+        <createTable tableName="address">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="address_pkey"/>
+            </column>
+            <column name="street" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="house_number" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="flat_number" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="postal_code" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
 
-		<createSequence sequenceName="address_seq"/>
-		<addDefaultValue columnName="id"
-						 defaultValueSequenceNext="address_seq"
-						 tableName="address"/>
+        <createSequence sequenceName="address_seq"/>
+        <addDefaultValue columnName="id"
+                         defaultValueSequenceNext="address_seq"
+                         tableName="address"/>
 
-		<createIndex tableName="address" indexName="address_city_idx">
-			<column name="city"/>
-		</createIndex>
-	</changeSet>
+        <createIndex tableName="address" indexName="address_city_idx">
+            <column name="city"/>
+        </createIndex>
+    </changeSet>
 
-	<changeSet id="client_table" author="Daniel Michalski">
-		<comment>Create client table</comment>
+    <changeSet id="client_table" author="Daniel Michalski">
+        <comment>Create client table</comment>
 
-		<createTable tableName="client">
-			<column name="id" type="BIGINT">
-				<constraints nullable="false" primaryKey="true" primaryKeyName="client_pkey"/>
-			</column>
-			<column name="address_id" type="BIGINT">
-				<constraints nullable="false"/>
-			</column>
-			<column name="name" type="VARCHAR(50)">
-				<constraints nullable="false"/>
-			</column>
-			<column name="surname" type="VARCHAR(50)">
-				<constraints nullable="false"/>
-			</column>
-			<column name="pesel" type="VARCHAR(20)">
-				<constraints nullable="false" unique="true"/>
-			</column>
-			<column name="phone_number" type="VARCHAR(20)">
-				<constraints nullable="false"/>
-			</column>
-			<column name="email" type="VARCHAR(30)">
-				<constraints nullable="false"/>
-			</column>
-		</createTable>
+        <createTable tableName="client">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="client_pkey"/>
+            </column>
+            <column name="address_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pesel" type="VARCHAR(20)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="phone_number" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
 
-		<createSequence sequenceName="client_seq"/>
-		<addDefaultValue columnName="id"
-						 defaultValueSequenceNext="client_seq"
-						 tableName="client"/>
+        <createSequence sequenceName="client_seq"/>
+        <addDefaultValue columnName="id"
+                         defaultValueSequenceNext="client_seq"
+                         tableName="client"/>
 
-		<createIndex tableName="client" indexName="client_address_idx">
-			<column name="address_id"/>
-		</createIndex>
-		<createIndex tableName="client" indexName="client_pesel_idx">
-			<column name="pesel"/>
-		</createIndex>
-		<createIndex tableName="client" indexName="client_phone_number_idx">
-			<column name="phone_number"/>
-		</createIndex>
+        <createIndex tableName="client" indexName="client_address_idx">
+            <column name="address_id"/>
+        </createIndex>
+        <createIndex tableName="client" indexName="client_pesel_idx">
+            <column name="pesel"/>
+        </createIndex>
+        <createIndex tableName="client" indexName="client_phone_number_idx">
+            <column name="phone_number"/>
+        </createIndex>
 
-		<addForeignKeyConstraint baseTableName="client"
-								 baseColumnNames="address_id"
-								 referencedTableName="address"
-								 referencedColumnNames="id"
-								 constraintName="client_address_fk"
-								 deferrable="false"
-								 initiallyDeferred="false"
-								 onDelete="NO ACTION"
-								 onUpdate="NO ACTION"/>
-	</changeSet>
+        <addForeignKeyConstraint baseTableName="client"
+                                 baseColumnNames="address_id"
+                                 referencedTableName="address"
+                                 referencedColumnNames="id"
+                                 constraintName="client_address_fk"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 onDelete="NO ACTION"
+                                 onUpdate="NO ACTION"/>
+    </changeSet>
 
-	<changeSet id="payment_method_table" author="Daniel Michalski">
-		<comment>Create payment method table</comment>
+    <changeSet id="payment_method_table" author="Daniel Michalski">
+        <comment>Create payment method table</comment>
 
-		<createTable tableName="payment_method">
-			<column name="id" type="BIGINT">
-				<constraints nullable="false" primaryKey="true" primaryKeyName="payment_method_pkey"/>
-			</column>
-			<column name="name" type="VARCHAR(50)">
-				<constraints nullable="false" unique="true"/>
-			</column>
-		</createTable>
+        <createTable tableName="payment_method">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="payment_method_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
 
-		<createSequence sequenceName="payment_method_seq"/>
-		<addDefaultValue columnName="id"
-						 defaultValueSequenceNext="payment_method_seq"
-						 tableName="payment_method"/>
-	</changeSet>
+        <createSequence sequenceName="payment_method_seq"/>
+        <addDefaultValue columnName="id"
+                         defaultValueSequenceNext="payment_method_seq"
+                         tableName="payment_method"/>
+    </changeSet>
 
-	<changeSet id="payment_table" author="Daniel Michalski">
-		<comment>Create payment table</comment>
+    <changeSet id="payment_table" author="Daniel Michalski">
+        <comment>Create payment table</comment>
 
-		<createTable tableName="payment">
-			<column name="id" type="BIGINT">
-				<constraints nullable="false" primaryKey="true" primaryKeyName="payment_pkey"/>
-			</column>
-			<column name="payment_method_id" type="BIGINT">
-				<constraints nullable="false"/>
-			</column>
-			<column name="value" type="BIGINT">
-				<constraints nullable="false"/>
-			</column>
-			<column name="date_of_payment" type="TIMESTAMP">
-				<constraints nullable="false"/>
-			</column>
-		</createTable>
+        <createTable tableName="payment">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="payment_pkey"/>
+            </column>
+            <column name="payment_method_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_of_payment" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
 
-		<createSequence sequenceName="payment_seq"/>
-		<addDefaultValue columnName="id"
-						 defaultValueSequenceNext="payment_seq"
-						 tableName="payment"/>
+        <createSequence sequenceName="payment_seq"/>
+        <addDefaultValue columnName="id"
+                         defaultValueSequenceNext="payment_seq"
+                         tableName="payment"/>
 
-		<createIndex tableName="payment" indexName="payment_payment_method_idx">
-			<column name="payment_method_id"/>
-		</createIndex>
+        <createIndex tableName="payment" indexName="payment_payment_method_idx">
+            <column name="payment_method_id"/>
+        </createIndex>
 
-		<addForeignKeyConstraint baseTableName="payment"
-								 baseColumnNames="payment_method_id"
-								 referencedTableName="payment_method"
-								 referencedColumnNames="id"
-								 constraintName="payment_payment_method_fk"
-								 deferrable="false"
-								 initiallyDeferred="false"
-								 onDelete="NO ACTION"
-								 onUpdate="NO ACTION"/>
-	</changeSet>
+        <addForeignKeyConstraint baseTableName="payment"
+                                 baseColumnNames="payment_method_id"
+                                 referencedTableName="payment_method"
+                                 referencedColumnNames="id"
+                                 constraintName="payment_payment_method_fk"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 onDelete="NO ACTION"
+                                 onUpdate="NO ACTION"/>
+    </changeSet>
 
-	<changeSet id="room_status_table" author="Daniel Michalski">
-		<comment>Create room status table</comment>
+    <changeSet id="room_status_table" author="Daniel Michalski">
+        <comment>Create room status table</comment>
 
-		<createTable tableName="room_status">
-			<column name="id" type="BIGINT">
-				<constraints nullable="false" primaryKey="true" primaryKeyName="room_status_pkey"/>
-			</column>
-			<column name="status" type="VARCHAR(100)">
-				<constraints nullable="false" unique="true"/>
-			</column>
-			<column name="status_description" type="VARCHAR(255)">
-				<constraints nullable="false"/>
-			</column>
-		</createTable>
+        <createTable tableName="room_status">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="room_status_pkey"/>
+            </column>
+            <column name="status" type="VARCHAR(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="status_description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
 
-		<createSequence sequenceName="room_status_seq"/>
-		<addDefaultValue columnName="id"
-						 defaultValueSequenceNext="room_status_seq"
-						 tableName="room_status"/>
+        <createSequence sequenceName="room_status_seq"/>
+        <addDefaultValue columnName="id"
+                         defaultValueSequenceNext="room_status_seq"
+                         tableName="room_status"/>
 
-		<createIndex tableName="room_status" indexName="room_status_status_idx">
-			<column name="status"/>
-		</createIndex>
-	</changeSet>
+        <createIndex tableName="room_status" indexName="room_status_status_idx">
+            <column name="status"/>
+        </createIndex>
+    </changeSet>
 
-	<changeSet id="room_table" author="Daniel Michalski">
-		<comment>Create room table</comment>
+    <changeSet id="room_table" author="Daniel Michalski">
+        <comment>Create room table</comment>
 
-		<createTable tableName="room">
-			<column name="id" type="BIGINT">
-				<constraints nullable="false" primaryKey="true" primaryKeyName="room_pkey"/>
-			</column>
-			<column name="room_status_id" type="BIGINT">
-				<constraints nullable="false"/>
-			</column>
-			<column name="number_of_people" type="INT">
-				<constraints nullable="false"/>
-			</column>
-			<column name="description" type="VARCHAR(255)">
-				<constraints nullable="false"/>
-			</column>
-		</createTable>
+        <createTable tableName="room">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="room_pkey"/>
+            </column>
+            <column name="room_status_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="number_of_people" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
 
-		<createSequence sequenceName="room_seq"/>
-		<addDefaultValue columnName="id"
-						 defaultValueSequenceNext="room_seq"
-						 tableName="room"/>
+        <createSequence sequenceName="room_seq"/>
+        <addDefaultValue columnName="id"
+                         defaultValueSequenceNext="room_seq"
+                         tableName="room"/>
 
-		<createIndex tableName="room" indexName="room_room_status_idx">
-			<column name="room_status_id"/>
-		</createIndex>
+        <createIndex tableName="room" indexName="room_room_status_idx">
+            <column name="room_status_id"/>
+        </createIndex>
 
-		<addForeignKeyConstraint baseTableName="room"
-								 baseColumnNames="room_status_id"
-								 referencedTableName="room_status"
-								 referencedColumnNames="id"
-								 constraintName="room_room_status_fk"
-								 deferrable="false"
-								 initiallyDeferred="false"
-								 onDelete="NO ACTION"
-								 onUpdate="NO ACTION"/>
-	</changeSet>
+        <addForeignKeyConstraint baseTableName="room"
+                                 baseColumnNames="room_status_id"
+                                 referencedTableName="room_status"
+                                 referencedColumnNames="id"
+                                 constraintName="room_room_status_fk"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 onDelete="NO ACTION"
+                                 onUpdate="NO ACTION"/>
+    </changeSet>
 
-	<changeSet id="room_type_table" author="Daniel Michalski">
-		<comment>Create room type table</comment>
+    <changeSet id="room_type_table" author="Daniel Michalski">
+        <comment>Create room type table</comment>
 
-		<createTable tableName="room_type">
-			<column name="id" type="BIGINT">
-				<constraints nullable="false" primaryKey="true" primaryKeyName="room_type_pkey"/>
-			</column>
-			<column name="description" type="VARCHAR(255)">
-				<constraints nullable="false" unique="true"/>
-			</column>
-			<column name="multiplier" type="INT">
-				<constraints nullable="false"/>
-			</column>
-		</createTable>
+        <createTable tableName="room_type">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="room_type_pkey"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="multiplier" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
 
-		<createSequence sequenceName="room_type_seq"/>
-		<addDefaultValue columnName="id"
-						 defaultValueSequenceNext="room_type_seq"
-						 tableName="room_type"/>
-	</changeSet>
+        <createSequence sequenceName="room_type_seq"/>
+        <addDefaultValue columnName="id"
+                         defaultValueSequenceNext="room_type_seq"
+                         tableName="room_type"/>
+    </changeSet>
 
-	<changeSet id="reservation_status_table" author="Daniel Michalski">
-		<comment>Create reservation status table</comment>
+    <changeSet id="reservation_status_table" author="Daniel Michalski">
+        <comment>Create reservation status table</comment>
 
-		<createTable tableName="reservation_status">
-			<column name="id" type="BIGINT">
-				<constraints nullable="false" primaryKey="true" primaryKeyName="reservation_status_pkey"/>
-			</column>
-			<column name="status" type="VARCHAR(255)">
-				<constraints nullable="false" unique="true"/>
-			</column>
-		</createTable>
+        <createTable tableName="reservation_status">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="reservation_status_pkey"/>
+            </column>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
 
-		<createSequence sequenceName="reservation_status_seq"/>
-		<addDefaultValue columnName="id"
-						 defaultValueSequenceNext="reservation_status_seq"
-						 tableName="reservation_status"/>
+        <createSequence sequenceName="reservation_status_seq"/>
+        <addDefaultValue columnName="id"
+                         defaultValueSequenceNext="reservation_status_seq"
+                         tableName="reservation_status"/>
 
-		<createIndex tableName="reservation_status" indexName="reservation_status_status_idx">
-			<column name="status"/>
-		</createIndex>
-	</changeSet>
+        <createIndex tableName="reservation_status" indexName="reservation_status_status_idx">
+            <column name="status"/>
+        </createIndex>
+    </changeSet>
 
-	<changeSet id="rate_table" author="Daniel Michalski">
-		<comment>Create rate table</comment>
+    <changeSet id="rate_table" author="Daniel Michalski">
+        <comment>Create rate table</comment>
 
-		<createTable tableName="rate">
-			<column name="id" type="BIGINT">
-				<constraints nullable="false" primaryKey="true" primaryKeyName="rate_pkey"/>
-			</column>
-			<column name="room_id" type="BIGINT">
-				<constraints nullable="false"/>
-			</column>
-			<column name="room_type_id" type="BIGINT">
-				<constraints nullable="false"/>
-			</column>
-			<column name="default_rate" type="BIGINT">
-				<constraints nullable="false"/>
-			</column>
-		</createTable>
+        <createTable tableName="rate">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="rate_pkey"/>
+            </column>
+            <column name="room_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="room_type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="default_rate" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
 
-		<createSequence sequenceName="rate_seq"/>
-		<addDefaultValue columnName="id"
-						 defaultValueSequenceNext="rate_seq"
-						 tableName="rate"/>
+        <createSequence sequenceName="rate_seq"/>
+        <addDefaultValue columnName="id"
+                         defaultValueSequenceNext="rate_seq"
+                         tableName="rate"/>
 
-		<createIndex tableName="rate" indexName="rate_room_idx">
-			<column name="room_id"/>
-		</createIndex>
-		<createIndex tableName="rate" indexName="rate_room_type_idx">
-			<column name="room_type_id"/>
-		</createIndex>
+        <createIndex tableName="rate" indexName="rate_room_idx">
+            <column name="room_id"/>
+        </createIndex>
+        <createIndex tableName="rate" indexName="rate_room_type_idx">
+            <column name="room_type_id"/>
+        </createIndex>
 
-		<addForeignKeyConstraint baseTableName="rate"
-								 baseColumnNames="room_id"
-								 referencedTableName="room"
-								 referencedColumnNames="id"
-								 constraintName="rate_room_fk"
-								 deferrable="false"
-								 initiallyDeferred="false"
-								 onDelete="NO ACTION"
-								 onUpdate="NO ACTION"/>
-		<addForeignKeyConstraint baseTableName="rate"
-								 baseColumnNames="room_type_id"
-								 referencedTableName="room_type"
-								 referencedColumnNames="id"
-								 constraintName="rate_room_type_fk"
-								 deferrable="false"
-								 initiallyDeferred="false"
-								 onDelete="NO ACTION"
-								 onUpdate="NO ACTION"/>
-	</changeSet>
+        <addForeignKeyConstraint baseTableName="rate"
+                                 baseColumnNames="room_id"
+                                 referencedTableName="room"
+                                 referencedColumnNames="id"
+                                 constraintName="rate_room_fk"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 onDelete="NO ACTION"
+                                 onUpdate="NO ACTION"/>
+        <addForeignKeyConstraint baseTableName="rate"
+                                 baseColumnNames="room_type_id"
+                                 referencedTableName="room_type"
+                                 referencedColumnNames="id"
+                                 constraintName="rate_room_type_fk"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 onDelete="NO ACTION"
+                                 onUpdate="NO ACTION"/>
+    </changeSet>
 
-	<changeSet id="reservation_table" author="Daniel Michalski">
-		<comment>Create reservation table</comment>
+    <changeSet id="reservation_table" author="Daniel Michalski">
+        <comment>Create reservation table</comment>
 
-		<createTable tableName="reservation">
-			<column name="id" type="BIGINT">
-				<constraints nullable="false" primaryKey="true" primaryKeyName="reservation_pkey"/>
-			</column>
-			<column name="reservation_status_id" type="BIGINT">
-				<constraints nullable="false"/>
-			</column>
-			<column name="payment_id" type="BIGINT">
-				<constraints nullable="false"/>
-			</column>
-			<column name="client_id" type="BIGINT">
-				<constraints nullable="false"/>
-			</column>
-			<column name="from_date" type="TIMESTAMP">
-				<constraints nullable="false"/>
-			</column>
-			<column name="to_date" type="TIMESTAMP">
-				<constraints nullable="false"/>
-			</column>
-			<column name="reservation_date" type="TIMESTAMP">
-				<constraints nullable="false"/>
-			</column>
-			<column name="amount" type="BIGINT">
-				<constraints nullable="false"/>
-			</column>
-		</createTable>
+        <createTable tableName="reservation">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="reservation_pkey"/>
+            </column>
+            <column name="reservation_status_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="payment_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="client_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="from_date" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="to_date" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reservation_date" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
 
-		<createSequence sequenceName="reservation_seq"/>
-		<addDefaultValue columnName="id"
-						 defaultValueSequenceNext="reservation_seq"
-						 tableName="reservation"/>
+        <createSequence sequenceName="reservation_seq"/>
+        <addDefaultValue columnName="id"
+                         defaultValueSequenceNext="reservation_seq"
+                         tableName="reservation"/>
 
-		<createIndex tableName="reservation" indexName="reservation_reservation_status_idx">
-			<column name="reservation_status_id"/>
-		</createIndex>
-		<createIndex tableName="reservation" indexName="reservation_payment_idx">
-			<column name="payment_id"/>
-		</createIndex>
-		<createIndex tableName="reservation" indexName="reservation_client_idx">
-			<column name="client_id"/>
-		</createIndex>
-		<createIndex tableName="reservation" indexName="reservation_from_date_idx">
-			<column name="from_date"/>
-		</createIndex>
-		<createIndex tableName="reservation" indexName="reservation_to_date_idx">
-			<column name="to_date"/>
-		</createIndex>
+        <createIndex tableName="reservation" indexName="reservation_reservation_status_idx">
+            <column name="reservation_status_id"/>
+        </createIndex>
+        <createIndex tableName="reservation" indexName="reservation_payment_idx">
+            <column name="payment_id"/>
+        </createIndex>
+        <createIndex tableName="reservation" indexName="reservation_client_idx">
+            <column name="client_id"/>
+        </createIndex>
+        <createIndex tableName="reservation" indexName="reservation_from_date_idx">
+            <column name="from_date"/>
+        </createIndex>
+        <createIndex tableName="reservation" indexName="reservation_to_date_idx">
+            <column name="to_date"/>
+        </createIndex>
 
-		<addForeignKeyConstraint baseTableName="reservation"
-								 baseColumnNames="reservation_status_id"
-								 referencedTableName="reservation_status"
-								 referencedColumnNames="id"
-								 constraintName="reservation_reservation_status_fk"
-								 deferrable="false"
-								 initiallyDeferred="false"
-								 onDelete="NO ACTION"
-								 onUpdate="NO ACTION"/>
-		<addForeignKeyConstraint baseTableName="reservation"
-								 baseColumnNames="payment_id"
-								 referencedTableName="payment"
-								 referencedColumnNames="id"
-								 constraintName="reservation_payment_fk"
-								 deferrable="false"
-								 initiallyDeferred="false"
-								 onDelete="NO ACTION"
-								 onUpdate="NO ACTION"/>
-		<addForeignKeyConstraint baseTableName="reservation"
-								 baseColumnNames="client_id"
-								 referencedTableName="client"
-								 referencedColumnNames="id"
-								 constraintName="reservation_client_fk"
-								 deferrable="false"
-								 initiallyDeferred="false"
-								 onDelete="NO ACTION"
-								 onUpdate="NO ACTION"/>
-	</changeSet>
+        <addForeignKeyConstraint baseTableName="reservation"
+                                 baseColumnNames="reservation_status_id"
+                                 referencedTableName="reservation_status"
+                                 referencedColumnNames="id"
+                                 constraintName="reservation_reservation_status_fk"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 onDelete="NO ACTION"
+                                 onUpdate="NO ACTION"/>
+        <addForeignKeyConstraint baseTableName="reservation"
+                                 baseColumnNames="payment_id"
+                                 referencedTableName="payment"
+                                 referencedColumnNames="id"
+                                 constraintName="reservation_payment_fk"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 onDelete="NO ACTION"
+                                 onUpdate="NO ACTION"/>
+        <addForeignKeyConstraint baseTableName="reservation"
+                                 baseColumnNames="client_id"
+                                 referencedTableName="client"
+                                 referencedColumnNames="id"
+                                 constraintName="reservation_client_fk"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 onDelete="NO ACTION"
+                                 onUpdate="NO ACTION"/>
+    </changeSet>
 
-	<changeSet id="room_x_reservation_table" author="Daniel Michalski">
-		<comment>Create room x reservation table</comment>
+    <changeSet id="room_x_reservation_table" author="Daniel Michalski">
+        <comment>Create room x reservation table</comment>
 
-		<createTable tableName="room_x_reservation">
-			<column name="reservation_id" type="BIGINT">
-				<constraints nullable="false"/>
-			</column>
-			<column name="room_id" type="BIGINT">
-				<constraints nullable="false"/>
-			</column>
-			<column name="room_price" type="INT">
-				<constraints nullable="false"/>
-			</column>
-		</createTable>
+        <createTable tableName="room_x_reservation">
+            <column name="reservation_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="room_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="room_price" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
 
-		<addPrimaryKey tableName="room_x_reservation" columnNames="reservation_id, room_id" constraintName="reservation_id_room_id_pkey"/>
+        <addPrimaryKey tableName="room_x_reservation" columnNames="reservation_id, room_id"
+                       constraintName="reservation_id_room_id_pkey"/>
 
-		<createIndex tableName="room_x_reservation" indexName="room_x_reservation_reservation_id_idx">
-			<column name="reservation_id"/>
-		</createIndex>
-		<createIndex tableName="room_x_reservation" indexName="room_x_reservation_room_id_idx">
-			<column name="room_id"/>
-		</createIndex>
+        <createIndex tableName="room_x_reservation" indexName="room_x_reservation_reservation_id_idx">
+            <column name="reservation_id"/>
+        </createIndex>
+        <createIndex tableName="room_x_reservation" indexName="room_x_reservation_room_id_idx">
+            <column name="room_id"/>
+        </createIndex>
 
-		<addForeignKeyConstraint baseTableName="room_x_reservation"
-								 baseColumnNames="reservation_id"
-								 referencedTableName="reservation"
-								 referencedColumnNames="id"
-								 constraintName="room_x_reservation_reservation_fk"
-								 deferrable="false"
-								 initiallyDeferred="false"
-								 onDelete="NO ACTION"
-								 onUpdate="NO ACTION"/>
-		<addForeignKeyConstraint baseTableName="room_x_reservation"
-								 baseColumnNames="room_id"
-								 referencedTableName="room"
-								 referencedColumnNames="id"
-								 constraintName="room_x_reservation_room_fk"
-								 deferrable="false"
-								 initiallyDeferred="false"
-								 onDelete="NO ACTION"
-								 onUpdate="NO ACTION"/>
-	</changeSet>
+        <addForeignKeyConstraint baseTableName="room_x_reservation"
+                                 baseColumnNames="reservation_id"
+                                 referencedTableName="reservation"
+                                 referencedColumnNames="id"
+                                 constraintName="room_x_reservation_reservation_fk"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 onDelete="NO ACTION"
+                                 onUpdate="NO ACTION"/>
+        <addForeignKeyConstraint baseTableName="room_x_reservation"
+                                 baseColumnNames="room_id"
+                                 referencedTableName="room"
+                                 referencedColumnNames="id"
+                                 constraintName="room_x_reservation_room_fk"
+                                 deferrable="false"
+                                 initiallyDeferred="false"
+                                 onDelete="NO ACTION"
+                                 onUpdate="NO ACTION"/>
+    </changeSet>
 
-	<changeSet id="client_history_table" author="Daniel Michalski">
-		<comment>Create client history table</comment>
+    <changeSet id="client_history_table" author="Daniel Michalski">
+        <comment>Create client history table</comment>
 
-		<createTable tableName="client_history">
-			<column name="id" type="BIGINT">
-				<constraints nullable="false" primaryKey="true" primaryKeyName="client_history_pkey"/>
-			</column>
-			<column name="client_id" type="BIGINT">
-				<constraints nullable="false"/>
-			</column>
-			<column name="name" type="VARCHAR(50)">
-				<constraints nullable="false"/>
-			</column>
-			<column name="surname" type="VARCHAR(50)">
-				<constraints nullable="false"/>
-			</column>
-			<column name="change_date" type="TIMESTAMP">
-				<constraints nullable="false"/>
-			</column>
-		</createTable>
+        <createTable tableName="client_history">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="client_history_pkey"/>
+            </column>
+            <column name="client_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="change_date" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
 
-		<createSequence sequenceName="client_history_seq"/>
-		<addDefaultValue columnName="id"
-						 defaultValueSequenceNext="client_history_seq"
-						 tableName="client_history"/>
+        <createSequence sequenceName="client_history_seq"/>
+        <addDefaultValue columnName="id"
+                         defaultValueSequenceNext="client_history_seq"
+                         tableName="client_history"/>
 
-		<createIndex tableName="client_history" indexName="client_history_client_idx">
-			<column name="client_id"/>
-		</createIndex>
-		<createIndex tableName="client_history" indexName="client_history_name_idx">
-			<column name="name"/>
-		</createIndex>
-		<createIndex tableName="client_history" indexName="client_history_surname_idx">
-			<column name="surname"/>
-		</createIndex>
-	</changeSet>
+        <createIndex tableName="client_history" indexName="client_history_client_idx">
+            <column name="client_id"/>
+        </createIndex>
+        <createIndex tableName="client_history" indexName="client_history_name_idx">
+            <column name="name"/>
+        </createIndex>
+        <createIndex tableName="client_history" indexName="client_history_surname_idx">
+            <column name="surname"/>
+        </createIndex>
+    </changeSet>
 
-	<changeSet id="address_history_table" author="Daniel Michalski">
-		<comment>Create address history table</comment>
+    <changeSet id="address_history_table" author="Daniel Michalski">
+        <comment>Create address history table</comment>
 
-		<createTable tableName="address_history">
-			<column name="id" type="BIGINT">
-				<constraints nullable="false" primaryKey="true" primaryKeyName="address_history_pkey"/>
-			</column>
-			<column name="address_id" type="BIGINT">
-				<constraints nullable="false"/>
-			</column>
-			<column name="street" type="VARCHAR(100)">
-				<constraints nullable="false"/>
-			</column>
-			<column name="house_number" type="VARCHAR(10)">
-				<constraints nullable="false"/>
-			</column>
-			<column name="flat_number" type="VARCHAR(10)">
-				<constraints nullable="false"/>
-			</column>
-			<column name="city" type="VARCHAR(50)">
-				<constraints nullable="false"/>
-			</column>
-			<column name="postal_code" type="VARCHAR(10)">
-				<constraints nullable="false"/>
-			</column>
-			<column name="change_date" type="TIMESTAMP">
-				<constraints nullable="false"/>
-			</column>
-		</createTable>
+        <createTable tableName="address_history">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="address_history_pkey"/>
+            </column>
+            <column name="address_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="street" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="house_number" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="flat_number" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="postal_code" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="change_date" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
 
-		<createSequence sequenceName="address_history_seq"/>
-		<addDefaultValue columnName="id"
-						 defaultValueSequenceNext="address_history_seq"
-						 tableName="address_history"/>
+        <createSequence sequenceName="address_history_seq"/>
+        <addDefaultValue columnName="id"
+                         defaultValueSequenceNext="address_history_seq"
+                         tableName="address_history"/>
 
-		<createIndex tableName="address_history" indexName="address_history_address_idx">
-			<column name="address_id"/>
-		</createIndex>
-		<createIndex tableName="address_history" indexName="address_history_city_idx">
-			<column name="city"/>
-		</createIndex>
-	</changeSet>
+        <createIndex tableName="address_history" indexName="address_history_address_idx">
+            <column name="address_id"/>
+        </createIndex>
+        <createIndex tableName="address_history" indexName="address_history_city_idx">
+            <column name="city"/>
+        </createIndex>
+    </changeSet>
 
 </databaseChangeLog>

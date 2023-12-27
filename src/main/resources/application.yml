@@ -1,7 +1,7 @@
 spring:
   datasource:
-    driver-class-name: 'org.postgresql.Driver'
-    jdbc-url: 'jdbc:postgresql://localhost:5555/reservations'
+    driver-class-name: org.postgresql.Driver
+    url: 'jdbc:postgresql://localhost:5555/reservations'
     username: 'reservations_user'
     password: 'reservations_psw'
   jpa:
@@ -9,7 +9,6 @@ spring:
       hibernate:
         hbm2ddl.auto: validate
         format_sql: false
-        physical_naming_strategy: 'com.vladmihalcea.hibernate.type.util.CamelCaseToSnakeCaseNamingStrategy'
   liquibase:
     change-log: 'classpath:db/liquibase-changelog-master.xml'
     contexts: 'test-data'

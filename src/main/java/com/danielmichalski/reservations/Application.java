@@ -1,23 +1,23 @@
 package com.danielmichalski.reservations;
 
-import javax.swing.SwingUtilities;
-
+import com.danielmichalski.reservations.ui.mainmenu.controller.MainMenuController;
+import com.danielmichalski.reservations.util.ui.LookAndFeelUtils;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
-import com.danielmichalski.reservations.business.ui.mainmenu.controller.MainMenuController;
-import com.danielmichalski.reservations.business.util.ui.LookAndFeelUtils;
+
+import javax.swing.SwingUtilities;
 
 @SpringBootApplication
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String... args) {
         LookAndFeelUtils.setWindowsLookAndFeel();
         ConfigurableApplicationContext context = createApplicationContext(args);
         displayMainFrame(context);
     }
 
-    private static ConfigurableApplicationContext createApplicationContext(String[] args) {
+    private static ConfigurableApplicationContext createApplicationContext(String... args) {
         return new SpringApplicationBuilder(Application.class)
                 .headless(false)
                 .run(args);
