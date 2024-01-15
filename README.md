@@ -3,8 +3,7 @@
 [![Build Status](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/workflows/Java%20CI%20with%20Maven/badge.svg?branch=master)](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/actions?query=workflow%3A%22Java+CI+with+Maven%22)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/blob/master/LICENSE)
 
-This project aims to present how to create and configure a Spring Boot, JPA/Hibernate and Java Swing application.
-The project is built using Java 17, Spring Boot 3 and Swing libraries.
+This project aims to present how to create a desktop application with Java 17, Spring Boot 3, JPA/Hibernate and Swing.
 
 ## Table of Contents
 
@@ -13,9 +12,9 @@ The project is built using Java 17, Spring Boot 3 and Swing libraries.
 * [Running the application](#running-the-application)
     * [On Windows](#on-windows)
     * [On MacOS/ Linux](#on-macos-linux)
-* [Database user](#database-user)
-* [Video](#video)
-* [Screens](#screens)
+* [Database connection parameters](#database-connection-parameters)
+* [Video presentation](#video-presentation)
+* [Screenshots](#screenshots)
 
 ## Prerequisites
 
@@ -64,17 +63,17 @@ docker-compose up -d
 ./mvnw spring-boot:run
 ```
 
-## Database user
+## Database connection parameters
 
 | JDBC URL                                      | Username         	 | Password         |
 |-----------------------------------------------|--------------------|------------------|
 | jdbc:postgresql://localhost:5555/reservations | reservations_user  | reservations_psw |
 
-## Video
+## Video presentation
 
 [![Spring Boot Swing Reservations](http://img.youtube.com/vi/E7ho0qdWhus/0.jpg)](https://youtu.be/E7ho0qdWhus "Spring Boot Swing Reservations")
 
-## Screens
+## Screenshots
 
 ![alt text](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/blob/master/src/main/resources/images/db_schema.png "Screen 1")
 
