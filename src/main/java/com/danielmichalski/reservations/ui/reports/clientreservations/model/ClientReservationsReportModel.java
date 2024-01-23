@@ -1,6 +1,6 @@
 package com.danielmichalski.reservations.ui.reports.clientreservations.model;
 
-import com.danielmichalski.reservations.dto.client.ClientReservationCountDto;
+import com.danielmichalski.reservations.domain.client.dto.ClientReservationCountDto;
 import com.danielmichalski.reservations.ui.shared.model.DefaultTableModel;
 import com.danielmichalski.reservations.util.constant.ConstMessagesEN;
 import org.apache.logging.log4j.util.Strings;

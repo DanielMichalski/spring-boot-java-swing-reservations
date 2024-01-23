@@ -1,10 +1,10 @@
 package com.danielmichalski.reservations.ui.forms.reservation.view.modal;
 
 import com.danielmichalski.reservations.commons.time.CurrentTimeService;
-import com.danielmichalski.reservations.domain.entity.client.ClientEntity;
-import com.danielmichalski.reservations.domain.entity.payment.PaymentEntity;
-import com.danielmichalski.reservations.domain.entity.reservation.ReservationEntity;
-import com.danielmichalski.reservations.domain.entity.reservation.ReservationStatusEntity;
+import com.danielmichalski.reservations.domain.client.entity.ClientEntity;
+import com.danielmichalski.reservations.domain.payment.entity.PaymentEntity;
+import com.danielmichalski.reservations.domain.reservation.entity.ReservationEntity;
+import com.danielmichalski.reservations.domain.reservation.entity.ReservationStatusEntity;
 import com.danielmichalski.reservations.ui.forms.reservation.model.ClientComboBoxModel;
 import com.danielmichalski.reservations.ui.forms.reservation.model.PaymentComboBoxModel;
 import com.danielmichalski.reservations.ui.forms.reservation.model.ReservationStatusComboBoxModel;

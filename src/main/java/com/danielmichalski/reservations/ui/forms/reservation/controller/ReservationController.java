@@ -1,13 +1,15 @@
 package com.danielmichalski.reservations.ui.forms.reservation.controller;
 
-import com.danielmichalski.reservations.domain.entity.client.ClientEntity;
-import com.danielmichalski.reservations.domain.entity.payment.PaymentEntity;
-import com.danielmichalski.reservations.domain.entity.reservation.ReservationEntity;
-import com.danielmichalski.reservations.domain.entity.reservation.ReservationStatusEntity;
-import com.danielmichalski.reservations.service.client.ClientService;
-import com.danielmichalski.reservations.service.payment.PaymentService;
-import com.danielmichalski.reservations.service.reservation.ReservationService;
-import com.danielmichalski.reservations.service.reservation.ReservationStatusService;
+import com.danielmichalski.reservations.commons.validation.ValidationError;
+import com.danielmichalski.reservations.domain.client.entity.ClientEntity;
+import com.danielmichalski.reservations.domain.client.service.ClientService;
+import com.danielmichalski.reservations.domain.payment.entity.PaymentEntity;
+import com.danielmichalski.reservations.domain.payment.service.PaymentService;
+import com.danielmichalski.reservations.domain.reservation.entity.ReservationEntity;
+import com.danielmichalski.reservations.domain.reservation.entity.ReservationStatusEntity;
+import com.danielmichalski.reservations.domain.reservation.service.ReservationService;
+import com.danielmichalski.reservations.domain.reservation.service.ReservationStatusService;
+import com.danielmichalski.reservations.domain.reservation.validation.ReservationValidator;
 import com.danielmichalski.reservations.ui.forms.reservation.model.ClientComboBoxModel;
 import com.danielmichalski.reservations.ui.forms.reservation.model.PaymentComboBoxModel;
 import com.danielmichalski.reservations.ui.forms.reservation.model.ReservationStatusComboBoxModel;
@@ -20,8 +22,6 @@ import com.danielmichalski.reservations.ui.forms.reservation.view.modal.Reservat
 import com.danielmichalski.reservations.ui.shared.controller.AbstractFrameController;
 import com.danielmichalski.reservations.util.constant.ConstMessagesEN;
 import com.danielmichalski.reservations.util.notification.Notifications;
-import com.danielmichalski.reservations.validation.ValidationError;
-import com.danielmichalski.reservations.validation.reservation.ReservationValidator;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;

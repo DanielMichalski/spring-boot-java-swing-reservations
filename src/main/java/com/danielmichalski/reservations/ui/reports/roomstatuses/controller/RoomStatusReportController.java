@@ -1,7 +1,7 @@
 package com.danielmichalski.reservations.ui.reports.roomstatuses.controller;
 
-import com.danielmichalski.reservations.dto.room.RoomStatusesCountDto;
-import com.danielmichalski.reservations.service.room.RoomStatusService;
+import com.danielmichalski.reservations.domain.room.dto.RoomStatusesCountDto;
+import com.danielmichalski.reservations.domain.room.service.RoomStatusService;
 import com.danielmichalski.reservations.ui.reports.roomstatuses.model.RoomStatusReportModel;
 import com.danielmichalski.reservations.ui.reports.roomstatuses.view.RoomStatusReportTableFrame;
 import com.danielmichalski.reservations.ui.shared.controller.AbstractFrameController;

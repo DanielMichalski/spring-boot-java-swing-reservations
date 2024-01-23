@@ -1,6 +1,6 @@
 package com.danielmichalski.reservations.ui.forms.paymentmethod.model;
 
-import com.danielmichalski.reservations.domain.entity.payment.PaymentMethodEntity;
+import com.danielmichalski.reservations.domain.payment.entity.PaymentMethodEntity;
 import com.danielmichalski.reservations.ui.shared.model.DefaultTableModel;
 import com.danielmichalski.reservations.util.constant.ConstMessagesEN;
 import org.apache.logging.log4j.util.Strings;

@@ -1,7 +1,7 @@
 package com.danielmichalski.reservations.ui.forms.client.view.modal;
 
-import com.danielmichalski.reservations.domain.entity.address.AddressEntity;
-import com.danielmichalski.reservations.domain.entity.client.ClientEntity;
+import com.danielmichalski.reservations.domain.address.entity.AddressEntity;
+import com.danielmichalski.reservations.domain.client.entity.ClientEntity;
 import com.danielmichalski.reservations.ui.forms.client.model.AddressComboBoxModel;
 import com.danielmichalski.reservations.util.border.Borders;
 import com.danielmichalski.reservations.util.constant.ConstMessagesEN;

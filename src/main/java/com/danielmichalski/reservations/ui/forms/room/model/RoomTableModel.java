@@ -1,6 +1,6 @@
 package com.danielmichalski.reservations.ui.forms.room.model;
 
-import com.danielmichalski.reservations.domain.entity.room.RoomEntity;
+import com.danielmichalski.reservations.domain.room.entity.RoomEntity;
 import com.danielmichalski.reservations.ui.shared.model.DefaultTableModel;
 import com.danielmichalski.reservations.util.constant.ConstMessagesEN;
 import org.apache.logging.log4j.util.Strings;

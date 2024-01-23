@@ -1,9 +1,11 @@
 package com.danielmichalski.reservations.ui.forms.client.controller;
 
-import com.danielmichalski.reservations.domain.entity.address.AddressEntity;
-import com.danielmichalski.reservations.domain.entity.client.ClientEntity;
-import com.danielmichalski.reservations.service.address.AddressService;
-import com.danielmichalski.reservations.service.client.ClientService;
+import com.danielmichalski.reservations.commons.validation.ValidationError;
+import com.danielmichalski.reservations.domain.address.entity.AddressEntity;
+import com.danielmichalski.reservations.domain.address.service.AddressService;
+import com.danielmichalski.reservations.domain.client.entity.ClientEntity;
+import com.danielmichalski.reservations.domain.client.service.ClientService;
+import com.danielmichalski.reservations.domain.client.validation.ClientValidator;
 import com.danielmichalski.reservations.ui.forms.client.model.AddressComboBoxModel;
 import com.danielmichalski.reservations.ui.forms.client.model.ClientTableModel;
 import com.danielmichalski.reservations.ui.forms.client.view.ClientFrame;
@@ -14,8 +16,6 @@ import com.danielmichalski.reservations.ui.forms.client.view.modal.FormPanel;
 import com.danielmichalski.reservations.ui.shared.controller.AbstractFrameController;
 import com.danielmichalski.reservations.util.constant.ConstMessagesEN;
 import com.danielmichalski.reservations.util.notification.Notifications;
-import com.danielmichalski.reservations.validation.ValidationError;
-import com.danielmichalski.reservations.validation.client.ClientValidator;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;

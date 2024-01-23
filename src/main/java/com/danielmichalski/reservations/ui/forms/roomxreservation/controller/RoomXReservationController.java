@@ -1,11 +1,13 @@
 package com.danielmichalski.reservations.ui.forms.roomxreservation.controller;
 
-import com.danielmichalski.reservations.domain.entity.reservation.ReservationEntity;
-import com.danielmichalski.reservations.domain.entity.room.RoomEntity;
-import com.danielmichalski.reservations.domain.entity.room.RoomXReservationEntity;
-import com.danielmichalski.reservations.service.reservation.ReservationService;
-import com.danielmichalski.reservations.service.room.RoomService;
-import com.danielmichalski.reservations.service.room.RoomXReservationService;
+import com.danielmichalski.reservations.commons.validation.ValidationError;
+import com.danielmichalski.reservations.domain.reservation.entity.ReservationEntity;
+import com.danielmichalski.reservations.domain.reservation.service.ReservationService;
+import com.danielmichalski.reservations.domain.room.entity.RoomEntity;
+import com.danielmichalski.reservations.domain.room.entity.RoomXReservationEntity;
+import com.danielmichalski.reservations.domain.room.service.RoomService;
+import com.danielmichalski.reservations.domain.room.service.RoomXReservationService;
+import com.danielmichalski.reservations.domain.room.validation.RoomXReservationValidator;
 import com.danielmichalski.reservations.ui.forms.rate.model.RoomComboBoxModel;
 import com.danielmichalski.reservations.ui.forms.roomxreservation.model.ReservationsComboBoxModel;
 import com.danielmichalski.reservations.ui.forms.roomxreservation.model.RoomXReservationTableModel;
@@ -17,8 +19,6 @@ import com.danielmichalski.reservations.ui.forms.roomxreservation.view.modal.Roo
 import com.danielmichalski.reservations.ui.shared.controller.AbstractFrameController;
 import com.danielmichalski.reservations.util.constant.ConstMessagesEN;
 import com.danielmichalski.reservations.util.notification.Notifications;
-import com.danielmichalski.reservations.validation.ValidationError;
-import com.danielmichalski.reservations.validation.room.RoomXReservationValidator;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;

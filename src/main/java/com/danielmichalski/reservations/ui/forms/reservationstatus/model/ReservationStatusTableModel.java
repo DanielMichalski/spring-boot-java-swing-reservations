@@ -1,6 +1,6 @@
 package com.danielmichalski.reservations.ui.forms.reservationstatus.model;
 
-import com.danielmichalski.reservations.domain.entity.reservation.ReservationStatusEntity;
+import com.danielmichalski.reservations.domain.reservation.entity.ReservationStatusEntity;
 import com.danielmichalski.reservations.ui.shared.model.DefaultTableModel;
 import com.danielmichalski.reservations.util.constant.ConstMessagesEN;
 import org.apache.logging.log4j.util.Strings;

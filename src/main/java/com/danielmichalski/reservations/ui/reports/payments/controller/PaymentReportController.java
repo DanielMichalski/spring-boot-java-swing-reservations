@@ -1,7 +1,7 @@
 package com.danielmichalski.reservations.ui.reports.payments.controller;
 
-import com.danielmichalski.reservations.dto.payment.PaymentMethodCountDto;
-import com.danielmichalski.reservations.service.payment.PaymentMethodService;
+import com.danielmichalski.reservations.domain.payment.dto.PaymentMethodCountDto;
+import com.danielmichalski.reservations.domain.payment.service.PaymentMethodService;
 import com.danielmichalski.reservations.ui.reports.payments.model.PaymentReportModel;
 import com.danielmichalski.reservations.ui.reports.payments.view.PaymentReportTableFrame;
 import com.danielmichalski.reservations.ui.shared.controller.AbstractFrameController;

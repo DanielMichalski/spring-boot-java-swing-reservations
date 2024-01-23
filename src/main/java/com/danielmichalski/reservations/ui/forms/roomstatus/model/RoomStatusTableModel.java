@@ -1,6 +1,6 @@
 package com.danielmichalski.reservations.ui.forms.roomstatus.model;
 
-import com.danielmichalski.reservations.domain.entity.room.RoomStatusEntity;
+import com.danielmichalski.reservations.domain.room.entity.RoomStatusEntity;
 import com.danielmichalski.reservations.ui.shared.model.DefaultTableModel;
 import com.danielmichalski.reservations.util.constant.ConstMessagesEN;
 import org.apache.logging.log4j.util.Strings;

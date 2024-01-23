@@ -1,6 +1,6 @@
 package com.danielmichalski.reservations.ui.reports.roomstatuses.model;
 
-import com.danielmichalski.reservations.dto.room.RoomStatusesCountDto;
+import com.danielmichalski.reservations.domain.room.dto.RoomStatusesCountDto;
 import com.danielmichalski.reservations.ui.shared.model.DefaultTableModel;
 import com.danielmichalski.reservations.util.constant.ConstMessagesEN;
 import org.apache.logging.log4j.util.Strings;

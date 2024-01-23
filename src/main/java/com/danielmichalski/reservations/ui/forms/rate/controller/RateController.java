@@ -1,11 +1,13 @@
 package com.danielmichalski.reservations.ui.forms.rate.controller;
 
-import com.danielmichalski.reservations.domain.entity.rate.RateEntity;
-import com.danielmichalski.reservations.domain.entity.room.RoomEntity;
-import com.danielmichalski.reservations.domain.entity.room.RoomTypeEntity;
-import com.danielmichalski.reservations.service.rate.RateService;
-import com.danielmichalski.reservations.service.room.RoomService;
-import com.danielmichalski.reservations.service.room.RoomTypeService;
+import com.danielmichalski.reservations.commons.validation.ValidationError;
+import com.danielmichalski.reservations.domain.rate.entity.RateEntity;
+import com.danielmichalski.reservations.domain.rate.service.RateService;
+import com.danielmichalski.reservations.domain.rate.validation.RateValidator;
+import com.danielmichalski.reservations.domain.room.entity.RoomEntity;
+import com.danielmichalski.reservations.domain.room.entity.RoomTypeEntity;
+import com.danielmichalski.reservations.domain.room.service.RoomService;
+import com.danielmichalski.reservations.domain.room.service.RoomTypeService;
 import com.danielmichalski.reservations.ui.forms.rate.model.RateTableModel;
 import com.danielmichalski.reservations.ui.forms.rate.model.RoomComboBoxModel;
 import com.danielmichalski.reservations.ui.forms.rate.model.RoomTypeComboBoxModel;
@@ -17,8 +19,6 @@ import com.danielmichalski.reservations.ui.forms.rate.view.modal.RateFormPanel;
 import com.danielmichalski.reservations.ui.shared.controller.AbstractFrameController;
 import com.danielmichalski.reservations.util.constant.ConstMessagesEN;
 import com.danielmichalski.reservations.util.notification.Notifications;
-import com.danielmichalski.reservations.validation.ValidationError;
-import com.danielmichalski.reservations.validation.rate.RateValidator;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;

@@ -1,7 +1,7 @@
 package com.danielmichalski.reservations.ui.reports.clientreservations.controller;
 
-import com.danielmichalski.reservations.dto.client.ClientReservationCountDto;
-import com.danielmichalski.reservations.service.client.ClientService;
+import com.danielmichalski.reservations.domain.client.dto.ClientReservationCountDto;
+import com.danielmichalski.reservations.domain.client.service.ClientService;
 import com.danielmichalski.reservations.ui.reports.clientreservations.model.ClientReservationsReportModel;
 import com.danielmichalski.reservations.ui.reports.clientreservations.view.ClientReservationsReportTableFrame;
 import com.danielmichalski.reservations.ui.shared.controller.AbstractFrameController;

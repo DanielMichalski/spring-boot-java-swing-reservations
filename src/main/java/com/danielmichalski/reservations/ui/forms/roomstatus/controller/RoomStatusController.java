@@ -1,7 +1,9 @@
 package com.danielmichalski.reservations.ui.forms.roomstatus.controller;
 
-import com.danielmichalski.reservations.domain.entity.room.RoomStatusEntity;
-import com.danielmichalski.reservations.service.room.RoomStatusService;
+import com.danielmichalski.reservations.commons.validation.ValidationError;
+import com.danielmichalski.reservations.domain.room.entity.RoomStatusEntity;
+import com.danielmichalski.reservations.domain.room.service.RoomStatusService;
+import com.danielmichalski.reservations.domain.room.validation.RoomStatusValidator;
 import com.danielmichalski.reservations.ui.forms.roomstatus.model.RoomStatusTableModel;
 import com.danielmichalski.reservations.ui.forms.roomstatus.view.RoomStatusTableBtnPanel;
 import com.danielmichalski.reservations.ui.forms.roomstatus.view.RoomStatusTableFrame;
@@ -11,8 +13,6 @@ import com.danielmichalski.reservations.ui.forms.roomstatus.view.modal.RoomStatu
 import com.danielmichalski.reservations.ui.shared.controller.AbstractFrameController;
 import com.danielmichalski.reservations.util.constant.ConstMessagesEN;
 import com.danielmichalski.reservations.util.notification.Notifications;
-import com.danielmichalski.reservations.validation.ValidationError;
-import com.danielmichalski.reservations.validation.room.RoomStatusValidator;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;

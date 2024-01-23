@@ -1,7 +1,7 @@
 package com.danielmichalski.reservations.ui.forms.payment.model;
 
 import com.danielmichalski.reservations.commons.date.DateFormatterService;
-import com.danielmichalski.reservations.domain.entity.payment.PaymentEntity;
+import com.danielmichalski.reservations.domain.payment.entity.PaymentEntity;
 import com.danielmichalski.reservations.ui.shared.model.DefaultTableModel;
 import com.danielmichalski.reservations.util.constant.ConstMessagesEN;
 import lombok.AllArgsConstructor;

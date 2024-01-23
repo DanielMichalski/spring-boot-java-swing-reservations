@@ -1,6 +1,6 @@
 package com.danielmichalski.reservations.ui.reports.payments.model;
 
-import com.danielmichalski.reservations.dto.payment.PaymentMethodCountDto;
+import com.danielmichalski.reservations.domain.payment.dto.PaymentMethodCountDto;
 import com.danielmichalski.reservations.ui.shared.model.DefaultTableModel;
 import com.danielmichalski.reservations.util.constant.ConstMessagesEN;
 import org.apache.logging.log4j.util.Strings;

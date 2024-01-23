@@ -1,7 +1,9 @@
 package com.danielmichalski.reservations.ui.forms.paymentmethod.controller;
 
-import com.danielmichalski.reservations.domain.entity.payment.PaymentMethodEntity;
-import com.danielmichalski.reservations.service.payment.PaymentMethodService;
+import com.danielmichalski.reservations.commons.validation.ValidationError;
+import com.danielmichalski.reservations.domain.payment.entity.PaymentMethodEntity;
+import com.danielmichalski.reservations.domain.payment.service.PaymentMethodService;
+import com.danielmichalski.reservations.domain.payment.validation.PaymentMethodValidator;
 import com.danielmichalski.reservations.ui.forms.paymentmethod.model.PaymentMethodTableModel;
 import com.danielmichalski.reservations.ui.forms.paymentmethod.view.PaymentMethodTableBtnPanel;
 import com.danielmichalski.reservations.ui.forms.paymentmethod.view.PaymentMethodTableFrame;
@@ -11,8 +13,6 @@ import com.danielmichalski.reservations.ui.forms.paymentmethod.view.modal.Paymen
 import com.danielmichalski.reservations.ui.shared.controller.AbstractFrameController;
 import com.danielmichalski.reservations.util.constant.ConstMessagesEN;
 import com.danielmichalski.reservations.util.notification.Notifications;
-import com.danielmichalski.reservations.validation.ValidationError;
-import com.danielmichalski.reservations.validation.payment.PaymentMethodValidator;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;

@@ -1,7 +1,7 @@
 package com.danielmichalski.reservations.ui.forms.payment.view.modal;
 
-import com.danielmichalski.reservations.domain.entity.payment.PaymentEntity;
-import com.danielmichalski.reservations.domain.entity.payment.PaymentMethodEntity;
+import com.danielmichalski.reservations.domain.payment.entity.PaymentEntity;
+import com.danielmichalski.reservations.domain.payment.entity.PaymentMethodEntity;
 import com.danielmichalski.reservations.ui.forms.payment.model.PaymentMethodComboBoxModel;
 import com.danielmichalski.reservations.util.border.Borders;
 import com.danielmichalski.reservations.util.constant.ConstMessagesEN;

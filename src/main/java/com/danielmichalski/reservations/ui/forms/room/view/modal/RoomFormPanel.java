@@ -1,7 +1,7 @@
 package com.danielmichalski.reservations.ui.forms.room.view.modal;
 
-import com.danielmichalski.reservations.domain.entity.room.RoomEntity;
-import com.danielmichalski.reservations.domain.entity.room.RoomStatusEntity;
+import com.danielmichalski.reservations.domain.room.entity.RoomEntity;
+import com.danielmichalski.reservations.domain.room.entity.RoomStatusEntity;
 import com.danielmichalski.reservations.ui.forms.room.model.RoomStatusComboBoxModel;
 import com.danielmichalski.reservations.util.border.Borders;
 import com.danielmichalski.reservations.util.constant.ConstMessagesEN;

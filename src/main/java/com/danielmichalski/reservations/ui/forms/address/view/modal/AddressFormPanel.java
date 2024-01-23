@@ -1,6 +1,6 @@
 package com.danielmichalski.reservations.ui.forms.address.view.modal;
 
-import com.danielmichalski.reservations.domain.entity.address.AddressEntity;
+import com.danielmichalski.reservations.domain.address.entity.AddressEntity;
 import com.danielmichalski.reservations.util.border.Borders;
 import com.danielmichalski.reservations.util.constant.ConstMessagesEN;
 import jakarta.annotation.PostConstruct;

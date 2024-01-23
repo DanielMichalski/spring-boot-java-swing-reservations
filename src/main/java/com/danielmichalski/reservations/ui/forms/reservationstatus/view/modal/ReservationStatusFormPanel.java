@@ -1,6 +1,6 @@
 package com.danielmichalski.reservations.ui.forms.reservationstatus.view.modal;
 
-import com.danielmichalski.reservations.domain.entity.reservation.ReservationStatusEntity;
+import com.danielmichalski.reservations.domain.reservation.entity.ReservationStatusEntity;
 import com.danielmichalski.reservations.util.border.Borders;
 import com.danielmichalski.reservations.util.constant.ConstMessagesEN;
 import jakarta.annotation.PostConstruct;

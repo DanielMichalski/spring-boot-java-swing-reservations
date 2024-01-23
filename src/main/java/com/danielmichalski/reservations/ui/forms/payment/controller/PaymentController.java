@@ -1,9 +1,11 @@
 package com.danielmichalski.reservations.ui.forms.payment.controller;
 
-import com.danielmichalski.reservations.domain.entity.payment.PaymentEntity;
-import com.danielmichalski.reservations.domain.entity.payment.PaymentMethodEntity;
-import com.danielmichalski.reservations.service.payment.PaymentMethodService;
-import com.danielmichalski.reservations.service.payment.PaymentService;
+import com.danielmichalski.reservations.commons.validation.ValidationError;
+import com.danielmichalski.reservations.domain.payment.entity.PaymentEntity;
+import com.danielmichalski.reservations.domain.payment.entity.PaymentMethodEntity;
+import com.danielmichalski.reservations.domain.payment.service.PaymentMethodService;
+import com.danielmichalski.reservations.domain.payment.service.PaymentService;
+import com.danielmichalski.reservations.domain.payment.validation.PaymentValidator;
 import com.danielmichalski.reservations.ui.forms.payment.model.PaymentMethodComboBoxModel;
 import com.danielmichalski.reservations.ui.forms.payment.model.PaymentTableModel;
 import com.danielmichalski.reservations.ui.forms.payment.view.PaymentTableBtnPanel;
@@ -14,8 +16,6 @@ import com.danielmichalski.reservations.ui.forms.payment.view.modal.PaymentFormP
 import com.danielmichalski.reservations.ui.shared.controller.AbstractFrameController;
 import com.danielmichalski.reservations.util.constant.ConstMessagesEN;
 import com.danielmichalski.reservations.util.notification.Notifications;
-import com.danielmichalski.reservations.validation.ValidationError;
-import com.danielmichalski.reservations.validation.payment.PaymentValidator;
 import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;

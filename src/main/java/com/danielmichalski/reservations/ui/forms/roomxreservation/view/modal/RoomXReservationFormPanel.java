@@ -1,9 +1,9 @@
 package com.danielmichalski.reservations.ui.forms.roomxreservation.view.modal;
 
-import com.danielmichalski.reservations.domain.entity.reservation.ReservationEntity;
-import com.danielmichalski.reservations.domain.entity.room.RoomEntity;
-import com.danielmichalski.reservations.domain.entity.room.RoomXReservationEntity;
-import com.danielmichalski.reservations.domain.entity.room.RoomXReservationPK;
+import com.danielmichalski.reservations.domain.reservation.entity.ReservationEntity;
+import com.danielmichalski.reservations.domain.room.entity.RoomEntity;
+import com.danielmichalski.reservations.domain.room.entity.RoomXReservationEntity;
+import com.danielmichalski.reservations.domain.room.entity.RoomXReservationPK;
 import com.danielmichalski.reservations.ui.forms.rate.model.RoomComboBoxModel;
 import com.danielmichalski.reservations.ui.forms.roomxreservation.model.ReservationsComboBoxModel;
 import com.danielmichalski.reservations.util.border.Borders;

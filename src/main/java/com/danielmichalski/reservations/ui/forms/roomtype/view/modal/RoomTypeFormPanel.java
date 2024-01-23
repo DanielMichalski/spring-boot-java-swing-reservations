@@ -1,6 +1,6 @@
 package com.danielmichalski.reservations.ui.forms.roomtype.view.modal;
 
-import com.danielmichalski.reservations.domain.entity.room.RoomTypeEntity;
+import com.danielmichalski.reservations.domain.room.entity.RoomTypeEntity;
 import com.danielmichalski.reservations.util.border.Borders;
 import com.danielmichalski.reservations.util.constant.ConstMessagesEN;
 import jakarta.annotation.PostConstruct;
