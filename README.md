@@ -5,6 +5,10 @@
 
 This project aims to present how to create a desktop application with Java 17, Spring Boot 3, JPA/Hibernate and Swing.
 
+## Highlight
+
+![video](https://github.com/DanielMichalski/react-form-generator/blob/master/.github/gifs/application.gif "Video")
+
 ## Table of Contents
 
 * [Prerequisites](#prerequisites)
@@ -75,14 +79,14 @@ docker-compose up -d
 
 ## Screenshots
 
-![alt text](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/blob/master/src/main/resources/images/db_schema.png "Screen 1")
+![alt text](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/blob/master/.github/images/db_schema.png "Screen 1")
 
-![alt text](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/blob/master/src/main/resources/images/spring_boot.png "Screen 2")
+![alt text](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/blob/master/.github/images/spring_boot.png "Screen 2")
 
-![alt text](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/blob/master/src/main/resources/images/forms.png "Screen 3")
+![alt text](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/blob/master/.github/images/forms.png "Screen 3")
 
-![alt text](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/blob/master/src/main/resources/images/form1.png "Screen 4")
+![alt text](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/blob/master/.github/images/form1.png "Screen 4")
 
-![alt text](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/blob/master/src/main/resources/images/form2.png "Screen 5")
+![alt text](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/blob/master/.github/images/form2.png "Screen 5")
 
-![alt text](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/blob/master/src/main/resources/images/reports.png "Screen 6")
+![alt text](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/blob/master/.github/images/reports.png "Screen 6")
