@@ -1,6 +1,7 @@
 # Spring Boot Swing Reservations
 
-Spring Boot Swing Reservations is a desktop application built on Java 17, Spring Boot 3, JPA/Hibernate, Docker and Java Swing.
+Spring Boot Swing Reservations is a desktop application built on Java 17, Spring Boot 3, JPA/Hibernate, Docker, and Java Swing. \
+It shows how to integrate the Java Swing library with Spring Boot.
 
 [![Spring Boot Swing Reservations](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/blob/master/.github/gifs/application.gif)](https://youtu.be/E7ho0qdWhus "Spring Boot Swing Reservations")
 
