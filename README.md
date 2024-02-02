@@ -7,7 +7,7 @@ This project aims to present how to create a desktop application with Java 17, S
 
 ## Highlight
 
-![video](https://github.com/DanielMichalski/react-form-generator/blob/master/.github/gifs/application.gif "Video")
+![video](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/blob/master/.github/gifs/application.gif "Video")
 
 ## Table of Contents
 
