@@ -8,7 +8,9 @@ It shows how to integrate the Java Swing library with Spring Boot.
 [![Build Status](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/workflows/Java%20CI%20with%20Maven/badge.svg?branch=master)](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/actions?query=workflow%3A%22Java+CI+with+Maven%22)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/blob/master/LICENSE)
 
-## Table of Contents
+## Documentation
+
+The documentation is divided into several sections:
 
 * [Prerequisites](#prerequisites)
 * [Libraries](#libraries)
