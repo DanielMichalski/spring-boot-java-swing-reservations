@@ -1,11 +1,11 @@
 # Spring Boot Swing Reservations
 
-[![Build Status](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/workflows/Java%20CI%20with%20Maven/badge.svg?branch=master)](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/actions?query=workflow%3A%22Java+CI+with+Maven%22)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/blob/master/LICENSE)
-
 Spring Boot Swing Reservations is a desktop application built on Java 17, Spring Boot 3, JPA/Hibernate, Docker and Java Swing.
 
 [![Spring Boot Swing Reservations](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/blob/master/.github/gifs/application.gif)](https://youtu.be/E7ho0qdWhus "Spring Boot Swing Reservations")
+
+[![Build Status](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/workflows/Java%20CI%20with%20Maven/badge.svg?branch=master)](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/actions?query=workflow%3A%22Java+CI+with+Maven%22)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/blob/master/LICENSE)
 
 ## Table of Contents
 
