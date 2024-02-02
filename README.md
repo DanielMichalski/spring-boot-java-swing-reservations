@@ -5,9 +5,10 @@
 
 This project aims to present how to create a desktop application with Java 17, Spring Boot 3, JPA/Hibernate and Swing.
 
-## Highlight
-
 ![video](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/blob/master/.github/gifs/application.gif "Video")
+
+[![Spring Boot Swing Reservations](https://github.com/DanielMichalski/spring-boot-java-swing-reservations/blob/master/.github/gifs/application.gif)](https://youtu.be/E7ho0qdWhus "Spring Boot Swing Reservations")
+
 
 ## Table of Contents
 
